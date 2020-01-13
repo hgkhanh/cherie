@@ -170,7 +170,7 @@ module.exports = {
   userDescription:
     "Yeah, I like animals better than people sometimes... Especially dogs. Dogs are the best. Every time you come home, they act like they haven't seen you in a year. And the good thing about dogs... is they got different dogs for different people.", // User description to display in the author segment.
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
-  userLinks: [
+  PageLinks: [
     {
       label: "GitHub",
       url: "https://github.com/Vagr9K/gatsby-advanced-starter",

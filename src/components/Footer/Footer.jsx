@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "gatsby";
-import UserLinks from "../UserLinks/UserLinks";
+import PageLinks from "../PageLinks/PageLinks";
 import "./Footer.css";
 
 class Footer extends Component {
@@ -13,7 +13,7 @@ class Footer extends Component {
     }
     return (
       <footer className="footer">
-        <UserLinks config={config} labeled />
+        <PageLinks config={config} labeled />
         <div className="notice-container">
           <h4>{copyright}</h4>
 

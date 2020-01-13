@@ -10,6 +10,7 @@ class AboutPage extends Component {
       <Layout>
         <div className="about-container">
           <Helmet title={`About | ${config.siteTitle}`} />
+          about
           <About />
         </div>
       </Layout>
