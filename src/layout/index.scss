@@ -1,3 +1,16 @@
+@font-face {
+  font-family: "Lovelyn";
+  src: url("../../static/fonts/lovelyn/LovelynRegular.woff") format("woff");
+}
+@font-face {
+  font-family: "Athene";
+  src: url("../../static/fonts/athene/Athene.woff") format("woff");
+}
+@font-face {
+  font-family: "Medio";
+  src: url("../../static/fonts/medio/Medio.woff") format("woff");
+}
+
 * {
   box-sizing: border-box;
 }
