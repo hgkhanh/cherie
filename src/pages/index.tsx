@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import Layout from "../layout";
 import config from "../../data/SiteConfig";
-
+import { Button } from 'antd';
 class HomePage extends Component {
   render() {
     return (
@@ -10,7 +10,7 @@ class HomePage extends Component {
         <div className="home-container">
           Home
           <Helmet title={`Home | ${config.siteTitle}`} />
-          Home
+          <Button type="primary">Primary</Button>
         </div>
       </Layout>
     );
