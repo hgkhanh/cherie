@@ -19,6 +19,7 @@ module.exports = {
     }
   },
   plugins: [
+    "gatsby-plugin-scss-typescript",
     "gatsby-plugin-typescript",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-lodash",

@@ -5,13 +5,13 @@ import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-import "./listing.css";
+import "./listing.scss";
 
 class Listing extends React.Component {
   renderPaging() {
     const { currentPageNum, pageCount } = this.props.pageContext;
-    const prevPage = currentPageNum - 1 === 1 ? "/" : `/${currentPageNum - 1}/`;
-    const nextPage = `/${currentPageNum + 1}/`;
+    const prevPage = currentPageNum - 1 === 1 ? "/listing" : `/listing/${currentPageNum - 1}/`;
+    const nextPage = `/listing/${currentPageNum + 1}/`;
     const isFirstPage = currentPageNum === 1;
     const isLastPage = currentPageNum === pageCount;
 
@@ -23,7 +23,7 @@ class Listing extends React.Component {
           return (
             <Link
               key={`listing-page-${pageNum}`}
-              to={pageNum === 1 ? "/" : `/${pageNum}/`}
+              to={pageNum === 1 ? "/listing/" : `/listing/${pageNum}/`}
             >
               {pageNum}
             </Link>

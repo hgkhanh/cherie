@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./PageLinks.css";
+import * as styles from "./PageLinks.module.scss";
 
 class PageLinks extends Component {
   getLinkElements() {
@@ -19,7 +19,7 @@ class PageLinks extends Component {
     if (!PageLinks) {
       return null;
     }
-    return <div className="page-links">{this.getLinkElements()}</div>;
+    return <div className={styles.pageLinks}>{this.getLinkElements()}</div>;
   }
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "gatsby";
 import PageLinks from "../PageLinks/PageLinks";
-import "./Footer.css";
+import * as styles from "./Footer.module.scss";
 
 class Footer extends Component {
   render() {
@@ -12,9 +12,9 @@ class Footer extends Component {
       return null;
     }
     return (
-      <footer className="footer">
+      <footer className={styles.footer}>
         <PageLinks config={config} labeled />
-        <div className="notice-container">
+        <div className={styles.noticeContainer}>
           <h4>{copyright}</h4>
 
           <Link to={url}>
