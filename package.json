@@ -18,6 +18,7 @@
     "gatsby-plugin-sharp": "^2.2.27",
     "gatsby-plugin-sitemap": "^2.2.16",
     "gatsby-plugin-twitter": "^2.1.9",
+    "gatsby-plugin-typescript": "^2.1.26",
     "gatsby-remark-autolink-headers": "^2.1.13",
     "gatsby-remark-copy-linked-files": "^2.1.23",
     "gatsby-remark-images": "^3.1.25",
@@ -39,13 +40,19 @@
     "url-join": "^4.0.0"
   },
   "devDependencies": {
+    "@types/node": "^13.1.6",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
     "cli-glob": "^0.1.0",
-    "eslint": "^6.5.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.3.0",
+    "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
     "gh-pages": "^2.0.1",
     "prettier": "^1.17.0",
     "remark-cli": "^7.0.0",
@@ -53,6 +60,7 @@
     "stylelint": "^11.0.0",
     "stylelint-config-prettier": "^6.0.0",
     "stylelint-config-standard": "^19.0.0",
+    "typescript": "^3.7.4",
     "write-good": "^1.0.1"
   },
   "keywords": [
@@ -68,11 +76,9 @@
     "build:pp": "gatsby build --prefix-paths",
     "build:gh": "npm run clean && npm run build:pp && gh-pages -d public",
     "clean": "rm -rf public && rm -rf .cache",
-    "lint:js": "eslint --ext .js,.jsx .",
+    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:md": "remark content/",
-    "write-good": "write-good $(glob 'content/posts/**/*.md')",
-    "format:js": "prettier '**/*.{js,jsx}' --write",
-    "format:styles": "prettier '**/*.{css,scss}' --write"
+    "write-good": "write-good $(glob 'content/posts/**/*.md')"
   },
   "remarkConfig": {
     "plugins": [

@@ -20,8 +20,8 @@ checks:
 
 ratings:
    paths:
-    - "**.js"
-    - "**.jsx"
+    - "**.ts"
+    - "**.tsx"
     - "**.css"
     - "**.less"
     - "**.scss"
