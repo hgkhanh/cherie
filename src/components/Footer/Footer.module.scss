@@ -1,25 +1,6 @@
 .footer {
-  justify-content: center;
-  align-content: center;
-  padding: 10px 5px 5px;
-}
-
-.noticeContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: center;
-  align-items: center;
-  margin-top: 25px;
-}
-
-@media (max-width: 640px - 1px) {
-  .noticeContainer {
-    justify-content: space-around;
-  }
-}
-
-.noticeContainer h4 {
   text-align: center;
-  margin: 0;
+  background: #cd8189;
+  padding: 20px;
+  color: white;
 }

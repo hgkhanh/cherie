@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import PageLinks from "../PageLinks/PageLinks";
 import * as styles from "./Footer.module.scss";
 
-class Footer extends Component {
+class Footer extends Component<{ config: any }, {}> {
   render() {
     const { config } = this.props;
     const url = config.siteRss;
@@ -13,21 +13,7 @@ class Footer extends Component {
     }
     return (
       <footer className={styles.footer}>
-        <PageLinks config={config} labeled />
-        <div className={styles.noticeContainer}>
-          <h4>{copyright}</h4>
-
-          <Link to={url}>
-            <button>Subscribe</button>
-          </Link>
-          <h4>
-            Based on{" "}
-            <a href="https://github.com/Vagr9K/gatsby-advanced-starter">
-              Gatsby Advanced Starter
-            </a>
-            .
-          </h4>
-        </div>
+        Copyright © 2020 by Chérie
       </footer>
     );
   }

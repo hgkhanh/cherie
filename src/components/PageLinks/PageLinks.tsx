@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import * as styles from "./PageLinks.module.scss";
 
-class PageLinks extends Component {
+class PageLinks extends Component<{ config: any, labeled: any }, {}> {
   getLinkElements() {
     const { PageLinks } = this.props.config;
     const { labeled } = this.props;
     return PageLinks.map(link => (
-      <a href={link.url}>
-        <button type="button" key={link.label}>
+      <a href={link.url}  key={link.label}>
+        <button type="button">
           {labeled ? link.label : ""}
         </button>
       </a>
