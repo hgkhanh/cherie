@@ -20,12 +20,21 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-plugin-typography",
+      resolve: "gatsby-plugin-antd",
       options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
+        style: true
+      }
     },
-    "gatsby-plugin-antd",
+    {
+      resolve: "gatsby-plugin-less",
+      options: {
+        javascriptEnabled: true,
+        modifyVars: {
+          "font-family": "Lovelyn, Helvetica, Georgia, serif",
+          "heading-color": "fade(#000, 65%);"
+        }
+      }
+    },
     "gatsby-plugin-scss-typescript",
     "gatsby-plugin-typescript",
     "gatsby-plugin-react-helmet",

@@ -12,8 +12,8 @@ class Footer extends Component<{ config: any }, {}> {
       return null;
     }
     return (
-      <footer className={styles.footer}>
-        Copyright © 2020 by Chérie
+      <footer className={[styles.footer, 'flexSection'].join(' ')}>
+        Copyright © 2020 by Cherie
       </footer>
     );
   }

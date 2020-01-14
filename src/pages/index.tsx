@@ -2,7 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import Layout from "../layout";
 import config from "../../data/SiteConfig";
-import { Carousel } from 'antd';
+import { Row, Col, Carousel } from "antd";
 
 const HomePage = () => {
   const settings = {
@@ -32,6 +32,23 @@ const HomePage = () => {
               <img src="https://d3gmm2xq16tvhv.cloudfront.net/spree/cmsimage/805/homepage_carousel_normal/Joan.jpg?1547759157" />
             </div>
           </Carousel>
+        </div>
+        <hr className="divider" />
+        <div className="gridWrapper darkTone">
+          <div className="grid flexSection">
+            <Row type="flex" justify="center" align="top">
+              <Col span={8}><h3>Who We Are</h3></Col>
+              <Col span={8}>
+                <p>Inspired by clean lines, last dances and beautiful hues, Name of
+                Love is a collection of 17 styles in 9 signature colors. Made to
+                be worn amongst the madly in love, even after 'I do'.</p>
+              </Col>
+            </Row>
+          </div>
+        </div>
+        <hr className="divider" />
+        <div className="grid flexSection">
+          <h3>Shop</h3>
         </div>
       </div>
     </Layout>

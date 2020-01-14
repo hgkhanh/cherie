@@ -1,7 +1,6 @@
 .header {
     align-items: center;
     justify-content: center;
-    background-color: transparent;
     display: flex;
     height: 80px;
     position: relative;
@@ -46,7 +45,7 @@
 .header.fixed {
     padding: 0;
     height: 80px;
-    background-color: rgba(230,191,188,0.95);
+    background-color: #e6bfbcf2;
     left: 0;
     position: fixed;
     top: 0;
