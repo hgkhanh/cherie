@@ -3,8 +3,7 @@ import Helmet from "react-helmet";
 import config from "../../data/SiteConfig";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import "./global.scss";
-
+import './index.scss';
 export default class MainLayout extends React.Component {
   render() {
     const { children } = this.props;
@@ -14,9 +13,9 @@ export default class MainLayout extends React.Component {
           <meta name="description" content={config.siteDescription} />
           <html lang="en" />
         </Helmet>
-        <Header config={config}/>
+        <Header config={config} />
         <main>{children}</main>
-        <Footer config={config}/>
+        <Footer config={config} />
       </Fragment>
     );
   }

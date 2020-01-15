@@ -20,6 +20,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "gatsby-plugin-sass",
+      options: {
+        data: `@import "${__dirname}/src/styles/global";`
+      }
+    },
+    {
       resolve: "gatsby-plugin-antd",
       options: {
         style: true
@@ -35,7 +41,6 @@ module.exports = {
         }
       }
     },
-    "gatsby-plugin-scss-typescript",
     "gatsby-plugin-typescript",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-lodash",
