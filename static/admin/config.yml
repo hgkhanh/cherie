@@ -1,22 +1,36 @@
 backend:
   name: github # Refer to https://www.netlifycms.org/docs/authentication-backends/ for auth backend list and instructions
   branch: master # Branch to update
-  repo: vagr9k/gatsby-advanced-starter # Repo for pushing new commits. Make sure to replace with your repo!
+  repo: hgkhanh/cherie # Repo for pushing new commits. Make sure to replace with your repo!
 
 media_folder: static/assets
 public_folder: assets
 
 collections:
-  - name: blog
-    label: "Post"
+  - name: product
+    label: "Product"
     folder: "content"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    identifier_field: name
+    slug: "{{name}}.md"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Cover Image", name: "cover", widget: "image" }
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Feature Image", name: "featureImage", widget: "image" }
+      - { label: "Gallery",
+          name: "galleryImages",
+          widget: "list",
+          field: {label: "Image", name: "image", widget: "image"}
+        }
+      - { label: "Price", name: "price", widget: "string" }
       - { label: "Category", name: "category", widget: "string" }
-      - { label: "Tags", name: "tags", widget: "list" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { 
+          label: "Sizes", 
+          name: "sizes", 
+          widget: "list"
+        }
+      - { 
+          label: "Tags", 
+          name: "tags", 
+          widget: "list"
+        }
