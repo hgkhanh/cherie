@@ -11,7 +11,7 @@ class Header extends Component<{ config: any }, {}> {
     super(props);
 
     this.leftItems = [
-      { to: "/", label: "Home" },
+      { to: "/shop", label: "Shop" },
       { to: "/category/", label: "Categories" },
       { to: "/about/", label: "About" }
     ];

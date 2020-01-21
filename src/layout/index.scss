@@ -98,7 +98,14 @@ hr.divider {
   min-height: 400px;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  &.flexLeft {
+    justify-content: left;
+  }
 }
+
 
 .ant-carousel .slick-slide img {
   margin: 0;
