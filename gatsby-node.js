@@ -13,9 +13,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const parsedFilePath = path.parse(fileNode.relativePath);
     if (
       Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
+      Object.prototype.hasOwnProperty.call(node.frontmatter, "name")
     ) {
-      slug = `/${_.kebabCase(node.frontmatter.title)}`;
+      slug = `/dresses/${_.kebabCase(node.frontmatter.name)}`;
     } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
       slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
     } else if (parsedFilePath.dir === "") {
@@ -24,42 +24,36 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       slug = `/${parsedFilePath.dir}/`;
     }
 
-    if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
-        slug = `/${_.kebabCase(node.frontmatter.slug)}`;
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
-        const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
-        if (!date.isValid)
-          console.warn(`WARNING: Invalid date.`, node.frontmatter);
-
-        createNodeField({ node, name: "date", value: date.toISOString() });
-      }
-    }
     createNodeField({ node, name: "slug", value: slug });
   }
 };
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const postPage = path.resolve("src/templates/post.tsx");
-  const tagPage = path.resolve("src/templates/tag.tsx");
-  const categoryPage = path.resolve("src/templates/category.tsx");
-  const listingPage = path.resolve("./src/templates/listing.tsx");
+  const productPage = path.resolve("src/templates/product.tsx");
+  // const tagPage = path.resolve("src/templates/tag.tsx");
+  // const categoryPage = path.resolve("src/templates/category.tsx");
+  // const listingPage = path.resolve("./src/templates/listing.tsx");
 
-  // Get a full list of markdown posts
+  // Get a full list of markdown products
   const markdownQueryResult = await graphql(`
     {
       allMarkdownRemark {
         edges {
           node {
+            id
             fields {
               slug
             }
             frontmatter {
-              title
-              tags
               category
-              date
+              name
+              galleryImages
+              featureImage
+              description
+              price
+              sizes
+              tags
             }
           }
         }
@@ -75,91 +69,87 @@ exports.createPages = async ({ graphql, actions }) => {
   const tagSet = new Set();
   const categorySet = new Set();
 
-  const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
+  const productsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
 
-  // Sort posts
-  postsEdges.sort((postA, postB) => {
-    const dateA = moment(
-      postA.node.frontmatter.date,
-      siteConfig.dateFromFormat
-    );
+  // Sort products
+  // productsEdges.sort((productA, productB) => {
+  //   const dateA = moment(
+  //     productA.node.frontmatter.date,
+  //     siteConfig.dateFromFormat
+  //   );
 
-    const dateB = moment(
-      postB.node.frontmatter.date,
-      siteConfig.dateFromFormat
-    );
+  //   const dateB = moment(
+  //     productB.node.frontmatter.date,
+  //     siteConfig.dateFromFormat
+  //   );
 
-    if (dateA.isBefore(dateB)) return 1;
-    if (dateB.isBefore(dateA)) return -1;
+  //   if (dateA.isBefore(dateB)) return 1;
+  //   if (dateB.isBefore(dateA)) return -1;
 
-    return 0;
-  });
+  //   return 0;
+  // });
 
   // Paging
-  const { postsPerPage } = siteConfig;
-  const pageCount = Math.ceil(postsEdges.length / postsPerPage);
+  // const { productsPerPage } = siteConfig;
+  // const pageCount = Math.ceil(productsEdges.length / productsPerPage);
 
-  [...Array(pageCount)].forEach((_val, pageNum) => {
-    createPage({
-      path: pageNum === 0 ? `/listing` : `/listing/${pageNum + 1}/`,
-      component: listingPage,
-      context: {
-        limit: postsPerPage,
-        skip: pageNum * postsPerPage,
-        pageCount,
-        currentPageNum: pageNum + 1
-      }
-    });
-  });
+  // [...Array(pageCount)].forEach((_val, pageNum) => {
+  //   createPage({
+  //     path: pageNum === 0 ? `/shop` : `/shop/${pageNum + 1}/`,
+  //     component: listingPage,
+  //     context: {
+  //       limit: productsPerPage,
+  //       skip: pageNum * productsPerPage,
+  //       pageCount,
+  //       currentPageNum: pageNum + 1
+  //     }
+  //   });
+  // });
 
-  // Post page creating
-  postsEdges.forEach((edge, index) => {
+  // Product page creating
+  productsEdges.forEach((edge, index) => {
     // Generate a list of tags
-    if (edge.node.frontmatter.tags) {
-      edge.node.frontmatter.tags.forEach(tag => {
-        tagSet.add(tag);
-      });
-    }
+    // if (edge.node.frontmatter.tags) {
+    //   edge.node.frontmatter.tags.forEach(tag => {
+    //     tagSet.add(tag);
+    //   });
+    // }
 
     // Generate a list of categories
-    if (edge.node.frontmatter.category) {
-      categorySet.add(edge.node.frontmatter.category);
-    }
+    // if (edge.node.frontmatter.category) {
+    //   categorySet.add(edge.node.frontmatter.category);
+    // }
 
-    // Create post pages
-    const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
-    const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
-    const nextEdge = postsEdges[nextID];
-    const prevEdge = postsEdges[prevID];
+    // Create product pages
+    // const nextID = index + 1 < productsEdges.length ? index + 1 : 0;
+    // const prevID = index - 1 >= 0 ? index - 1 : productsEdges.length - 1;
+    // const nextEdge = productsEdges[nextID];
+    // const prevEdge = productsEdges[prevID];
 
     createPage({
-      path: edge.node.fields.slug,
-      component: postPage,
+      path: `${edge.node.fields.slug}/`,
+      component: productPage,
       context: {
-        slug: edge.node.fields.slug,
-        nexttitle: nextEdge.node.frontmatter.title,
-        nextslug: nextEdge.node.fields.slug,
-        prevtitle: prevEdge.node.frontmatter.title,
-        prevslug: prevEdge.node.fields.slug
+        slug: edge.node.fields.slug
       }
     });
   });
 
-  //  Create tag pages
-  tagSet.forEach(tag => {
-    createPage({
-      path: `/tags/${_.kebabCase(tag)}/`,
-      component: tagPage,
-      context: { tag }
-    });
-  });
+//   //  Create tag pages
+//   tagSet.forEach(tag => {
+//     createPage({
+//       path: `/tags/${_.kebabCase(tag)}/`,
+//       component: tagPage,
+//       context: { tag }
+//     });
+//   });
 
-  // Create category pages
-  categorySet.forEach(category => {
-    createPage({
-      path: `/categories/${_.kebabCase(category)}/`,
-      component: categoryPage,
-      context: { category }
-    });
-  });
+//   // Create category pages
+//   categorySet.forEach(category => {
+//     createPage({
+//       path: `/categories/${_.kebabCase(category)}/`,
+//       component: categoryPage,
+//       context: { category }
+//     });
+//   });
 };

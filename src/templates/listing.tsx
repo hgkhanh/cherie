@@ -2,7 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../layout";
-import PostListing from "../components/PostListing/PostListing";
+import PostListing from "../components/ProductListing/ProductListing";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import "./listing.scss";
@@ -57,24 +57,19 @@ export default Listing;
 /* eslint no-undef: "off" */
 export const listingQuery = graphql`
   query ListingQuery($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
-      sort: { fields: [fields___date], order: DESC }
-      limit: $limit
-      skip: $skip
-    ) {
+    allMarkdownRemark {
       edges {
         node {
-          fields {
-            slug
-            date
-          }
-          excerpt
-          timeToRead
+          id
           frontmatter {
-            title
+            category
+            name
+            galleryImages
+            featureImage
+            description
+            price
+            sizes
             tags
-            cover
-            date
           }
         }
       }

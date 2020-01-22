@@ -7,22 +7,25 @@ import ProductList from "../components/ProductList";
 
 type Props = PageRendererProps
 
-const ShopPage = (props: Props) => {
+const DressPage = (props: Props) => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark {
         edges {
           node {
             id
-            excerpt
             fields {
-              date
               slug
             }
             frontmatter {
               category
-              cover
-              title
+              name
+              galleryImages
+              featureImage
+              description
+              price
+              sizes
+              tags
             }
           }
         }
@@ -46,4 +49,4 @@ const ShopPage = (props: Props) => {
   );
 };
 
-export default ShopPage;
+export default DressPage;

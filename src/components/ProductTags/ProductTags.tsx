@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import _ from "lodash";
 import { Link } from "gatsby";
 
-class PostTags extends Component {
+class ProductTags extends Component {
   render() {
     const { tags } = this.props;
     return (
-      <div className="post-tag-container">
+      <div className="product-tag-container">
         {tags &&
           tags.map(tag => (
             <Link
@@ -22,4 +22,4 @@ class PostTags extends Component {
   }
 }
 
-export default PostTags;
+export default ProductTags;

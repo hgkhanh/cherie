@@ -24,12 +24,16 @@
   src: local('Calluna'), url('../../static/fonts/Calluna-Regular.otf') format('otf');
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-header;
+}
+
 p {
   font-family: $font-body;
 }
 
 a {
-  font-family: $font-sans-serif
+  font-family: $font-sans-serif;
 }
 
 .darkTone {
@@ -69,6 +73,9 @@ main {
 .serif {
   font-family: $font-header;
 }
+.sansSerif {
+  font-family: $font-sans-serif;
+}
 
 /*// Typography */
 
@@ -100,6 +107,7 @@ hr.divider {
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
+  width: 100%;
 
   &.flexLeft {
     justify-content: left;

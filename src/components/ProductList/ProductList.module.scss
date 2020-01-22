@@ -1,4 +1,15 @@
 .card {
     margin: 10px;
     flex-basis: 30%;
+    img {
+        width: 100%;
+        display: block;
+    }
+    .description {
+        display: flex;
+        padding: 5px 0;
+        justify-content: space-between;
+        align-items: baseline;
+    }
 }
+

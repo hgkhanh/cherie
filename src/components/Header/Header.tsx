@@ -11,7 +11,7 @@ class Header extends Component<{ config: any }, {}> {
     super(props);
 
     this.leftItems = [
-      { to: "/shop", label: "Shop" },
+      { to: "/dresses", label: "Shop" },
       { to: "/category/", label: "Categories" },
       { to: "/about/", label: "About" }
     ];
@@ -49,7 +49,7 @@ class Header extends Component<{ config: any }, {}> {
         <header className={[styles.header, this.getHeaderStatus()].join(" ")}>
           <div className={styles.logoContainer}>
             <Link to="/">
-              <h1>Cherie </h1>
+              <h1>Cherie</h1>
             </Link>
           </div>
           <nav className={["grid", styles.menu].join(" ")}>

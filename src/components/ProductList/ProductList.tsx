@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ProductList.module.scss';
-
+import { Link } from 'gatsby';
 const ProductCard = ({ product }) => (
-    <div className={styles.card}>
-        <h1>{product.frontmatter.title}</h1>
-        <p>{product.excerpt}</p>
-    </div>
+    <Link to={product.fields.slug} key={product.name} className={styles.card}>
+        <img src={product.frontmatter.featureImage}/>
+        <div className={styles.description}>
+            <h1>{product.frontmatter.name}</h1>
+            <h3 className='sansSerif'>£ {product.frontmatter.price}</h3>
+        </div>
+    </Link>
 );
 
 const ProductList = ({ products }) => {

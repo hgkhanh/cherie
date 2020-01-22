@@ -12,7 +12,7 @@ collections:
     folder: "content"
     create: true
     identifier_field: name
-    slug: "{{name}}.md"
+    slug: "{{name}}"
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }

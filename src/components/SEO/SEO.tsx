@@ -5,19 +5,15 @@ import config from "../../../data/SiteConfig";
 
 class SEO extends Component {
   render() {
-    const { postNode, postPath, postSEO } = this.props;
+    const { productData, productPath, productSEO } = this.props;
     let title;
     let description;
     let image;
-    let postURL;
-    if (postSEO) {
-      const postMeta = postNode.frontmatter;
-      ({ title } = postMeta);
-      description = postMeta.description
-        ? postMeta.description
-        : postNode.excerpt;
-      image = postMeta.cover;
-      postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
+    let productURL;
+    if (productSEO) {
+      const description = productData.description;
+      image = productData.featureImage;
+      productURL = urljoin(config.siteUrl, config.pathPrefix, productPath);
     } else {
       title = config.siteTitle;
       description = config.siteDescription;
@@ -41,7 +37,7 @@ class SEO extends Component {
         alternateName: config.siteTitleAlt ? config.siteTitleAlt : ""
       }
     ];
-    if (postSEO) {
+    if (productSEO) {
       schemaOrgJSONLD.push(
         {
           "@context": "http://schema.org",
@@ -51,7 +47,7 @@ class SEO extends Component {
               "@type": "ListItem",
               position: 1,
               item: {
-                "@id": postURL,
+                "@id": productURL,
                 name: title,
                 image
               }
@@ -60,7 +56,7 @@ class SEO extends Component {
         },
         {
           "@context": "http://schema.org",
-          "@type": "BlogPosting",
+          "@type": "Blogproducting",
           url: blogURL,
           name: title,
           alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
@@ -85,8 +81,8 @@ class SEO extends Component {
         </script>
 
         {/* OpenGraph tags */}
-        <meta property="og:url" content={postSEO ? postURL : blogURL} />
-        {postSEO ? <meta property="og:type" content="article" /> : null}
+        <meta property="og:url" content={productSEO ? productURL : blogURL} />
+        {productSEO ? <meta property="og:type" content="article" /> : null}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
