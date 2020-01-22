@@ -9,13 +9,11 @@ class ProductTags extends Component {
       <div className="product-tag-container">
         {tags &&
           tags.map(tag => (
-            <Link
+            <Link className="serif"
               key={tag}
               style={{ textDecoration: "none" }}
               to={`/tags/${_.kebabCase(tag)}`}
-            >
-              <button type="button">{tag}</button>
-            </Link>
+            >{tag}<span>&#44;&nbsp;</span></Link>
           ))}
       </div>
     );

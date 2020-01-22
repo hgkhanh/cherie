@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => (
 const ProductList = ({ products }) => {
     return (
         <React.Fragment>
-            {products.map((product) => <ProductCard product={product.node}/>)}
+            {products.map((product) => <ProductCard product={product.node} key={product.node.frontmatter.name}/>)}
         </React.Fragment>
     );
 }

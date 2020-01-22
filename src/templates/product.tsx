@@ -17,14 +17,12 @@ const ProductTemplate = (props: any) => {
   const { slug } = pageContext;
   return (
     <Layout>
-      <div>
+      <div className="pageContainer">
         <Helmet>
           <title>{`${product.name} | ${config.siteTitle}`}</title>
         </Helmet>
         <SEO productPath={slug} productData={product} productSEO />
-        <div>
-          <Product product={product}/>            
-        </div>
+        <Product product={product} />
       </div>
     </Layout>
   );

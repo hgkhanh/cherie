@@ -15,7 +15,7 @@ const HomePage = () => {
   };
   return (
     <Layout>
-      <div className="home-container">
+      <div className="pageContainer">
         <Helmet title={`Home | ${config.siteTitle}`} />
         <div className="grid">
           <Carousel {...settings}>

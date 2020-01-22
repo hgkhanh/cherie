@@ -46,28 +46,30 @@ class Header extends Component<{ config: any }, {}> {
         <VisibilitySensor onChange={this.visibilitySensorChange}>
           <div className={styles.sensor} />
         </VisibilitySensor>
-        <header className={[styles.header, this.getHeaderStatus()].join(" ")}>
-          <div className={styles.logoContainer}>
-            <Link to="/">
-              <h1>Cherie</h1>
-            </Link>
+        <header className={styles.header}>
+          <div className={[styles.headerContent, this.getHeaderStatus()].join(' ')}>
+            <div className={styles.logoContainer}>
+              <Link to="/">
+                <h1>Cherie</h1>
+              </Link>
+            </div>
+            <nav className={["grid", styles.menu].join(" ")}>
+              <ul className={styles.menuLink}>
+                {this.leftItems.map(item => (
+                  <Link to={item.to} key={item.label}>
+                    {item.label}
+                  </Link>
+                ))}
+              </ul>
+              <ul className={styles.menuLink}>
+                {this.rightItems.map(item => (
+                  <Link to={item.to} key={item.label}>
+                    {item.label}
+                  </Link>
+                ))}
+              </ul>
+            </nav>
           </div>
-          <nav className={["grid", styles.menu].join(" ")}>
-            <ul className={styles.menuLink}>
-              {this.leftItems.map(item => (
-                <Link to={item.to} key={item.label}>
-                  {item.label}
-                </Link>
-              ))}
-            </ul>
-            <ul className={styles.menuLink}>
-              {this.rightItems.map(item => (
-                <Link to={item.to} key={item.label}>
-                  {item.label}
-                </Link>
-              ))}
-            </ul>
-          </nav>
         </header>
       </Fragment>
     );

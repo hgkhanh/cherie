@@ -1,13 +1,12 @@
-import { graphql, PageRendererProps, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import React from "react";
 import Helmet from "react-helmet";
 import Layout from "../layout";
 import config from "../../data/SiteConfig";
 import ProductList from "../components/ProductList";
 
-type Props = PageRendererProps
 
-const DressPage = (props: Props) => {
+const DressPage = () => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark {

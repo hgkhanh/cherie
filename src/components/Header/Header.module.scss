@@ -1,4 +1,8 @@
 .header {
+    height: 164px;
+}
+
+.headerContent {
     align-items: center;
     justify-content: center;
     display: flex;
@@ -42,7 +46,7 @@
 }
 
 
-.header.fixed {
+.headerContent.fixed {
     padding: 0;
     height: 80px;
     background-color: #e6bfbcf2;
