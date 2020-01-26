@@ -21,7 +21,7 @@ const Picture = ({ image }) => {
             }}>
                 <div className={styles.sensor} />
             </VisibilitySensor>
-            <Spring to={{
+            <Spring delay={300} to={{
                 opacity: isVisible ? 1 : 0,
             }}>
                 {props => <img style={{ ...props }} src={image} />}

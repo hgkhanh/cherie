@@ -2,9 +2,9 @@ import { graphql, useStaticQuery } from "gatsby"
 import React from "react";
 import Helmet from "react-helmet";
 import Layout from "../layout";
-import config from "../../data/SiteConfig";
+import siteConfig from "../../data/SiteConfig";
 import ProductList from "../components/ProductList";
-
+import { Spring, config } from 'react-spring/renderprops'
 
 const DressPage = () => {
   const data = useStaticQuery(graphql`
@@ -35,11 +35,29 @@ const DressPage = () => {
   return (
     <Layout>
       <div className="shop-container">
-        <Helmet title={`Shop | ${config.siteTitle}`} />
-        <div className="grid">
-          <h1>Shop</h1>
-        </div>
-        <hr className="divider" />
+        <Helmet title={`Shop | ${siteConfig.siteTitle}`} />
+        <Spring
+          delay={300}
+          config={config.default}
+          from={{
+            opacity: 0,
+            transform: "translateY(10px)"
+          }}
+          to={{
+            opacity: 1,
+            transform: "translateY(0px)"
+          }}
+        >
+          {props => (
+            <React.Fragment>
+              <div className="grid" style={props}>
+                <h1>Shop</h1>
+              </div>
+              <hr className="divider" />
+            </React.Fragment>
+          )
+          }
+        </Spring>
         <div className="grid flexSection flexLeft">
           <ProductList products={products} />
         </div>
