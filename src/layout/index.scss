@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $font-header;
 }
 
-p {
+p, li {
   font-family: $font-body;
 }
 
@@ -68,8 +68,26 @@ main {
   h6,
   a,
   p,
+  li,
   span {
     color: #707272;
+    &.grayText {
+      color: #9d9da1;
+    }
+  }
+
+  .grayText {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a,
+    p,
+    span {
+      color: #9d9da1;
+    }
   }
 }
 
@@ -78,6 +96,18 @@ main {
 }
 .sansSerif {
   font-family: $font-sans-serif;
+}
+
+.leftAlign {
+  text-align: left;
+}
+
+.rightAlign {
+  text-align: right;
+}
+
+.centerAlign {
+  text-align: center;
 }
 
 /*// Typography */

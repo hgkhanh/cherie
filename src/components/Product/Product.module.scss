@@ -1,27 +1,41 @@
 .infoContainer {
-    position: relative;
+  position: relative;
 }
 
 .isPastFooter {
-    padding-left: 10px;
-    padding-right: 10px;
-    align-items: flex-end;
-    flex-direction: row;
-    display: flex;
-    justify-content: center;
-    .info {
-        position: absolute;
-    }
+  padding-left: 10px;
+  padding-right: 10px;
+  align-items: flex-end;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  .info {
+    position: absolute;
+  }
 }
 
 .info {
   position: fixed;
   bottom: 0;
   box-sizing: border-box;
-  width: calc(25vw - 20px);
+  width: calc(50vw - 100px);
   text-align: center;
-  padding: 30px;
+  padding: 50px;
   min-height: calc(100vh - 240px);
+  .name {
+    margin: 0;
+  }
+  .price {
+    padding-bottom: 30px;
+  }
+  .checkSize {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 12px;
+    text-decoration: underline;
+  }
 }
 
 .imageContainer {
@@ -30,12 +44,25 @@
     width: 100%;
     height: 100%;
   }
+  .sensor {
+    top: 50px;
+  }
 }
 
 .sensor {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    height: 1px;
-    width: 100%;
+  display: block;
+  position: absolute;
+  z-index: 1;
+  height: 1px;
+  width: 100%;
+}
+
+.borderBlock {
+  :global(.ant-row-flex) {
+    border-top: 1px solid #9d9da1;
+    padding: 0;
   }
+  :global(.ant-col) {
+    padding: 15px 0;
+  }
+}

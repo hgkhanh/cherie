@@ -38,6 +38,7 @@ export const productQuery = graphql`
           galleryImages
           name
           price
+          detailsAndFit
           sizes
           tags
         }

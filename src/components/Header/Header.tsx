@@ -56,7 +56,7 @@ class Header extends Component<{ config: any }, {}> {
             <nav className={["grid", styles.menu].join(" ")}>
               <ul className={styles.menuLink}>
                 {this.leftItems.map(item => (
-                  <Link to={item.to} key={item.label}>
+                  <Link to={item.to} key={item.label} className='grayText'>
                     {item.label}
                   </Link>
                 ))}
