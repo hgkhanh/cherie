@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ProductList.module.scss';
 import { Link } from 'gatsby';
+
 const ProductCard = ({ product }) => (
     <Link to={product.fields.slug} key={product.name} className={styles.card}>
         <img src={product.frontmatter.featureImage}/>

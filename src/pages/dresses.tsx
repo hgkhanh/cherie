@@ -37,7 +37,7 @@ const DressPage = () => {
       <div className="shop-container">
         <Helmet title={`Shop | ${config.siteTitle}`} />
         <div className="grid">
-          <h3>Shop</h3>
+          <h1>Shop</h1>
         </div>
         <hr className="divider" />
         <div className="grid flexSection flexLeft">
