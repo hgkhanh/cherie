@@ -23,16 +23,16 @@ const HomePage = () => {
           <div className="grid" style={{ ...props }}>
             <Carousel {...settings}>
               <div>
-                <img src="https://d3gmm2xq16tvhv.cloudfront.net/spree/cmsimage/788/homepage_carousel_retina/BlackFirdayDesktop.jpg?1542731636" />
+                <img src="/assets/home-slide-1.jpg" />
               </div>
               <div>
-                <img src="https://d3gmm2xq16tvhv.cloudfront.net/spree/cmsimage/809/homepage_carousel_normal/Web.png?1553871921" />
+                <img src="/assets/home-slide-4.jpg" />
               </div>
               <div>
-                <img src="https://d3gmm2xq16tvhv.cloudfront.net/spree/cmsimage/774/homepage_carousel_normal/Lola_W.jpg?1526569108" />
+                <img src="/assets/home-slide-2.jpg" />
               </div>
               <div>
-                <img src="https://d3gmm2xq16tvhv.cloudfront.net/spree/cmsimage/805/homepage_carousel_normal/Joan.jpg?1547759157" />
+                <img src="/assets/home-slide-3.jpg" />
               </div>
             </Carousel>
           </div>
