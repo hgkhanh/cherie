@@ -1,12 +1,38 @@
 import React from "react";
+import { graphql, useStaticQuery } from "gatsby"
 import Helmet from "react-helmet";
 import Layout from "../layout";
 import siteConfig from "../../data/SiteConfig";
 import { Row, Col, Carousel } from "antd";
-import withRevealAnimation from '../helpers/WithRevealAnimation';
+import withRevealAnimation from '../shared/WithRevealAnimation';
+import ProductList from '../components/ProductList';
 
 const HomePage = () => {
-
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              category
+              name
+              galleryImages
+              featureImage
+              description
+              price
+              sizes
+              tags
+            }
+          }
+        }
+      }
+    }
+  `);
+  const products = data.allMarkdownRemark.edges;
   const settings = {
     dots: true,
     infinite: true,
@@ -53,9 +79,13 @@ const HomePage = () => {
           </div>
         ))}
         <hr className="divider" />
-        <div className="grid flexSection">
-          <h3>Shop</h3>
+        <div className="grid flexSection flexLeft">
+          <div className="gridTitle">
+            <h1>Shop</h1>
+          </div>
+          <ProductList products={products} />
         </div>
+        <hr className="divider" />
       </div>
     </Layout>
   );

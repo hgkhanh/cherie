@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import styles from './Product.module.scss';
-import ProductTags from '../ProductTags/ProductTags';
 // import SocialLinks from '../SocialLinks/SocialLinks';
 import { Row, Col } from 'antd';
 import { Spring } from 'react-spring/renderprops';
 import VisibilitySensor from 'react-visibility-sensor';
 import { Link } from 'gatsby';
 import _ from 'lodash';
+import { useWindowDimensions } from '../../shared/WindowDimensionsProvider';
 
 const Picture = ({ image }) => {
     const [isVisible, setView] = useState(false);
@@ -33,6 +33,7 @@ const Picture = ({ image }) => {
 const Product = ({ product }) => {
     const [isHeaderVisible, setHeaderVisible] = useState(false);
     const [isFooterVisible, setFooterVisible] = useState(false);
+    const { width } = useWindowDimensions();
 
     const getInfoDivClassName = () => {
         let classArray = [styles.infoContainer];
@@ -53,6 +54,7 @@ const Product = ({ product }) => {
             }}>
                 <div className={styles.sensor} />
             </VisibilitySensor>
+            <h1>{width}</h1>
             <div className={['grid', 'flexSection', styles.container].join(' ')}>
                 <Row type='flex' justify='center' align='stretch' gutter={20}>
                     <Col span={12}>
