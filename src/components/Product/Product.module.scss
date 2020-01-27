@@ -2,6 +2,11 @@
   position: relative;
 }
 
+// Placeholder class for future use
+.isAtTop {
+  // position: relative;
+}
+
 .isPastFooter {
   padding-left: 10px;
   padding-right: 10px;
@@ -10,15 +15,18 @@
   display: flex;
   justify-content: center;
   .info {
+    top: auto;
+    bottom: 0;
     position: absolute;
   }
 }
 
 .info {
   position: fixed;
-  bottom: 0;
+  top: 200px;
   box-sizing: border-box;
   width: calc(50vw - 100px);
+  max-width: 600px;
   text-align: center;
   padding: 50px;
   min-height: calc(100vh - 240px);

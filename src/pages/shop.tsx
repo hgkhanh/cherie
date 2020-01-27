@@ -6,7 +6,7 @@ import siteConfig from "../../data/SiteConfig";
 import ProductList from "../components/ProductList";
 import { Spring, config } from 'react-spring/renderprops'
 
-const DressPage = () => {
+const ShopPage = () => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark {
@@ -66,4 +66,4 @@ const DressPage = () => {
   );
 };
 
-export default DressPage;
+export default ShopPage;

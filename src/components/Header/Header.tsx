@@ -11,7 +11,7 @@ class Header extends Component<{ config: any }, {}> {
     super(props);
 
     this.leftItems = [
-      { to: "/dresses", label: "Shop" },
+      { to: "/shop", label: "Shop" },
       { to: "/category/", label: "Categories" },
       { to: "/about/", label: "About" }
     ];
@@ -35,7 +35,7 @@ class Header extends Component<{ config: any }, {}> {
   };
 
   getHeaderStatus = () => {
-    const fixed = this.state.fixed ? styles.fixed : "";
+    const fixed = this.state.fixed ? [styles.fixed, styles.headerContent].join(' ') : styles.headerContent;
 
     return `${fixed}`;
   };
@@ -47,7 +47,7 @@ class Header extends Component<{ config: any }, {}> {
           <div className={styles.sensor} />
         </VisibilitySensor>
         <header className={styles.header}>
-          <div className={[styles.headerContent, this.getHeaderStatus()].join(' ')}>
+          <div className={this.getHeaderStatus()}>
             <div className={styles.logoContainer}>
               <Link to="/">
                 <h1>Cherie</h1>

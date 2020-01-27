@@ -31,9 +31,28 @@ const Picture = ({ image }) => {
 };
 
 const Product = ({ product }) => {
-    const [isFooterVisible, setFooterView] = useState(false);
+    const [isHeaderVisible, setHeaderVisible] = useState(false);
+    const [isFooterVisible, setFooterVisible] = useState(false);
+
+    const getInfoDivClassName = () => {
+        let classArray = [styles.infoContainer];
+        if (isHeaderVisible) {
+            classArray.push(styles.isAtTop);
+        }
+        if (isFooterVisible) {
+            classArray.push(styles.isPastFooter);
+        }
+        console.log(classArray);
+        console.log(classArray.join(' '));
+        return classArray.join(' ');
+    }
     return (
         <React.Fragment>
+            <VisibilitySensor onChange={visiblity => {
+                setHeaderVisible(visiblity);
+            }}>
+                <div className={styles.sensor} />
+            </VisibilitySensor>
             <div className={['grid', 'flexSection', styles.container].join(' ')}>
                 <Row type='flex' justify='center' align='stretch' gutter={20}>
                     <Col span={12}>
@@ -41,8 +60,7 @@ const Product = ({ product }) => {
                             <Picture key={index} image={image} />
                         )}
                     </Col>
-                    <Col span={12} className={isFooterVisible ?
-                        [styles.infoContainer, styles.isPastFooter].join(' ') : styles.infoContainer}>
+                    <Col span={12} className={getInfoDivClassName()}>
                         <Row type='flex' justify='center' align='middle'>
                             <Col className={styles.info} span={24}>
                                 <h1 className={styles.name}>{product.name}</h1>
@@ -109,7 +127,7 @@ const Product = ({ product }) => {
             </div >
 
             <VisibilitySensor onChange={visiblity => {
-                setFooterView(visiblity);
+                setFooterVisible(visiblity);
             }}>
                 <div className={styles.sensor} />
             </VisibilitySensor>
