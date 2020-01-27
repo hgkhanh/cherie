@@ -1,79 +1,60 @@
-import React, { Component, Fragment } from "react";
-import { Link } from "gatsby";
-import VisibilitySensor from "react-visibility-sensor";
-import * as styles from "./Header.module.scss";
+import React, { useState } from 'react';
+import { Link } from 'gatsby';
+import VisibilitySensor from 'react-visibility-sensor';
+import * as styles from './Header.module.scss';
 
-class Header extends Component<{ config: any }, {}> {
-  rightItems: any;
-  leftItems: any;
+const Header = () => {
+  const [isHeaderVisible, setHeaderVisible] = useState(true);
+  const leftItems = [
+    { to: '/shop', label: 'Shop' },
+    { to: '/category/', label: 'Categories' },
+    { to: '/about/', label: 'About' }
+  ];
+  const rightItems = [
+    { to: '/contact/', label: 'Contact' }
+    // { to: '/search/', label: 'Search', icon: FaSearch }
+  ];
 
-  constructor(props) {
-    super(props);
-
-    this.leftItems = [
-      { to: "/shop", label: "Shop" },
-      { to: "/category/", label: "Categories" },
-      { to: "/about/", label: "About" }
-    ];
-
-    this.rightItems = [
-      { to: "/contact/", label: "Contact" }
-      // { to: "/search/", label: "Search", icon: FaSearch }
-    ];
-  }
-
-  state = {
-    fixed: false
-  };
-
-  visibilitySensorChange = val => {
-    if (val) {
-      this.setState({ fixed: false });
-    } else {
-      this.setState({ fixed: true });
+  const getHeaderClassNames = () => {
+    let classArray = [styles.headerContent];
+    if (!isHeaderVisible) {
+      classArray.push(styles.fixed);
     }
+    return classArray.join(' ');
   };
 
-  getHeaderStatus = () => {
-    const fixed = this.state.fixed ? [styles.fixed, styles.headerContent].join(' ') : styles.headerContent;
-
-    return `${fixed}`;
-  };
-
-  render() {
-    return (
-      <Fragment>
-        <VisibilitySensor onChange={this.visibilitySensorChange}>
-          <div className={styles.sensor} />
-        </VisibilitySensor>
-        <header className={styles.header}>
-          <div className={this.getHeaderStatus()}>
-            <div className={styles.logoContainer}>
-              <Link to="/">
-                <h1>Cherie</h1>
-              </Link>
-            </div>
-            <nav className={["grid", styles.menu].join(" ")}>
-              <ul className={styles.menuLink}>
-                {this.leftItems.map(item => (
-                  <Link to={item.to} key={item.label} className='grayText'>
-                    {item.label}
-                  </Link>
-                ))}
-              </ul>
-              <ul className={styles.menuLink}>
-                {this.rightItems.map(item => (
-                  <Link to={item.to} key={item.label}>
-                    {item.label}
-                  </Link>
-                ))}
-              </ul>
-            </nav>
+  return (
+    <React.Fragment>
+      <VisibilitySensor onChange={(visible) => setHeaderVisible(visible)}>
+        <div className={styles.sensor} />
+      </VisibilitySensor>
+      <header className={styles.header}>
+        <div className={getHeaderClassNames()}>
+          <div className={styles.logoContainer}>
+            <Link to='/'>
+              <h1>Cherie</h1>
+            </Link>
           </div>
-        </header>
-      </Fragment>
-    );
-  }
+          <nav className={['grid', styles.menu].join(' ')}>
+            <ul className={styles.menuLink}>
+              {leftItems.map(item => (
+                <Link to={item.to} key={item.label} className='grayText'>
+                  {item.label}
+                </Link>
+              ))}
+            </ul>
+            <ul className={styles.menuLink}>
+              {rightItems.map(item => (
+                <Link to={item.to} key={item.label}>
+                  {item.label}
+                </Link>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </header>
+    </React.Fragment>
+  );
 }
 
 export default Header;
