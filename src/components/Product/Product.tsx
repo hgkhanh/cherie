@@ -8,6 +8,7 @@ import VisibilitySensor from 'react-visibility-sensor';
 import { Link } from 'gatsby';
 import _ from 'lodash';
 import { useWindowDimensions } from '../../shared/WindowDimensionsProvider';
+import SliderArrow from '../SliderArrow';
 
 const Picture = ({ image }) => {
     const [isVisible, setView] = useState(false);
@@ -37,11 +38,21 @@ const Product = ({ product }) => {
     const settings = {
         dots: true,
         infinite: true,
-        autoplay: true,
+        autoplay: false,
+        arrows: true,
+        prevArrow: <SliderArrow to="prev" />,
+        nextArrow: <SliderArrow to="next" />,
         autoplaySpeed: 4000,
         speed: 1000,
         easing: "ease-in-out"
     };
+    const getContainerClassName = () => {
+        if (width < 770) {
+            return ['grid', styles.container].join(' ');
+        }
+        return ['grid', 'flexSection', styles.container].join(' ');
+    }
+
     const getInfoDivClassName = () => {
         let classArray = [styles.infoContainer];
         if (isHeaderVisible) {
@@ -54,23 +65,29 @@ const Product = ({ product }) => {
         console.log(classArray.join(' '));
         return classArray.join(' ');
     }
+
     return (
         <React.Fragment>
-            <div className={['grid', 'flexSection', styles.container].join(' ')}>
+            <div className={getContainerClassName()}>
                 <Row type='flex' justify='center' align='stretch' gutter={20}>
-                    <Col span={12} md={0}>
-                        <Carousel {...settings}>
+                    { width < 770 ? (
+                        <Col span={24}>
+                            <Carousel {...settings}>
+                                {product.galleryImages.map((image, index) =>
+                                    <div key={index} className={styles.imageContainer}><img src={image} /></div>
+                                )}
+                            </Carousel>
+                        </Col>
+                    ):
+                    (
+                        <Col span={0} md={12}>
                             {product.galleryImages.map((image, index) =>
                                 <Picture key={index} image={image} />
                             )}
-                        </Carousel>
-                    </Col>
-                    <Col span={0} md={12}>
-                        {product.galleryImages.map((image, index) =>
-                            <Picture key={index} image={image} />
-                        )}
-                    </Col>
-                    <Col span={12} className={getInfoDivClassName()}>
+                        </Col>
+                    )}                    
+                    
+                    <Col span={24} md={12} className={getInfoDivClassName()}>
                         <VisibilitySensor onChange={visiblity => {
                             setHeaderVisible(visiblity);
                         }}>

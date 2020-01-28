@@ -2,51 +2,53 @@
   position: relative;
 }
 
-// Placeholder class for future use
-.isAtTop {
-  // position: relative;
-}
 
-.isPastFooter {
-  padding-left: 10px;
-  padding-right: 10px;
-  align-items: flex-end;
-  flex-direction: row;
-  display: flex;
-  justify-content: center;
-  .info {
-    top: auto;
-    position: absolute;
-  }
-}
-.isAtTop .info {
-  position: relative;
-}
 .info {
-  position: fixed;
-  box-sizing: border-box;
-  bottom: 0;
-  width: calc(50vw - 100px);
-  max-width: 600px;
+  width: 100%;
   text-align: center;
   padding: 50px;
-  min-height: calc(100vh - 240px);
-  .name {
-    margin: 0;
-  }
-  .price {
-    padding-bottom: 30px;
-  }
-  .checkSize {
-    width: 100%;
-    display: block;
-    text-align: center;
-    padding-top: 15px;
-    font-size: 12px;
-    text-decoration: underline;
-  }
 }
 
+@media screen and (min-width: 770px) {
+  .isPastFooter {
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: flex-end;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    .info {
+      top: auto;
+      position: absolute;
+    }
+  }
+  .isAtTop .info {
+    position: relative;
+  }
+  .info {
+    position: fixed;
+    box-sizing: border-box;
+    bottom: 0;
+    width: calc(50vw - 100px);
+    max-width: 600px;
+    min-height: calc(100vh - 240px);
+    .name {
+      margin: 0;
+    }
+    .price {
+      padding-bottom: 30px;
+    }
+    .checkSize {
+      width: 100%;
+      display: block;
+      text-align: center;
+      padding-top: 15px;
+      font-size: 12px;
+      text-decoration: underline;
+    }
+  }
+
+}
 .imageContainer {
   position: relative;
   img {
@@ -65,6 +67,7 @@
   height: 1px;
   width: 100%;
 }
+
 .borderBlock {
   :global(.ant-row-flex) {
     border-top: 1px solid #9d9da1;

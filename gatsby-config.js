@@ -36,7 +36,7 @@ module.exports = {
       options: {
         javascriptEnabled: true,
         modifyVars: {
-          "font-family": "Lovelyn, Helvetica, Georgia, serif",
+          "font-family": "FreightDispProLight, Helvetica, Georgia, serif",
           "heading-color": "fade(#000, 65%);"
         }
       }

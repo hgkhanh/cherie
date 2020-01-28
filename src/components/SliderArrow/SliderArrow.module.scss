@@ -1,0 +1,11 @@
+.arrow {
+    &:global(.slick-next) {
+        right: 10px;
+        opacity: 0.6;
+    }
+
+    &:global(.slick-prev) {
+        left: 10px;
+        opacity: 0.6;
+    }
+}

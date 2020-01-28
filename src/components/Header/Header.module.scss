@@ -10,6 +10,7 @@
   position: relative;
   top: 0;
   width: 100%;
+  max-width: 100vw;
   align-items: center;
   transition: background-color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1),
     height 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s, padding 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s;
@@ -68,6 +69,12 @@
   .logoContainer h1 {
     font-size: 2.2em;
     transition: font-size 0.5s ease-in-out;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .headerContent.fixed {
+    padding: 0 20px;
   }
 }
 

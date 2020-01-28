@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import VisibilitySensor from 'react-visibility-sensor';
 import * as styles from './Header.module.scss';
+import { useWindowDimensions } from '../../shared/WindowDimensionsProvider';
 
 const Header = () => {
   const [isHeaderVisible, setHeaderVisible] = useState(true);
+  const { width } = useWindowDimensions();
   const leftItems = [
     { to: '/shop', label: 'Shop' },
-    { to: '/category/', label: 'Categories' },
-    { to: '/about/', label: 'About' }
+    // { to: '/category/', label: 'Categories' },
+    { to: '/', label: 'About' }
   ];
   const rightItems = [
-    { to: '/contact/', label: 'Contact' }
+    { to: '/', label: 'Contact' }
     // { to: '/search/', label: 'Search', icon: FaSearch }
   ];
 
@@ -23,35 +25,64 @@ const Header = () => {
     return classArray.join(' ');
   };
 
+  const renderDesktopHeader = () => (
+    <div className={getHeaderClassNames()}>
+      <div className={styles.logoContainer}>
+        <Link to='/'>
+          <h1>Cherie</h1>
+        </Link>
+      </div>
+      <nav className={['grid', styles.menu].join(' ')}>
+        <ul className={styles.menuLink}>
+          {leftItems.map(item => (
+            <Link to={item.to} key={item.label} className='grayText'>
+              {item.label}
+            </Link>
+          ))}
+        </ul>
+        <ul className={styles.menuLink}>
+          {rightItems.map(item => (
+            <Link to={item.to} key={item.label}>
+              {item.label}
+            </Link>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  )
+
+  const renderMobileHeader = () => (
+    <div className={getHeaderClassNames()}>
+      <div className={styles.logoContainer}>
+        <Link to='/'>
+          <h1>Cherie</h1>
+        </Link>
+      </div>
+      <nav className={['grid', styles.menu].join(' ')}>
+        <ul className={styles.menuLink}>
+          {leftItems.map(item => (
+            <Link to={item.to} key={item.label} className='grayText'>
+              {item.label}
+            </Link>
+          ))}
+        </ul>
+        <ul className={styles.menuLink}>
+          {rightItems.map(item => (
+            <Link to={item.to} key={item.label}>
+              {item.label}
+            </Link>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  )
   return (
     <React.Fragment>
       <VisibilitySensor onChange={(visible) => setHeaderVisible(visible)}>
         <div className={styles.sensor} />
       </VisibilitySensor>
       <header className={styles.header}>
-        <div className={getHeaderClassNames()}>
-          <div className={styles.logoContainer}>
-            <Link to='/'>
-              <h1>Cherie</h1>
-            </Link>
-          </div>
-          <nav className={['grid', styles.menu].join(' ')}>
-            <ul className={styles.menuLink}>
-              {leftItems.map(item => (
-                <Link to={item.to} key={item.label} className='grayText'>
-                  {item.label}
-                </Link>
-              ))}
-            </ul>
-            <ul className={styles.menuLink}>
-              {rightItems.map(item => (
-                <Link to={item.to} key={item.label}>
-                  {item.label}
-                </Link>
-              ))}
-            </ul>
-          </nav>
-        </div>
+        { width < 770 ? renderMobileHeader() : renderDesktopHeader() }
       </header>
     </React.Fragment>
   );
