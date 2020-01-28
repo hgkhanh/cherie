@@ -3,8 +3,8 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const WindowDimensionsContext = createContext(null);
 const WindowDimensionsProvider = ({ children }) => {
     const [dimensions, setDimensions] = useState({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: 0,
+        height: 0,
     });
     useEffect(() => {
         const handleResize = () => {
