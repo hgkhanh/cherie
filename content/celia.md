@@ -8,10 +8,10 @@ description: >-
 detailsAndFit:
   - 100% Polyester
   - Invisible back zipper
-featureImage: /assets/Love-01.jpg
+featureImage: /assets/Celia-01.jpg
 galleryImages:
-  - /assets/Love-01.jpg
-  - /assets/Love-02.jpg
+  - /assets/Celia-01.jpg
+  - /assets/Celia-02.jpg
 price: '999'
 category: a-line
 sizes:

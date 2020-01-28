@@ -7,10 +7,10 @@ description: >-
 detailsAndFit:
   - 100% Polyester
   - Invisible back zipper
-featureImage: /assets/Elliah-01.jpg
+featureImage: /assets/Aurora-01.jpg
 galleryImages:
-  - /assets/Elliah-01.jpg
-  - /assets/Elliah-02.jpg
+  - /assets/Aurora-01.jpg
+  - /assets/Aurora-02.jpg
 price: '999'
 category: a-line
 sizes:
