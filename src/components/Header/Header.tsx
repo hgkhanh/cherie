@@ -10,7 +10,7 @@ const Header = () => {
   const leftItems = [
     { to: '/shop', label: 'Shop' },
     // { to: '/category/', label: 'Categories' },
-    { to: '/', label: 'About' }
+    // { to: '/', label: 'About' }
   ];
   const rightItems = [
     { to: '/', label: 'Contact' }
@@ -58,7 +58,7 @@ const Header = () => {
           <h1>Cherie</h1>
         </Link>
       </div>
-      <nav className={['grid', styles.menu].join(' ')}>
+      <nav className={styles.menu}>
         <ul className={styles.menuLink}>
           {leftItems.map(item => (
             <Link to={item.to} key={item.label} className='grayText'>

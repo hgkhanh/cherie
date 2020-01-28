@@ -68,7 +68,7 @@ const HomePage = () => {
           <div className="gridWrapper darkTone" style={{ ...props }}>
             <div className="grid flexSection">
               <Row type="flex" justify="center" align="top">
-                <Col span={8}><h3>Who We Are</h3></Col>
+                <Col span={8}><h1>Who We Are</h1></Col>
                 <Col span={8}>
                   <p>Inspired by clean lines, last dances and beautiful hues, Name of
                   Love is a collection of 17 styles in 9 signature colors. Made to
@@ -79,7 +79,7 @@ const HomePage = () => {
           </div>
         ))}
         <hr className="divider" />
-        <div className="grid flexSection flexLeft">
+        <div className="grid">
           <div className="gridTitle">
             <h1>Shop</h1>
           </div>

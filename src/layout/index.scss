@@ -145,6 +145,10 @@ hr.divider {
   .grid {
     width: 100%;
     padding: 0;
+    .gridTitle{
+      padding-left: 20px;
+      padding-bottom: 0;
+    }
   }
 }
 

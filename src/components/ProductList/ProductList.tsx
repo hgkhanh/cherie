@@ -4,6 +4,7 @@ import styles from './ProductList.module.scss';
 import { Link } from 'gatsby';
 import { Spring, config } from 'react-spring/renderprops'
 import VisibilitySensor from 'react-visibility-sensor';
+import { Row, Col } from "antd";
 
 const ProductCard = ({ product, index }) => (
     <VisibilitySensor partialVisibility>
@@ -17,13 +18,15 @@ const ProductCard = ({ product, index }) => (
                 }}
             >
                 {props => (
-                    <Link to={product.fields.slug} key={product.name} className={styles.card} style={{ ...props }}>
-                        <img src={product.frontmatter.featureImage} />
-                        <div className={styles.description}>
-                            <h1>{product.frontmatter.name}</h1>
-                            <h3 className='sansSerif'>£ {product.frontmatter.price}</h3>
-                        </div>
-                    </Link>
+                    <Col span={12} md={8}>
+                        <Link to={product.fields.slug} key={product.name} className={styles.card} style={{ ...props }}>
+                            <img src={product.frontmatter.featureImage} />
+                            <div className={styles.description}>
+                                <h1>{product.frontmatter.name}</h1>
+                                <h3 className='sansSerif'>£ {product.frontmatter.price}</h3>
+                            </div>
+                        </Link>
+                    </Col>
                 )}
             </Spring>
         )}
@@ -32,11 +35,13 @@ const ProductCard = ({ product, index }) => (
 
 const ProductList = ({ products }) => {
     return (
-        <React.Fragment>
-            {products.map((product, index) =>
-                <ProductCard product={product.node} key={product.node.frontmatter.name} index={index} />
-            )}
-        </React.Fragment>
+        <div className={styles.list}>
+            <Row gutter={20}>
+                {products.map((product, index) =>
+                    <ProductCard product={product.node} key={product.node.frontmatter.name} index={index} />
+                )}
+            </Row>
+        </div>
     );
 }
 
