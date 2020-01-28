@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import styles from './Product.module.scss';
 // import SocialLinks from '../SocialLinks/SocialLinks';
-import { Row, Col } from 'antd';
+import { Row, Col, Carousel } from "antd";
 import { Spring } from 'react-spring/renderprops';
 import VisibilitySensor from 'react-visibility-sensor';
 import { Link } from 'gatsby';
@@ -34,7 +34,14 @@ const Product = ({ product }) => {
     const [isHeaderVisible, setHeaderVisible] = useState(false);
     const [isFooterVisible, setFooterVisible] = useState(false);
     const { width } = useWindowDimensions();
-
+    const settings = {
+        dots: true,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        speed: 1000,
+        easing: "ease-in-out"
+    };
     const getInfoDivClassName = () => {
         let classArray = [styles.infoContainer];
         if (isHeaderVisible) {
@@ -49,20 +56,26 @@ const Product = ({ product }) => {
     }
     return (
         <React.Fragment>
-            <VisibilitySensor onChange={visiblity => {
-                setHeaderVisible(visiblity);
-            }}>
-                <div className={styles.sensor} />
-            </VisibilitySensor>
-            <h1>{width}</h1>
             <div className={['grid', 'flexSection', styles.container].join(' ')}>
                 <Row type='flex' justify='center' align='stretch' gutter={20}>
-                    <Col span={12}>
+                    <Col span={12} md={0}>
+                        <Carousel {...settings}>
+                            {product.galleryImages.map((image, index) =>
+                                <Picture key={index} image={image} />
+                            )}
+                        </Carousel>
+                    </Col>
+                    <Col span={0} md={12}>
                         {product.galleryImages.map((image, index) =>
                             <Picture key={index} image={image} />
                         )}
                     </Col>
                     <Col span={12} className={getInfoDivClassName()}>
+                        <VisibilitySensor onChange={visiblity => {
+                            setHeaderVisible(visiblity);
+                        }}>
+                            <div className={styles.sensor} />
+                        </VisibilitySensor>
                         <Row type='flex' justify='center' align='middle'>
                             <Col className={styles.info} span={24}>
                                 <h1 className={styles.name}>{product.name}</h1>
@@ -70,16 +83,16 @@ const Product = ({ product }) => {
                                 <p className='grayText'>{product.description}</p>
                                 <div className={styles.borderBlock}>
                                     <Row type='flex' justify='start' align='middle'
-                                        >
+                                    >
                                         <Col className='leftAlign' span={24}>
                                             <h3>Details And Fit</h3>
                                             <p className='leftAlign grayText'>
                                                 {product.detailsAndFit.map((line, index) => {
-                                                    return (<React.Fragment key={index}>{`- ${line}`}<br/></React.Fragment>)
+                                                    return (<React.Fragment key={index}>{`- ${line}`}<br /></React.Fragment>)
                                                 })}
-                                            </p>    
-                                            <Link className={styles.checkSize} to='#'>Check your size</Link>                                        
-                                        </Col>                                        
+                                            </p>
+                                            <Link className={styles.checkSize} to='#'>Check your size</Link>
+                                        </Col>
                                     </Row>
                                     <Row type='flex' justify='space-between' align='middle'
                                         className='sansSerif'>
