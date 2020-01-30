@@ -19,7 +19,12 @@ module.exports = {
     }
   },
   plugins: [
-    "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-plugin-sharp",
+      options: {
+        defaultQuality: 100
+      },
+    },
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-transformer-remark",

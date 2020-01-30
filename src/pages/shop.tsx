@@ -21,7 +21,7 @@ const ShopPage = () => {
               name
               featureImage {
                 childImageSharp {
-                  fluid(quality: 100) {
+                  fluid {
                     ...GatsbyImageSharpFluid
                   }
                 }

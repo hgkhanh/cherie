@@ -33,7 +33,7 @@ export const pageQuery = graphql`
             name
             featureImage {
               childImageSharp {
-                fluid(quality: 100) {
+                fluid {
                   ...GatsbyImageSharpFluid
                 }
               }

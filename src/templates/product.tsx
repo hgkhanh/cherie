@@ -9,8 +9,6 @@ import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.scss";
 import "./product.scss";
 
-type Props = PageRendererProps
-
 const ProductTemplate = (props: any) => {
   const { data, path, pageContext } = props;
   const product = data.markdownRemark.frontmatter;
@@ -36,14 +34,14 @@ export const productQuery = graphql`
           description
           galleryImages {
             childImageSharp {
-              fluid(quality: 100) {
+              fluid {
                 ...GatsbyImageSharpFluid
               }
             }
           }
           featureImage {
             childImageSharp {
-              fixed(width: 700, quality: 100) {
+              fixed(width: 700) {
                 ...GatsbyImageSharpFixed
               }
             }
