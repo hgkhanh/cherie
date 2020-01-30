@@ -24,7 +24,7 @@ const ProductCard = ({ product, index }) => {
                 }}
             >
                 {props => (
-                    <Col span={12} md={8} style={{ ...props }}>
+                    <Col span={12} lg={8} style={{ ...props }}>
                         <Link to={product.fields.slug} key={product.name} className={styles.card}>
                             <Image fluid={product.frontmatter.featureImage.childImageSharp.fluid} />
                             <div className={styles.description}>
@@ -42,7 +42,7 @@ const ProductCard = ({ product, index }) => {
 const ProductList = ({ products }) => {
     return (
         <div className={styles.list}>
-            <Row gutter={80}>
+            <Row gutter={[{ xs: 10, sm: 20, md: 30, lg: 40, xl: 60, xxl: 80 }, 20]}>
                 {products.map((product, index) =>
                     <ProductCard product={product.node} key={product.node.frontmatter.name} index={index} />
                 )}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Helmet from 'react-helmet';
 import siteConfig from '../../data/SiteConfig';
 import Layout from '../layout';
@@ -24,14 +24,14 @@ const HomeCarousel = ({ pictures }) => {
 
   if (width < 770) {
     settings.arrows = true,
-    settings.prevArrow = (<SliderArrow to='prev' />),
-    settings.nextArrow = (<SliderArrow to='next' />)
+      settings.prevArrow = (<SliderArrow to='prev' />),
+      settings.nextArrow = (<SliderArrow to='next' />)
   }
   return (
     <Carousel {...settings}>
       {pictures.map((pic, index) => {
         if (width < 770) {
-          return (<img style={{width:'100%'}} key={index} src={pic.childImageSharp.resize.src} alt='' />)
+          return (<img style={{ width: '100%' }} key={index} src={pic.childImageSharp.resize.src} alt='' />)
         }
         return (<Image key={index} fluid={pic.childImageSharp.fluid} alt='' />)
       }
@@ -70,9 +70,14 @@ const HomePage = (props) => {
         <hr className='divider' />
         <div className='grid'>
           <div className='gridTitle'>
-            <h1>Shop</h1>
+            <h1>Our Favourites</h1>
           </div>
           <ProductList products={products} />
+          <div className='gridTitle centerAlign'>
+            <Link to={'/shop'}>
+              <h2>See more</h2>
+            </Link>
+          </div>
         </div>
         <hr className='divider' />
       </div>
@@ -82,7 +87,7 @@ const HomePage = (props) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: {fields: fileAbsolutePath, order: ASC}) {
+    allMarkdownRemark(sort: {fields: fileAbsolutePath, order: ASC}, limit: 3) {
       edges {
         node {
           id
