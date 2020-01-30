@@ -4,7 +4,7 @@ import Helmet from "react-helmet";
 import Layout from "../layout";
 import siteConfig from "../../data/SiteConfig";
 import ProductList from "../components/ProductList";
-import { Spring, config } from 'react-spring/renderprops'
+import { Spring, config } from 'react-spring/renderprops';
 
 const ShopPage = () => {
   const data = useStaticQuery(graphql`
@@ -19,8 +19,13 @@ const ShopPage = () => {
             frontmatter {
               category
               name
-              galleryImages
-              featureImage
+              featureImage {
+                childImageSharp {
+                  fluid(quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
               description
               price
               sizes
@@ -58,7 +63,7 @@ const ShopPage = () => {
           )
           }
         </Spring>
-        <div className="grid flexSection flexLeft">
+        <div className="grid flexLeft">
           <ProductList products={products} />
         </div>
       </div>

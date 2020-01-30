@@ -11,7 +11,7 @@ const SEO = (props) => {
   let productURL;
   if (productSEO) {
     const description = productData.description;
-    image = productData.featureImage;
+    image = productData.featureImage.childImageSharp.fixed.src;
     productURL = urljoin(config.siteUrl, config.pathPrefix, productPath);
   } else {
     title = config.siteTitle;

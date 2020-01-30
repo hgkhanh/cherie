@@ -117,7 +117,6 @@ main {
 /* Global Layout */
 .gridWrapper {
   width: 100%;
-  min-height: 400px;
 }
 
 hr.divider {
@@ -131,8 +130,8 @@ hr.divider {
 
 .grid {
   max-width: 1600px;
-  padding: 0 90px;
   margin: 0 auto;
+  padding: 0 90px;
   position: relative;
   .gridTitle {
     flex-basis: 100%;
@@ -155,6 +154,7 @@ hr.divider {
   }
 }
 
+
 @media screen and (max-width: 769px) {
   .grid {
     width: 100%;
@@ -163,6 +163,10 @@ hr.divider {
       padding-left: 20px;
       padding-bottom: 0;
     }
+  }
+
+  &.boxContent {
+    padding: 30px;
   }
   .flexSection {
     min-height: auto;
@@ -192,4 +196,5 @@ hr.divider {
 .ant-row-flex-stretch {
   align-items: stretch;
 }
+
 // /* Custom UI Component */

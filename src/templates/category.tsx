@@ -31,8 +31,13 @@ export const pageQuery = graphql`
           frontmatter {
             category
             name
-            galleryImages
-            featureImage
+            featureImage {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             description
             price
             sizes

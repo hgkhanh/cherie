@@ -34,8 +34,20 @@ export const productQuery = graphql`
         frontmatter {
           category
           description
-          featureImage
-          galleryImages
+          galleryImages {
+            childImageSharp {
+              fluid(quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          featureImage {
+            childImageSharp {
+              fixed(width: 700, quality: 100) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
           name
           price
           detailsAndFit

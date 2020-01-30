@@ -3,8 +3,8 @@ backend:
   branch: master # Branch to update
   repo: hgkhanh/Chérie # Repo for pushing new commits. Make sure to replace with your repo!
 
-media_folder: static/assets
-public_folder: assets
+media_folder: content/images
+public_folder: images
 
 collections:
   - name: product

@@ -1,3 +1,13 @@
+.container {
+  padding: 0 90px;
+}
+
+@media screen and (max-width: 769px) {
+  .container {
+    padding: 0;
+  }
+}
+
 .infoContainer {
   position: relative;
 }

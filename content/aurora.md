@@ -7,10 +7,10 @@ description: >-
 detailsAndFit:
   - 100% Polyester
   - Invisible back zipper
-featureImage: /assets/Aurora-01.jpg
+featureImage: images/Aurora-01.jpg
 galleryImages:
-  - /assets/Aurora-01.jpg
-  - /assets/Aurora-02.jpg
+  - images/Aurora-01.jpg
+  - images/Aurora-02.jpg
 price: '999'
 category: a-line
 sizes:

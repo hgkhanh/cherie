@@ -4,8 +4,9 @@ import Helmet from "react-helmet";
 import Layout from "../layout";
 import siteConfig from "../../data/SiteConfig";
 import { Row, Col, Carousel } from "antd";
-import withRevealAnimation from '../shared/withRevealAnimation';
+import RevealAnimation from '../shared/RevealAnimation';
 import ProductList from '../components/ProductList';
+import Image from "gatsby-image";
 
 const HomePage = () => {
   const data = useStaticQuery(graphql`
@@ -20,8 +21,13 @@ const HomePage = () => {
             frontmatter {
               category
               name
-              galleryImages
-              featureImage
+              featureImage {
+                childImageSharp {
+                  fluid(quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
               description
               price
               sizes
@@ -29,47 +35,50 @@ const HomePage = () => {
             }
           }
         }
+      }  
+      allFile(filter: {relativePath: {regex: "/images\/homeSlider/"}}) {
+        nodes {
+          childImageSharp {
+            fluid(maxWidth: 2400, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   `);
   const products = data.allMarkdownRemark.edges;
+  const carouselPics = data.allFile.nodes;
+  console.log(carouselPics);
   const settings = {
     dots: true,
     infinite: true,
     autoplay: true,
     autoplaySpeed: 4000,
     speed: 1000,
-    easing: "ease-in-out"
+    easing: "ease-in-out",
+    lazyLoad: 'progressive'
   };
   return (
     <Layout>
       <div className="pageContainer">
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
-        {withRevealAnimation((props) => (
-          <div className="grid" style={{ ...props }}>
+        <RevealAnimation opacity transform>
+          <div className="grid">
             <Carousel {...settings}>
-              <div>
-                <img src="/assets/home-slide-1.jpg" />
-              </div>
-              <div>
-                <img src="/assets/home-slide-4.jpg" />
-              </div>
-              <div>
-                <img src="/assets/home-slide-2.jpg" />
-              </div>
-              <div>
-                <img src="/assets/home-slide-3.jpg" />
-              </div>
+              {carouselPics.map((pic, index) => 
+                <Image key={index} fluid={pic.childImageSharp.fluid} alt=""/> 
+              )}
             </Carousel>
           </div>
-        ))}
+        </RevealAnimation>
         <hr className="divider" />
-        {withRevealAnimation((props) => (
-          <div className="gridWrapper darkTone" style={{ ...props }}>
-            <div className="grid flexSection">
+        <RevealAnimation opacity transform>
+          <div className="gridWrapper darkTone">
+            <div className="grid flexSection boxContent">
               <Row type="flex" justify="center" align="top">
-                <Col span={8}><h1>Who We Are</h1></Col>
-                <Col span={8}>
+                <Col className="gutter-row" span={24} md={8}><h1>Who We Are</h1></Col>
+                <Col className="gutter-row" span={24} md={8}>
                   <p>Inspired by clean lines, last dances and beautiful hues, Name of
                   Love is a collection of 17 styles in 9 signature colors. Made to
                 be worn amongst the madly in love, even after 'I do'.</p>
@@ -77,7 +86,7 @@ const HomePage = () => {
               </Row>
             </div>
           </div>
-        ))}
+        </RevealAnimation>
         <hr className="divider" />
         <div className="grid">
           <div className="gridTitle">

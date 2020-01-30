@@ -48,12 +48,6 @@ exports.createPages = async ({ graphql, actions }) => {
             frontmatter {
               category
               name
-              galleryImages
-              featureImage
-              description
-              price
-              sizes
-              tags
             }
           }
         }

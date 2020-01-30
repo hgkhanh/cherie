@@ -9,27 +9,8 @@ import { Link } from 'gatsby';
 import _ from 'lodash';
 import { useWindowDimensions } from '../../shared/WindowDimensionsProvider';
 import SliderArrow from '../SliderArrow';
-
-const Picture = ({ image }) => {
-    const [isVisible, setView] = useState(false);
-
-    return (
-        <div className={styles.imageContainer}>
-            <VisibilitySensor onChange={visible => {
-                if (visible) {
-                    setView(visible);
-                }
-            }}>
-                <div className={styles.sensor} />
-            </VisibilitySensor>
-            <Spring delay={300} to={{
-                opacity: isVisible ? 1 : 0,
-            }}>
-                {props => <img style={{ ...props }} src={image} />}
-            </Spring>
-        </div>
-    )
-};
+import Image from "gatsby-image";
+import RevealAnimation from '../../shared/RevealAnimation';
 
 const Product = ({ product }) => {
     const [isHeaderVisible, setHeaderVisible] = useState(false);
@@ -44,13 +25,14 @@ const Product = ({ product }) => {
         nextArrow: <SliderArrow to="next" />,
         autoplaySpeed: 4000,
         speed: 1000,
-        easing: "ease-in-out"
+        easing: "ease-in-out",
+        lazyLoad: 'progressive'
     };
     const getContainerClassName = () => {
         if (width < 770) {
             return ['grid', styles.container].join(' ');
         }
-        return ['grid', 'flexSection', styles.container].join(' ');
+        return ['grid', 'boxContent', styles.container].join(' ');
     }
 
     const getInfoDivClassName = () => {
@@ -61,32 +43,32 @@ const Product = ({ product }) => {
         if (isFooterVisible) {
             classArray.push(styles.isPastFooter);
         }
-        console.log(classArray);
-        console.log(classArray.join(' '));
         return classArray.join(' ');
     }
 
     return (
         <React.Fragment>
             <div className={getContainerClassName()}>
-                <Row type='flex' justify='center' align='stretch' gutter={20}>
-                    { width < 770 ? (
+                <Row type='flex' justify='center' align='stretch'>
+                    {width < 770 ? (
                         <Col span={24}>
                             <Carousel {...settings}>
-                                {product.galleryImages.map((image, index) =>
-                                    <div key={index} className={styles.imageContainer}><img src={image} /></div>
+                                {product.galleryImages.map((image, index) => 
+                                    <Image key={index} fluid={image.childImageSharp.fluid} alt='' />
                                 )}
                             </Carousel>
                         </Col>
-                    ):
-                    (
-                        <Col span={0} md={12}>
-                            {product.galleryImages.map((image, index) =>
-                                <Picture key={index} image={image} />
-                            )}
-                        </Col>
-                    )}                    
-                    
+                    ) :
+                        (
+                            <Col span={0} md={12}>
+                                {product.galleryImages.map((image, index) =>
+                                    <RevealAnimation key={index} opacity>
+                                        <Image key={index} fluid={image.childImageSharp.fluid} alt='' />
+                                    </RevealAnimation>
+                                )}
+                            </Col>
+                        )}
+
                     <Col span={24} md={12} className={getInfoDivClassName()}>
                         <VisibilitySensor onChange={visiblity => {
                             setHeaderVisible(visiblity);
