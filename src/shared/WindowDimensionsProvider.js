@@ -1,12 +1,16 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const WindowDimensionsContext = createContext(null);
+export const WindowDimensionsContext = createContext(null);
 const WindowDimensionsProvider = ({ children }) => {
     const [dimensions, setDimensions] = useState({
         width: 0,
         height: 0,
     });
     useEffect(() => {
+        setDimensions({
+            width: window.innerWidth,
+            height: window.innerHeight,
+        });
         const handleResize = () => {
             setDimensions({
                 width: window.innerWidth,
@@ -25,4 +29,7 @@ const WindowDimensionsProvider = ({ children }) => {
 }
 
 export default WindowDimensionsProvider
-export const useWindowDimensions = () => useContext(WindowDimensionsContext);
+
+export const useWindowDimensions = () => {
+  return useContext(WindowDimensionsContext)
+}

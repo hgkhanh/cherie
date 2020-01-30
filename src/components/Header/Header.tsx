@@ -17,8 +17,10 @@ const Header = () => {
     // { to: '/search/', label: 'Search', icon: FaSearch }
   ];
 
-  const getHeaderClassNames = () => {
-    let classArray = [styles.headerContent];
+  const getHeaderClassNames = (device) => {
+    let classArray = device === 'desktop' ?
+      [styles.headerContent] :
+      [styles.headerContent, styles.mobile];
     if (!isHeaderVisible) {
       classArray.push(styles.fixed);
     }
@@ -26,12 +28,10 @@ const Header = () => {
   };
 
   const renderDesktopHeader = () => (
-    <div className={getHeaderClassNames()}>
-      <div className={styles.logoContainer}>
-        <Link to='/'>
-          <h1>Cherie</h1>
-        </Link>
-      </div>
+    <div className={getHeaderClassNames('desktop')}>
+      <Link to='/' className={styles.logoContainer}>
+        <h1>Chérie</h1>
+      </Link>
       <nav className={['grid', styles.menu].join(' ')}>
         <ul className={styles.menuLink}>
           {leftItems.map(item => (
@@ -52,12 +52,10 @@ const Header = () => {
   )
 
   const renderMobileHeader = () => (
-    <div className={getHeaderClassNames()}>
-      <div className={styles.logoContainer}>
-        <Link to='/'>
-          <h1>Cherie</h1>
-        </Link>
-      </div>
+    <div className={getHeaderClassNames('mobile')}>
+      <Link to='/' className={styles.logoContainer}>
+        <h1>Chérie</h1>
+      </Link>
       <nav className={styles.menu}>
         <ul className={styles.menuLink}>
           {leftItems.map(item => (
@@ -76,13 +74,14 @@ const Header = () => {
       </nav>
     </div>
   )
+
   return (
     <React.Fragment>
       <VisibilitySensor onChange={(visible) => setHeaderVisible(visible)}>
         <div className={styles.sensor} />
       </VisibilitySensor>
       <header className={styles.header}>
-        { width < 770 ? renderMobileHeader() : renderDesktopHeader() }
+        {width < 770 ? renderMobileHeader() : renderDesktopHeader()}
       </header>
     </React.Fragment>
   );

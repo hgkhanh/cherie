@@ -2,4 +2,4 @@ User-agent: *
 Disallow: */tags/
 Disallow: */categories/
 
-sitemap: https://cherie.fi/sitemap.xml
+sitemap: https://Chérie.fi/sitemap.xml

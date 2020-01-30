@@ -4,7 +4,7 @@ import Helmet from "react-helmet";
 import Layout from "../layout";
 import siteConfig from "../../data/SiteConfig";
 import { Row, Col, Carousel } from "antd";
-import withRevealAnimation from '../shared/WithRevealAnimation';
+import withRevealAnimation from '../shared/withRevealAnimation';
 import ProductList from '../components/ProductList';
 
 const HomePage = () => {

@@ -1,15 +1,15 @@
 const config = {
-  siteTitle: "Cherie", // Site title.
-  siteTitleShort: "Cherie", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
-  siteTitleAlt: "Cherie", // Alternative site title for SEO.
+  siteTitle: "Chérie", // Site title.
+  siteTitleShort: "Chérie", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
+  siteTitleAlt: "Chérie", // Alternative site title for SEO.
   siteLogo: "/logos/logo-1024.png", // Logo used for SEO and manifest.
-  siteUrl: "https://cherie.fi", // Domain of your website without pathPrefix.
+  siteUrl: "https://Chérie.fi", // Domain of your website without pathPrefix.
   pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription: "Wedding Moment to Cherish", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   // siteFBAppID: "1825356251115265", // FB Application ID for using app insights
   googleAnalyticsID: "UA-156697506-1", // GA tracking ID.
-  disqusShortname: "cherie-wedding-bridal-shop", // Disqus shortname.
+  disqusShortname: "Chérie-wedding-bridal-shop", // Disqus shortname.
   postDefaultCategoryID: "Wedding", // Default category for posts.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   dateFormat: "DD/MM/YYYY", // Date format for display.
@@ -35,11 +35,11 @@ const config = {
     },
     {
       label: "Email",
-      url: "mailto:info@cherie.fi",
+      url: "mailto:info@Chérie.fi",
       iconClassName: "fa fa-envelope"
     }
   ],
-  copyright: "Copyright © 2020. Cherie.fi", // Copyright string for the footer of the website and RSS feed.
+  copyright: "Copyright © 2020. Chérie.fi", // Copyright string for the footer of the website and RSS feed.
   themeColor: "#c62828", // Used for setting manifest and progress theme colors.
   backgroundColor: "#e0e0e0" // Used for setting manifest background color.
 };

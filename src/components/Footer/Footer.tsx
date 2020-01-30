@@ -10,7 +10,7 @@ const Footer = (props) => {
   }
   return (
     <footer className={[styles.footer, 'flexSection'].join(' ')}>
-      Copyright © 2020 by Cherie
+      Copyright © 2020 by Chérie
     </footer>
   );
 }

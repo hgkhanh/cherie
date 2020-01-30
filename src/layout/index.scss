@@ -112,9 +112,9 @@ main {
 .centerAlign {
   text-align: center;
 }
+// /* Typography */
 
-/*// Typography */
-
+/* Global Layout */
 .gridWrapper {
   width: 100%;
   min-height: 400px;
@@ -141,17 +141,6 @@ hr.divider {
   }
 }
 
-@media screen and (max-width: 769px) {
-  .grid {
-    width: 100%;
-    padding: 0;
-    .gridTitle{
-      padding-left: 20px;
-      padding-bottom: 0;
-    }
-  }
-}
-
 .flexSection {
   display: flex;
   min-height: 400px;
@@ -166,6 +155,23 @@ hr.divider {
   }
 }
 
+@media screen and (max-width: 769px) {
+  .grid {
+    width: 100%;
+    padding: 0;
+    .gridTitle{
+      padding-left: 20px;
+      padding-bottom: 0;
+    }
+  }
+  .flexSection {
+    min-height: auto;
+  }
+}
+// /* Global Layout */
+
+
+/* Custom UI Component */
 .ant-carousel {
   .slick-slide img {
     margin: 0;
@@ -173,7 +179,7 @@ hr.divider {
   }
   .slick-arrow {
     color: red;
-    z-index: 2;
+    z-index: 1;
   }
   .slick-prev {
     left: 10px;
@@ -186,3 +192,4 @@ hr.divider {
 .ant-row-flex-stretch {
   align-items: stretch;
 }
+// /* Custom UI Component */
