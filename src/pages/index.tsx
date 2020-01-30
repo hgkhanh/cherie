@@ -82,7 +82,7 @@ const HomePage = (props) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: {fields: fileAbsolutePath, order: ASC}) {
       edges {
         node {
           id

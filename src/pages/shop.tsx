@@ -9,7 +9,7 @@ import { Spring, config } from 'react-spring/renderprops';
 const ShopPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: {fields: fileAbsolutePath, order: ASC}) {
         edges {
           node {
             id
