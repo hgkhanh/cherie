@@ -101,9 +101,9 @@ const Product = ({ product }) => {
                                         <Col className='rightAlign' span={8}>
                                             {product.sizes.map((size, index) => {
                                                 let text = size;
-                                                if (index < product.sizes.length - 1) {
-                                                    text += ', ';
-                                                }
+                                                // if (index < product.sizes.length - 1) {
+                                                //     text += ', ';
+                                                // }
                                                 return (<span className='grayText' key={index}>{text}</span>)
                                             })}
                                         </Col>

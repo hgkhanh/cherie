@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './ProductList.module.scss';
 import { Link } from 'gatsby';
@@ -7,9 +7,14 @@ import VisibilitySensor from 'react-visibility-sensor';
 import { Row, Col } from "antd";
 import Image from 'gatsby-image';
 
-const ProductCard = ({ product, index }) => (
-    <VisibilitySensor partialVisibility>
-        {({ isVisible }) => (
+const ProductCard = ({ product, index }) => {
+    const [isVisible, setVisible] = useState(false);
+    return (
+        <VisibilitySensor partialVisibility onChange={(visible) => {
+            if (visible) {
+                setVisible(visible);
+            }
+        }}>
             <Spring
                 delay={50 * index + 100}
                 config={config.slow}
@@ -30,14 +35,14 @@ const ProductCard = ({ product, index }) => (
                     </Col>
                 )}
             </Spring>
-        )}
-    </VisibilitySensor>
-);
+        </VisibilitySensor>
+    )
+};
 
 const ProductList = ({ products }) => {
     return (
         <div className={styles.list}>
-            <Row gutter={20}>
+            <Row gutter={80}>
                 {products.map((product, index) =>
                     <ProductCard product={product.node} key={product.node.frontmatter.name} index={index} />
                 )}
