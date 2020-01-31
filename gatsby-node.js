@@ -38,7 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Get a full list of markdown products
   const markdownQueryResult = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}}) {
         edges {
           node {
             id
