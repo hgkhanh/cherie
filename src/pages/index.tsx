@@ -102,7 +102,7 @@ const HomePage = (props) => {
 export const query = graphql`
   query {
     products: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}},
-      sort: {fields: fileAbsolutePath, order: ASC}, limit: 3) {
+      sort: {fields: fileAbsolutePath, order: ASC}, limit: 6) {
       edges {
         node {
           id
