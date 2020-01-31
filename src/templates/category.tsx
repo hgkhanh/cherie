@@ -23,7 +23,7 @@ const CategoryTemplate = (props) => {
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query CategoryPage($category: String) {
-    allMarkdownRemark {
+    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}}) {
       totalCount
       edges {
         node {

@@ -10,7 +10,7 @@ import Image from 'gatsby-image';
 import { useWindowDimensions } from '../shared/WindowDimensionsProvider';
 import SliderArrow from '../components/SliderArrow';
 
-const HomeCarousel = ({ pictures }) => {
+const HomeCarousel = ({ carousel }) => {
   const { width } = useWindowDimensions();
   const settings = {
     dots: true,
@@ -27,13 +27,26 @@ const HomeCarousel = ({ pictures }) => {
       settings.prevArrow = (<SliderArrow to='prev' />),
       settings.nextArrow = (<SliderArrow to='next' />)
   }
+  console.log(carousel);
   return (
     <Carousel {...settings}>
-      {pictures.map((pic, index) => {
+      {carousel.map((slide, index) => {
+        const { image, link } = slide.node.frontmatter;
+
+        console.log(image);
+        console.log(link);
         if (width < 770) {
-          return (<img style={{ width: '100%' }} key={index} src={pic.childImageSharp.resize.src} alt='' />)
+          return (
+            <Link key={index} to={link}>
+              <img style={{ width: '100%' }} src={image.childImageSharp.resize.src} alt='' />
+            </Link>
+          )
         }
-        return (<Image key={index} fluid={pic.childImageSharp.fluid} alt='' />)
+        return (
+          <Link key={index} to={link}>
+            <Image fluid={image.childImageSharp.fluid} alt='' />
+          </Link>
+        )
       }
       )}
     </Carousel>
@@ -41,15 +54,16 @@ const HomeCarousel = ({ pictures }) => {
 }
 
 const HomePage = (props) => {
-  const products = props.data.allMarkdownRemark.edges;
-  const carouselPics = props.data.allFile.nodes;
+  const products = props.data.products.edges;
+  const carousel = props.data.carousel.edges;
+
   return (
     <Layout>
       <div className='pageContainer'>
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
         <RevealAnimation opacity transform>
           <div className='grid'>
-            <HomeCarousel pictures={carouselPics} />
+            <HomeCarousel carousel={carousel} />
           </div>
         </RevealAnimation>
         <hr className='divider' />
@@ -87,7 +101,8 @@ const HomePage = (props) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: {fields: fileAbsolutePath, order: ASC}, limit: 3) {
+    products: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}},
+      sort: {fields: fileAbsolutePath, order: ASC}, limit: 3) {
       edges {
         node {
           id
@@ -110,21 +125,29 @@ export const query = graphql`
             tags
           }
         }
-    }
+      }
     }  
-    allFile(filter: {relativePath: {regex: "/images\/homeSlider/"}}) {
-      nodes {
-        childImageSharp {
-          fluid(maxWidth: 2400) {
-            ...GatsbyImageSharpFluid
-          }
-          resize(width: 1240, height: 1600, cropFocus: ATTENTION) {
-            src
+    carousel: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/slider\\//"}}) {
+      edges {
+        node {
+          frontmatter {
+            image {
+              childImageSharp {
+                fluid(maxWidth: 2400) {
+                  ...GatsbyImageSharpFluid
+                }
+                resize(width: 1240, height: 1600, cropFocus: ATTENTION) {
+                  src
+                }
+              }
+            }
+            link
           }
         }
       }
-    }
+    }  
   }
 `;
+
 
 export default HomePage;

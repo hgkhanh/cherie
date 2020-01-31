@@ -11,6 +11,7 @@ import "./product.scss";
 
 const ProductTemplate = (props: any) => {
   const { data, path, pageContext } = props;
+  console.log(data);
   const product = data.markdownRemark.frontmatter;
   const { slug } = pageContext;
   return (

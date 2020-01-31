@@ -16,7 +16,7 @@ const ProductCard = ({ product, index }) => {
             }
         }}>
             <Spring
-                delay={50 * index + 100}
+                delay={100}
                 config={config.slow}
                 to={{
                     opacity: isVisible ? 1 : 0,
@@ -26,7 +26,7 @@ const ProductCard = ({ product, index }) => {
                 {props => (
                     <Col span={12} lg={8} style={{ ...props }}>
                         <Link to={product.fields.slug} key={product.name} className={styles.card}>
-                            <Image fluid={product.frontmatter.featureImage.childImageSharp.fluid} />
+                            <Image fluid={product.frontmatter.featureImage.childImageSharp.fluid} alt="" />
                             <div className={styles.description}>
                                 <h1>{product.frontmatter.name}</h1>
                                 <h3 className='sansSerif'>£ {product.frontmatter.price}</h3>
@@ -42,7 +42,7 @@ const ProductCard = ({ product, index }) => {
 const ProductList = ({ products }) => {
     return (
         <div className={styles.list}>
-            <Row gutter={[{ xs: 10, sm: 20, md: 30, lg: 40, xl: 60, xxl: 80 }, 20]}>
+            <Row gutter={[{xs: 10, sm: 20, md: 30, lg: 40, xl: 60, xxl: 80 }, {md: 10, lg: 0 }]} type="flex">
                 {products.map((product, index) =>
                     <ProductCard product={product.node} key={product.node.frontmatter.name} index={index} />
                 )}

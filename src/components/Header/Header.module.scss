@@ -81,10 +81,14 @@
     flex-wrap: wrap;
     justify-content: center;
     list-style: none;
-    margin: 0 -10px;
+    margin: 0;
     padding: 0;
     position: relative;
   }
+}
+
+:global(.grid).menu {
+  padding: 0 80px;
 }
 
 .logoContainer {

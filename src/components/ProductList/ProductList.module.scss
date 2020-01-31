@@ -1,11 +1,16 @@
+.list {
+  padding-bottom: 20px;
+}
 @media screen and (max-width: 769px) {
   .list {
     margin: 20px;
+    margin-bottom: 0;
   }
 }
+
 .card {
-  margin: 10px;
-  flex-basis: 30%;
+  padding: 10px;
+  flex: 1 1 30%;
   img {
     width: 100%;
     display: block;
@@ -15,5 +20,10 @@
     padding: 5px 0;
     justify-content: space-between;
     align-items: baseline;
+  }
+}
+@media screen and (max-width: 769px) {
+  .card {
+    flex: 1 1 50%;
   }
 }

@@ -119,7 +119,6 @@ exports.createPages = async ({ graphql, actions }) => {
     // const prevID = index - 1 >= 0 ? index - 1 : productsEdges.length - 1;
     // const nextEdge = productsEdges[nextID];
     // const prevEdge = productsEdges[prevID];
-
     createPage({
       path: `${edge.node.fields.slug}/`,
       component: productPage,

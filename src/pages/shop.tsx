@@ -9,7 +9,8 @@ import { Spring, config } from 'react-spring/renderprops';
 const ShopPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark(sort: {fields: fileAbsolutePath, order: ASC}) {
+      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}}
+        , sort: {fields: fileAbsolutePath, order: ASC}) {
         edges {
           node {
             id
@@ -56,7 +57,7 @@ const ShopPage = () => {
           {props => (
             <React.Fragment>
               <div className="grid" style={props}>
-                <h1>Shop</h1>
+                <h1 className="gridTitle">Shop</h1>
               </div>
               <hr className="divider" />
             </React.Fragment>
