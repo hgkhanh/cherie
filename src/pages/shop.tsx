@@ -21,9 +21,9 @@ const ShopPage = () => {
               category
               name
               featureImage {
-                childImageSharp {
+                childCloudinaryAsset {
                   fluid {
-                    ...GatsbyImageSharpFluid
+                    ...CloudinaryAssetFluid
                   }
                 }
               }

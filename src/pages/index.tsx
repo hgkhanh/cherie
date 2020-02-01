@@ -27,24 +27,21 @@ const HomeCarousel = ({ carousel }) => {
       settings.prevArrow = (<SliderArrow to='prev' />),
       settings.nextArrow = (<SliderArrow to='next' />)
   }
-  console.log(carousel);
   return (
     <Carousel {...settings}>
       {carousel.map((slide, index) => {
         const { image, link } = slide.node.frontmatter;
 
-        console.log(image);
-        console.log(link);
         if (width < 770) {
           return (
             <Link key={index} to={link}>
-              <img style={{ width: '100%' }} src={image.childImageSharp.resize.src} alt='' />
+              <Image fluid={image.childCloudinaryAsset.vertical} alt='' />
             </Link>
           )
         }
         return (
           <Link key={index} to={link}>
-            <Image fluid={image.childImageSharp.fluid} alt='' />
+            <Image fluid={image.childCloudinaryAsset.full} alt='' />
           </Link>
         )
       }
@@ -113,9 +110,9 @@ export const query = graphql`
             category
             name
             featureImage {
-              childImageSharp {
+              childCloudinaryAsset {
                 fluid {
-                  ...GatsbyImageSharpFluid
+                  ...CloudinaryAssetFluid
                 }
               }
             }
@@ -127,17 +124,17 @@ export const query = graphql`
         }
       }
     }  
-    carousel: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/slider\\//"}}) {
+    carousel: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/slider\//"}}) {
       edges {
         node {
           frontmatter {
             image {
-              childImageSharp {
-                fluid(maxWidth: 2400) {
-                  ...GatsbyImageSharpFluid
+              childCloudinaryAsset {
+                full: fluid(maxWidth: 2400) {
+                  ...CloudinaryAssetFluid
                 }
-                resize(width: 1240, height: 1600, cropFocus: ATTENTION) {
-                  src
+                vertical: fluid(transformations: ["ar_2:3","c_fill","g_face", "q_auto:best"]) {
+                  ...CloudinaryAssetFluid
                 }
               }
             }
@@ -145,7 +142,7 @@ export const query = graphql`
           }
         }
       }
-    }  
+    } 
   }
 `;
 

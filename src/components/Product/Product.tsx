@@ -54,7 +54,7 @@ const Product = ({ product }) => {
                         <Col span={24}>
                             <Carousel {...settings}>
                                 {product.galleryImages.map((image, index) => 
-                                    <Image key={index} fluid={image.childImageSharp.fluid} alt='' />
+                                    <Image key={index} fluid={image.childCloudinaryAsset.fluid} alt='' />
                                 )}
                             </Carousel>
                         </Col>
@@ -63,7 +63,7 @@ const Product = ({ product }) => {
                             <Col span={0} md={12}>
                                 {product.galleryImages.map((image, index) =>
                                     <RevealAnimation key={index} opacity>
-                                        <Image key={index} fluid={image.childImageSharp.fluid} alt='' />
+                                        <Image key={index} fluid={image.childCloudinaryAsset.fluid} alt='' />
                                     </RevealAnimation>
                                 )}
                             </Col>

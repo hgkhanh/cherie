@@ -26,7 +26,7 @@ const ProductCard = ({ product, index }) => {
                 {props => (
                     <Col span={12} lg={8} style={{ ...props }}>
                         <Link to={product.fields.slug} key={product.name} className={styles.card}>
-                            <Image fluid={product.frontmatter.featureImage.childImageSharp.fluid} alt="" />
+                            <Image fluid={product.frontmatter.featureImage.childCloudinaryAsset.fluid} alt="" />
                             <div className={styles.description}>
                                 <h1>{product.frontmatter.name}</h1>
                                 <h3 className='sansSerif'>£ {product.frontmatter.price}</h3>

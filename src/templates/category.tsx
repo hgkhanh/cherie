@@ -32,9 +32,9 @@ export const pageQuery = graphql`
             category
             name
             featureImage {
-              childImageSharp {
+              childCloudinaryAsset {
                 fluid {
-                  ...GatsbyImageSharpFluid
+                  ...CloudinaryAssetFluid
                 }
               }
             }
