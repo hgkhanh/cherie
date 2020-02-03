@@ -8,7 +8,9 @@ detailsAndFit:
 featureImage: ../images/Elliah-01.jpg
 galleryImages:
   - ../images/Elliah-01.jpg
-  - ../images/Elliah-02.jpg
+  - ../images/Elliah-04.jpg
+  - ../images/Elliah-05.jpg
+  - ../images/Elliah-06.jpg
 price: '999'
 category: A-line
 sizes:

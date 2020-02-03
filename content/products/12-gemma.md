@@ -9,6 +9,7 @@ featureImage: ../images/Gemma-01.jpg
 galleryImages:
   - ../images/Gemma-01.jpg
   - ../images/Gemma-02.jpg
+  - ../images/Gemma-03.jpg
 price: '999'
 category: A-line
 sizes:

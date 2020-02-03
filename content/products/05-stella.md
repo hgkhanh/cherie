@@ -8,10 +8,12 @@ description: >-
 detailsAndFit:
   - 100% Polyester
   - Invisible back zipper
-featureImage: ../images/Stella-01.jpg
+featureImage: ../images/Stella-05.jpg
 galleryImages:
-  - ../images/Stella-01.jpg
+  - ../images/Stella-05.jpg
   - ../images/Stella-02.jpg
+  - ../images/Stella-03.jpg
+  - ../images/Stella-04.jpg
 price: '999'
 category: Ball-gown
 sizes:

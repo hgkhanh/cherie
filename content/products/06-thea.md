@@ -5,8 +5,10 @@ description: >-
 detailsAndFit:
   - 100% Polyester
   - Invisible back zipper
-featureImage: ../images/Thea-01.jpg
+featureImage: ../images/Thea-05.jpg
 galleryImages:
+  - ../images/Thea-05.jpg
+  - ../images/Thea-06.jpg
   - ../images/Thea-01.jpg
   - ../images/Thea-02.jpg
 price: '999'

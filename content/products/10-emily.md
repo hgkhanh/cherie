@@ -9,6 +9,10 @@ featureImage: ../images/Emily-01.jpg
 galleryImages:
   - ../images/Emily-01.jpg
   - ../images/Emily-02.jpg
+  - ../images/Emily-03.jpg
+  - ../images/Emily-04.jpg
+  - ../images/Emily-05.jpg
+  - ../images/Emily-06.jpg
 price: '999'
 category: Mermaid
 sizes:

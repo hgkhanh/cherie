@@ -5,10 +5,12 @@ description: >-
 detailsAndFit:
   - 100% Polyester
   - Invisible back zipper
-featureImage: ../images/Aurora-01.jpg
+featureImage: ../images/Aurora-03.jpg
 galleryImages:
-  - ../images/Aurora-01.jpg
+  - ../images/Aurora-03.jpg
   - ../images/Aurora-02.jpg
+  - ../images/Aurora-04.jpg
+  - ../images/Aurora-05.jpg
 price: '999'
 category: Ball-gown
 sizes:

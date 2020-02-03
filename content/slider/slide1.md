@@ -1,5 +1,5 @@
 ---
-image: ../images/Aurora-03.jpg
+image: ../images/Aurora-01.jpg
 link: dresses/aurora
 ---
 

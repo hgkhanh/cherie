@@ -5,10 +5,11 @@ description: >-
 detailsAndFit:
   - 100% Polyester
   - Invisible back zipper
-featureImage: ../images/Eve-01.jpg
+featureImage: ../images/Eve-02.jpg
 galleryImages:
-  - ../images/Eve-01.jpg
   - ../images/Eve-02.jpg
+  - ../images/Eve-04.jpg
+  - ../images/Eve-05.jpg
 price: '999'
 category: A-line
 sizes:

@@ -5,10 +5,10 @@ description: >-
 detailsAndFit:
   - 100% Polyester
   - Invisible back zipper
-featureImage: ../images/Celia-01.jpg
+featureImage: ../images/Celia-02.jpg
 galleryImages:
-  - ../images/Celia-01.jpg
   - ../images/Celia-02.jpg
+  - ../images/Celia-03.jpg
 price: '999'
 category: Ball-gown
 sizes:

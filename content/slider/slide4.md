@@ -1,5 +1,5 @@
 ---
-image: ../images/Stella-04.jpg
+image: ../images/Stella-01.jpg
 link: dresses/stella
 ---
 

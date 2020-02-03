@@ -1,5 +1,5 @@
 ---
-image: ../images/Mina-03.jpg
+image: ../images/Mina-01.jpg
 link: dresses/mina
 ---
 

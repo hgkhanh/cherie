@@ -9,6 +9,7 @@ featureImage: ../images/Love-01.jpg
 galleryImages:
   - ../images/Love-01.jpg
   - ../images/Love-02.jpg
+  - ../images/Love-03.jpg
 price: '999'
 category: A-line
 sizes:

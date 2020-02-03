@@ -5,9 +5,9 @@ description: >-
 detailsAndFit:
   - 100% Polyester
   - Invisible back zipper
-featureImage: ../images/Mina-01.jpg
+featureImage: ../images/Mina-03.jpg
 galleryImages:
-  - ../images/Mina-01.jpg
+  - ../images/Mina-03.jpg
   - ../images/Mina-02.jpg
 price: '999'
 category: Ball-gown
