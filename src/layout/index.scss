@@ -21,21 +21,21 @@ h5,
 h6 {
   font-family: $font-header;
   font-weight: 300;
-  text-rendering:optimizelegibility;
-  -webkit-font-smoothing:antialiased;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 p,
 li {
   font-family: $font-body;
-  text-rendering:optimizelegibility;
-  -webkit-font-smoothing:antialiased;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
   font-family: $font-sans-serif;
-  text-rendering:optimizelegibility;
-  -webkit-font-smoothing:antialiased;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
 }
 /* //Typograhpy */
 
@@ -64,10 +64,11 @@ a {
   background: #f6f0ec;
 }
 
-header,
 main {
   background: #f6f0ec;
-
+}
+header,
+main {
   h1,
   h2,
   h3,
@@ -164,12 +165,18 @@ hr.divider {
   }
 }
 
+.horizontalList {
+  list-style: none;
+}
+// /* Global Layout */
+
+/* Responsive */
 
 @media screen and (max-width: 769px) {
   .grid {
     width: 100%;
     padding: 0;
-    .gridTitle{
+    .gridTitle {
       padding-left: 20px;
       padding-bottom: 0;
     }
@@ -182,8 +189,7 @@ hr.divider {
     min-height: auto;
   }
 }
-// /* Global Layout */
-
+/* //Responsive */
 
 /* Custom UI Component */
 .ant-carousel {
@@ -207,4 +213,16 @@ hr.divider {
   align-items: stretch;
 }
 
+.ant-drawer-wrapper-body {
+  background: #c79479;
+  h1,
+  .ant-drawer-close {
+    color: #fff;
+    left: 0;
+  }
+
+  .ant-drawer-body {
+    margin-top: 50px;
+  }
+}
 // /* Custom UI Component */

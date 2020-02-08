@@ -6,49 +6,7 @@ import Layout from '../layout';
 import { Row, Col, Carousel } from 'antd';
 import RevealAnimation from '../shared/RevealAnimation';
 import ProductList from '../components/ProductList';
-import Image from 'gatsby-image';
-import { useWindowDimensions } from '../shared/WindowDimensionsProvider';
-import SliderArrow from '../components/SliderArrow';
-
-const HomeCarousel = ({ carousel }) => {
-  const { width } = useWindowDimensions();
-  const settings = {
-    dots: true,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    speed: 1000,
-    easing: 'ease-in-out',
-    lazyLoad: 'progressive'
-  };
-
-  if (width < 770) {
-    settings.arrows = true,
-      settings.prevArrow = (<SliderArrow to='prev' />),
-      settings.nextArrow = (<SliderArrow to='next' />)
-  }
-  return (
-    <Carousel {...settings}>
-      {carousel.map((slide, index) => {
-        const { image, link } = slide.node.frontmatter;
-
-        if (width < 770) {
-          return (
-            <Link key={index} to={link}>
-              <Image fluid={image.childCloudinaryAsset.vertical} alt='' />
-            </Link>
-          )
-        }
-        return (
-          <Link key={index} to={link}>
-            <Image fluid={image.childCloudinaryAsset.full} alt='' />
-          </Link>
-        )
-      }
-      )}
-    </Carousel>
-  )
-}
+import Hero from '../components/Hero';
 
 const HomePage = (props) => {
   const products = props.data.products.edges;
@@ -58,11 +16,7 @@ const HomePage = (props) => {
     <Layout>
       <div className='pageContainer'>
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
-        <RevealAnimation opacity transform>
-          <div className='grid'>
-            <HomeCarousel carousel={carousel} />
-          </div>
-        </RevealAnimation>
+        <Hero image={carousel[3].node.frontmatter.image}/>
         <hr className='divider' />
         <RevealAnimation opacity transform>
           <div className='gridWrapper darkTone'>
@@ -130,10 +84,7 @@ export const query = graphql`
           frontmatter {
             image {
               childCloudinaryAsset {
-                full: fluid(maxWidth: 2400) {
-                  ...CloudinaryAssetFluid
-                }
-                vertical: fluid(transformations: ["ar_2:3","c_fill","g_face", "q_auto:best"]) {
+                fluid(maxWidth: 2400) {
                   ...CloudinaryAssetFluid
                 }
               }
