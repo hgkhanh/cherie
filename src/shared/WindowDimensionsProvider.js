@@ -28,7 +28,7 @@ const WindowDimensionsProvider = ({ children }) => {
     );
 }
 
-export default WindowDimensionsProvider
+export default WindowDimensionsProvider;
 
 export const useWindowDimensions = () => {
   return useContext(WindowDimensionsContext)

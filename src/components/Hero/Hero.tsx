@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState, useRef } from 'react';
 import BackgroundImage from 'gatsby-background-image';
 import styles from './Hero.module.scss';
+import { Spring, config } from 'react-spring/renderprops';
+import { useStaticQuery, graphql } from "gatsby";
 
 const Hero = ({ image }) => {
+    const [active, setActive] = useState(false);
+
+    const scrollBtn = useRef(null);
+    const scrollToContent = () => {
+        if (scrollBtn && scrollBtn.current) {
+            scrollBtn.current.scrollIntoView({ block: "start", behavior: "smooth" });
+        }
+      };
     return (
         <BackgroundImage
             className={styles.hero}
@@ -10,11 +20,24 @@ const Hero = ({ image }) => {
             backgroundColor={`#040e18`}
         >
             <h2>Face of love</h2>
-            <button className={styles.scrollButton}>
-                <svg class="Icon Icon--arrow-bottom" role="presentation" viewBox="0 0 21 11">
-                    <polyline fill="none" stroke="currentColor" points="0.5 0.5 10.5 10.5 20.5 0.5" stroke-width="1.25"></polyline>
-                </svg>
-            </button>
+            <Spring
+                config={config.slow}
+                to={{
+                    transform: active ? 'scale(1.1)' : 'scale(1.0)'
+                }}
+            >
+                {springStyles => (
+                <button  ref={scrollBtn} className={styles.scrollButton} style={{...springStyles}} 
+                    onMouseEnter={() => setActive(true)}
+                    onMouseLeave={() => setActive(false)}
+                    onClick={scrollToContent}
+                    >
+                    <svg viewBox="0 0 21 11">
+                        <polyline fill="none" stroke="currentColor" points="0.5 0.5 10.5 10.5 20.5 0.5" strokeWidth="1.25"></polyline>
+                    </svg>
+                </button>
+                )}
+            </Spring>
         </BackgroundImage>
     );
 };

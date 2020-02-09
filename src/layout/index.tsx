@@ -19,7 +19,7 @@ const MainLayout = (props) => {
           <meta name='description' content={config.siteDescription} />
           <html lang='en' />
         </Helmet>
-        <Header config={config} />
+        <Header config={config}/>
         <main>{children}</main>
         <Footer config={config} />
       </React.Fragment>

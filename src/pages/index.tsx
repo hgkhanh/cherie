@@ -10,22 +10,22 @@ import Hero from '../components/Hero';
 
 const HomePage = (props) => {
   const products = props.data.products.edges;
-  const carousel = props.data.carousel.edges;
+  const heroImage = props.data.banner;
+
 
   return (
     <Layout>
       <div className='pageContainer'>
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
-        <Hero image={carousel[3].node.frontmatter.image}/>
+        <Hero image={heroImage}/>
         <hr className='divider' />
         <RevealAnimation opacity transform>
-          <div className='gridWrapper darkTone'>
+          <div className='gridWrapper'>
             <div className='grid flexSection boxContent'>
-              <Row type='flex' justify='center' align='top'>
-                <Col className='gutter-row' span={24} md={8}><h1>Who We Are</h1></Col>
-                <Col className='gutter-row' span={24} md={8}>
-                  <p>Inspired by clean lines, last dances and beautiful hues, Name of
-                  Love is a collection of 17 styles in 9 signature colors. Made to
+              <Row type='flex' justify='center' justify='center'>
+                <Col className='gutter-row' span={24}><h1>Who We Are</h1></Col>
+                <Col className='gutter-row' span={24}>
+                  <p>Inspired by clean lines, last dances and beautiful hues, Made to
                 be worn amongst the madly in love, even after 'I do'.</p>
                 </Col>
               </Row>
@@ -78,22 +78,13 @@ export const query = graphql`
         }
       }
     }  
-    carousel: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/slider\//"}}) {
-      edges {
-        node {
-          frontmatter {
-            image {
-              childCloudinaryAsset {
-                fluid(maxWidth: 2400) {
-                  ...CloudinaryAssetFluid
-                }
-              }
-            }
-            link
-          }
+    banner: file(name: { eq: "banner" }) {
+      childCloudinaryAsset {
+        fluid(maxWidth: 2400) {
+          ...CloudinaryAssetFluid
         }
       }
-    } 
+    }
   }
 `;
 

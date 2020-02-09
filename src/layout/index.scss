@@ -137,7 +137,7 @@ hr.divider {
 
 @media screen and (max-width: 769px) {
   hr.divider {
-    padding-top: 20px;
+    padding-top: 40px;
   }
 }
 
@@ -148,6 +148,7 @@ hr.divider {
   position: relative;
   .gridTitle {
     flex-basis: 100%;
+    text-align: center;
   }
 }
 
@@ -163,10 +164,17 @@ hr.divider {
   &.flexLeft {
     justify-content: left;
   }
+  &.boxContent {
+    text-align: center;
+  }
 }
 
 .horizontalList {
   list-style: none;
+}
+
+button:focus {
+  outline: none
 }
 // /* Global Layout */
 
