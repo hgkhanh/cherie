@@ -3,21 +3,19 @@ import { graphql, Link } from 'gatsby'
 import Helmet from 'react-helmet';
 import siteConfig from '../../data/SiteConfig';
 import Layout from '../layout';
-import { Row, Col, Carousel } from 'antd';
+import { Row, Col } from 'antd';
 import RevealAnimation from '../shared/RevealAnimation';
 import ProductList from '../components/ProductList';
 import Hero from '../components/Hero';
 
 const HomePage = (props) => {
   const products = props.data.products.edges;
-  const heroImage = props.data.banner;
-
 
   return (
-    <Layout>
+    <Layout path={props.path}>
       <div className='pageContainer'>
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
-        <Hero image={heroImage}/>
+        <Hero/>
         <hr className='divider' />
         <RevealAnimation opacity transform>
           <div className='gridWrapper'>
@@ -77,14 +75,7 @@ export const query = graphql`
           }
         }
       }
-    }  
-    banner: file(name: { eq: "banner" }) {
-      childCloudinaryAsset {
-        fluid(maxWidth: 2400) {
-          ...CloudinaryAssetFluid
-        }
-      }
-    }
+    } 
   }
 `;
 

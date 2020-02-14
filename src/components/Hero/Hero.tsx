@@ -3,23 +3,46 @@ import BackgroundImage from 'gatsby-background-image';
 import styles from './Hero.module.scss';
 import { Spring, config } from 'react-spring/renderprops';
 import { useStaticQuery, graphql } from "gatsby";
+import { useWindowDimensions } from '../../shared/WindowDimensionsProvider';
 
-const Hero = ({ image }) => {
+const Hero = () => {
+    const banner = useStaticQuery(graphql`
+    query BannerQuery {
+        wide: file(name: { eq: "banner" }) {
+            childCloudinaryAsset {
+              fluid(maxWidth: 2400) {
+                ...CloudinaryAssetFluid
+              }
+            }
+          }
+        vertical: file(name: { eq: "banner-vertical" }) {
+            childCloudinaryAsset {
+              fluid(maxWidth: 800) {
+                ...CloudinaryAssetFluid
+              }
+            }
+          }
+        }
+    `)
+
     const [active, setActive] = useState(false);
+    const { width } = useWindowDimensions();
+
+    const heroImage = width < 769 ? banner.vertical : banner.wide;
 
     const scrollBtn = useRef(null);
     const scrollToContent = () => {
         if (scrollBtn && scrollBtn.current) {
             scrollBtn.current.scrollIntoView({ block: "start", behavior: "smooth" });
         }
-      };
+    };
     return (
         <BackgroundImage
             className={styles.hero}
-            fluid={image.childCloudinaryAsset.fluid}
+            fluid={heroImage.childCloudinaryAsset.fluid}
             backgroundColor={`#040e18`}
         >
-            <h2>Face of love</h2>
+            {/* <h2>Face of love</h2> */}
             <Spring
                 config={config.slow}
                 to={{
@@ -27,15 +50,15 @@ const Hero = ({ image }) => {
                 }}
             >
                 {springStyles => (
-                <button  ref={scrollBtn} className={styles.scrollButton} style={{...springStyles}} 
-                    onMouseEnter={() => setActive(true)}
-                    onMouseLeave={() => setActive(false)}
-                    onClick={scrollToContent}
+                    <button ref={scrollBtn} className={styles.scrollButton} style={{ ...springStyles }}
+                        onMouseEnter={() => setActive(true)}
+                        onMouseLeave={() => setActive(false)}
+                        onClick={scrollToContent}
                     >
-                    <svg viewBox="0 0 21 11">
-                        <polyline fill="none" stroke="currentColor" points="0.5 0.5 10.5 10.5 20.5 0.5" strokeWidth="1.25"></polyline>
-                    </svg>
-                </button>
+                        <svg viewBox="0 0 21 11">
+                            <polyline fill="none" stroke="currentColor" points="0.5 0.5 10.5 10.5 20.5 0.5" strokeWidth="1.25"></polyline>
+                        </svg>
+                    </button>
                 )}
             </Spring>
         </BackgroundImage>

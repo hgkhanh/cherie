@@ -6,7 +6,7 @@ import { useWindowDimensions } from '../../shared/WindowDimensionsProvider';
 import { Drawer, Icon } from 'antd';
 import Image from 'gatsby-image';
 
-const Header = (props) => {
+const Header = ({ path }) => {
   const logo = useStaticQuery(graphql`
     query LogoQuery {
       dark: file(name: { eq: "logo-dark" }) {
@@ -30,7 +30,6 @@ const Header = (props) => {
   const { width } = useWindowDimensions();
   const { dark, light } = logo;
   let logoSize = 160;
-  console.log(logo);
 
   if (width < 577) {
     logoSize = 125;
@@ -38,12 +37,20 @@ const Header = (props) => {
     logoSize = 140;
   }
 
+  const isHomePage = path === '/';
+  const getHeaderClassNames = () => {
+    const isAtTop = isHeaderVisible ? styles.isAtTop : '';
+    const homepage = isHomePage ? styles.homepage : '';
+
+    return `${styles.header} ${isAtTop} ${homepage}`;
+  }
+
   return (
     <React.Fragment>
       <VisibilitySensor onChange={(visible) => setHeaderVisible(visible)}>
         <div className={styles.sensor} />
       </VisibilitySensor>
-      <header className={`${styles.header} ${isHeaderVisible ? styles.transparent : ''}`}>
+      <header className={getHeaderClassNames()}>
         <div className={styles.container}>
           {width < 993 && (
             <Drawer
@@ -72,7 +79,7 @@ const Header = (props) => {
 
           <div className={styles.block}>
             <Link to='/' className={styles.logoContainer} style={{width: logoSize}}>
-              <Image loading='eager' fluid={isHeaderVisible ? light.childCloudinaryAsset.fluid : dark.childCloudinaryAsset.fluid} />
+              <Image loading='eager' fluid={isHeaderVisible && isHomePage ? light.childCloudinaryAsset.fluid : dark.childCloudinaryAsset.fluid} />
             </Link>
           </div>
 

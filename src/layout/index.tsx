@@ -7,7 +7,7 @@ import './index.scss';
 import WindowDimensionsProvider from '../shared/WindowDimensionsProvider';
 
 const MainLayout = (props) => {
-  const { children } = props;
+  const { children, path } = props;
   return (
     <WindowDimensionsProvider>
       <React.Fragment>
@@ -19,7 +19,7 @@ const MainLayout = (props) => {
           <meta name='description' content={config.siteDescription} />
           <html lang='en' />
         </Helmet>
-        <Header config={config}/>
+        <Header path={path} />
         <main>{children}</main>
         <Footer config={config} />
       </React.Fragment>

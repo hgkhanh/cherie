@@ -59,7 +59,6 @@ const ShopPage = () => {
               <div className="grid" style={props}>
                 <h1 className="gridTitle">Shop</h1>
               </div>
-              <hr className="divider" />
             </React.Fragment>
           )
           }

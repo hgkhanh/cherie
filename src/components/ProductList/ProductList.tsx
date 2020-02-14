@@ -24,11 +24,11 @@ const ProductCard = ({ product, index }) => {
                 }}
             >
                 {props => (
-                    <Col span={12} lg={8} style={{ ...props }}>
+                    <Col span={12} md={8} style={{ ...props }}>
                         <Link to={product.fields.slug} key={product.name} className={styles.card}>
                             <Image fluid={product.frontmatter.featureImage.childCloudinaryAsset.fluid} alt="" />
                             <div className={styles.description}>
-                                <h1>{product.frontmatter.name}</h1>
+                                <h2>{product.frontmatter.name}</h2>
                                 <h3 className='sansSerif'>£ {product.frontmatter.price}</h3>
                             </div>
                         </Link>
@@ -42,7 +42,7 @@ const ProductCard = ({ product, index }) => {
 const ProductList = ({ products }) => {
     return (
         <div className={styles.list}>
-            <Row gutter={[{xs: 10, sm: 20, md: 30, lg: 40, xl: 60, xxl: 80 }, {md: 10, lg: 0 }]} type="flex">
+            <Row gutter={[{xs: 30, sm: 30, md: 30, lg: 40, xl: 60, xxl: 80 }, {md: 10, lg: 0 }]} type="flex">
                 {products.map((product, index) =>
                     <ProductCard product={product.node} key={product.node.frontmatter.name} index={index} />
                 )}

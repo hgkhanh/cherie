@@ -116,7 +116,7 @@ main {
 }
 
 .centerAlign {
-  text-align: center;
+  text-align: center!important;
 }
 // /* Typography */
 
@@ -148,7 +148,9 @@ hr.divider {
   position: relative;
   .gridTitle {
     flex-basis: 100%;
-    text-align: center;
+    text-align: left;
+    padding: 35px 0;
+    margin: 0;
   }
 }
 

@@ -1,5 +1,8 @@
 .header {
-  position: fixed;
+  &.homepage {
+    position: fixed;
+  }
+  position: sticky;
   width: 100%;
   top: 0;
   left: 0;
@@ -22,7 +25,8 @@
   }
 }
 
-.transparent {
+
+.isAtTop.homepage {
   background-color: transparent;
   box-shadow: 0 -1px rgba(255, 255, 255, 0.25) inset;
   div,
