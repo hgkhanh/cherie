@@ -11,14 +11,14 @@ const Header = ({ path }) => {
     query LogoQuery {
       dark: file(name: { eq: "logo-dark" }) {
         childCloudinaryAsset {
-          fluid {
+          fluid(maxWidth: 500) {
             ...CloudinaryAssetFluid
           }
         }
       }
       light: file(name: { eq: "logo-light" }) {
         childCloudinaryAsset {
-          fluid {
+          fluid(maxWidth: 500) {
             ...CloudinaryAssetFluid
           }
         }

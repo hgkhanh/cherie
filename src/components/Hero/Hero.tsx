@@ -10,14 +10,14 @@ const Hero = () => {
     query BannerQuery {
         wide: file(name: { eq: "banner" }) {
             childCloudinaryAsset {
-              fluid(maxWidth: 2400) {
+              fluid(maxWidth: 3000) {
                 ...CloudinaryAssetFluid
               }
             }
           }
         vertical: file(name: { eq: "banner-vertical" }) {
             childCloudinaryAsset {
-              fluid(maxWidth: 800) {
+              fluid(maxWidth: 1600) {
                 ...CloudinaryAssetFluid
               }
             }

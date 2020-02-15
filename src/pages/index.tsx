@@ -63,7 +63,7 @@ export const query = graphql`
             name
             featureImage {
               childCloudinaryAsset {
-                fluid {
+                fluid(maxWidth: 1600) {
                   ...CloudinaryAssetFluid
                 }
               }

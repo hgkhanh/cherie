@@ -22,7 +22,7 @@ const ShopPage = () => {
               name
               featureImage {
                 childCloudinaryAsset {
-                  fluid {
+                  fluid(maxWidth: 1600) {
                     ...CloudinaryAssetFluid
                   }
                 }

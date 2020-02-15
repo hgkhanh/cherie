@@ -34,7 +34,7 @@ export const productQuery = graphql`
           description
           galleryImages {
             childCloudinaryAsset {
-              fluid {
+              fluid(maxWidth: 1600) {
                 ...CloudinaryAssetFluid
               }
             }
