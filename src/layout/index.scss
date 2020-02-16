@@ -278,4 +278,14 @@ button:focus {
     margin-top: 50px;
   }
 }
+
+.ant-fullcalendar-header {
+  .ant-select {
+    width: auto;
+  }
+}
+.ant-fullcalendar-disabled-cell .ant-fullcalendar-value {
+  width: 24px;
+  height: 24px;
+}
 // /* Custom UI Component */

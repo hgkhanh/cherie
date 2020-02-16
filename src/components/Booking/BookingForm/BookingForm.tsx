@@ -16,6 +16,7 @@ const BookingForm = (props) => {
     event.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
+<<<<<<< HEAD
         values.time = values.time.toDate();
         // Form valid, create Booking in Firebase
         const publicBookingRef = db.collection('booking-public');
@@ -44,6 +45,9 @@ const BookingForm = (props) => {
           .catch(function (error) {
             console.error("Error writing document: ", error);
           });
+=======
+        console.log('Received values of form: ', values);
+>>>>>>> Booking: page + calendar form; Get all booking-public;Context: remove useContext HOC;
       }
     });
   }

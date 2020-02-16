@@ -83,7 +83,7 @@ const Header = ({ path }) => {
           </div>
 
           <div className={styles.block}>
-            <Link to='/' className={styles.logoContainer} style={{width: logoSize}}>
+            <Link to='/' className={styles.logoContainer} style={{ width: logoSize }}>
               <Image loading='eager' fluid={isHeaderVisible && isHomePage ? light.childCloudinaryAsset.fluid : dark.childCloudinaryAsset.fluid} />
             </Link>
           </div>
