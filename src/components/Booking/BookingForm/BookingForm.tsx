@@ -16,7 +16,34 @@ const BookingForm = (props) => {
     event.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        values.time = values.time.toDate();
+        // Form valid, create Booking in Firebase
+        const publicBookingRef = db.collection('booking-public');
+        const detailBookingRef = db.collection('booking');
+
+        // Create a detailed entry in 'booking' collection
+        const detailBooking = detailBookingRef.add(
+          { ...values }
+        )
+        // Create an simple entry with only Time data in 'booking-public' collection
+        const publicBooking = publicBookingRef.add(
+          {
+            time: values.time
+          }
+        )
+
+        Promise.all([detailBooking, publicBooking])
+          .then(function (result) {
+            const success = result.every(response => {
+              return response.id
+            });
+            if (success) {
+              console.error("Booking success: ", result);
+            }
+          })
+          .catch(function (error) {
+            console.error("Error writing document: ", error);
+          });
       }
     });
   }
