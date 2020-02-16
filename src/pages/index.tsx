@@ -21,8 +21,8 @@ const HomePage = (props) => {
           <div className='gridWrapper'>
             <div className='grid flexSection boxContent'>
               <Row type='flex' justify='center' justify='center'>
-                <Col className='gutter-row' span={24}><h1>Who We Are</h1></Col>
-                <Col className='gutter-row' span={24}>
+                <Col className='gutter-row' span={16}><h1>Who We Are</h1></Col>
+                <Col className='gutter-row' span={16}>
                   <p>Inspired by clean lines, last dances and beautiful hues, Made to
                 be worn amongst the madly in love, even after 'I do'.</p>
                 </Col>

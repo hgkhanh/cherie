@@ -1,8 +1,12 @@
-.about {
+.container {
+  line-height: 1.65;
+  p {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+.quote {
   display: flex;
   justify-content: center;
-  align-content: center;
-  align-items: center;
-  min-height: 300px;
-  color: red;
 }

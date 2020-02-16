@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useStaticQuery } from 'gatsby';
 import VisibilitySensor from 'react-visibility-sensor';
 import styles from './Header.module.scss';
-import { useWindowDimensions } from '../../shared/WindowDimensionsProvider';
+import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 import { Drawer, Icon } from 'antd';
 import Image from 'gatsby-image';
 
@@ -27,7 +27,7 @@ const Header = ({ path }) => {
     `)
   const [isHeaderVisible, setHeaderVisible] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { width } = useWindowDimensions();
+  const { width } = useContext(WindowDimensionsContext);
   const { dark, light } = logo;
   let logoSize = 160;
 
@@ -60,6 +60,8 @@ const Header = ({ path }) => {
               visible={drawerOpen}
             >
               <Link to="/shop" className="Heading u-h6"><h1>Shop</h1></Link>
+              <Link to="/booking" className="Heading u-h6"><h1>Booking</h1></Link>
+              <Link to="/about" className="Heading u-h6"><h1>About</h1></Link>
             </Drawer>
           )}
           <div className={`${styles.block} ${styles.fill}`}>
@@ -69,8 +71,14 @@ const Header = ({ path }) => {
             {width >= 993 && (
               <nav>
                 <ul className="horizontalList">
-                  <li className="HorizontalList__Item">
-                    <a href="/shop" className="Heading u-h6">Shop</a>
+                  <li>
+                    <a href="/shop">Shop</a>
+                  </li>
+                  <li>
+                    <a href="/booking">Booking</a>
+                  </li>
+                  <li>
+                    <a href="/about">About</a>
                   </li>
                 </ul>
               </nav>
