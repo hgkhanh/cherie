@@ -37,6 +37,38 @@ a {
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
 }
+
+blockquote {
+  font-family: $font-header, serif;
+  font-size: 20px;
+  width: 500px;
+  margin: 20px 0;
+  padding: 10px 40px;
+  line-height: 1.45;
+  position: relative;
+}
+
+blockquote:before {
+  display: block;
+  padding-left: 10px;
+  content: "\201C";
+  font-size: 80px;
+  position: absolute;
+  left: 10px;
+  top: -20px;
+  color: #7a7a7a;
+}
+
+blockquote cite {
+  color: #999999;
+  font-size: 14px;
+  display: block;
+  margin-top: 10px;
+}
+
+blockquote cite:before {
+  content: "\2014 \2009";
+}
 /* //Typograhpy */
 
 .darkTone {
@@ -77,8 +109,7 @@ main {
   h6,
   a,
   p,
-  li,
-  span {
+  li {
     color: #707272;
     &.grayText {
       color: #9d9da1;
@@ -116,7 +147,7 @@ main {
 }
 
 .centerAlign {
-  text-align: center!important;
+  text-align: center !important;
 }
 // /* Typography */
 
@@ -188,7 +219,7 @@ hr.divider {
 }
 
 button:focus {
-  outline: none
+  outline: none;
 }
 // /* Global Layout */
 
@@ -197,7 +228,7 @@ button:focus {
 @media screen and (max-width: 769px) {
   .grid {
     width: 100%;
-    padding: 0;
+    padding: 20px;
     .gridTitle {
       padding-left: 20px;
       padding-bottom: 0;
@@ -246,5 +277,15 @@ button:focus {
   .ant-drawer-body {
     margin-top: 50px;
   }
+}
+
+.ant-fullcalendar-header {
+  .ant-select {
+    width: auto;
+  }
+}
+.ant-fullcalendar-disabled-cell .ant-fullcalendar-value {
+  width: 24px;
+  height: 24px;
 }
 // /* Custom UI Component */

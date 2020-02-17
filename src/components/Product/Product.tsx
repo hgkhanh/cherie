@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 // import PropTypes from 'prop-types';
 import styles from './Product.module.scss';
 // import SocialLinks from '../SocialLinks/SocialLinks';
@@ -7,7 +7,7 @@ import { Spring } from 'react-spring/renderprops';
 import VisibilitySensor from 'react-visibility-sensor';
 import { Link } from 'gatsby';
 import _ from 'lodash';
-import { useWindowDimensions } from '../../shared/WindowDimensionsProvider';
+import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 import SliderArrow from '../SliderArrow';
 import Image from "gatsby-image";
 import RevealAnimation from '../../shared/RevealAnimation';
@@ -15,7 +15,7 @@ import RevealAnimation from '../../shared/RevealAnimation';
 const Product = ({ product }) => {
     const [isHeaderVisible, setHeaderVisible] = useState(false);
     const [isFooterVisible, setFooterVisible] = useState(false);
-    const { width } = useWindowDimensions();
+    const { width } = useContext(WindowDimensionsContext);
     const settings = {
         dots: true,
         infinite: true,

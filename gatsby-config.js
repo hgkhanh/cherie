@@ -65,7 +65,8 @@ module.exports = {
         javascriptEnabled: true,
         modifyVars: {
           "font-family": "FreightDispProLight, Helvetica, Georgia, serif",
-          "heading-color": "fade(#000, 65%);"
+          "primary-color": "#C79479",
+          "text-color": "#707272"
         }
       }
     },

@@ -75,9 +75,6 @@ const Header = ({ path }) => {
                     <a href="/shop">Shop</a>
                   </li>
                   <li>
-                    <a href="/booking">Booking</a>
-                  </li>
-                  <li>
                     <a href="/about">About</a>
                   </li>
                 </ul>
@@ -93,13 +90,15 @@ const Header = ({ path }) => {
 
           <div className={`${styles.block} ${styles.fill}`}>
             {(width < 993) && (
-              <Icon type="search" style={{ fontSize: '20px' }} />
+              <a href="/booking">
+                <Icon type="book" style={{ fontSize: '20px' }} />
+              </a>
             )}
             {(width >= 993) && (
               <nav>
                 <ul className="horizontalList">
                   <li>
-                    <a href="/" >Search</a>
+                    <a href="/booking">Booking</a>
                   </li>
                 </ul>
               </nav>

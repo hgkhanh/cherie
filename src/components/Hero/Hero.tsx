@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import BackgroundImage from 'gatsby-background-image';
 import styles from './Hero.module.scss';
 import { Spring, config } from 'react-spring/renderprops';
 import { useStaticQuery, graphql } from "gatsby";
-import { useWindowDimensions } from '../../shared/WindowDimensionsProvider';
+import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 
 const Hero = () => {
     const banner = useStaticQuery(graphql`
@@ -26,7 +26,7 @@ const Hero = () => {
     `)
 
     const [active, setActive] = useState(false);
-    const { width } = useWindowDimensions();
+    const { width } = useContext(WindowDimensionsContext);
 
     const heroImage = width < 769 ? banner.vertical : banner.wide;
 
