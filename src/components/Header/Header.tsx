@@ -10,16 +10,16 @@ const Header = ({ path }) => {
   const logo = useStaticQuery(graphql`
     query LogoQuery {
       dark: file(name: { eq: "logo-dark" }) {
-        childCloudinaryAsset {
+        childImageSharp {
           fluid(maxWidth: 500) {
-            ...CloudinaryAssetFluid
+            ...GatsbyImageSharpFluid
           }
         }
       }
       light: file(name: { eq: "logo-light" }) {
-        childCloudinaryAsset {
+        childImageSharp {
           fluid(maxWidth: 500) {
-            ...CloudinaryAssetFluid
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -87,7 +87,7 @@ const Header = ({ path }) => {
 
           <div className={styles.block}>
             <Link to='/' className={styles.logoContainer} style={{width: logoSize}}>
-              <Image loading='eager' fluid={isHeaderVisible && isHomePage ? light.childCloudinaryAsset.fluid : dark.childCloudinaryAsset.fluid} />
+              <Image loading='eager' fluid={isHeaderVisible && isHomePage ? light.childImageSharp.fluid : dark.childImageSharp.fluid} />
             </Link>
           </div>
 

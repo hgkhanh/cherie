@@ -9,16 +9,16 @@ const Hero = () => {
     const banner = useStaticQuery(graphql`
     query BannerQuery {
         wide: file(name: { eq: "banner" }) {
-            childCloudinaryAsset {
+            childImageSharp {
               fluid(maxWidth: 3000) {
-                ...CloudinaryAssetFluid
+                ...GatsbyImageSharpFluid
               }
             }
           }
         vertical: file(name: { eq: "banner-vertical" }) {
-            childCloudinaryAsset {
+            childImageSharp {
               fluid(maxWidth: 1600) {
-                ...CloudinaryAssetFluid
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -39,7 +39,7 @@ const Hero = () => {
     return (
         <BackgroundImage
             className={styles.hero}
-            fluid={heroImage.childCloudinaryAsset.fluid}
+            fluid={heroImage.childImageSharp.fluid}
             backgroundColor={`#040e18`}
         >
             {/* <h2>Face of love</h2> */}

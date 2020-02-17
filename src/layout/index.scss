@@ -173,6 +173,18 @@ hr.divider {
 
 .horizontalList {
   list-style: none;
+  li {
+    display: inline-block;
+    margin: 0 21px;
+  }
+}
+
+@media screen and (max-width: 993px) {
+  .horizontalList {
+    li {
+      margin: 0 17px;
+    }
+  }
 }
 
 button:focus {

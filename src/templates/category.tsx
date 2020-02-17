@@ -32,9 +32,9 @@
 //             category
 //             name
 //             featureImage {
-//               childCloudinaryAsset {
+//               childImageSharp {
 //                 fluid(maxWidth: 1600) {
-//                   ...CloudinaryAssetFluid
+//                   ...GatsbyImageSharpFluid
 //                 }
 //               }
 //             }
