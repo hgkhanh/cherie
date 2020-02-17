@@ -73,7 +73,7 @@ const BookingForm = ({ form, date, time }) => {
   return (
     <Form {...formItemLayout} onSubmit={handleSubmit}>
       <Row className={styles.container} gutter={[10, 10]}>
-        <Col span={24} lg={{ span: 16, offset: 4 }} >
+        <Col span={24} lg={{ span: 12, offset: 6 }} >
           <Form.Item label='Time' required style={{ display: 'none' }}>
             {getFieldDecorator('time')
               (<DatePicker showTime placeholder="Select Time" />)}
