@@ -9,4 +9,8 @@
   :global(.ant-fullcalendar-value) {
     font-size: 12px;
   }
+  :global(.ant-fullcalendar-disabled-cell .ant-fullcalendar-value) {
+    width: 24px;
+    height: 24px;
+  }
 }

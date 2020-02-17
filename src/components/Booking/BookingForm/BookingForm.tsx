@@ -36,14 +36,10 @@ const BookingForm = (props) => {
   return (
     <Form {...formItemLayout} onSubmit={handleSubmit}>
       <Row className={styles.slot} gutter={[10, 10]}>
-        <Col span={24}>
+        <Col span={24} lg={{ span: 16, offset: 4}} >
           <Form.Item label='Time' required>
             {getFieldDecorator('time')
               (<DatePicker showTime placeholder="Select Time" />)}
-          </Form.Item>
-          <Form.Item label='Name' required>
-            {getFieldDecorator('name')
-              (<Input />)}
           </Form.Item>
           <Form.Item label='Name' required>
             {getFieldDecorator('name')
@@ -66,7 +62,7 @@ const BookingForm = (props) => {
               (<TextArea autoSize={{ minRows: 3 }} />)}
           </Form.Item>
         </Col>
-        <Col span={24} className='rightAlign' push={4}>
+        <Col span={24} lg={{ span: 16, offset: 4}} className='rightAlign' push={4}>
           <Form.Item >
             <Button type="primary" htmlType="submit">
               Book
