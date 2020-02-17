@@ -1,12 +1,5 @@
-.slot {
-  padding-top: 20px;
-  span {
-    font-size: 12px;
-  }
-}
-
-.calendar {
-  :global(.ant-fullcalendar-value) {
-    font-size: 12px;
+.container {
+  :global(.ant-form-item-label) label {
+    color: #727272;
   }
 }

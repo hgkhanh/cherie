@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import * as styles from './Booking.module.scss';
 import 'firebase/firestore';
 import { FirebaseContext } from '../../shared/FirebaseProvider';
@@ -9,7 +9,15 @@ import moment from 'moment';
 const Booking = () => {
   const firebase = useContext(FirebaseContext);
   const db = firebase.firestore();
-
+  const [isReady, setReady] = useState(false);
+  const [isError, setError] = useState(false);
+  const [bookingData, setBookingData] = useState([]);
+  const allSlot = [
+    11, 13, 14, 15, 16, 17
+  ];
+  const [bookedSlot, setBookedSlot] = useState([]);
+  const [date, setDate] = useState(moment());
+  const [time, setTime] = useState();
   /**
    * Get all booking
    **/
@@ -17,20 +25,44 @@ const Booking = () => {
     db.collection('booking-public').limit(10)
       .get()
       .then(function (querySnapshot) {
+        let queriedBookingData = [];
         querySnapshot.forEach(function (doc) {
           // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, ' => ', doc.data());
+          const data = doc.data();
+          console.log(data.time);
+          console.log(data.time.seconds);
+          if (data.time && data.time.seconds) {
+            queriedBookingData.push(moment(data.time.seconds * 1000));
+          }
         });
+        console.log(queriedBookingData);
+        setBookingData(queriedBookingData);
+        setReady(true);
       })
       .catch(function (error) {
         console.log('Error getting documents: ', error);
+        setError(true);
       });
   }, []);
 
-
-  const handleDateSelect = () => {
-
+  const handleDateSelect = (date) => {
+    setDate(date);
+    const bookedSlot = [];
+    bookingData.forEach(booking => {
+      if (booking.isSame(date, 'day')) {
+        bookedSlot.push(booking.get('hour'));
+      }
+    });
+    console.log(bookedSlot);
+    setBookedSlot(bookedSlot);
   }
+
+  const handleTimeSelect = (e) => {
+    if (e.target && e.target.value) {
+      setTime(e.target.value);
+    } 
+  }
+
   const disabledDate = (current) => {
     return current && current < moment().endOf('day');
   }
@@ -48,27 +80,25 @@ const Booking = () => {
         <Col span={24} md={12} lg={8} >
           <h2>Select time</h2>
           <Row className={styles.slot} gutter={[10, 10]}>
-            <Radio.Group buttonStyle='solid'>
-              <Col span={12}>
-                <Radio.Button value='11'>11.00 AM</Radio.Button>
-              </Col>
-              <Col span={12}>
-                <Radio.Button value='13'>13.00 PM</Radio.Button>
-              </Col>
-              <Col span={12} offset={12}>
-                <Radio.Button value='14'>14.00 PM</Radio.Button>
-              </Col>
-              <Col span={12} offset={12}>
-                <Radio.Button value='15'>15.00 PM</Radio.Button>
-              </Col>
-              <Col span={12} offset={12}>
-                <Radio.Button value='16'>16.00 PM</Radio.Button>
-              </Col>
+            <Radio.Group buttonStyle='solid' onChange={handleTimeSelect}>
+              {
+                allSlot.map(slot => {
+                  return (
+                    <Col span={12} offset={slot > 13 ? 12 : 0} key={slot}>
+                      <Radio.Button disabled={bookedSlot.includes(slot)} value={slot}>
+                        {`${slot}.00 ${slot > 12 ? 'PM' : 'AM'}`}
+                        <span></span>
+                      </Radio.Button>
+                    </Col>
+                  );
+                })
+              }
             </Radio.Group>
           </Row>
         </Col>
       </Row>
-      <BookingForm bookingData={"adsf"} timeSlot={"1234"} />
+      <hr className='divider' />
+      { date && time && <BookingForm date={date} time={time} /> }      
     </div>
   );
 }

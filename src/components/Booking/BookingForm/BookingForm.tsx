@@ -3,18 +3,27 @@ import * as styles from './BookingForm.module.scss';
 import 'firebase/firestore';
 import { FirebaseContext } from '../../../shared/FirebaseProvider';
 import { Form, Col, Row, Input, Button, DatePicker } from 'antd';
+import moment from 'moment';
 
-const BookingForm = (props) => {
+const BookingForm = ({ form, date, time }) => {
   const firebase = useContext(FirebaseContext);
   const db = firebase.firestore();
-  const { form, bookingData } = props;
-  const { getFieldDecorator } = form;
+  const { getFieldDecorator, setFieldsValue } = form;
   const { TextArea } = Input;
+
+  // Set time field when user selected a time slot
+
+  useEffect(() => {
+    const timeObject = date.set({ 'hour': time, 'minute': 0, 'second': 0 });
+    setFieldsValue({
+      time: timeObject
+    });
+  }, [date, time]);
 
   const handleSubmit = (event) => {
     console.log('Submit');
     event.preventDefault();
-    props.form.validateFields((err, values) => {
+    form.validateFields((err, values) => {
       if (!err) {
         values.time = values.time.toDate();
         // Form valid, create Booking in Firebase
@@ -63,9 +72,9 @@ const BookingForm = (props) => {
 
   return (
     <Form {...formItemLayout} onSubmit={handleSubmit}>
-      <Row className={styles.slot} gutter={[10, 10]}>
-        <Col span={24} lg={{ span: 16, offset: 4}} >
-          <Form.Item label='Time' required>
+      <Row className={styles.container} gutter={[10, 10]}>
+        <Col span={24} lg={{ span: 16, offset: 4 }} >
+          <Form.Item label='Time' required style={{ display: 'none' }}>
             {getFieldDecorator('time')
               (<DatePicker showTime placeholder="Select Time" />)}
           </Form.Item>
@@ -90,7 +99,7 @@ const BookingForm = (props) => {
               (<TextArea autoSize={{ minRows: 3 }} />)}
           </Form.Item>
         </Col>
-        <Col span={24} lg={{ span: 16, offset: 4}} className='rightAlign' push={4}>
+        <Col span={24} lg={{ span: 16, offset: 4 }} className='rightAlign' push={4}>
           <Form.Item >
             <Button type="primary" htmlType="submit">
               Book
