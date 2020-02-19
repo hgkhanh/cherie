@@ -62,9 +62,9 @@ export const query = graphql`
             category
             name
             featureImage {
-              childImageSharp {
+              childCloudinaryAsset {
                 fluid(maxWidth: 1600) {
-                  ...GatsbyImageSharpFluid
+                  ...CloudinaryAssetFluid
                 }
               }
             }

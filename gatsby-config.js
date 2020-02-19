@@ -1,6 +1,8 @@
+// Load the environment variables.
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+
 const urljoin = require("url-join");
 const path = require("path");
 const config = require("./data/SiteConfig");
@@ -21,7 +23,7 @@ module.exports = {
       copyright: config.copyright
     }
   },
-  plugins: [
+  plugins: [    
     {
       resolve: "gatsby-plugin-sharp",
       options: {
@@ -91,17 +93,17 @@ module.exports = {
         path: `${__dirname}/content/images`
       },
     },
-    // {
-    //   resolve: 'gatsby-transformer-cloudinary',
-    //   options: {
-    //     cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-    //     apiKey: process.env.CLOUDINARY_API_KEY,
-    //     apiSecret: process.env.CLOUDINARY_API_SECRET,
+    {
+      resolve: 'gatsby-transformer-cloudinary',
+      options: {
+        cloudName: process.env.GATSBY_CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.GATSBY_CLOUDINARY_API_KEY,
+        apiSecret: process.env.GATSBY_CLOUDINARY_API_SECRET,
 
-    //     // This folder will be created if it doesn’t exist.
-    //     uploadFolder: 'gatsby-cloudinary',
-    //   },
-    // },
+        // This folder will be created if it doesn’t exist.
+        uploadFolder: 'gatsby-cloudinary',
+      },
+    },
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {

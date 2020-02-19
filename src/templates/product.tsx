@@ -33,16 +33,16 @@ export const productQuery = graphql`
           category
           description
           galleryImages {
-            childImageSharp {
+            childCloudinaryAsset {
               fluid(maxWidth: 1600) {
-                ...GatsbyImageSharpFluid
+                ...CloudinaryAssetFluid
               }
             }
           }
           featureImage {
-            childImageSharp {
+            childCloudinaryAsset {
               fixed(width: 700) {
-                ...GatsbyImageSharpFixed
+                ...CloudinaryAssetFixed
               }
             }
           }
