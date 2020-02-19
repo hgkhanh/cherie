@@ -25,6 +25,10 @@ module.exports = {
   },
   plugins: [    
     {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/booking/*`] },
+    },
+    {
       resolve: "gatsby-plugin-sharp",
       options: {
         defaultQuality: 100

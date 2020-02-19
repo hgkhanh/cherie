@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
+import { Router } from "@reach/router"
 import Layout from "../layout";
 import Booking from "../components/Booking";
+import Details from "../components/Booking/Details";
 import config from "../../data/SiteConfig";
 
 const BookingPage = () => {
@@ -10,17 +12,12 @@ const BookingPage = () => {
       <Helmet title={`Booking | ${config.siteTitle}`} />
       <hr className='divider' />
       <div className='grid centerAlign sansSerif'>
-        <h1>Booking Page</h1>
-        <p>This is the instruction of booking page blah blah blah</p>
-        <p>
-          first step of booking
-          </p>
-        <p>
-          the next step of booking
-        </p>
-        <Booking />
+      <Router basepath="/booking">
+        <Details path="/:bookingId" />
+        <Booking path="/" default/>
+      </Router>
+        <hr className='divider' />
       </div>
-      <hr className='divider' />
     </Layout>
   );
 }

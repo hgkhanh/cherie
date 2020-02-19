@@ -9,8 +9,6 @@ import moment from 'moment';
 const Booking = () => {
   const firebase = useContext(FirebaseContext);
   const db = firebase.firestore();
-  const [isReady, setReady] = useState(false);
-  const [isError, setError] = useState(false);
   const [bookingData, setBookingData] = useState([]);
   const allSlot = [
     11, 13, 14, 15, 16, 17
@@ -34,11 +32,9 @@ const Booking = () => {
           }
         });
         setBookingData(queriedBookingData);
-        setReady(true);
       })
       .catch(function (error) {
         console.log('Error getting documents: ', error);
-        setError(true);
       });
   }, []);
 
@@ -57,7 +53,7 @@ const Booking = () => {
   const handleTimeSelect = (e) => {
     if (e.target && e.target.value) {
       setBookTime(e.target.value);
-    } 
+    }
   }
 
   const disabledDate = (current) => {
@@ -65,38 +61,48 @@ const Booking = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <h1>
-        Booking component
-      </h1>
-      <Row className='centerAlign' type='flex' justify='center' gutter={40}>
-        <Col span={24} md={12} lg={10} xl={8} className={styles.calendar}>
-          <h2>Select date</h2>
-          <Calendar fullscreen={false} disabledDate={disabledDate} onSelect={handleDateSelect} />
-        </Col>
-        <Col span={24} md={12} lg={10} xl={8}>
-          <h2>Select time</h2>
-          <Row className={styles.slot} gutter={[10, 10]}>
-            <Radio.Group buttonStyle='solid' onChange={handleTimeSelect}>
-              {
-                allSlot.map(slot => {
-                  return (
-                    <Col span={12} offset={slot > 13 ? 12 : 0} key={slot}>
-                      <Radio.Button disabled={bookedSlot.includes(slot)} value={slot}>
-                        {`${slot}.00 ${slot > 12 ? 'PM' : 'AM'}`}
-                        <span></span>
-                      </Radio.Button>
-                    </Col>
-                  );
-                })
-              }
-            </Radio.Group>
-          </Row>
-        </Col>
-      </Row>
-      <hr className='divider' />
-      { date && bookTime && <BookingForm date={date} bookTime={bookTime} /> }      
-    </div>
+    <React.Fragment>
+      <h1>Booking Page</h1>
+      <p>This is the instruction of booking page blah blah blah</p>
+      <p>
+        first step of booking
+      </p>
+      <p>
+        the next step of booking
+      </p>
+      <div className={styles.container}>
+        <h1>
+          Booking component
+        </h1>
+        <Row className='centerAlign' type='flex' justify='center' gutter={40}>
+          <Col span={24} md={12} lg={10} xl={8} className={styles.calendar}>
+            <h2>Select date</h2>
+            <Calendar fullscreen={false} disabledDate={disabledDate} onSelect={handleDateSelect} />
+          </Col>
+          <Col span={24} md={12} lg={10} xl={8}>
+            <h2>Select time</h2>
+            <Row className={styles.slot} gutter={[10, 10]}>
+              <Radio.Group buttonStyle='solid' onChange={handleTimeSelect}>
+                {
+                  allSlot.map(slot => {
+                    return (
+                      <Col span={12} offset={slot > 13 ? 12 : 0} key={slot}>
+                        <Radio.Button disabled={bookedSlot.includes(slot)} value={slot}>
+                          {`${slot}.00 ${slot > 12 ? 'PM' : 'AM'}`}
+                          <span></span>
+                        </Radio.Button>
+                      </Col>
+                    );
+                  })
+                }
+              </Radio.Group>
+            </Row>
+          </Col>
+        </Row>
+        <hr className='divider' />
+        {date && bookTime && <BookingForm date={date} bookTime={bookTime} />}
+      </div>
+    </React.Fragment>
   );
 }
 
