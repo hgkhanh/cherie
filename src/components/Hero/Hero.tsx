@@ -1,5 +1,6 @@
 import React, { useContext, useState, useRef } from 'react';
 import BackgroundImage from 'gatsby-background-image';
+import Image from 'gatsby-image';
 import styles from './Hero.module.scss';
 import { Spring, config } from 'react-spring/renderprops';
 import { useStaticQuery, graphql } from "gatsby";
@@ -40,21 +41,18 @@ const Hero = () => {
         <BackgroundImage
             className={styles.hero}
             fluid={heroImage.childCloudinaryAsset.fluid}
-            backgroundColor={`#040e18`}
-        >
+            backgroundColor={`#040e18`} >
             {/* <h2>Face of love</h2> */}
             <Spring
                 config={config.slow}
                 to={{
                     transform: active ? 'scale(1.1)' : 'scale(1.0)'
-                }}
-            >
+                }}>
                 {springStyles => (
                     <button ref={scrollBtn} className={styles.scrollButton} style={{ ...springStyles }}
                         onMouseEnter={() => setActive(true)}
                         onMouseLeave={() => setActive(false)}
-                        onClick={scrollToContent}
-                    >
+                        onClick={scrollToContent}>
                         <svg viewBox="0 0 21 11">
                             <polyline fill="none" stroke="currentColor" points="0.5 0.5 10.5 10.5 20.5 0.5" strokeWidth="1.25"></polyline>
                         </svg>

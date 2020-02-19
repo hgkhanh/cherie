@@ -17,7 +17,7 @@ const Booking = () => {
   ];
   const [bookedSlot, setBookedSlot] = useState([]);
   const [date, setDate] = useState(moment());
-  const [time, setTime] = useState();
+  const [bookTime, setBookTime] = useState();
   /**
    * Get all booking
    **/
@@ -29,13 +29,10 @@ const Booking = () => {
         querySnapshot.forEach(function (doc) {
           // doc.data() is never undefined for query doc snapshots
           const data = doc.data();
-          console.log(data.time);
-          console.log(data.time.seconds);
-          if (data.time && data.time.seconds) {
-            queriedBookingData.push(moment(data.time.seconds * 1000));
+          if (data.bookTime && data.bookTime.seconds) {
+            queriedBookingData.push(moment(data.bookTime.seconds * 1000));
           }
         });
-        console.log(queriedBookingData);
         setBookingData(queriedBookingData);
         setReady(true);
       })
@@ -59,7 +56,7 @@ const Booking = () => {
 
   const handleTimeSelect = (e) => {
     if (e.target && e.target.value) {
-      setTime(e.target.value);
+      setBookTime(e.target.value);
     } 
   }
 
@@ -73,11 +70,11 @@ const Booking = () => {
         Booking component
       </h1>
       <Row className='centerAlign' type='flex' justify='center' gutter={40}>
-        <Col span={24} md={12} lg={8} className={styles.calendar}>
+        <Col span={24} md={12} lg={10} xl={8} className={styles.calendar}>
           <h2>Select date</h2>
           <Calendar fullscreen={false} disabledDate={disabledDate} onSelect={handleDateSelect} />
         </Col>
-        <Col span={24} md={12} lg={8} >
+        <Col span={24} md={12} lg={10} xl={8}>
           <h2>Select time</h2>
           <Row className={styles.slot} gutter={[10, 10]}>
             <Radio.Group buttonStyle='solid' onChange={handleTimeSelect}>
@@ -98,7 +95,7 @@ const Booking = () => {
         </Col>
       </Row>
       <hr className='divider' />
-      { date && time && <BookingForm date={date} time={time} /> }      
+      { date && bookTime && <BookingForm date={date} bookTime={bookTime} /> }      
     </div>
   );
 }

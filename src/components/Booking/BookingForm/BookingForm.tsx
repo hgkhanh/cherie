@@ -5,7 +5,7 @@ import { FirebaseContext } from '../../../shared/FirebaseProvider';
 import { Form, Col, Row, Input, Button, DatePicker } from 'antd';
 import moment from 'moment';
 
-const BookingForm = ({ form, date, time }) => {
+const BookingForm = ({ form, date, bookTime }) => {
   const firebase = useContext(FirebaseContext);
   const db = firebase.firestore();
   const { getFieldDecorator, setFieldsValue } = form;
@@ -14,18 +14,18 @@ const BookingForm = ({ form, date, time }) => {
   // Set time field when user selected a time slot
 
   useEffect(() => {
-    const timeObject = date.set({ 'hour': time, 'minute': 0, 'second': 0 });
+    const timeObject = date.set({ 'hour': bookTime, 'minute': 0, 'second': 0 });
     setFieldsValue({
-      time: timeObject
+      bookTime: timeObject
     });
-  }, [date, time]);
+  }, [date, bookTime]);
 
   const handleSubmit = (event) => {
     console.log('Submit');
     event.preventDefault();
     form.validateFields((err, values) => {
       if (!err) {
-        values.time = values.time.toDate();
+        values.bookTime = values.bookTime.toDate();
         // Form valid, create Booking in Firebase
         const publicBookingRef = db.collection('booking-public');
         const detailBookingRef = db.collection('booking');
@@ -37,7 +37,7 @@ const BookingForm = ({ form, date, time }) => {
         // Create an simple entry with only Time data in 'booking-public' collection
         const publicBooking = publicBookingRef.add(
           {
-            time: values.time
+            bookTime: values.bookTime
           }
         )
 
@@ -74,8 +74,8 @@ const BookingForm = ({ form, date, time }) => {
     <Form {...formItemLayout} onSubmit={handleSubmit}>
       <Row className={styles.container} gutter={[10, 10]}>
         <Col span={24} lg={{ span: 12, offset: 6 }} >
-          <Form.Item label='Time' required style={{ display: 'none' }}>
-            {getFieldDecorator('time')
+          <Form.Item label='bookTime' required style={{ display: 'none' }}>
+            {getFieldDecorator('bookTime')
               (<DatePicker showTime placeholder="Select Time" />)}
           </Form.Item>
           <Form.Item label='Name' required>
@@ -99,7 +99,7 @@ const BookingForm = ({ form, date, time }) => {
               (<TextArea autoSize={{ minRows: 3 }} />)}
           </Form.Item>
         </Col>
-        <Col span={24} lg={{ span: 16, offset: 4 }} className='rightAlign' push={4}>
+        <Col span={24} sm={{ push: 0 }} md={{ push: 4 }} lg={{ span: 12, offset: 4 }} className='rightAlign' >
           <Form.Item >
             <Button type="primary" htmlType="submit">
               Book
