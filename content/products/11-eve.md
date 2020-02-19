@@ -10,7 +10,7 @@ galleryImages:
   - ../images/Eve-02.jpg
   - ../images/Eve-04.jpg
   - ../images/Eve-05.jpg
-price: '999'
+price: '1699'
 category: A-line
 sizes:
   - '34'

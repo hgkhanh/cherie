@@ -10,7 +10,7 @@ galleryImages:
   - ../images/Love-01.jpg
   - ../images/Love-02.jpg
   - ../images/Love-03.jpg
-price: '999'
+price: '1799'
 category: A-line
 sizes:
   - '34'

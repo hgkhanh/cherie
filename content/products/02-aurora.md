@@ -11,7 +11,7 @@ galleryImages:
   - ../images/Aurora-02.jpg
   - ../images/Aurora-04.jpg
   - ../images/Aurora-05.jpg
-price: '999'
+price: '1899'
 category: Ball-gown
 sizes:
   - '34'

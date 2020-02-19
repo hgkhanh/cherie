@@ -11,7 +11,7 @@ galleryImages:
   - ../images/Thea-06.jpg
   - ../images/Thea-01.jpg
   - ../images/Thea-02.jpg
-price: '999'
+price: '1799'
 category: Ball-gown
 sizes:
   - '34'

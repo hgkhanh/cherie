@@ -9,7 +9,7 @@ featureImage: ../images/Mina-03.jpg
 galleryImages:
   - ../images/Mina-03.jpg
   - ../images/Mina-02.jpg
-price: '999'
+price: '1399'
 category: Ball-gown
 sizes:
   - '34'

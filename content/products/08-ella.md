@@ -9,7 +9,7 @@ featureImage: ../images/Ella-01.jpg
 galleryImages:
   - ../images/Ella-01.jpg
   - ../images/Ella-02.jpg
-price: '999'
+price: '1399'
 category: A-line
 sizes:
   - '34'

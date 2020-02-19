@@ -11,7 +11,7 @@ galleryImages:
   - ../images/Elliah-04.jpg
   - ../images/Elliah-05.jpg
   - ../images/Elliah-06.jpg
-price: '999'
+price: '1299'
 category: A-line
 sizes:
   - '34'

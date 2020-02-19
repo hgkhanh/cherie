@@ -14,7 +14,7 @@ galleryImages:
   - ../images/Stella-02.jpg
   - ../images/Stella-03.jpg
   - ../images/Stella-04.jpg
-price: '999'
+price: '1299'
 category: Ball-gown
 sizes:
   - '34'
