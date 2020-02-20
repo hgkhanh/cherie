@@ -13,7 +13,7 @@ const BookingPage = () => {
       <hr className='divider' />
       <div className='grid centerAlign sansSerif'>
       <Router basepath="/booking">
-        <Details path="/:bookingId" />
+        <Details path="/details/:bookingId" />
         <Booking path="/" default/>
       </Router>
         <hr className='divider' />

@@ -1,6 +1,5 @@
 import React, { useContext, useState, useRef } from 'react';
 import BackgroundImage from 'gatsby-background-image';
-import Image from 'gatsby-image';
 import styles from './Hero.module.scss';
 import { Spring, config } from 'react-spring/renderprops';
 import { useStaticQuery, graphql } from "gatsby";

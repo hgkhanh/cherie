@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
+import { navigate } from 'gatsby';
 import * as styles from './BookingForm.module.scss';
 import 'firebase/firestore';
 import { FirebaseContext } from '../../../shared/FirebaseProvider';
 import { Form, Col, Row, Input, Button, DatePicker } from 'antd';
-import moment from 'moment';
 
 const BookingForm = ({ form, date, bookTime }) => {
   const firebase = useContext(FirebaseContext);
@@ -26,6 +26,7 @@ const BookingForm = ({ form, date, bookTime }) => {
     form.validateFields((err, values) => {
       if (!err) {
         values.bookTime = values.bookTime.toDate();
+        values.createTime = new Date();
         // Form valid, create Booking in Firebase
         const publicBookingRef = db.collection('booking-public');
         const detailBookingRef = db.collection('booking');
@@ -48,6 +49,7 @@ const BookingForm = ({ form, date, bookTime }) => {
             });
             if (success) {
               console.error("Booking success: ", result);
+              navigate('/booking/details/' + result[0].id);
             }
           })
           .catch(function (error) {
