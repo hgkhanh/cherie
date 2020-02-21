@@ -1,7 +1,11 @@
 .container {
   padding: 0 90px;
 }
-
+@media screen and (max-width: 993px) {
+  .container {
+    padding: 0 40px;
+  }
+}
 @media screen and (max-width: 769px) {
   .container {
     padding: 0;
@@ -12,11 +16,16 @@
   position: relative;
 }
 
-
 .info {
   width: 100%;
   text-align: center;
   padding: 50px;
+}
+
+@media screen and (max-width: 993px) {
+  .info {
+    padding: 50px 20px;
+  }
 }
 
 @media screen and (min-width: 770px) {
@@ -28,6 +37,7 @@
     display: flex;
     justify-content: center;
     .info {
+      bottom: 0;
       top: auto;
       position: absolute;
     }
@@ -38,7 +48,7 @@
   .info {
     position: fixed;
     box-sizing: border-box;
-    bottom: 0;
+    top: 50px;
     width: calc(50vw - 100px);
     max-width: 600px;
     min-height: calc(100vh - 240px);
@@ -57,7 +67,6 @@
       text-decoration: underline;
     }
   }
-
 }
 .imageContainer {
   position: relative;
