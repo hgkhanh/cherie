@@ -1,6 +1,7 @@
 [build]
+  command = "npm run build"
+  functions = "src/functions"
   publish = "public"
-  command = "gatsby build"
 [build.environment]
   NODE_VERSION = "12.13.0"
   YARN_VERSION = "1.19.1"

@@ -10,7 +10,6 @@ const BookingForm = ({ form, date, bookTime }) => {
   const db = firebase.firestore();
   const { getFieldDecorator, setFieldsValue } = form;
   const { TextArea } = Input;
-
   // Set time field when user selected a time slot
 
   useEffect(() => {
@@ -27,6 +26,8 @@ const BookingForm = ({ form, date, bookTime }) => {
       if (!err) {
         values.bookTime = values.bookTime.toDate();
         values.createTime = new Date();
+        // add emailSent field, indicate wheter confirmation email has been sent to user or not
+        values.emailSent = false;
         // Form valid, create Booking in Firebase
         const publicBookingRef = db.collection('booking-public');
         const detailBookingRef = db.collection('booking');

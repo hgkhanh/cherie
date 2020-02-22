@@ -5,6 +5,7 @@ import Layout from "../layout";
 import Booking from "../components/Booking";
 import Details from "../components/Booking/Details";
 import config from "../../data/SiteConfig";
+import { Location } from '@reach/router';
 
 const BookingPage = () => {
   return (
@@ -12,10 +13,13 @@ const BookingPage = () => {
       <Helmet title={`Booking | ${config.siteTitle}`} />
       <hr className='divider' />
       <div className='grid centerAlign sansSerif'>
-      <Router basepath="/booking">
-        <Details path="/details/:bookingId" />
-        <Booking path="/" default/>
-      </Router>
+        <Location>
+          {locationProps =>
+            <Router basepath="/booking">
+              <Details path="/details/:bookingId" {...locationProps} />
+              <Booking path="/" default />
+            </Router>}
+        </Location>
         <hr className='divider' />
       </div>
     </Layout>
