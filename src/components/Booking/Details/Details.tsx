@@ -41,7 +41,7 @@ const Details = ({ location, bookingId }) => {
             }
             if (!bookingObj.emailSent) {
               sendEmail(emailPayload).then((response) => {
-                console.log('Details - SendEmail', response);
+                console.log('Details - email sent', response);
                 setEmailSending(false);
                 if (!response.ok) {
                   setEmailSuccess(false);
@@ -53,6 +53,9 @@ const Details = ({ location, bookingId }) => {
                 });
                 setEmailSuccess(true);
               });
+            } else {
+              setEmailSending(false);
+              setEmailSuccess(true);
             }
           } else {
             console.log("No such document!");
@@ -63,12 +66,12 @@ const Details = ({ location, bookingId }) => {
           console.log('Error getting documents: ', error);
           setError('Failed to retrieve booking details.');
         });
-        setEmailSending(false);
+      setEmailSending(false);
     }
   }, []);
 
   const sendEmail = (booking) => {
-    return fetch("/.netlify/functions/sendmail", {
+    return fetch("/.netlify/functions/confirmationEmail", {
       method: "POST",
       body: JSON.stringify(booking),
     });
@@ -102,6 +105,7 @@ const Details = ({ location, bookingId }) => {
                   {booking.bookTime.format("dddd, MMMM Do YYYY, h:mm:ss a")}
                 </Descriptions.Item>
                 <Descriptions.Item label="Name">{booking.name}</Descriptions.Item>
+                <Descriptions.Item label="Email">{booking.email}</Descriptions.Item>
                 <Descriptions.Item label="Phone">{booking.phone}</Descriptions.Item>
                 <Descriptions.Item label="Note">{booking.note}</Descriptions.Item>
                 <Descriptions.Item label="Booking ID">{bookingId}</Descriptions.Item>
