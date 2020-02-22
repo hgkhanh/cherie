@@ -20,7 +20,7 @@ exports.handler = async (event, context, callback) => {
     const msg = {
         to: SENDGRID_TO_EMAIL,
         from: SENDGRID_FROM_EMAIL,
-        templateId: 'd-3fb49ae5877e480aa1b7278d1d9d1800 ',
+        templateId: 'd-3fb49ae5877e480aa1b7278d1d9d1800',
         dynamic_template_data: {
             subject: subject,
             name: name,

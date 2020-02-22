@@ -34,9 +34,9 @@ exports.handler = async (event, context, callback) => {
             domain: domain
         },
     };
-
     try {
         console.log('send mail', msg);
+
         await sgMail.send(msg);
 
         callback(null, {
@@ -44,6 +44,7 @@ exports.handler = async (event, context, callback) => {
             body: "Message sent"
         });
     } catch (e) {
+        console.log(e);
         callback(null, {
             statusCode: e.code,
             body: e.message

@@ -33,7 +33,7 @@ const Details = ({ location, bookingId }) => {
               subject: 'Thanks! Your booking is confirmed at Chérie',
               name: bookingObj.name,
               phone: bookingObj.phone,
-              bookTime: bookingObj.bookTime,
+              bookTime: bookingObj.bookTime.format("dddd, MMMM Do YYYY, h:mm:ss a"),
               budget: bookingObj.budget ? bookingObj.budget : 'N/A',
               note: bookingObj.note ? bookingObj.note : 'N/A',
               bookingId: bookingId,
@@ -98,19 +98,21 @@ const Details = ({ location, bookingId }) => {
             )}
 
             <hr className='divider' />
-            <div className={`${styles.details} leftAlign`}>
-              <Descriptions
-                title="Your booking detail" layout="horizontal" column={1}>
-                <Descriptions.Item label="Time">
-                  {booking.bookTime.format("dddd, MMMM Do YYYY, h:mm:ss a")}
-                </Descriptions.Item>
-                <Descriptions.Item label="Name">{booking.name}</Descriptions.Item>
-                <Descriptions.Item label="Email">{booking.email}</Descriptions.Item>
-                <Descriptions.Item label="Phone">{booking.phone}</Descriptions.Item>
-                <Descriptions.Item label="Note">{booking.note}</Descriptions.Item>
-                <Descriptions.Item label="Booking ID">{bookingId}</Descriptions.Item>
-              </Descriptions>
-            </div>
+            <Row className={`${styles.details} leftAlign`}>
+              <Col span={24} lg={{ span: 12, offset: 6 }} >
+                <Descriptions
+                  title="Your booking detail" layout="horizontal" column={1}>
+                  <Descriptions.Item label="Time">
+                    {booking.bookTime.format("dddd, MMMM Do YYYY, h:mm:ss a")}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Name">{booking.name}</Descriptions.Item>
+                  <Descriptions.Item label="Email">{booking.email}</Descriptions.Item>
+                  <Descriptions.Item label="Phone">{booking.phone}</Descriptions.Item>
+                  <Descriptions.Item label="Note">{booking.note}</Descriptions.Item>
+                  <Descriptions.Item label="Booking ID">{bookingId}</Descriptions.Item>
+                </Descriptions>
+              </Col>
+            </Row>
           </React.Fragment>
         )}
       {isError.length > 0 && !isReady && (

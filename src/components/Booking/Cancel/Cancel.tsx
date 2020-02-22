@@ -48,7 +48,7 @@ const Cancel = ({ location, bookingId }) => {
       name: booking.name,
       email: booking.email,
       phone: booking.phone,
-      bookTime: booking.bookTime,
+      bookTime: booking.bookTime.format("dddd, MMMM Do YYYY, h:mm:ss a"),
       bookingId: bookingId,
       domain: location.origin
     }
@@ -85,21 +85,23 @@ const Cancel = ({ location, bookingId }) => {
               <Icon type="question-circle" theme="twoTone" twoToneColor="#C79479" />
             </h1>
             <hr className='divider' />
-            <div className={`${styles.details} leftAlign`}>
-              <Descriptions
-                title="Your booking detail" layout="horizontal" column={1}>
-                <Descriptions.Item label="Time">
-                  {booking.bookTime.format("dddd, MMMM Do YYYY, h:mm:ss a")}
-                </Descriptions.Item>
-                <Descriptions.Item label="Name">{booking.name}</Descriptions.Item>
-                <Descriptions.Item label="Email">{booking.email}</Descriptions.Item>
-                <Descriptions.Item label="Phone">{booking.phone}</Descriptions.Item>
-                <Descriptions.Item label="Note">{booking.note}</Descriptions.Item>
-                <Descriptions.Item label="Booking ID">{bookingId}</Descriptions.Item>
-              </Descriptions>
-            </div>
+            <Row className={`${styles.details} leftAlign`}>
+              <Col span={24} lg={{ span: 12, offset: 6 }} >
+                <Descriptions
+                  title="Your booking detail" layout="horizontal" column={1}>
+                  <Descriptions.Item label="Time">
+                    {booking.bookTime.format("dddd, MMMM Do YYYY, h:mm:ss a")}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Name">{booking.name}</Descriptions.Item>
+                  <Descriptions.Item label="Email">{booking.email}</Descriptions.Item>
+                  <Descriptions.Item label="Phone">{booking.phone}</Descriptions.Item>
+                  <Descriptions.Item label="Note">{booking.note}</Descriptions.Item>
+                  <Descriptions.Item label="Booking ID">{bookingId}</Descriptions.Item>
+                </Descriptions>
+              </Col>
+            </Row>
             <hr className='divider' />
-            <Button type="danger" htmlType="submit" onClick={handleClick} disabled={isCancelSending}>Cancel your booking</Button>
+            <Button type="danger" htmlType="submit" onClick={handleClick} disabled={isCancelSending}>Cancel booking</Button>
             {isCancelSending && (<Spin />)}
           </React.Fragment>
         )}
@@ -120,8 +122,8 @@ const Cancel = ({ location, bookingId }) => {
           subTitle={`Booking slot: ${booking.bookTime}. Go back to booking if you want to create another booking.`}
           extra={[
             <Button type="primary" key="console" onClick={() => {
-                navigate('/booking');
-              }}>
+              navigate('/booking');
+            }}>
               Go to Booking
             </Button>
           ]}

@@ -5,8 +5,19 @@ require('dotenv').config({
 const urljoin = require("url-join");
 const path = require("path");
 const config = require("./data/SiteConfig");
-
+const { createProxyMiddleware } = require('http-proxy-middleware');
 module.exports = {
+  developMiddleware: app => {
+    app.use(
+      "/.netlify/functions/",
+      createProxyMiddleware({
+        target: "http://localhost:9000",
+        pathRewrite: {
+          "/.netlify/functions/": "",
+        }
+      })
+    )
+  },
   pathPrefix: config.pathPrefix === "" ? "/" : config.pathPrefix,
   siteMetadata: {
     siteUrl: urljoin(config.siteUrl, config.pathPrefix),
