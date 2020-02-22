@@ -37,14 +37,14 @@ exports.handler = async (event, context, callback) => {
         console.log('send mail', msg);
         await sgMail.send(msg);
 
-        return {
+        callback(null, {
             statusCode: 200,
             body: "Message sent"
-        }
+        });
     } catch (e) {
-        return {
+        callback(null, {
             statusCode: e.code,
             body: e.message
-        }
+        });
     }
 };
