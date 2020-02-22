@@ -4,6 +4,7 @@ import { Router } from "@reach/router"
 import Layout from "../layout";
 import Booking from "../components/Booking";
 import Details from "../components/Booking/Details";
+import Cancel from "../components/Booking/Cancel";
 import config from "../../data/SiteConfig";
 import { Location } from '@reach/router';
 
@@ -17,6 +18,7 @@ const BookingPage = () => {
           {locationProps =>
             <Router basepath="/booking">
               <Details path="/details/:bookingId" {...locationProps} />
+              <Cancel path="/cancel/:bookingId" {...locationProps} />
               <Booking path="/" default />
             </Router>}
         </Location>

@@ -1,18 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
 import 'firebase/firestore';
 import { FirebaseContext } from '../../../shared/FirebaseProvider';
-import * as styles from "./Details.module.scss";
-import { Row, Col, Icon, Descriptions, Spin } from 'antd';
+import * as styles from "./Cancel.module.scss";
+import { Row, Col, Icon, Descriptions, Spin, Button, message, Result } from 'antd';
 import moment from 'moment';
 
-const Details = ({ location, bookingId }) => {
+const Cancel = ({ location, bookingId }) => {
   const firebase = useContext(FirebaseContext);
   const db = firebase.firestore();
   const [booking, setBooking] = useState({});
   const [isError, setError] = useState('');
   const [isReady, setReady] = useState(false);
-  const [isEmailSending, setEmailSending] = useState(true);
-  const [isEmailSuccess, setEmailSuccess] = useState(false);
+  const [isCancelSending, setCancelSending] = useState(false);
+  const [isCancelSuccess, setCancelSuccess] = useState(false);
   /**
    * Get booking detail
    **/
@@ -28,35 +28,6 @@ const Details = ({ location, bookingId }) => {
             bookingObj.bookTime = moment(bookingObj.bookTime.seconds * 1000);
             setBooking(bookingObj);
             setReady(true);
-            const emailPayload = {
-              email: bookingObj.email,
-              subject: 'Thanks! Your booking is confirmed at Chérie',
-              name: bookingObj.name,
-              phone: bookingObj.phone,
-              bookTime: bookingObj.bookTime,
-              budget: bookingObj.budget ? bookingObj.budget : 'N/A',
-              note: bookingObj.note ? bookingObj.note : 'N/A',
-              bookingId: bookingId,
-              domain: location.origin
-            }
-            if (!bookingObj.emailSent) {
-              sendEmail(emailPayload).then((response) => {
-                console.log('Details - email sent', response);
-                setEmailSending(false);
-                if (!response.ok) {
-                  setEmailSuccess(false);
-                  return
-                }
-                // set in db, emailSent = true
-                docRef.update({
-                  emailSent: true
-                });
-                setEmailSuccess(true);
-              });
-            } else {
-              setEmailSending(false);
-              setEmailSuccess(true);
-            }
           } else {
             console.log("No such document!");
             setError('Invalid Booking ID.');
@@ -66,12 +37,39 @@ const Details = ({ location, bookingId }) => {
           console.log('Error getting documents: ', error);
           setError('Failed to retrieve booking details.');
         });
-      setEmailSending(false);
     }
   }, []);
 
+  const handleClick = () => {
+    setCancelSending(true);
+    // send email
+    const emailPayload = {
+      subject: 'Please cancel my booking',
+      name: booking.name,
+      email: booking.email,
+      phone: booking.phone,
+      bookTime: booking.bookTime,
+      bookingId: bookingId,
+      domain: location.origin
+    }
+    sendEmail(emailPayload)
+      .then((response) => {
+        // show result
+        console.log('Cancel - email sent', response);
+        setCancelSending(false);
+        if (!response.ok) {
+          message.error('Failed to cancel the booking');
+          return
+        }
+      })
+      .catch(function (error) {
+        console.log('Cancel - Error sending email: ', error);
+        setCancelSending(false);
+      });
+  }
+
   const sendEmail = (booking) => {
-    return fetch("/.netlify/functions/confirmationEmail", {
+    return fetch("/.netlify/functions/cancelationEmail", {
       method: "POST",
       body: JSON.stringify(booking),
     });
@@ -79,24 +77,13 @@ const Details = ({ location, bookingId }) => {
 
   return (
     <div className={styles.container}>
-      {isError === '' && isReady &&
+      {!isCancelSuccess && isError === '' && isReady &&
         (
           <React.Fragment>
             <h1>
-              Your booking is confirmed&nbsp;&nbsp;
-              <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a" />
+              Are you sure you want to cancel your booking &nbsp;&nbsp;
+              <Icon type="question-circle" theme="twoTone" twoToneColor="#C79479" />
             </h1>
-            <hr className='divider' />
-            {!isEmailSending && isEmailSuccess ?
-              (
-                <h2>An email confirmation was sent to&nbsp;&nbsp;<b>{booking.email}</b></h2>
-              ) : (
-                <h2>We had trouble sending comfirmation email to&nbsp;&nbsp;<b>{booking.email}</b></h2>
-              )}
-            {isEmailSending && (
-              <p>Sending email...</p>
-            )}
-
             <hr className='divider' />
             <div className={`${styles.details} leftAlign`}>
               <Descriptions
@@ -111,9 +98,12 @@ const Details = ({ location, bookingId }) => {
                 <Descriptions.Item label="Booking ID">{bookingId}</Descriptions.Item>
               </Descriptions>
             </div>
+            <hr className='divider' />
+            <Button type="danger" htmlType="submit" onClick={handleClick} disabled={isCancelSending}>Cancel your booking</Button>
+            {isCancelSending && (<Spin />)}
           </React.Fragment>
         )}
-      {isError.length > 0 && !isReady && (
+      {!isCancelSuccess && isError.length > 0 && !isReady && (
         <React.Fragment>
           <h1>
             Something wrong&nbsp;&nbsp;
@@ -122,11 +112,24 @@ const Details = ({ location, bookingId }) => {
           <p>Error retrieving booking details.</p>
         </React.Fragment>
       )}
-      {isError === '' && !isReady && (<Spin />)}
 
+      {isCancelSuccess && (
+        <Result
+          status="success"
+          title="Successfully cancel your booking!"
+          subTitle={`Booking slot: ${booking.bookTime}. Go back to booking if you want to create another booking.`}
+          extra={[
+            <Button type="primary" key="console" onClick={() => {
+                navigate('/booking');
+              }}>
+              Go to Booking
+            </Button>
+          ]}
+        />
+      )}
 
     </div >
   );
 }
 
-export default Details;
+export default Cancel;

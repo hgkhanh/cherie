@@ -11,6 +11,8 @@ exports.handler = async (event, context, callback) => {
         name,
         phone,
         bookTime,
+        bookingId,
+        domain
     } = payload;
 
     sgMail.setApiKey(SENDGRID_API_KEY);

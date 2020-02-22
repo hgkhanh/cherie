@@ -1,0 +1,21 @@
+.container {
+  min-height: calc(100vh - 400px - 160px);
+  :global(.anticon) {
+    vertical-align: -0.2em;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .container {
+    min-height: calc(100vh - 60px - 160px);
+  }
+}
+
+.details {
+  font-family: $font-body;
+  &,
+  :global(.ant-descriptions-title),
+  :global(.ant-descriptions-item-label) {
+    color: #707272;
+  }
+}
