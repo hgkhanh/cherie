@@ -1,10 +1,10 @@
 const sgMail = require('@sendgrid/mail')
-const { SENDGRID_API_KEY, SENDGRID_FROM_EMAIL } = process.env
+const { SENDGRID_API_KEY, SENDGRID_FROM_EMAIL } = process.env;
 
 exports.handler = async (event, context, callback) => {
 
     const payload = JSON.parse(event.body);
-    console.log('sendmail.js', event);
+    console.log('confirmationEmail', event);
     const {
         email,
         subject,
