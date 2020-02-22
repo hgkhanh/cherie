@@ -2,25 +2,11 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
-const proxy = require("http-proxy-middleware");
 const urljoin = require("url-join");
 const path = require("path");
 const config = require("./data/SiteConfig");
 
 module.exports = {
-  // for avoiding CORS while developing Netlify Functions locally
-  // read more: https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
-  developMiddleware: app => {
-    app.use(
-      "/.netlify/functions/",
-      proxy({
-        target: "http://localhost:8000",
-        pathRewrite: {
-          "/.netlify/functions/": "",
-        },
-      })
-    )
-  },
   pathPrefix: config.pathPrefix === "" ? "/" : config.pathPrefix,
   siteMetadata: {
     siteUrl: urljoin(config.siteUrl, config.pathPrefix),
@@ -37,6 +23,12 @@ module.exports = {
     }
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        generateMatchPathRewrites: true
+      },
+    },
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/booking/*`] },
