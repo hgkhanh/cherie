@@ -28,8 +28,8 @@ const ProductCard = ({ product, index }) => {
                         <Link to={product.fields.slug} key={product.name} className={styles.card}>
                             <Image fluid={product.frontmatter.featureImage.childCloudinaryAsset.fluid} alt="" />
                             <div className={styles.description}>
-                                <h2>{product.frontmatter.name}</h2>
-                                <h3 className='sansSerif'>£ {product.frontmatter.price}</h3>
+                                <h3>{product.frontmatter.name}</h3>
+                                <span className={styles.price}>£ {product.frontmatter.price}</span>
                             </div>
                         </Link>
                     </Col>

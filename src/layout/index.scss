@@ -69,12 +69,33 @@ blockquote cite {
 blockquote cite:before {
   content: "\2014 \2009";
 }
+
+.underline {
+  display: inline-block;
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 2px;
+    color: #727272;
+    background-color: #727272;
+    transition: width 0.2s ease-in-out;
+  }
+
+  &:hover::before {
+    width: 0;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase!important;
+}
 /* //Typograhpy */
 
 .darkTone {
-  // background: #edc4ad;
-  background: #e8c7b5;
-
   h1,
   h2,
   h3,
@@ -82,9 +103,14 @@ blockquote cite:before {
   h5,
   h6,
   p,
-  a,
-  span {
+  a {
     color: #fff;
+  }
+
+  :not(.ant-btn:hover) {
+    span {
+      color: #fff;
+    }
   }
 
   p {
@@ -177,11 +203,21 @@ hr.divider {
   margin: 0 auto;
   padding: 0 90px;
   position: relative;
-  .gridTitle {
-    flex-basis: 100%;
-    text-align: left;
-    padding: 35px 0;
-    margin: 0;
+  &.darkTone {
+    // background: #edc4ad;
+    background: #e8c7b5;
+  }
+}
+
+.gridTitle {
+  flex-basis: 100%;
+  text-align: left;
+  padding: 35px 0;
+  margin: 0;
+  line-height: 1.75;
+  &.footTitle {
+    padding-top: 0;
+    padding-bottom: 35px;
   }
 }
 
@@ -230,6 +266,9 @@ button:focus {
     width: 100%;
     padding: 20px;
     .gridTitle {
+      padding: 20px 0;
+    }
+    .gridTitle:not(.centerAlign) {
       padding-left: 20px;
       padding-bottom: 0;
     }
@@ -277,6 +316,10 @@ button:focus {
   .ant-drawer-body {
     margin-top: 50px;
   }
+}
+
+button.ant-btn {
+  text-transform: uppercase;
 }
 
 // /* Custom UI Component */

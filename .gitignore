@@ -1,4 +1,6 @@
 .env*
+### Netlify ###
+functions/*
 ### Node ###
 # Logs
 logs

@@ -31,7 +31,7 @@ const Header = ({ path }) => {
   const { dark, light } = logo;
   let logoSize = 160;
 
-  if (width < 577) {
+  if (width <= 576) {
     logoSize = 125;
   } else if (width < 769) {
     logoSize = 140;
@@ -52,7 +52,7 @@ const Header = ({ path }) => {
       </VisibilitySensor>
       <header className={getHeaderClassNames()}>
         <div className={styles.container}>
-          {width < 993 && (
+          {width <= 992 && (
             <Drawer
               placement="left"
               closable={true}
@@ -65,7 +65,7 @@ const Header = ({ path }) => {
             </Drawer>
           )}
           <div className={`${styles.block} ${styles.fill}`}>
-            {width < 993 && (
+            {width <= 992 && (
               <Icon type="menu" style={{ fontSize: '20px' }} onClick={() => setDrawerOpen(true)} />
             )}
             {width >= 993 && (
@@ -89,7 +89,7 @@ const Header = ({ path }) => {
           </div>
 
           <div className={`${styles.block} ${styles.fill}`}>
-            {(width < 993) && (
+            {(width <= 992) && (
               <a href="/booking">
                 <Icon type="book" style={{ fontSize: '20px' }} />
               </a>

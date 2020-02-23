@@ -59,8 +59,9 @@ const Cancel = ({ location, bookingId }) => {
         setCancelSending(false);
         if (!response.ok) {
           message.error('Failed to cancel the booking');
-          return
+          return;
         }
+        setCancelSuccess(true);
       })
       .catch(function (error) {
         console.log('Cancel - Error sending email: ', error);

@@ -1,9 +1,6 @@
-.list {
-  padding-bottom: 20px;
-}
 @media screen and (max-width: 769px) {
   .list {
-    margin: 20px;
+    margin: 0;
     margin-bottom: 0;
   }
 }
@@ -22,8 +19,14 @@
     align-items: baseline;
   }
 }
+
 @media screen and (max-width: 769px) {
   .card {
     flex: 1 1 50%;
   }
+}
+
+span.price {
+  font-family: $font-sans-serif;
+  font-size: 11px;
 }
