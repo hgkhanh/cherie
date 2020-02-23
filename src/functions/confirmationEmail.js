@@ -26,6 +26,7 @@ exports.handler = async (event, context, callback) => {
         dynamic_template_data: {
             subject: subject,
             name: name,
+            email: email,
             phone: phone,
             bookTime: bookTime,
             budget: budget ? budget : 'N/A',

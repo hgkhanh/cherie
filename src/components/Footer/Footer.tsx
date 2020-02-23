@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 const Footer = () => {
   return (
     <footer className={`${styles.footer}`}>
+      <hr className='divider' />
       <div className={styles.linkContainer}>
         <a href='//goo.gl/maps/xDcRUSp836pwG9vdA' target="_blank">
           <h3>Chérie Location</h3>
