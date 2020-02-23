@@ -14,14 +14,14 @@ const HomePage = (props) => {
       query {
         banner1wide: file(name: {eq: "banner1"}) {
           childCloudinaryAsset {
-            fluid(maxWidth: 3000) {
+            fluid(maxWidth: 2400) {
               ...CloudinaryAssetFluid
             }
           }
         }
         banner1vertical: file(name: {eq: "banner1-vertical"}) {
           childCloudinaryAsset {
-            fluid(maxWidth: 1600) {
+            fluid(maxWidth: 900) {
               ...CloudinaryAssetFluid
             }
           }
@@ -29,7 +29,7 @@ const HomePage = (props) => {
 
         banner2wide: file(name: {eq: "banner2"}) {
           childCloudinaryAsset {
-            fluid(maxWidth: 3000) {
+            fluid(maxWidth: 2400) {
               ...CloudinaryAssetFluid
             }
           }
@@ -37,7 +37,7 @@ const HomePage = (props) => {
 
         banner3wide: file(name: {eq: "banner3"}) {
           childCloudinaryAsset {
-            fluid(maxWidth: 3000) {
+            fluid(maxWidth: 2400) {
               ...CloudinaryAssetFluid
             }
           }
@@ -45,7 +45,7 @@ const HomePage = (props) => {
         
         banner4wide: file(name: {eq: "banner4"}) {
           childCloudinaryAsset {
-            fluid(maxWidth: 3000) {
+            fluid(maxWidth: 2400) {
               ...CloudinaryAssetFluid
             }
           }
@@ -85,7 +85,8 @@ const HomePage = (props) => {
     <Layout path={props.path}>
       <div className='pageContainer'>
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
-        <Hero overlay={false} hasScroll={true} imageWide={data.banner1wide} imageVertical={data.banner1vertical}></Hero>
+        <Hero overlay={false} hasScroll={true}
+          imageWide={data.banner1wide} imageVertical={data.banner1vertical}></Hero>
         <hr className='divider' />
         <RevealAnimation opacity transform>
           <div className='gridWrapper'>
