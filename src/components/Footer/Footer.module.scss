@@ -2,6 +2,20 @@
   text-align: center;
   background: #f6f0ec;
   // background: #C79479;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
   position: relative;
+  h3 {
+    font-family: $font-sans-serif;
+    color: #727272;
+    font-weight: 300;
+  }
+}
+
+.linkContainer {
+  display: flex;
+  justify-content: center;
+  a {
+    padding-right: 20px;
+  }
 }

@@ -32,6 +32,9 @@ const BookingForm = ({ form, date, bookTime }) => {
         const publicBookingRef = db.collection('booking-public');
         const detailBookingRef = db.collection('booking');
 
+
+        console.log('Create');
+        console.log(values);
         // Create a detailed entry in 'booking' collection
         const detailBooking = detailBookingRef.add(
           { ...values }
@@ -94,11 +97,11 @@ const BookingForm = ({ form, date, bookTime }) => {
               (<Input />)}
           </Form.Item>
           <Form.Item label='Budget'>
-            {getFieldDecorator('budget')
-              (<Input prefix='€' suffix='EUR' type='number' />)}
+            {getFieldDecorator('budget', { initialValue: ''})
+              (<Input prefix='€' suffix='EUR' type='number'/>)}
           </Form.Item>
           <Form.Item label='Note'>
-            {getFieldDecorator('note')
+            {getFieldDecorator('note', { initialValue: ''})
               (<TextArea autoSize={{ minRows: 3 }} />)}
           </Form.Item>
         </Col>

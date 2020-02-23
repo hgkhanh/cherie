@@ -91,7 +91,7 @@ const HomePage = (props) => {
         <RevealAnimation opacity transform>
           <div className='gridWrapper'>
             <div className='grid flexSection boxContent'>
-              <Row className='gridTitle centerAlign' type='flex' justify='center' justify='center'>
+              <Row className='gridTitle centerAlign' type='flex' justify='center'>
                 <Col className='gutter-row' span={24}><h1>Who We Are</h1></Col>
                 <Col className='gutter-row' span={24} md={16} lg={12}>
                   <p>Inspired by modern beauty with a nostalgic soul that forever longs
