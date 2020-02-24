@@ -92,9 +92,10 @@ const HomePage = (props) => {
           <div className='gridWrapper'>
             <div className='grid flexSection boxContent'>
               <Row className='gridTitle centerAlign' type='flex' justify='center'>
-                <Col className='gutter-row' span={24}><h1>Who We Are</h1></Col>
+                <Col className='gutter-row' span={24}><h2 className="uppercase" style={{ marginBottom: '2em' }}>Who We Are</h2>
+                </Col>
                 <Col className='gutter-row' span={24} md={16} lg={12}>
-                  <p>Inspired by modern beauty with a nostalgic soul that forever longs
+                  <p style={{ marginBottom: '2em' }}>Inspired by modern beauty with a nostalgic soul that forever longs
                     for the past, allured by romance and passion,the idea of a small
                     bridal boutique was conceived at the heart of Helsinki like a long
                     lost dream. With the goal of creating a once-in-a-lifetime experience
@@ -114,7 +115,7 @@ const HomePage = (props) => {
                   <h4>- The Cherie Bridal Team</h4>
                   <hr className='divider' />
                   <Link to={'/about'} >
-                    <h3 className='underline'>Learn more</h3>
+                    <h3 className='underline uppercase'>Learn more</h3>
                   </Link>
                 </Col>
               </Row>
@@ -124,8 +125,8 @@ const HomePage = (props) => {
         <hr className='divider' />
         <Hero overlay={true} overlayAlpha={0.6} hasScroll={false} imageWide={data.banner2wide}
           imageVertical={data.banner2wide}>
-          <h3>Made-to-order dresses</h3>
-          <h1>Chérie Store</h1>
+          <h3 style={{ marginBottom: 0 }} >Made-to-order dresses</h3>
+          <h2 style={{ marginBottom: '1em' }} className="uppercase">Chérie Store</h2>
           <Link to='/booking'>
             <Button size='large' ghost htmlType="submit">
               Book An Appointment
@@ -135,19 +136,19 @@ const HomePage = (props) => {
         <hr className='divider' />
         <div className='grid'>
           <div className='gridTitle centerAlign'>
-            <h1>Our Favourites</h1>
+            <h2 className="uppercase">Our Favourites</h2>
           </div>
           <ProductList products={products} />
           <div className='gridTitle footTitle centerAlign'>
             <Link to={'/shop'} >
-              <h3 className='underline'>See more</h3>
+              <h3 className='underline uppercase'>See more</h3>
             </Link>
           </div>
         </div>
         <hr className='divider' />
         <Hero overlay={true} hasScroll={false} imageWide={data.banner3wide}
           imageVertical={data.banner3wide}>
-          <h1 style={{ marginBottom: 0}}>Have all your wedding photos back</h1>
+          <h2 style={{ marginBottom: 0 }} className="uppercase">Have all your wedding photos back</h2>
           <h3 style={{ marginBottom: '1em' }}>and ready to share with us?</h3>
           <a href="mailto:info@cheriebridal.fi">
             <Button size='large' ghost htmlType="submit">
@@ -158,15 +159,15 @@ const HomePage = (props) => {
         <hr className='divider' />
         <div className='gridTitle centerAlign'>
           <h3>Get inspired</h3>
-          <h1>Our Instagram</h1>
+          <h2 className="uppercase">Our Instagram</h2>
         </div>
         <Slider />
         <hr className='divider' />
         <hr className='divider' />
         <Hero overlay={true} hasScroll={false} imageWide={data.banner4wide}
           imageVertical={data.banner4wide}>
-          <h3>Ready to</h3>
-          <h1>Find your dress?</h1>
+          <h3 style={{ marginBottom: 0 }}>Ready to</h3>
+          <h1 style={{ marginBottom: '1em' }}>Find your dress?</h1>
           <Link to='/booking'>
             <Button size='large' ghost htmlType="submit">
               Book your appointment

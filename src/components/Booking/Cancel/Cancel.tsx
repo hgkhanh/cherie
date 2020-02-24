@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import 'firebase/firestore';
+import { Link } from 'gatsby';
 import { FirebaseContext } from '../../../shared/FirebaseProvider';
 import * as styles from "./Cancel.module.scss";
 import { Row, Col, Icon, Descriptions, Spin, Button, message, Result } from 'antd';
@@ -122,11 +123,11 @@ const Cancel = ({ location, bookingId }) => {
           title="Successfully cancel your booking!"
           subTitle={`Booking slot: ${booking.bookTime}. Go back to booking if you want to create another booking.`}
           extra={[
-            <Button type="primary" key="console" onClick={() => {
-              navigate('/booking');
-            }}>
-              Go to Booking
+            <Link to='/booking'>
+              <Button type="primary" key="console">
+                Go to Booking
             </Button>
+            </Link>
           ]}
         />
       )}
