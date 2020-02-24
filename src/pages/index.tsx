@@ -12,7 +12,7 @@ import Hero from '../components/Hero';
 const HomePage = (props) => {
   const data = useStaticQuery(graphql`
       query {
-        banner1wide: file(name: {eq: "banner1"}) {
+        banner1wide: file(name: {eq: "Banner-01"}) {
           childCloudinaryAsset {
             fluid(maxWidth: 2400) {
               ...CloudinaryAssetFluid
