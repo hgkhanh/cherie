@@ -75,7 +75,7 @@ const Product = ({ product }) => {
                         <Row type='flex' justify='center' align='middle'>
                             <Col className={styles.info} span={24}>
                                 <h1 className={styles.name}>{product.name}</h1>
-                                <h4 className={[styles.price, 'sansSerif grayText'].join(' ')}>£{_.round((product.price), 2).toFixed(2)}</h4>
+                                <h4 className={[styles.price, 'sansSerif grayText'].join(' ')}>€{_.round((product.price), 2).toFixed(2)}</h4>
                                 <p className='grayText'>{product.description}</p>
                                 <div className={styles.borderBlock}>
                                     <Row type='flex' justify='start' align='middle'
