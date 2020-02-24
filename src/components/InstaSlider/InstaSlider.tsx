@@ -1,5 +1,5 @@
 import React, { useContext, useState, useRef } from 'react';
-import styles from './Slider.module.scss';
+import styles from './InstaSlider.module.scss';
 import { Spring, config } from 'react-spring/renderprops';
 import { useStaticQuery, graphql } from "gatsby";
 import { Row, Col, Carousel } from "antd";
@@ -8,7 +8,7 @@ import SliderArrow from '../SliderArrow';
 import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 import moment from 'moment';
 
-const Slider = () => {
+const InstaSlider = () => {
   const data = useStaticQuery(graphql`
     query {
         allInstaNode {
@@ -99,4 +99,4 @@ const Slider = () => {
 };
 
 
-export default Slider;
+export default InstaSlider;

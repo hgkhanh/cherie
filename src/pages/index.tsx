@@ -6,7 +6,7 @@ import Layout from '../layout';
 import { Row, Col, Button } from 'antd';
 import RevealAnimation from '../shared/RevealAnimation';
 import ProductList from '../components/ProductList';
-import Slider from '../components/Slider';
+import InstaSlider from '../components/InstaSlider';
 import Hero from '../components/Hero';
 
 const HomePage = (props) => {
@@ -161,7 +161,7 @@ const HomePage = (props) => {
           <h3>Get inspired</h3>
           <h2 className="uppercase">Our Instagram</h2>
         </div>
-        <Slider />
+        <InstaSlider />
         <hr className='divider' />
         <hr className='divider' />
         <Hero overlay={true} hasScroll={false} imageWide={data.banner4wide}
