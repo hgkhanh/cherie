@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import Helmet from 'react-helmet';
 import siteConfig from '../../data/SiteConfig';
@@ -8,6 +8,7 @@ import RevealAnimation from '../shared/RevealAnimation';
 import ProductList from '../components/ProductList';
 import InstaSlider from '../components/InstaSlider';
 import Hero from '../components/Hero';
+import CampaignModal from '../components/CampaignModal';
 
 const HomePage = (props) => {
   const data = useStaticQuery(graphql`
@@ -49,7 +50,16 @@ const HomePage = (props) => {
               ...CloudinaryAssetFluid
             }
           }
-        }        
+        }
+        
+        modalBackground: file(name: {eq: "Modal-BG"}) {
+          childCloudinaryAsset {
+            fluid(maxWidth: 600, transformations: ["b_black", "o_90"]) {
+              ...CloudinaryAssetFluid
+            }
+          }
+        } 
+
         products: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}}, sort: {fields: fileAbsolutePath, order: ASC}, limit: 6) {
           edges {
             node {
@@ -78,11 +88,18 @@ const HomePage = (props) => {
       }      
     `)
 
-  console.log(data);
   const products = data.products.edges;
+  const [modalActive, setModalActive] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => { 
+      setModalActive(true);
+    }, 5000);
+  }, []);
+  
   return (
     <Layout path={props.path}>
+      <CampaignModal modalBackground={data.modalBackground} visible={modalActive} setVisible={setModalActive} />
       <div className='pageContainer'>
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
         <Hero overlay={false} hasScroll={true}

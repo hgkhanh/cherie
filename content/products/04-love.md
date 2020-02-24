@@ -5,9 +5,9 @@ description: >-
 detailsAndFit:
   - 100% Polyester
   - Invisible back zipper
-featureImage: ../images/Love-01.jpg
+featureImage: ../images/Love-04.jpg
 galleryImages:
-  - ../images/Love-01.jpg
+  - ../images/Love-04.jpg
   - ../images/Love-02.jpg
   - ../images/Love-03.jpg
 price: '1799'

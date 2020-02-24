@@ -5,12 +5,12 @@ description: >-
 detailsAndFit:
   - 100% Polyester
   - Invisible back zipper
-featureImage: ../images/Elliah-01.jpg
+featureImage: ../images/Elliah-06.jpg
 galleryImages:
-  - ../images/Elliah-01.jpg
-  - ../images/Elliah-04.jpg
-  - ../images/Elliah-05.jpg
   - ../images/Elliah-06.jpg
+  - ../images/Elliah-02.jpg
+  - ../images/Elliah-01.jpg
+  - ../images/Elliah-03.jpg
 price: '1299'
 category: A-line
 sizes:

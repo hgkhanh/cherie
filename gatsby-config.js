@@ -97,7 +97,9 @@ module.exports = {
           "success-color": "#95de64",
           "warning-color": "#ffd666",
           "error-color": "#ff7875",
-          "btn-height-lg": "60px"
+          "btn-height-base": "40px",
+          "btn-height-lg": "60px",
+
         }
       }
     },

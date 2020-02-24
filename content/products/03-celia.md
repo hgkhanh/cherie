@@ -8,7 +8,7 @@ detailsAndFit:
 featureImage: ../images/Celia-02.jpg
 galleryImages:
   - ../images/Celia-02.jpg
-  - ../images/Celia-03.jpg
+  - ../images/Celia-01.jpg
 price: '1599'
 category: Ball-gown
 sizes:
