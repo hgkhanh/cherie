@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styles from './ProductList.module.scss';
 import { Link } from 'gatsby';
 import { Spring, config } from 'react-spring/renderprops'
@@ -26,7 +25,7 @@ const ProductCard = ({ product, index }) => {
                 {props => (
                     <Col span={12} md={8} style={{ ...props }}>
                         <Link to={product.fields.slug} key={product.name} className={styles.card}>
-                            <Image fluid={product.frontmatter.featureImage.childCloudinaryAsset.fluid} alt="" />
+                            <Image fluid={product.frontmatter.featureImage.childCloudinaryAsset.fluid} alt={product.name} />
                             <div className={styles.description}>
                                 <h3>{product.frontmatter.name}</h3>
                                 <span className={styles.price}>€ {product.frontmatter.price}</span>

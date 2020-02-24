@@ -19,15 +19,15 @@ const HomePage = (props) => {
             }
           }
         }
-        banner1vertical: file(name: {eq: "banner1-vertical"}) {
+        banner1vertical: file(name: {eq: "Banner-01-Vertical"}) {
           childCloudinaryAsset {
-            fluid(maxWidth: 900) {
+            fluid(maxWidth: 1200) {
               ...CloudinaryAssetFluid
             }
           }
         }
 
-        banner2wide: file(name: {eq: "banner2"}) {
+        banner2wide: file(name: {eq: "Banner-02"}) {
           childCloudinaryAsset {
             fluid(maxWidth: 2400) {
               ...CloudinaryAssetFluid
@@ -35,7 +35,7 @@ const HomePage = (props) => {
           }
         } 
 
-        banner3wide: file(name: {eq: "banner3"}) {
+        banner3wide: file(name: {eq: "Banner-03"}) {
           childCloudinaryAsset {
             fluid(maxWidth: 2400) {
               ...CloudinaryAssetFluid
@@ -43,9 +43,9 @@ const HomePage = (props) => {
           }
         }  
         
-        banner4wide: file(name: {eq: "banner4"}) {
+        banner4wide: file(name: {eq: "Banner-04"}) {
           childCloudinaryAsset {
-            fluid(maxWidth: 2400) {
+            fluid(maxWidth: 1600) {
               ...CloudinaryAssetFluid
             }
           }
