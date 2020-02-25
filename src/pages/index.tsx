@@ -55,7 +55,10 @@ const HomePage = (props) => {
         modalBackground: file(name: {eq: "Modal-BG"}) {
           childCloudinaryAsset {
             fluid(maxWidth: 600, transformations: ["b_black", "o_90"]) {
-              ...CloudinaryAssetFluid
+              aspectRatio
+              sizes
+              src
+              srcSet
             }
           }
         } 
@@ -92,11 +95,11 @@ const HomePage = (props) => {
   const [modalActive, setModalActive] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => { 
+    setTimeout(() => {
       setModalActive(true);
     }, 5000);
   }, []);
-  
+
   return (
     <Layout path={props.path}>
       <CampaignModal modalBackground={data.modalBackground} visible={modalActive} setVisible={setModalActive} />
@@ -111,25 +114,21 @@ const HomePage = (props) => {
               <Row className='gridTitle centerAlign' type='flex' justify='center'>
                 <Col className='gutter-row' span={24}><h2 className="uppercase" style={{ marginBottom: '2em' }}>Who We Are</h2>
                 </Col>
-                <Col className='gutter-row' span={24} md={16} lg={12}>
-                  <p style={{ marginBottom: '2em' }}>Inspired by modern beauty with a nostalgic soul that forever longs
-                    for the past, allured by romance and passion,the idea of a small
-                    bridal boutique was conceived at the heart of Helsinki like a long
-                    lost dream. With the goal of creating a once-in-a-lifetime experience
-                    for our customers, the name ‘Cherie‘ came to mind, along with its true
-                    meaning of ‘sweetheart’ in French and its homophone ‘cherry’, a constant
-                    reminder of sweetness. Representing the brand under such beliefs and ideas,
-                    at Cherie Bridal where the provision of excellent customer service is the
-                    top priority, every bride who comes to us is and will always be our
-                    ‘sweetheart’.
+                <Col className='gutter-row' span={24} sm={16} md={12} lg={10}>
+                  <p style={{ marginBottom: '2em' }}>
+                    Chérie Bridal is a Helsinki-based made-to-order boutique which aims to provide
+                    customers with the most enjoyable experience of finding your true match of a
+                    wedding dress, sincerely tailor-made to your preference and identity,
+                    with customisation time frame under three months at competitive prices.
                   </p>
-                  <p>In today’s market where wedding planning has become a process of
-                    relentless waiting and extravagance, Cherie Bridal promises you the
-                    most enjoyable experience of finding your true match of a wedding dress,
-                    sincerely tailor-made to your preference and identity, with
-                    customisation time frame under three months at competitive prices.
+                  <p>With the goal of creating a once-in-a-lifetime experience for our customers,
+                    the name ‘Chérie‘ derives from French, with its true meaning of ‘sweetheart’
+                    and its homophone ‘cherry’, a constant reminder of sweetness.
+                    This is a promise from us to you at Chérie Bridal, where the provision of
+                    excellent customer service is the top priority, that every bride who comes
+                    to us is and will always be our ‘sweetheart’.
                   </p>
-                  <h4>- The Cherie Bridal Team</h4>
+                  <h4>- The Chérie Bridal Team</h4>
                   <hr className='divider' />
                   <Link to={'/about'} >
                     <h3 className='underline uppercase'>Learn more</h3>
@@ -157,7 +156,7 @@ const HomePage = (props) => {
           </div>
           <ProductList products={products} />
           <div className='gridTitle footTitle centerAlign'>
-            <Link to={'/shop'} >
+            <Link to={'/collection'} >
               <h3 className='underline uppercase'>See more</h3>
             </Link>
           </div>

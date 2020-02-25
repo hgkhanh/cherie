@@ -59,7 +59,7 @@ const Header = ({ path }) => {
               onClose={() => setDrawerOpen(false)}
               visible={drawerOpen}
             >
-              <Link to="/shop" className="Heading u-h6"><h1>Shop</h1></Link>
+              <Link to="/collection" className="Heading u-h6"><h1>Collection</h1></Link>
               <Link to="/booking" className="Heading u-h6"><h1>Booking</h1></Link>
               <Link to="/about" className="Heading u-h6"><h1>About</h1></Link>
             </Drawer>
@@ -72,7 +72,7 @@ const Header = ({ path }) => {
               <nav>
                 <ul className="horizontalList">
                   <li>
-                    <a href="/shop">Shop</a>
+                    <a href="/collection">Collection</a>
                   </li>
                   <li>
                     <a href="/about">About</a>

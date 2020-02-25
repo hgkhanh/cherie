@@ -41,7 +41,7 @@ const ShopPage = () => {
   return (
     <Layout>
       <div className="shop-container">
-        <Helmet title={`Shop | ${siteConfig.siteTitle}`} />
+        <Helmet title={`Collection | ${siteConfig.siteTitle}`} />
         <Spring
           delay={300}
           config={config.default}
@@ -57,7 +57,7 @@ const ShopPage = () => {
           {props => (
             <React.Fragment>
               <div className="grid" style={props}>
-                <h1 className="gridTitle">Shop</h1>
+                <h1 className="gridTitle">Collection</h1>
               </div>
             </React.Fragment>
           )

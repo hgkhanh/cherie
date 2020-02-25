@@ -4,7 +4,7 @@ import Layout from "../layout";
 import FAQ from "../components/FAQ";
 import config from "../../data/SiteConfig";
 
-const AboutPage = () => {
+const FAQPage = () => {
   return (
     <Layout>
       <Helmet title={`FAQ | ${config.siteTitle}`} />
@@ -20,4 +20,4 @@ const AboutPage = () => {
   );
 }
 
-export default AboutPage;
+export default FAQPage;

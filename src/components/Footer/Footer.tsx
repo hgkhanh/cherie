@@ -14,6 +14,9 @@ const Footer = () => {
         <Link to="/about">
           <h3>About</h3>
         </Link>
+        <Link to="/faq">
+          <h3 className="">FAQ</h3>
+        </Link>
         <a href="mailto:info@cheriebridal.fi" target="_blank" rel="noopener">
           <h3 className="">Contact</h3>
         </a>
@@ -28,6 +31,12 @@ const Footer = () => {
         Sepänkatu 15, 00150, Helsinki<br />
         p: 0505 116 776<br />
         e: info@cheriebridal.fi
+      </p>
+      <p style={{ color: "#9D9D9D" }}>
+        Opening hours<br />
+        Mon-Fri: 10 - 18 <br />
+        Sat: 10 - 15<br />
+        Sun: Closed
       </p>
     </footer >
   );

@@ -23,7 +23,9 @@ h6 {
   font-weight: 400;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
-  letter-spacing: 0.8px;
+  &:not(.sansSerif) {
+    letter-spacing: 0.8px;
+  }
 }
 
 p,
@@ -94,6 +96,14 @@ blockquote cite:before {
 .uppercase {
   text-transform: uppercase !important;
 }
+.noBtmMargin {
+  margin-bottom: 0 !important;
+}
+
+.link {
+  font-family: $font-body;
+  color: #c79479;
+}
 /* //Typograhpy */
 
 .darkTone {
@@ -125,6 +135,7 @@ blockquote cite:before {
 
 main {
   background: #f6f0ec;
+  line-height: 1.75;
 }
 header,
 main {
@@ -137,7 +148,7 @@ main {
   a,
   p,
   li {
-    color: #454545;
+    color: #333;
     &.grayText {
       color: #727272;
     }
@@ -215,7 +226,6 @@ hr.divider {
   text-align: left;
   padding: 35px 0;
   margin: 0;
-  line-height: 1.75;
   &.footTitle {
     padding-top: 0;
     padding-bottom: 35px;
