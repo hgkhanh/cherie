@@ -98,7 +98,7 @@ const Header = ({ path }) => {
               <nav>
                 <ul className="horizontalList">
                   <li>
-                    <a href="/booking">Booking</a>
+                    <a href="/booking">Book an Appointment</a>
                   </li>
                 </ul>
               </nav>
