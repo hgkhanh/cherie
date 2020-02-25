@@ -60,32 +60,37 @@ const Booking = () => {
     }
   }
 
-  const holiday2020 = [
-    "2020-01-01",
-    "2020-01-06",
-    "2020-04-10",
-    "2020-04-12",
-    "2020-04-13",
-    "2020-05-01",
-    "2020-05-21",
-    "2020-05-31",
-    "2020-06-19",
-    "2020-06-20",
-    "2020-10-31",
-    "2020-12-06",
-    "2020-12-24",
-    "2020-12-25",
-    "2020-12-26",
-  ];
   const year = moment().get('year');
+  const isBeforeOpening = (date) => {
+    return date.isBefore('2020-03-04', 'day');
+  }
+  const holiday = [
+    year + "-01-01",
+    year + "-01-06",
+    year + "-04-10",
+    year + "-04-12",
+    year + "-04-13",
+    year + "-05-01",
+    year + "-05-21",
+    year + "-05-31",
+    year + "-06-19",
+    year + "-06-20",
+    year + "-10-31",
+    year + "-12-06",
+    year + "-12-24",
+    year + "-12-25",
+    year + "-12-26",
+  ];
   const isHoliday = (date) => {
-    return holiday2020.some(holiday => {
+    return holiday.some(holiday => {
       return date.isSame(moment(holiday), 'day');
     });
   }
 
   const disabledDate = (current) => {
-    return current && current < moment().endOf('day') || current.weekday() === 0 || isHoliday(current);
+    return current && current < moment().endOf('day') 
+      || current.weekday() === 0 || isHoliday(current)
+      || isBeforeOpening(current);
   }
 
   return (

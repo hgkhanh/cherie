@@ -46,7 +46,8 @@ const CampaignModal = ({ visible, setVisible, modalBackground }) => {
                         <p>all orders in March</p>
                     </Col>
                     <Col span={24} sm={12} className={styles.rightPanel}>
-                        <p className="uppercase">Grand Opening</p>
+                        <p className="uppercase" style={{ marginBottom: 0 }}>Grand Opening</p>
+                        <p>04/03/2020</p>
                         <h1 style={{ marginBottom: 0 }} className="uppercase">Plus one free veil</h1>
                         <p>until 15/03/2020</p>
                         <div className={styles.buttonWrapper}>

@@ -138,7 +138,7 @@ const HomePage = (props) => {
                     with customisation time frame under three months at competitive prices.
                   </p>
                   <p>With the goal of creating a once-in-a-lifetime experience for our customers,
-                    the name ‘Chérie‘ derives from French, with its true meaning of ‘sweetheart’
+                    the name &nbsp;‘Chérie‘&nbsp; derives from French, with its true meaning of ‘sweetheart’
                     and its homophone ‘cherry’, a constant reminder of sweetness.
                     This is a promise from us to you at Chérie Bridal, where the provision of
                     excellent customer service is the top priority, that every bride who comes
