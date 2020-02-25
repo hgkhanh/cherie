@@ -9,7 +9,7 @@ const Footer = () => {
       <hr className="divider" />
       <div className={styles.linkContainer}>
         <a href="//goo.gl/maps/xDcRUSp836pwG9vdA" target="_blank" rel="noopener">
-          <h3>Chérie Location</h3>
+          <h3>Location</h3>
         </a>
         <Link to="/about">
           <h3>About</h3>

@@ -94,9 +94,25 @@ const HomePage = (props) => {
   const products = data.products.edges;
   const [modalActive, setModalActive] = useState(false);
 
+  const storedView =
+    typeof window !== 'undefined' && window.localStorage.getItem('view');
+  const [view, setView] = useState(storedView || false);
+  const toggleView = () =>
+    setView(prevTheme => {
+      return !prevTheme;
+    });
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('view', view);
+    }
+  }, [view]);
+
   useEffect(() => {
     setTimeout(() => {
-      setModalActive(true);
+      if (!view) {
+        setModalActive(true);
+      }
     }, 5000);
   }, []);
 

@@ -114,13 +114,13 @@ const Booking = () => {
               beforehand so we could show you the styles that would fit
               comfortably. Don’t know your size? Please check the size guide
               <Link to="/size-guide" >
-                <span className={styles.link}>&nbsp;here&nbsp;</span>
+                <span className="link">&nbsp;here&nbsp;</span>
               </Link>.
             </li>
             <li>
               We highly recommend that you read our
               <Link to="/faq" >
-                <span className={styles.link}>&nbsp;FAQ&nbsp;</span>
+                <span className="link">&nbsp;FAQ&nbsp;</span>
               </Link>
               before booking an appointment.
             </li>
@@ -134,7 +134,7 @@ const Booking = () => {
         <h3>
           Duration: 60 mins <br />
           Location: Sepankatu 15, 00150, Helsinki (<a href="//goo.gl/maps/xDcRUSp836pwG9vdA" target="_blank" rel="noopener">
-            <span className={styles.link}>Map</span>
+            <span className="link">Map</span>
           </a>)
             </h3>
         <Row className='centerAlign' type='flex' justify='center' gutter={40}>

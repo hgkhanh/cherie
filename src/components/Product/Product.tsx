@@ -78,16 +78,15 @@ const Product = ({ product }) => {
                                 <h4 className={[styles.price, 'sansSerif grayText'].join(' ')}>From €{_.round((product.price), 2).toFixed(2)}</h4>
                                 <p className='grayText'>{product.description}</p>
                                 <div className={styles.borderBlock}>
-                                    <Row type='flex' justify='start' align='middle'
-                                    >
-                                        <Col className='leftAlign' span={24}>
+                                    <Row type='flex' justify='start' align='middle'>
+                                        <Col span={24}>
                                             {/* <h3>Details And Fit</h3>
                                             <p className='leftAlign grayText'>
                                                 {product.detailsAndFit.map((line, index) => {
                                                     return (<React.Fragment key={index}>{`- ${line}`}<br /></React.Fragment>)
                                                 })}
                                             </p> */}
-                                            <Link className={styles.checkSize} to='/size-guide'>Check your size</Link>
+                                            <Link className={styles.checkSize} to='/size-guide'><span className="link">Check your size</span></Link>
                                         </Col>
                                     </Row>
                                     {/* <Row type='flex' justify='space-between' align='middle'
