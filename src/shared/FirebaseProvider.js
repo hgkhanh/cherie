@@ -4,7 +4,6 @@ const FirebaseContext = createContext(null)
 export { FirebaseContext }
 
 const FirebaseProvider = ({ children }) => {
-  console.log(process.env.GATSBY_FIREBASE_PROJECT_ID);
   if (!app.apps.length) {
     app.initializeApp({
       apiKey: process.env.GATSBY_FIREBASE_API_KEY,

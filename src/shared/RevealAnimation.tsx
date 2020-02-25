@@ -15,7 +15,7 @@ const RevealAnimation = (outerProps) => {
                     config={config.slow}
                     to={{
                         opacity: isVisible && opacity ? 1 : 0,
-                        transform: isVisible  && transform ? 'translateY(0px)' : 'translateY(50px)'
+                        transform: isVisible  && transform ? 'translateY(-50px)' : 'translateY(0px)'
                     }}
                 >
                     {props => (

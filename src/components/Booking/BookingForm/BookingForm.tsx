@@ -20,7 +20,7 @@ const BookingForm = ({ form, date, bookTime }) => {
   }, [date, bookTime]);
 
   const handleSubmit = (event) => {
-    console.log('Submit');
+    // console.log('Submit');
     event.preventDefault();
     form.validateFields((err, values) => {
       if (!err) {
@@ -32,9 +32,8 @@ const BookingForm = ({ form, date, bookTime }) => {
         const publicBookingRef = db.collection('booking-public');
         const detailBookingRef = db.collection('booking');
 
-
-        console.log('Create');
-        console.log(values);
+        // console.log('Create');
+        // console.log(values);
         // Create a detailed entry in 'booking' collection
         const detailBooking = detailBookingRef.add(
           { ...values }

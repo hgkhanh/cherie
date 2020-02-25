@@ -28,9 +28,6 @@ const CampaignModal = ({ visible, setVisible, modalBackground }) => {
         containerStyle.backgroundSize = "50%";
         containerStyle.backgroundPosition = "left";
     }
-    console.log(src);
-
-    console.log(containerStyle);
     return (
         <Modal className={styles.campaignModal}
             centered footer={null}

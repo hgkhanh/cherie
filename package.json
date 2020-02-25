@@ -57,6 +57,7 @@
     "react-twitter-widgets": "^1.7.1",
     "react-visibility-sensor": "^5.1.1",
     "typography-theme-alton": "^0.16.19",
+    "underscore": "^1.9.2",
     "url-join": "^4.0.0"
   },
   "devDependencies": {

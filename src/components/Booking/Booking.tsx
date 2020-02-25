@@ -50,7 +50,7 @@ const Booking = () => {
         bookedSlot.push(booking.get('hour'));
       }
     });
-    console.log(bookedSlot);
+    // console.log(bookedSlot);
     setBookedSlot(bookedSlot);
   }
 

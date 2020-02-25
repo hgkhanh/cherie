@@ -24,7 +24,7 @@ const Cancel = ({ location, bookingId }) => {
       docRef.get()
         .then(function (doc) {
           if (doc.exists) {
-            console.log(doc.data());
+            // console.log(doc.data());
             const bookingObj = doc.data();
             bookingObj.bookTime = moment(bookingObj.bookTime.seconds * 1000);
             setBooking(bookingObj);

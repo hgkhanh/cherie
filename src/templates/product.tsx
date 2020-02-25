@@ -1,26 +1,27 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { graphql, PageRendererProps, useStaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../layout";
 import Product from "../components/Product/Product";
-import SEO from "../components/SEO/SEO";
-import Footer from "../components/Footer/Footer";
+import SEO from "../components/SEO";
+import Recommendation from "../components/Recommendation";
 import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.scss";
 import "./product.scss";
 
 const ProductTemplate = (props: any) => {
-  const { data, path, pageContext } = props;
+  const { data, pageContext } = props;
   const product = data.markdownRemark.frontmatter;
   const { slug } = pageContext;
   return (
     <Layout>
+      <Helmet>
+        <title>{`${product.name} | ${config.siteTitle}`}</title>
+      </Helmet>
+      <SEO productPath={slug} productData={product} productSEO />
       <div className="pageContainer">
-        <Helmet>
-          <title>{`${product.name} | ${config.siteTitle}`}</title>
-        </Helmet>
-        <SEO productPath={slug} productData={product} productSEO />
         <Product product={product} />
+        <Recommendation excludeId={data.markdownRemark.id}/>
       </div>
     </Layout>
   );
@@ -29,6 +30,7 @@ const ProductTemplate = (props: any) => {
 export const productQuery = graphql`
     query ProductBySlug($slug: String!) {
       markdownRemark(fields: { slug: { eq: $slug } }) {
+        id
         frontmatter {
           category
           description
