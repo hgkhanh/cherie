@@ -8,8 +8,8 @@ import './index.scss';
 import WindowDimensionsProvider from '../shared/WindowDimensionsProvider';
 import FirebaseProvider from '../shared/FirebaseProvider';
 
-const MainLayout = (props) => {
-  const { children, path } = props;
+const MainLayout = ({ children, location }) => {
+  console.log(location);
   return (
     <FirebaseProvider>
       <WindowDimensionsProvider>
@@ -22,10 +22,10 @@ const MainLayout = (props) => {
             <meta name='description' content={config.siteDescription} />
             <html lang='en' />
           </Helmet>
-          <Header path={path} />
-          { path !== "/booking" && (
-            <FloatButton to="/booking" icon="calendar" offsetTop={1600}/>
-          )}
+          <Header location={location}/>
+          { location.pathname !=="/booking" && (
+            <FloatButton to="/booking" icon="calendar" offsetTop={1600}/>  
+          )}      
           <main>{children}</main>
           <Footer config={config} />
         </React.Fragment>

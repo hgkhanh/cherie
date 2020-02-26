@@ -6,7 +6,7 @@ import siteConfig from "../../data/SiteConfig";
 import ProductList from "../components/ProductList";
 import { Spring, config } from 'react-spring/renderprops';
 
-const ShopPage = () => {
+const ShopPage = ({ location }) => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}}
@@ -39,7 +39,7 @@ const ShopPage = () => {
   `);
   const products = data.allMarkdownRemark.edges;
   return (
-    <Layout>
+    <Layout location={location}>
       <div className="shop-container">
         <Helmet title={`Collection | ${siteConfig.siteTitle}`} />
         <Spring

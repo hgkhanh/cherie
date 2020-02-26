@@ -4,9 +4,9 @@ import Layout from "../layout";
 import FAQ from "../components/FAQ";
 import config from "../../data/SiteConfig";
 
-const FAQPage = () => {
+const FAQPage = ({ location }) => {
   return (
-    <Layout>
+    <Layout location={location}>
       <Helmet title={`FAQ | ${config.siteTitle}`} />
       <hr className='divider' />
       <div className='grid'>

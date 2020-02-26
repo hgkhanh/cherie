@@ -10,7 +10,7 @@ import InstaSlider from '../components/InstaSlider';
 import Hero from '../components/Hero';
 import CampaignModal from '../components/CampaignModal';
 
-const HomePage = (props) => {
+const HomePage = ({ location }) => {
   const data = useStaticQuery(graphql`
       query {
         banner1wide: file(name: {eq: "Banner-01"}) {
@@ -113,7 +113,7 @@ const HomePage = (props) => {
   }, []);
 
   return (
-    <Layout path={props.path}>
+    <Layout location={location}>
       <CampaignModal modalBackground={data.modalBackground} visible={modalActive} setVisible={setModalActive} />
       <div className='pageContainer'>
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />

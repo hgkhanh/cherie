@@ -4,7 +4,7 @@ import Layout from "../layout";
 import config from "../../data/SiteConfig";
 import { Col, Row, Table } from 'antd';
 
-const SizeGuide = () => {
+const SizeGuide = ({ location }) => {
   const dataSource1 = [
     {
       key: '1',
@@ -179,7 +179,7 @@ const SizeGuide = () => {
   ];
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Helmet title={`FAQ | ${config.siteTitle}`} />
       <hr className='divider' />
       <div className='grid'>

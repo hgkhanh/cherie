@@ -8,9 +8,9 @@ import Cancel from "../components/Booking/Cancel";
 import config from "../../data/SiteConfig";
 import { Location } from '@reach/router';
 
-const BookingPage = () => {
+const BookingPage = ({ location }) => {
   return (
-    <Layout>
+    <Layout location={location}>
       <Helmet title={`Booking | ${config.siteTitle}`} />
       <hr className='divider' />
       <div className='grid centerAlign sansSerif'>

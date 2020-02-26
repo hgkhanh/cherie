@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext } from 'react';
 import styles from './InstaSlider.module.scss';
 import { Spring, config } from 'react-spring/renderprops';
 import { useStaticQuery, graphql } from "gatsby";
@@ -34,7 +34,6 @@ const InstaSlider = () => {
         }
     }
     `);
-  console.log(data);
 
   const { width } = useContext(WindowDimensionsContext);
 

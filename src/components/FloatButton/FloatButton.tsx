@@ -8,7 +8,6 @@ import { Spring, config } from 'react-spring/renderprops';
 const FloatButton = ({ to, icon, offsetTop }) => {
   const [active, setActive] = useState(false);
   const [visible, setVisible] = useState(false);
-
   return (
     <React.Fragment>
       <Spring
