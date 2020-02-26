@@ -77,7 +77,7 @@ const Header = ({ location }) => {
     logoSize = 140;
   }
 
-  const isHomePage = location.pathname === '/';
+  const isHomePage = (location && location.pathname === '/');
   const getHeaderClassNames = () => {
     const isAtTop = isHeaderVisible ? styles.isAtTop : '';
     const homepage = isHomePage ? styles.homepage : '';
