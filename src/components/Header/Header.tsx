@@ -43,7 +43,7 @@ const Header = ({ location }) => {
   let _mounted = true;
   useEffect(() => {
     // Check if window exist and screen is small
-    if (typeof window !== 'undefined' && width < 576) {
+    if (typeof window !== 'undefined' && width <= 576) {
       lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
       window.addEventListener("scroll", handleScroll, { passive: true });
     }
@@ -77,11 +77,11 @@ const Header = ({ location }) => {
     logoSize = 140;
   }
 
-  const isHomePage = location === '/';
+  const isHomePage = location.pathname === '/';
   const getHeaderClassNames = () => {
     const isAtTop = isHeaderVisible ? styles.isAtTop : '';
     const homepage = isHomePage ? styles.homepage : '';
-    const downScroll = isDownScroll ? styles.downScroll : '';
+    const downScroll = isDownScroll && width <= 576 ? styles.downScroll : '';
 
     return `${styles.header} ${isAtTop} ${homepage} ${downScroll}`;
   }
