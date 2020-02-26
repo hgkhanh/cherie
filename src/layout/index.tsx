@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Helmet from 'react-helmet';
 import config from '../../data/SiteConfig';
 import Header from '../components/Header';
@@ -22,7 +22,7 @@ const MainLayout = ({ children, location }) => {
             <html lang='en' />
           </Helmet>
           <Header location={location}/>
-          { typeof window !== "undefined" && location.pathname !=="/booking" && (
+          { location && location.pathname !=="/booking" && (
             <FloatButton to="/booking" icon="calendar" offsetTop={1600}/>  
           )}      
           <main>{children}</main>

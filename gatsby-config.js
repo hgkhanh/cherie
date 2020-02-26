@@ -99,7 +99,8 @@ module.exports = {
           "error-color": "#ff7875",
           "btn-height-base": "40px",
           "btn-height-lg": "60px",
-
+          "font-size-base": "16px",
+          "font-size-sm": "14px"
         }
       }
     },
