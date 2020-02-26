@@ -1,10 +1,14 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import Helmet from "react-helmet";
 import Layout from "../layout";
 import config from "../../data/SiteConfig";
 import { Col, Row, Table } from 'antd';
+import WindowDimensionsProvider from '../shared/WindowDimensionsProvider';
+import { WindowDimensionsContext } from "../shared/WindowDimensionsProvider";
 
-const SizeGuide = ({ location }) => {
+const SizeTable = () => {
+  const { width } = useContext(WindowDimensionsContext);
+  console.log('width',width);
   const dataSource1 = [
     {
       key: '1',
@@ -178,23 +182,178 @@ const SizeGuide = ({ location }) => {
     },
   ];
 
+
+  /// Mobile
+  const columnMobile = [
+    {
+      title: 'Size',
+      dataIndex: 'size',
+      key: 'size',
+    },
+    {
+      title: 'Bust (cm)',
+      dataIndex: 'bust',
+      key: 'bust',
+    },
+    {
+      title: 'Waist (cm)',
+      dataIndex: 'waist',
+      key: 'waist',
+    },
+    {
+      title: 'Hip (cm)',
+      dataIndex: 'hip',
+      key: 'hip',
+    },
+  ];
+
+  const dataMobile = [
+    {
+      key: '1',
+      size: '34',
+      bust: 80,
+      waist: 62,
+      hip: 88,
+    },
+    {
+      key: '2',
+      size: '36',
+      bust: 84,
+      waist: 64,
+      hip: 92,
+    },
+    {
+      key: '3',
+      size: '38',
+      bust: 88,
+      waist: 68,
+      hip: 96,
+    },
+    {
+      key: '4',
+      size: '40',
+      bust: 92,
+      waist: 72,
+      hip: 100,
+    },
+    {
+      key: '5',
+      size: '42',
+      bust: 96,
+      waist: 76,
+      hip: 104,
+    },
+    {
+      key: '6',
+      size: '44',
+      bust: 100,
+      waist: 80,
+      hip: 108,
+    },
+    {
+      key: '7',
+      size: '46',
+      bust: 104,
+      waist: 84,
+      hip: 112,
+    },
+    {
+      key: '8',
+      size: '48',
+      bust: 108,
+      waist: 88,
+      hip: 116,
+    },
+    {
+      key: '9',
+      size: '50',
+      bust: 113,
+      waist: 93,
+      hip: 121,
+    },
+    {
+      key: '10',
+      size: '52',
+      bust: 118,
+      waist: 98,
+      hip: 126,
+    },
+    {
+      key: '11',
+      size: '54',
+      bust: 123,
+      waist: 103,
+      hip: 131,
+    },
+    {
+      key: '12',
+      size: '56',
+      bust: 128,
+      waist: 108,
+      hip: 136,
+    },
+    {
+      key: '13',
+      size: '58',
+      bust: 133,
+      waist: 113,
+      hip: 141,
+    },
+    {
+      key: '14',
+      size: '60',
+      bust: 138,
+      waist: 118,
+      hip: 146,
+    },
+    {
+      key: '15',
+      size: '62',
+      bust: 143,
+      waist: 123,
+      hip: 151,
+    },
+    {
+      key: '16',
+      size: '64',
+      bust: 148,
+      waist: 128,
+      hip: 156,
+    },
+  ];
+
   return (
-    <Layout location={location}>
-      <Helmet title={`FAQ | ${config.siteTitle}`} />
-      <hr className='divider' />
-      <div className='grid'>
-        <h1 className="centerAlign">
-          Size Guide
-        </h1>
-        <Row className='centerAlign' type='flex' justify='center' gutter={40}>
+    <Row className='centerAlign' type='flex' justify='center' gutter={40}>
+      { width <= 576 ?
+        (
+          <Col span={24} lg={12} md={16}>
+            <Table dataSource={dataMobile} columns={columnMobile} pagination={{pageSize: 8}}/>
+          </Col>
+        ) : (
           <Col span={24} lg={12} md={16}>
             <Table dataSource={dataSource1} columns={columns1} pagination={false} />
             <hr className="divider" />
             <Table dataSource={dataSource2} columns={columns2} pagination={false} />
           </Col>
-        </Row>
-      </div>
-      <hr className='divider' />
+        )}
+    </Row>
+  );
+}
+const SizeGuide = ({ location }) => {
+
+  return (
+    <Layout location={location}>
+      <WindowDimensionsProvider>
+        <Helmet title={`FAQ | ${config.siteTitle}`} />
+        <hr className='divider' />
+        <div className='grid'>
+          <h1 className="centerAlign">
+            Size Guide
+        </h1>
+          <SizeTable />
+        </div>
+        <hr className='divider' />
+      </WindowDimensionsProvider>
     </Layout >
   );
 }
