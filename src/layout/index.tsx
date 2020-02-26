@@ -9,7 +9,6 @@ import WindowDimensionsProvider from '../shared/WindowDimensionsProvider';
 import FirebaseProvider from '../shared/FirebaseProvider';
 
 const MainLayout = ({ children, location }) => {
-  console.log(location);
   return (
     <FirebaseProvider>
       <WindowDimensionsProvider>
@@ -23,7 +22,7 @@ const MainLayout = ({ children, location }) => {
             <html lang='en' />
           </Helmet>
           <Header location={location}/>
-          { location.pathname !=="/booking" && (
+          { typeof window !== "undefined" && location.pathname !=="/booking" && (
             <FloatButton to="/booking" icon="calendar" offsetTop={1600}/>  
           )}      
           <main>{children}</main>
