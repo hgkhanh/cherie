@@ -1,10 +1,11 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useStaticQuery } from 'gatsby';
 import VisibilitySensor from 'react-visibility-sensor';
 import styles from './Header.module.scss';
 import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 import { Drawer, Icon } from 'antd';
 import Image from 'gatsby-image';
+import debounce from 'lodash/debounce';
 
 const Header = ({ location }) => {
   const logo = useStaticQuery(graphql`
@@ -27,6 +28,43 @@ const Header = ({ location }) => {
     `)
 
   const { width } = useContext(WindowDimensionsContext);
+  const [isDownScroll, setDownScroll] = useState(false);
+
+  /**
+   * Do a scroll check to hide header on mobile
+   * Addlistner for scroll cause Warning memory leak,
+   * Because we trying to setState when it is already unmounted
+   * To fixed this, we keep a _mounted variable to know if component is unmounted
+   * If unmounted, we do not setState
+   */
+
+  // Min amount of scrolling to handle
+  let lastScrollTop = 0;
+  let _mounted = true;
+  useEffect(() => {
+    // Check if window exist and screen is small
+    if (typeof window !== 'undefined' && width < 576) {
+      lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }
+    return () => {
+      _mounted = false;
+      window.removeEventListener("scroll", handleScroll, true);
+    }
+  }, []);
+
+  const handleScroll = debounce(() => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (_mounted) {
+      if (scrollTop > lastScrollTop) {
+        setDownScroll(true);
+      } else {
+        setDownScroll(false);
+      }
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+
+  }, 200, { leading: true });
 
   const [isHeaderVisible, setHeaderVisible] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -43,8 +81,9 @@ const Header = ({ location }) => {
   const getHeaderClassNames = () => {
     const isAtTop = isHeaderVisible ? styles.isAtTop : '';
     const homepage = isHomePage ? styles.homepage : '';
+    const downScroll = isDownScroll ? styles.downScroll : '';
 
-    return `${styles.header} ${isAtTop} ${homepage}`;
+    return `${styles.header} ${isAtTop} ${homepage} ${downScroll}`;
   }
 
 
