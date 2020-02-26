@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useStaticQuery } from 'gatsby';
 import VisibilitySensor from 'react-visibility-sensor';
 import styles from './Header.module.scss';
 import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 import { Drawer, Icon } from 'antd';
 import Image from 'gatsby-image';
+import debounce from 'lodash/debounce';
 
 const Header = ({ path }) => {
   const logo = useStaticQuery(graphql`
@@ -25,9 +26,37 @@ const Header = ({ path }) => {
       }
     }
     `)
+
+  const { width } = useContext(WindowDimensionsContext);
+  const [isDownScroll, setDownScroll] = useState(false);
+  /**
+   * Do a scroll check to hide header on mobile
+   */
+
+  // Min amount of scrolling to handle
+  let lastScrollTop = 0;
+  useEffect(() => {
+    // Check if window exist and screen is small
+    if (typeof window !== 'undefined' && width < 576) {
+      lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      window.onscroll = (e) => {
+        debounce(handleScroll, 200, { leading: true });
+      }
+    }
+  }, []);
+
+  const handleScroll = () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+      setDownScroll(true);
+    } else {
+      setDownScroll(false)
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+  }
+
   const [isHeaderVisible, setHeaderVisible] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { width } = useContext(WindowDimensionsContext);
   const { dark, light } = logo;
   let logoSize = 160;
 
@@ -41,9 +70,11 @@ const Header = ({ path }) => {
   const getHeaderClassNames = () => {
     const isAtTop = isHeaderVisible ? styles.isAtTop : '';
     const homepage = isHomePage ? styles.homepage : '';
+    const downScroll = isDownScroll ? styles.downScroll : '';
 
-    return `${styles.header} ${isAtTop} ${homepage}`;
+    return `${styles.header} ${isAtTop} ${homepage} ${downScroll}`;
   }
+
 
   return (
     <React.Fragment>
@@ -91,7 +122,7 @@ const Header = ({ path }) => {
           <div className={`${styles.block} ${styles.fill}`}>
             {(width <= 992) && (
               <a href="/booking">
-                <Icon type="book" style={{ fontSize: '20px' }} />
+                <Icon type="calendar" style={{ fontSize: '20px' }} />
               </a>
             )}
             {(width >= 993) && (

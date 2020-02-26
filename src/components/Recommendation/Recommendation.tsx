@@ -5,7 +5,7 @@ import { Row, Col, Carousel } from "antd";
 import Image from 'gatsby-image';
 import SliderArrow from '../SliderArrow';
 import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
-import { shuffle } from 'underscore';
+import { shuffle } from 'lodash';
 
 /**
  * Show 6 other products as slider
@@ -39,13 +39,10 @@ const Recommendation = ({ excludeId }) => {
     }
   `);
   // Filter excludeId from data
-  console.log(data.allMarkdownRemark.edges);
   let products = data.allMarkdownRemark.edges
-    .filter(product => product.node.id !== excludeId)
-
+    .filter(product => product.node.id !== excludeId);
   // Shuffle and cut to 6
   products = shuffle(products).slice(0, 6);
-  console.log(products);
 
   const { width } = useContext(WindowDimensionsContext);
 

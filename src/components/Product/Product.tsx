@@ -26,7 +26,7 @@ const Product = ({ product }) => {
         lazyLoad: 'progressive'
     };
     const getContainerClassName = () => {
-        if (width < 770) {
+        if (width < 769) {
             return ['grid', styles.container].join(' ');
         }
         return ['grid', 'boxContent', styles.container].join(' ');
@@ -47,7 +47,7 @@ const Product = ({ product }) => {
         <React.Fragment>
             <div className={getContainerClassName()}>
                 <Row type='flex' justify='center' align='stretch'>
-                    {width < 770 ? (
+                    {width < 769 ? (
                         <Col span={24}>
                             <Carousel {...settings}>
                                 {product.galleryImages.map((image, index) => 

@@ -2,6 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import config from '../../data/SiteConfig';
 import Header from '../components/Header';
+import FloatButton from '../components/FloatButton';
 import Footer from '../components/Footer';
 import './index.scss';
 import WindowDimensionsProvider from '../shared/WindowDimensionsProvider';
@@ -22,6 +23,9 @@ const MainLayout = (props) => {
             <html lang='en' />
           </Helmet>
           <Header path={path} />
+          { path !== "/booking" && (
+            <FloatButton to="/booking" icon="calendar" offsetTop={1600}/>
+          )}
           <main>{children}</main>
           <Footer config={config} />
         </React.Fragment>

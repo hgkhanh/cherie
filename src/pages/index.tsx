@@ -97,10 +97,6 @@ const HomePage = (props) => {
   const storedView =
     typeof window !== 'undefined' && window.localStorage.getItem('view');
   const [view, setView] = useState(storedView || false);
-  const toggleView = () =>
-    setView(prevTheme => {
-      return !prevTheme;
-    });
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

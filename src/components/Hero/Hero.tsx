@@ -7,7 +7,6 @@ import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 
 const Hero = ({ overlay, overlayAlpha, hasScroll, imageWide, imageVertical, children }) => {
 
-
   const [active, setActive] = useState(false);
   const { width } = useContext(WindowDimensionsContext);
 
