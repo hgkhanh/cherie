@@ -82,7 +82,8 @@ const InstaSlider = () => {
       {pictures.map((pic, index) => {
         return (
           <a key={index} className={styles.container} href={`//instagram.com/p/${pic.node.id}`}>
-            <Image className={styles.slide} fluid={pic.node.localFile.childImageSharp.fluid} alt='' >
+            <Image className={styles.slide}
+              sizes={{ ...pic.node.localFile.childImageSharp.fluid, aspectRatio: 1 }} alt='' >
             </Image>
             {/* <div className={styles.overlay}>
               <h3>{pic.node.likes} likes</h3>
