@@ -8,7 +8,7 @@ const FAQ = () => {
       <div className={styles.qaBlock}>
         <h2>How far in advance should I begin searching for dresses?</h2>
         <p>In order to ensure you are not rushed with your decision-making,
-          we are recommend you to begin dress shopping as soon as possible,
+          we recommend you to begin dress shopping as soon as possible,
           ideally 6-8 months in advance of your wedding date. </p>
       </div>
 
@@ -18,15 +18,15 @@ const FAQ = () => {
           in order to provide the full intention of our experienced consultants. </p>
       </div>
       <div className={styles.qaBlock}>
-        <h2>How long my appointments will be??</h2>
-        <p>The appointments will last for 60 minutes. If we run over,
+        <h2>How long my appointment will be??</h2>
+        <p>The appointment will last for 60 minutes. If we run over,
           we are happily to schedule another appointment with you to
           make sure you are taken care of. </p>
       </div>
       <div className={styles.qaBlock}>
         <h2>What is the price range of your gowns?</h2>
-        <p>Our price range is 1,000 - 2,000 euros.
-          With the majority of gowns range from 1,200 - 1,600 euros.</p>
+        <p>Our price range is 1,000 - 2,000 euros,
+          with the majority of gowns ranging from 1,200 - 1,600 euros.</p>
       </div>
       <div className={styles.qaBlock}>
         <h2>Do I need alteration?</h2>
@@ -53,8 +53,8 @@ const FAQ = () => {
           of a seamstress or tailor. </p>
       </div>
       <div className={styles.qaBlock}>
-        <h2>Do I need to bring anything to my appoinment?</h2>
-        <p>We invite you to bring any undergarments (perferably nude)
+        <h2>Do I need to bring anything to my appointment?</h2>
+        <p>We invite you to bring any undergarments (preferably nude)
           and shoes that you are considering wearing on your wedding day, if applicable. </p>
       </div>
       <div className={styles.qaBlock}>

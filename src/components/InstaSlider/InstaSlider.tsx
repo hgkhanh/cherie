@@ -25,7 +25,7 @@ const InstaSlider = () => {
               localFile {
                 childImageSharp {
                   fluid(maxWidth: 500) {
-                    ...GatsbyImageSharpFluid
+                    ...GatsbyImageSharpFluid_withWebp
                   }
                 }
               }
@@ -83,8 +83,7 @@ const InstaSlider = () => {
         return (
           <a key={index} className={styles.container} href={`//instagram.com/p/${pic.node.id}`}>
             <Image className={styles.slide}
-              sizes={{ ...pic.node.localFile.childImageSharp.fluid, aspectRatio: 1 }} alt='' >
-            </Image>
+              sizes={{ ...pic.node.localFile.childImageSharp.fluid, aspectRatio: 1 }} alt='' />
             {/* <div className={styles.overlay}>
               <h3>{pic.node.likes} likes</h3>
               <p>{pic.node.caption}</p>

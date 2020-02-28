@@ -8,6 +8,10 @@ import VisibilitySensor from 'react-visibility-sensor';
 
 const RevealAnimation = (outerProps) => {
     const { opacity, transform, index } = outerProps;
+    let transformBefore = 'translateY(0)';
+    if (transform) {
+        transformBefore = 'translateY(50px)'
+    }
     return (
         <VisibilitySensor partialVisibility key={index}>
             {({ isVisible }) => (
@@ -15,7 +19,7 @@ const RevealAnimation = (outerProps) => {
                     config={config.slow}
                     to={{
                         opacity: isVisible && opacity ? 1 : 0,
-                        transform: isVisible  && transform ? 'translateY(-50px)' : 'translateY(0px)'
+                        transform: isVisible  && transform ? 'translateY(0)' : transformBefore
                     }}
                 >
                     {props => (

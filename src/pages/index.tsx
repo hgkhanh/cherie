@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import Helmet from 'react-helmet';
 import siteConfig from '../../data/SiteConfig';
 import Layout from '../layout';
@@ -11,85 +11,85 @@ import Hero from '../components/Hero';
 import CampaignModal from '../components/CampaignModal';
 
 const HomePage = ({ location }) => {
-  const data = useStaticQuery(graphql`
-      query {
-        banner1wide: file(name: {eq: "Banner-01"}) {
-          childCloudinaryAsset {
-            fluid(maxWidth: 2400) {
-              ...CloudinaryAssetFluid
-            }
+const data = useStaticQuery(graphql`
+    query {
+      banner1wide: file(name: {eq: "Banner-01"}) {
+        childCloudinaryAsset {
+          fluid(maxWidth: 2400) {
+            ...CloudinaryAssetFluid
           }
         }
-        banner1vertical: file(name: {eq: "Banner-01-Vertical"}) {
-          childCloudinaryAsset {
-            fluid(maxWidth: 1200) {
-              ...CloudinaryAssetFluid
-            }
+      }
+      banner1vertical: file(name: {eq: "Banner-01-Vertical"}) {
+        childCloudinaryAsset {
+          fluid(maxWidth: 1200) {
+            ...CloudinaryAssetFluid
           }
         }
+      }
 
-        banner2wide: file(name: {eq: "Banner-02"}) {
-          childCloudinaryAsset {
-            fluid(maxWidth: 2400) {
-              ...CloudinaryAssetFluid
-            }
-          }
-        } 
-
-        banner3wide: file(name: {eq: "Banner-03"}) {
-          childCloudinaryAsset {
-            fluid(maxWidth: 2400) {
-              ...CloudinaryAssetFluid
-            }
-          }
-        }  
-        
-        banner4wide: file(name: {eq: "Banner-04"}) {
-          childCloudinaryAsset {
-            fluid(maxWidth: 1600) {
-              ...CloudinaryAssetFluid
-            }
+      banner2wide: file(name: {eq: "Banner-02"}) {
+        childCloudinaryAsset {
+          fluid(maxWidth: 2400) {
+            ...CloudinaryAssetFluid
           }
         }
-        
-        modalBackground: file(name: {eq: "Modal-BG"}) {
-          childCloudinaryAsset {
-            fluid(maxWidth: 600, transformations: ["b_black", "o_90"]) {
-              aspectRatio
-              sizes
-              src
-              srcSet
-            }
-          }
-        } 
+      } 
 
-        products: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}}, sort: {fields: fileAbsolutePath, order: ASC}, limit: 6) {
-          edges {
-            node {
-              id
-              fields {
-                slug
-              }
-              frontmatter {
-                category
-                name
-                featureImage {
-                  childCloudinaryAsset {
-                    fluid(maxWidth: 1600) {
-                      ...CloudinaryAssetFluid
-                    }
+      banner3wide: file(name: {eq: "Banner-03"}) {
+        childCloudinaryAsset {
+          fluid(maxWidth: 2400) {
+            ...CloudinaryAssetFluid
+          }
+        }
+      }  
+      
+      banner4wide: file(name: {eq: "Banner-04"}) {
+        childCloudinaryAsset {
+          fluid(maxWidth: 1600) {
+            ...CloudinaryAssetFluid
+          }
+        }
+      }
+      
+      modalBackground: file(name: {eq: "Modal-BG"}) {
+        childCloudinaryAsset {
+          fluid(maxWidth: 600, transformations: ["b_black", "o_90"]) {
+            aspectRatio
+            sizes
+            src
+            srcSet
+          }
+        }
+      } 
+
+      products: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}}, sort: {fields: fileAbsolutePath, order: ASC}, limit: 6) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              category
+              name
+              featureImage {
+                childCloudinaryAsset {
+                  fluid(maxWidth: 1600) {
+                    ...CloudinaryAssetFluid
                   }
                 }
-                description
-                price
-                sizes
-                tags
               }
+              description
+              price
+              sizes
+              tags
             }
           }
-        } 
-      }      
-    `)
+        }
+      } 
+    }      
+  `)
 
   const products = data.products.edges;
   const [modalActive, setModalActive] = useState(false);

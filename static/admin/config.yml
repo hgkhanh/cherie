@@ -10,7 +10,7 @@ public_folder: images
 collections:
   - name: product
     label: "Product"
-    folder: "content"
+    folder: "content/products"
     create: true
     identifier_field: name
     slug: "{{name}}"

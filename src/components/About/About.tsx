@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as styles from "./About.module.scss";
+import { useStaticQuery, graphql } from 'gatsby';
 import { Row, Col } from 'antd';
+import Image from 'gatsby-image';
+import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 
 const About = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      pic1: file(name: {eq: "Banner-03"}) {
+        childCloudinaryAsset {
+          fluid(maxWidth: 1600) {
+            ...CloudinaryAssetFluid
+          }
+        }
+      }
+      pic2: file(name: {eq: "logo-square"}) {
+        childCloudinaryAsset {
+          fixed(width: 400) {
+            ...CloudinaryAssetFixed
+          }
+        }
+      }
+    }      
+  `)
+
+  const { width } = useContext(WindowDimensionsContext);
+
   return (
     <div className={styles.container}>
       <Row className='centerAlign' type='flex' justify='center' gutter={40}>
@@ -18,6 +42,9 @@ const About = () => {
             And perhaps that is the true connotation of weddings,
             to mark the most significant threshold of one’s life in the name of love.
           </p>
+          <Image fixed={data.pic2.childCloudinaryAsset.fixed} />
+
+          <br />
           <p>
             Inspired by modern beauty with a nostalgic soul that forever longs for the past,
             allured by romance and passion,the idea of a small bridal boutique was conceived
@@ -29,6 +56,14 @@ const About = () => {
             at Cherie Bridal where the provision of excellent customer service is the top priority,
             every bride who comes to us is and will always be our ‘sweetheart’.
           </p>
+
+          {width <= 576 ? (
+            (<Image fluid={data.pic1.childCloudinaryAsset.fluid} />)
+          ) :
+            (
+              <Image sizes={{ ...data.pic1.childCloudinaryAsset.fluid, aspectRatio: 16 / 9 }} alt='' />
+            )}
+          <br />
           <p>
             In today’s market where wedding planning has become a process of relentless waiting and extravagance,
             Cherie Bridal promises you the most enjoyable experience of finding your true match of a wedding dress,
