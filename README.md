@@ -17,4 +17,4 @@ Live at ([www.cheriebridal.fi](https://www.cheriebridal.fi))
 
 # Author
 
-Khanh Nguyen ([@Vagr9K](https://github.com/hgkhanh))
+Khanh Nguyen ([@hgkhanh](https://github.com/hgkhanh))
