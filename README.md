@@ -1,5 +1,5 @@
 Static e-commerce site for Cherie Bridal
-Live at ([www.cheriebridal.fi](https://www.cheriebridal.fi)) 
+Live at ([www.cheriebridal.fi]https://www.cheriebridal.fi) 
 
 # Tech stack
 - Gatsby ( Static site generator based on React)
