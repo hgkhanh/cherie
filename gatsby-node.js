@@ -38,7 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Get a full list of markdown products
   const markdownQueryResult = await graphql(`
     {
-      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}}) {
+      products: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}}) {
         edges {
           node {
             id
@@ -60,10 +60,10 @@ exports.createPages = async ({ graphql, actions }) => {
     throw markdownQueryResult.errors;
   }
 
-  const tagSet = new Set();
-  const categorySet = new Set();
+  // const tagSet = new Set();
+  // const categorySet = new Set();
 
-  const productsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
+  const productsEdges = markdownQueryResult.data.products.edges;
 
   // Sort products
   // productsEdges.sort((productA, productB) => {
