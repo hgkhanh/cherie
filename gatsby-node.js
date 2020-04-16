@@ -16,7 +16,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       Object.prototype.hasOwnProperty.call(node.frontmatter, "name")
     ) {
       slug = `/dresses/${_.kebabCase(node.frontmatter.name)}`;
-    } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
+    } else if (
+      Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
+    ) {
+      slug = `/posts/${_.kebabCase(node.frontmatter.title)}`;
+    }
+    else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
       slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
     } else if (parsedFilePath.dir === "") {
       slug = `/${parsedFilePath.name}/`;
@@ -30,7 +36,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const productPage = path.resolve("src/templates/product.tsx");
+  const productPage = path.resolve("src/templates/ProductTemplate.tsx");
+  const postPage = path.resolve("src/templates/PostTemplate.tsx");
   // const tagPage = path.resolve("src/templates/tag.tsx");
   // const categoryPage = path.resolve("src/templates/category.tsx");
   // const listingPage = path.resolve("./src/templates/listing.tsx");
@@ -52,6 +59,19 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      posts: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/posts\\//"}}) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -64,6 +84,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // const categorySet = new Set();
 
   const productsEdges = markdownQueryResult.data.products.edges;
+  const postsEdges = markdownQueryResult.data.posts.edges;
 
   // Sort products
   // productsEdges.sort((productA, productB) => {
@@ -101,7 +122,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // });
 
   // Product page creating
-  productsEdges.forEach((edge, index) => {
+  productsEdges.forEach((edge) => {
     // Generate a list of tags
     // if (edge.node.frontmatter.tags) {
     //   edge.node.frontmatter.tags.forEach(tag => {
@@ -122,6 +143,17 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `${edge.node.fields.slug}/`,
       component: productPage,
+      context: {
+        slug: edge.node.fields.slug
+      }
+    });
+  });
+
+  // Posts page creating
+  postsEdges.forEach((edge) => {
+    createPage({
+      path: `${edge.node.fields.slug}/`,
+      component: postPage,
       context: {
         slug: edge.node.fields.slug
       }

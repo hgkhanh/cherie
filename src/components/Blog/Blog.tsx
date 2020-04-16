@@ -29,15 +29,14 @@ const BlogItem = ({ post }) => {
                 <p>{excerpt}</p>
             </Link>
         </div>
-
     );
 };
 
 const Blog = ({ posts }) => {
     return (
         <React.Fragment>
-            {posts.map((post) =>
-                <BlogItem post={post.node} />
+            {posts.map((post, index) =>
+                <BlogItem post={post.node} key={index}  />
             )}
         </React.Fragment>
     );

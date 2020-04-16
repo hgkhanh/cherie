@@ -39,9 +39,11 @@ const BlogPage = ({ location }) => {
   return (
     <Layout location={location}>
       <Helmet title={`Blog | ${siteConfig.siteTitle}`} />
-      <div className="grid">
-        <h1>Blog</h1>
-        <Blog posts={posts}/>
+      <div className="pageContainer">
+        <div className="grid">
+          <h1>Blog</h1>
+          <Blog posts={posts} />
+        </div>
       </div>
     </Layout>
   );
