@@ -1,5 +1,4 @@
-const sgMail = require('@sendgrid/mail')
-const { SENDGRID_API_KEY, SENDGRID_FROM_EMAIL, SENDGRID_TO_EMAIL } = process.env
+const sgMail = require('@sendgrid/mail');
 
 exports.handler = async (event, context, callback) => {
 
@@ -15,11 +14,11 @@ exports.handler = async (event, context, callback) => {
         domain
     } = payload;
 
-    sgMail.setApiKey(SENDGRID_API_KEY);
+    sgMail.setApiKey(process.env.GATSBY_SENDGRID_API_KEY);
 
     const msg = {
-        to: SENDGRID_TO_EMAIL,
-        from: SENDGRID_FROM_EMAIL,
+        to: process.env.GATSBY_SENDGRID_TO_EMAIL,
+        from: process.env.GATSBY_SENDGRID_FROM_EMAIL,
         templateId: 'd-3fb49ae5877e480aa1b7278d1d9d1800',
         dynamic_template_data: {
             subject: subject,
