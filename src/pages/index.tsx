@@ -8,7 +8,7 @@ import RevealAnimation from '../shared/RevealAnimation';
 import ProductList from '../components/ProductList';
 import InstaSlider from '../components/InstaSlider';
 import Hero from '../components/Hero';
-import CampaignModal from '../components/CampaignModal';
+// import CampaignModal from '../components/CampaignModal';
 
 const HomePage = ({ location }) => {
 const data = useStaticQuery(graphql`
@@ -114,7 +114,7 @@ const data = useStaticQuery(graphql`
 
   return (
     <Layout location={location}>
-      <CampaignModal modalBackground={data.modalBackground} visible={modalActive} setVisible={setModalActive} />
+      {/* <CampaignModal modalBackground={data.modalBackground} visible={modalActive} setVisible={setModalActive} /> */}
       <div className='pageContainer'>
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
         <Hero overlay={false} hasScroll={true}
