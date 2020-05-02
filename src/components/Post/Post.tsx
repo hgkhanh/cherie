@@ -18,12 +18,12 @@ const Post = ({ post }) => {
     return (
         <React.Fragment>
             <div>
-                <h2>
+                <h1>
                     {title}
-                </h2>
-                <p>
+                </h1>
+                <h3>
                     <span>{moment(date).format("MMMM d, YYYY")}</span>
-                </p>
+                </h3>
                 <Image fluid={fluid} alt={title} />
                 <br/>
                 <div dangerouslySetInnerHTML={{ __html: html }} />

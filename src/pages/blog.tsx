@@ -40,7 +40,8 @@ const BlogPage = ({ location }) => {
     <Layout location={location}>
       <Helmet title={`Blog | ${siteConfig.siteTitle}`} />
       <div className="pageContainer">
-        <div className="grid">
+        <hr className='divider' />
+        <div className="grid narrow">
           <h1>Blog</h1>
           <Blog posts={posts} />
         </div>

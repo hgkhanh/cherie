@@ -20,6 +20,10 @@
   width: 100%;
   text-align: center;
   padding: 50px;
+  .description {
+    text-align: justify;
+    color: $font-color-gray;
+  }
 }
 
 @media screen and (max-width: 993px) {
@@ -62,7 +66,6 @@
       width: 100%;
       display: block;
       text-align: center;
-      padding-top: 15px;
       text-decoration: underline;
     }
   }

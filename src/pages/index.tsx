@@ -141,7 +141,6 @@ const data = useStaticQuery(graphql`
                     to us is and will always be our ‘sweetheart’.
                   </p>
                   <h4>- The Chérie Bridal Team</h4>
-                  <hr className='divider' />
                   <Link to={'/about'} >
                     <h3 className='underline uppercase'>Learn more</h3>
                   </Link>

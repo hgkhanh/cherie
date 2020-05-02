@@ -23,9 +23,9 @@ const BlogItem = ({ post }) => {
                 <h2>
                     {title}
                 </h2>
-                <p>
+                <h5>
                     <span>{moment(date).format("MMMM d, YYYY")}</span>
-                </p>
+                </h5>
                 <p>{excerpt}</p>
             </Link>
         </div>

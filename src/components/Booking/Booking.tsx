@@ -133,7 +133,7 @@ const Booking = () => {
         </Col>
       </Row>
       <div className={styles.form}>
-        <h1 className="sansSerif noBtmMargin">
+        <h1 className="noBtmMargin">
           Pick a date and time
             </h1>
         <h3>
