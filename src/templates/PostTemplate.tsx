@@ -22,7 +22,7 @@ const PostTemplate = (props: any) => {
         <title>{`${post.title} | ${config.siteTitle}`}</title>
       </Helmet>
       <SEO productPath={slug} productData={SEOData} productSEO />
-      <div className="grid">
+      <div className="grid narrow">
         <Post post={post} />
       </div>
     </Layout>

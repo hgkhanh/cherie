@@ -34,8 +34,8 @@ collections:
     folder: "content/posts"
     create: true
     fields:
-      - { label: Title, name: title }
-      - { label: Date, name: date, widget: date }
-      - { label: Cover, name: cover, widget: image }
-      - { label: Body, name: body, widget: markdown }
+      - { label: "Title", name: "title", widget: "string"  }
+      - { label: "Date", name: "date", widget: "date" }
+      - { label: "Cover", name: "cover", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
     
