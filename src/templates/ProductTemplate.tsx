@@ -6,7 +6,6 @@ import Product from "../components/Product/Product";
 import SEO from "../components/SEO";
 import Recommendation from "../components/Recommendation";
 import config from "../../data/SiteConfig";
-import "./product.scss";
 
 const ProductTemplate = (props: any) => {
   const { data, pageContext } = props;

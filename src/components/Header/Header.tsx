@@ -96,14 +96,16 @@ const Header = ({ location }) => {
         <div className={styles.container}>
           {width <= 992 && (
             <Drawer
+              className='darkTone'
               placement="left"
               closable={true}
               onClose={() => setDrawerOpen(false)}
               visible={drawerOpen}
             >
-              <Link to="/collection" className="Heading u-h6"><h1>Collection</h1></Link>
-              <Link to="/booking" className="Heading u-h6"><h1>Booking</h1></Link>
-              <Link to="/about" className="Heading u-h6"><h1>About</h1></Link>
+              <Link to="/collection"><h2>Collection</h2></Link>
+              <Link to="/booking"><h2>Booking</h2></Link>
+              <Link to="/blog"><h2>Blog</h2></Link>
+              <Link to="/about"><h2>About</h2></Link>
             </Drawer>
           )}
           <div className={`${styles.block} ${styles.fill}`}>
@@ -115,6 +117,9 @@ const Header = ({ location }) => {
                 <ul className="horizontalList">
                   <li>
                     <a href="/collection">Collection</a>
+                  </li>
+                  <li>
+                    <a href="/blog">Blog</a>
                   </li>
                   <li>
                     <a href="/about">About</a>

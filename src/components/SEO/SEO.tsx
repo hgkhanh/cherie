@@ -10,7 +10,7 @@ const SEO = (props) => {
   let image;
   let productURL;
   if (productSEO) {
-    const description = productData.description;
+    description = productData.description;
     image = productData.featureImage.childCloudinaryAsset.fixed.src;
     productURL = urljoin(config.siteUrl, config.pathPrefix, productPath);
   } else {

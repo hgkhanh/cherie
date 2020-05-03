@@ -1,16 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Roboto&display=swap");
-
-@font-face {
-  font-family: "FreightDispProLight";
-  src: url("../../static/fonts/3AE99E_0_0.eot");
-  src: url("../../static/fonts/3AE99E_0_0.eot?#iefix") format("embedded-opentype"),
-    url("../../static/fonts/3AE99E_0_0.woff2") format("woff2"), url("../../static/fonts/3AE99E_0_0.woff") format("woff"),
-    url("../../static/fonts/3AE99E_0_0.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "FreightTextBook";
-  src: url("../../static/fonts/3AE99E_1_1.woff2") format("woff2");
+/* //Typograhpy BlinkMacSystemFont*/
+* {
+  font-family: -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Inter",
+    "Helvetica Neue", sans-serif;
 }
 
 h1,
@@ -18,31 +9,83 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  font-family: $font-header;
-  font-weight: 400;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
-  &:not(.sansSerif) {
-    letter-spacing: 0.8px;
+h6,
+span {
+  font-weight: 200;
+}
+
+.darkTone {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a {
+    color: #fff;
+  }
+
+  :not(.ant-btn:hover) {
+    span {
+      color: #fff;
+    }
   }
 }
 
-p,
-li {
-  font-family: $font-body;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
+.pageContainer {
+  background: $color-background;
 }
 
-a {
-  font-family: $font-sans-serif;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
+main {
+  background: $color-background;
+  line-height: 1.75;
+}
+header,
+main {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  a,
+  p,
+  li {
+    color: $font-color;
+    &.grayText {
+      color: $font-color-gray;
+    }
+  }
+
+  .grayText {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a,
+    p,
+    span {
+      color: $font-color-gray;
+    }
+  }
+}
+
+.leftAlign {
+  text-align: left;
+}
+
+.rightAlign {
+  text-align: right;
+}
+
+.centerAlign {
+  text-align: center !important;
 }
 
 blockquote {
-  font-family: $font-header, serif;
   width: 500px;
   margin: 20px 0;
   padding: 10px 40px;
@@ -99,91 +142,15 @@ blockquote cite:before {
 }
 
 .link {
-  font-family: $font-body;
   color: #c79479;
-}
-/* //Typograhpy */
-
-.darkTone {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  a {
-    color: #fff;
-  }
-
-  :not(.ant-btn:hover) {
-    span {
-      color: #fff;
-    }
-  }
-}
-
-.pageContainer {
-  background: #f6f0ec;
-}
-
-main {
-  background: #f6f0ec;
-  line-height: 1.75;
-}
-header,
-main {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  a,
-  p,
-  li {
-    color: #333;
-    &.grayText {
-      color: #727272;
-    }
-  }
-
-  .grayText {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    a,
-    p,
-    span {
-      color: #727272;
-    }
-  }
-}
-
-.serif {
-  font-family: $font-header;
-}
-.sansSerif {
-  font-family: $font-sans-serif;
-}
-
-.leftAlign {
-  text-align: left;
-}
-
-.rightAlign {
-  text-align: right;
-}
-
-.centerAlign {
-  text-align: center !important;
 }
 // /* Typography */
 
 /* Global Layout */
+#gatsby-focus-wrapper {
+  background: $color-background;
+}
+
 .gridWrapper {
   width: 100%;
 }
@@ -206,6 +173,10 @@ hr.divider {
 
 .grid {
   max-width: 1600px;
+  &.narrow {
+    max-width: 700px;
+    padding: 10px;
+  }
   margin: 0 auto;
   padding: 0 90px;
   position: relative;
@@ -214,6 +185,8 @@ hr.divider {
     background: #e8c7b5;
   }
 }
+
+
 
 .gridTitle {
   flex-basis: 100%;
@@ -269,13 +242,8 @@ button:focus {
 @media screen and (max-width: 769px) {
   .grid {
     width: 100%;
-    padding: 20px;
     .gridTitle {
-      padding: 20px 0;
-    }
-    .gridTitle:not(.centerAlign) {
-      padding-left: 20px;
-      padding-bottom: 0;
+      padding: 10px 0;
     }
   }
 

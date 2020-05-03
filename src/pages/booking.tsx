@@ -13,7 +13,7 @@ const BookingPage = ({ location }) => {
     <Layout location={location}>
       <Helmet title={`Booking | ${config.siteTitle}`} />
       <hr className='divider' />
-      <div className='grid centerAlign sansSerif'>
+      <div className='grid centerAlign'>
         <Location>
           {locationProps =>
             <Router basepath="/booking">

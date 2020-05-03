@@ -34,6 +34,7 @@ module.exports = {
     }
   },
   plugins: [
+    `gatsby-plugin-netlify-cms-paths`,
     {
       resolve: `gatsby-source-instagram`,
       options: {
@@ -61,6 +62,7 @@ module.exports = {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
+          `gatsby-plugin-netlify-cms-paths`,
           {
             resolve: "gatsby-remark-images"
           },
@@ -90,17 +92,12 @@ module.exports = {
       options: {
         javascriptEnabled: true,
         modifyVars: {
-          "font-family": "FreightDispProLight, Helvetica, Georgia, serif",
           "primary-color": "#C79479",
           "text-color": "#707272",
           "border-radius-base": "0px",
           "success-color": "#95de64",
           "warning-color": "#ffd666",
-          "error-color": "#ff7875",
-          "btn-height-base": "40px",
-          "btn-height-lg": "60px",
-          "font-size-base": "16px",
-          "font-size-sm": "14px"
+          "error-color": "#ff7875"
         }
       }
     },
@@ -117,8 +114,15 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "content",
-        path: `${__dirname}/content/`
+        name: "products",
+        path: `${__dirname}/content/products`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: "posts",
+        path: `${__dirname}/content/posts/`
       }
     },
     {

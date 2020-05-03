@@ -1,12 +1,11 @@
 .footer {
   text-align: center;
-  background: #f6f0ec;
+  background: $color-background;
   // background: #C79479;
   padding-top: 20px;
   padding-bottom: 40px;
   position: relative;
   h3 {
-    font-family: $font-sans-serif;
     color: #727272;
     font-weight: 300;
   }

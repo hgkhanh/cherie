@@ -75,8 +75,8 @@ const Product = ({ product }) => {
                         <Row type='flex' justify='center' align='middle'>
                             <Col className={styles.info} span={24}>
                                 <h1 className={styles.name}>{product.name}</h1>
-                                <h4 className={[styles.price, 'sansSerif grayText'].join(' ')}>From €{_.round((product.price), 2).toFixed(2)}</h4>
-                                <p className='grayText'>{product.description}</p>
+                                {/* <h4 className={[styles.price, 'grayText'].join(' ')}>From €{_.round((product.price), 2).toFixed(2)}</h4> */}
+                                <p className={styles.description}>{product.description}</p>
                                 <div className={styles.borderBlock}>
                                     <Row type='flex' justify='start' align='middle'>
                                         <Col span={24}>
@@ -89,8 +89,7 @@ const Product = ({ product }) => {
                                             <Link className={styles.checkSize} to='/size-guide'><span className="link">Check your size</span></Link>
                                         </Col>
                                     </Row>
-                                    {/* <Row type='flex' justify='space-between' align='middle'
-                                        className='sansSerif'>
+                                    {/* <Row type='flex' justify='space-between' align='middle'>
                                         <Col className='leftAlign' span={8}>
                                             Sizes
                                         </Col>
@@ -104,8 +103,7 @@ const Product = ({ product }) => {
                                             })}
                                         </Col>
                                     </Row> */}
-                                    {/* <Row type='flex' justify='space-between' align='middle'
-                                        className='sansSerif'>
+                                    {/* <Row type='flex' justify='space-between' align='middle'>
                                         <Col className='leftAlign' span={12}>
                                             Tags
                                         </Col>
