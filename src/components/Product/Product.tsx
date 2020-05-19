@@ -52,8 +52,8 @@ const Product = ({ product }) => {
                     Klarna.InstantShopping.load({
                         "setup": {
                             "instance_id": "purchase-1",
-                            "key": "c3003865-4d08-404a-aa32-34fd321dfb2c",
-                            "environment": "production",
+                            "key": "00b49943-0682-4d6d-b40a-53cbc7b23c97",
+                            "environment": "playground",
                             "region": "eu"
                         },
                         "purchase_country": "FI",
