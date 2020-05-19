@@ -6,6 +6,10 @@ const urljoin = require("url-join");
 const path = require("path");
 const config = require("./data/SiteConfig");
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+console.log(`Using environment config: '${activeEnv}'`)
+
 module.exports = {
   developMiddleware: app => {
     app.use(
@@ -146,7 +150,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: config.googleAnalyticsID
+        trackingId: process.env.GA_TRACKING_ID
       }
     },
     {

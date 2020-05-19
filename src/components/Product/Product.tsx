@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 // import PropTypes from 'prop-types';
+import Helmet from "react-helmet";
 import styles from './Product.module.scss';
 // import SocialLinks from '../SocialLinks/SocialLinks';
 import { Row, Col, Carousel } from "antd";
@@ -45,12 +46,60 @@ const Product = ({ product }) => {
 
     return (
         <React.Fragment>
+            <Helmet>
+                <script>
+                {`
+                    window.klarnaAsyncCallback = function () {
+                    Klarna.InstantShopping.load({
+                        "setup": {
+                        "instance_id": "purchase-1",
+                        "key": "365da518-af2c-4127-b760-6aeda0a3be35",
+                        "environment": "development",
+                        "region": "eu"
+                        },
+                        "purchase_country": "FI",
+                        "purchase_currency": "EUR",
+                        "locale": "en-us",
+                        "merchant_urls": {
+                        "terms": "https://dev.cheriebridal.fi/about", // mandatory
+                        },
+                        "order_lines": [{
+                        "type": "physical",
+                        "reference": "19-402-B",
+                        "name": "Battery Power Pack Black",
+                        "quantity": 1,
+                        "unit_price": 119000,
+                        "tax_rate": 2500,
+                        "total_amount": 119000,
+                        "total_discount_amount": 0,
+                        "total_tax_amount": 23800,
+                        "product_url": "https://www.example.com/products/f2a8d7e34",
+                        "image_url": "https://www.example.com/products/f2a8d7e34"
+                        }],
+                        "merchant_reference1": "45aa52f397871e3a210645d5", // optional
+                        "shipping_options": [{ // add multiple if necessary
+                        "id": "express_priority",
+                        "name": "Express 1-2 days",
+                        "description": "Delivery by 4:30pm",
+                        "price": 5000,
+                        "tax_amount": 1000,
+                        "tax_rate": 2500,
+                        "shipping_method": "PickUpStore"
+                        }]
+                    }, function (response) {
+                        console.log('Klarna.InstantShopping.load callback with data:' + JSON.stringify(response))
+                    })
+                    };
+                `}
+                </script>
+                <script src="https://x.klarnacdn.net/instantshopping/lib/v1/lib.js" async></script>
+            </Helmet>
             <div className={getContainerClassName()}>
                 <Row type='flex' justify='center' align='stretch'>
                     {width < 769 ? (
                         <Col span={24}>
                             <Carousel {...settings}>
-                                {product.galleryImages.map((image, index) => 
+                                {product.galleryImages.map((image, index) =>
                                     <Image key={index} fluid={image.childCloudinaryAsset.fluid} alt='' />
                                 )}
                             </Carousel>
@@ -128,6 +177,7 @@ const Product = ({ product }) => {
                                 Tags: <ProductTags tags={product.tags} />
                             </div> */}
                                 {/* <SocialLinks productPath={slug} productNode={productNode} /> */}
+                                <klarna-instant-shopping data-instance-id="purchase-1" />
                             </Col>
                         </Row>
                     </Col>

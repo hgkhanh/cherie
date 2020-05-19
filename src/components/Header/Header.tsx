@@ -7,6 +7,8 @@ import { Drawer, Icon } from 'antd';
 import Image from 'gatsby-image';
 import debounce from 'lodash/debounce';
 
+const activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
 const Header = ({ location }) => {
   const logo = useStaticQuery(graphql`
     query LogoQuery {
@@ -152,6 +154,11 @@ const Header = ({ location }) => {
             )}
           </div>
         </div>
+        {activeEnv === 'development' &&
+          <div className={styles.ribbon}>
+            <span>Development</span>
+          </div>
+        }
       </header>
     </React.Fragment>
   );
