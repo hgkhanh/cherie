@@ -53,7 +53,7 @@ const Product = ({ product }) => {
                     Klarna.InstantShopping.load({
                         "setup": {
                         "instance_id": "purchase-1",
-                        "key": "365da518-af2c-4127-b760-6aeda0a3be35",
+                        "key": "c3003865-4d08-404a-aa32-34fd321dfb2c",
                         "environment": "development",
                         "region": "eu"
                         },
@@ -61,7 +61,7 @@ const Product = ({ product }) => {
                         "purchase_currency": "EUR",
                         "locale": "en-us",
                         "merchant_urls": {
-                        "terms": "https://dev.cheriebridal.fi/about", // mandatory
+                        "terms": "https://feature-klarna.cheriebridal.fi/about", // mandatory
                         },
                         "order_lines": [{
                         "type": "physical",
