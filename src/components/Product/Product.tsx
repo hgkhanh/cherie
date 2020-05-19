@@ -52,7 +52,7 @@ const Product = ({ product }) => {
                     Klarna.InstantShopping.load({
                         "setup": {
                             "instance_id": "purchase-1",
-                            "key": "00b49943-0682-4d6d-b40a-53cbc7b23c97",
+                            "key": "bb596efa-50ec-4a2b-88d0-e6b479faa4f4",
                             "environment": "playground",
                             "region": "eu"
                         },
@@ -67,11 +67,11 @@ const Product = ({ product }) => {
                             "reference": "19-402-B",
                             "name": "Battery Power Pack Black",
                             "quantity": 1,
-                            "unit_price": 119000,
-                            "tax_rate": 2500,
-                            "total_amount": 119000,
+                            "unit_price": 10,
+                            "tax_rate": 2400,
+                            "total_amount": 10,
                             "total_discount_amount": 0,
-                            "total_tax_amount": 23800,
+                            "total_tax_amount": 2.4,
                             "product_url": "https://feature-klarna.cheriebridal.fi/dresses/aurora",
                             "image_url": "https://feature-klarna.cheriebridal.fi/dresses/aurora"
                         }],
