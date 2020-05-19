@@ -47,12 +47,13 @@ const Product = ({ product }) => {
     useEffect(() => {
         // Check if window exist and screen is small
         if (typeof window !== 'undefined') {
+            console.log('process.env.GATSBY_KLARNA_BUTTON_KEY', process.env.GATSBY_KLARNA_BUTTON_KEY);
             window.klarnaAsyncCallback = function () {
                 try {
                     Klarna.InstantShopping.load({
                         "setup": {
                             "instance_id": "purchase-1",
-                            "key": "bb596efa-50ec-4a2b-88d0-e6b479faa4f4",
+                            "key": process.env.GATSBY_KLARNA_BUTTON_KEY,
                             "environment": "playground",
                             "region": "eu"
                         },
