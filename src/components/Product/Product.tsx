@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import Helmet from "react-helmet";
 import styles from './Product.module.scss';
@@ -44,54 +44,60 @@ const Product = ({ product }) => {
         return classArray.join(' ');
     }
 
-    return (
-        <React.Fragment>
-            <Helmet>
-                <script>
-                {`
-                    window.klarnaAsyncCallback = function () {
+    useEffect(() => {
+        // Check if window exist and screen is small
+        if (typeof window !== 'undefined') {
+            window.klarnaAsyncCallback = function () {
+                try {
                     Klarna.InstantShopping.load({
                         "setup": {
-                        "instance_id": "purchase-1",
-                        "key": "c3003865-4d08-404a-aa32-34fd321dfb2c",
-                        "environment": "development",
-                        "region": "eu"
+                            "instance_id": "purchase-1",
+                            "key": "c3003865-4d08-404a-aa32-34fd321dfb2c",
+                            "environment": "production",
+                            "region": "eu"
                         },
                         "purchase_country": "FI",
                         "purchase_currency": "EUR",
                         "locale": "en-us",
                         "merchant_urls": {
-                        "terms": "https://feature-klarna.cheriebridal.fi/about", // mandatory
+                            "terms": "https://feature-klarna.cheriebridal.fi/about", // mandatory
                         },
                         "order_lines": [{
-                        "type": "physical",
-                        "reference": "19-402-B",
-                        "name": "Battery Power Pack Black",
-                        "quantity": 1,
-                        "unit_price": 119000,
-                        "tax_rate": 2500,
-                        "total_amount": 119000,
-                        "total_discount_amount": 0,
-                        "total_tax_amount": 23800,
-                        "product_url": "https://www.example.com/products/f2a8d7e34",
-                        "image_url": "https://www.example.com/products/f2a8d7e34"
+                            "type": "physical",
+                            "reference": "19-402-B",
+                            "name": "Battery Power Pack Black",
+                            "quantity": 1,
+                            "unit_price": 119000,
+                            "tax_rate": 2500,
+                            "total_amount": 119000,
+                            "total_discount_amount": 0,
+                            "total_tax_amount": 23800,
+                            "product_url": "https://feature-klarna.cheriebridal.fi/dresses/aurora",
+                            "image_url": "https://feature-klarna.cheriebridal.fi/dresses/aurora"
                         }],
                         "merchant_reference1": "45aa52f397871e3a210645d5", // optional
                         "shipping_options": [{ // add multiple if necessary
-                        "id": "express_priority",
-                        "name": "Express 1-2 days",
-                        "description": "Delivery by 4:30pm",
-                        "price": 5000,
-                        "tax_amount": 1000,
-                        "tax_rate": 2500,
-                        "shipping_method": "PickUpStore"
+                            "id": "express_priority",
+                            "name": "Express 1-2 days",
+                            "description": "Delivery by 4:30pm",
+                            "price": 5000,
+                            "tax_amount": 1000,
+                            "tax_rate": 2500,
+                            "shipping_method": "PickUpStore"
                         }]
                     }, function (response) {
                         console.log('Klarna.InstantShopping.load callback with data:' + JSON.stringify(response))
                     })
-                    };
-                `}
-                </script>
+                } catch (e) {
+                    console.log(e);
+                }
+            };
+        }
+    }, []);
+
+    return (
+        <React.Fragment>
+            <Helmet>
                 <script src="https://x.klarnacdn.net/instantshopping/lib/v1/lib.js" async></script>
             </Helmet>
             <div className={getContainerClassName()}>
