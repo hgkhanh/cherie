@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import Helmet from "react-helmet";
 import styles from './Product.module.scss';
 // import SocialLinks from '../SocialLinks/SocialLinks';
-import { Row, Col, Carousel, Button } from "antd";
+import { Row, Col, Carousel } from "antd";
 import { Spring } from 'react-spring/renderprops';
 import VisibilitySensor from 'react-visibility-sensor';
 import { Link } from 'gatsby';
@@ -12,8 +12,6 @@ import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 import SliderArrow from '../SliderArrow';
 import Image from "gatsby-image";
 import RevealAnimation from '../../shared/RevealAnimation';
-const fetch = require(`node-fetch`);
-const base64 = require('base-64');
 
 const Product = ({ product }) => {
     const [isHeaderVisible, setHeaderVisible] = useState(false);
@@ -46,71 +44,63 @@ const Product = ({ product }) => {
         return classArray.join(' ');
     }
 
-    // Create session, and init Klarna
-    const onKlarnaInit = () => {
-        const url = process.env.GATSBY_KLARNA_BASE_URL
-            + 'payments/v1/sessions';
-        const order = {
-            "purchase_country": "FI",
-            "purchase_currency": "EUR",
-            "locale": "en-US",
-            "order_amount": 10,
-            "order_tax_amount": 0,
-            "order_lines": [{
-                "type": "physical",
-                "reference": "19-402",
-                "name": "Battery Power Pack",
-                "quantity": 1,
-                "unit_price": 10,
-                "tax_rate": 0,
-                "total_amount": 10,
-                "total_discount_amount": 0,
-                "total_tax_amount": 0
-            }]
-        };
-        // Create session
-        fetch(url, {
-            method: "POST",
-            headers: {
-                'Authorization': 'Basic '
-                    + base64.encode(
-                        process.env.GATSBY_KLARNA_API_USERNAME
-                        + ':'
-                        + process.env.GATSBY_KLARNA_API_PASSWORD
-                    ),
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(order)
-        })
-            .then(response => {
-                console.log('response', response);
-                response.json()
-            })
-            .then(data => {
-                console.log('data', data);
-                // get client token
-                // Init
-                Klarna.Payments.init({
-                    client_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIifQ.dtxWM6MIcgoeMgH87tGvsNDY6cH'
-                });
-                // Load widget
-                Klarna.Payments.load({
-                    container: '#klarna-payments-container',
-                    payment_method_category: 'pay_later'
-                }, function (res) {
-                    console.debug(res);
-                })
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-
-    }
+    useEffect(() => {
+        // Check if window exist and screen is small
+        if (typeof window !== 'undefined') {
+            console.log('process.env.GATSBY_KLARNA_BUTTON_KEY', process.env.GATSBY_KLARNA_BUTTON_KEY);
+            window.klarnaAsyncCallback = function () {
+                try {
+                    Klarna.InstantShopping.load({
+                        "setup": {
+                            "instance_id": "purchase-1",
+                            "key": process.env.GATSBY_KLARNA_BUTTON_KEY,
+                            "environment": "playground",
+                            "region": "eu"
+                        },
+                        "purchase_country": "FI",
+                        "purchase_currency": "EUR",
+                        "locale": "fi-FI",
+                        "merchant_urls": {
+                            "terms": process.env.GATSBY_KLARNA_CHERIE_URL + "about", // mandatory
+                            "confirmation": process.env.GATSBY_KLARNA_CHERIE_URL + "order/confirmation"
+                        },
+                        "order_lines": [{
+                            "type": "physical",
+                            "reference": "19-402-B",
+                            "name": "Battery Power Pack Black",
+                            "quantity": 1,
+                            "unit_price": 10,
+                            "tax_rate": 2400,
+                            "total_amount": 10,
+                            "total_discount_amount": 0,
+                            "total_tax_amount": 2.4,
+                            "product_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/aurora",
+                            "image_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/aurora"
+                        }],
+                        "merchant_reference1": "45aa52f397871e3a210645d5", // optional
+                        "shipping_options": [{ // add multiple if necessary
+                            "id": "express_priority",
+                            "name": "Express 1-2 days",
+                            "description": "Delivery by 4:30pm",
+                            "price": 5000,
+                            "tax_amount": 1000,
+                            "tax_rate": 2500,
+                            "shipping_method": "PickUpStore"
+                        }]
+                    }, function (response) {
+                        console.log('Klarna.InstantShopping.load callback with data:' + JSON.stringify(response))
+                    })
+                } catch (e) {
+                    console.log(e);
+                }
+            };
+        }
+    }, []);
 
     return (
         <React.Fragment>
             <Helmet>
-                <script src="https://x.klarnacdn.net/kp/lib/v1/api.js" async></script>
+                <script src="https://x.klarnacdn.net/instantshopping/lib/v1/lib.js" async></script>
             </Helmet>
             <div className={getContainerClassName()}>
                 <Row type='flex' justify='center' align='stretch'>
@@ -195,10 +185,7 @@ const Product = ({ product }) => {
                                 Tags: <ProductTags tags={product.tags} />
                             </div> */}
                                 {/* <SocialLinks productPath={slug} productNode={productNode} /> */}
-                                <Button type="primary" onClick={onKlarnaInit}>
-                                    Buy with Klarna
-                                </Button>
-                                <div id="klarna-payments-container"></div>
+                                <klarna-instant-shopping data-instance-id="purchase-1" />
                             </Col>
                         </Row>
                     </Col>
