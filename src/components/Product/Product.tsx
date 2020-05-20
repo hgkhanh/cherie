@@ -61,7 +61,7 @@ const Product = ({ product }) => {
                         "purchase_currency": "EUR",
                         "locale": "en-us",
                         "merchant_urls": {
-                            "terms": "https://feature-klarna.cheriebridal.fi/about", // mandatory
+                            "terms": process.env.GATSBY_KLARNA_CHERIE_URL + "about", // mandatory
                         },
                         "order_lines": [{
                             "type": "physical",
@@ -73,8 +73,8 @@ const Product = ({ product }) => {
                             "total_amount": 10,
                             "total_discount_amount": 0,
                             "total_tax_amount": 2.4,
-                            "product_url": "https://feature-klarna.cheriebridal.fi/dresses/aurora",
-                            "image_url": "https://feature-klarna.cheriebridal.fi/dresses/aurora"
+                            "product_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/aurora",
+                            "image_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/aurora"
                         }],
                         "merchant_reference1": "45aa52f397871e3a210645d5", // optional
                         "shipping_options": [{ // add multiple if necessary
