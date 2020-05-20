@@ -59,7 +59,7 @@ const Product = ({ product }) => {
                         },
                         "purchase_country": "FI",
                         "purchase_currency": "EUR",
-                        "locale": "en-us",
+                        "locale": "fi-FI",
                         "merchant_urls": {
                             "terms": process.env.GATSBY_KLARNA_CHERIE_URL + "about", // mandatory
                         },
