@@ -59,9 +59,9 @@ const Product = ({ product }) => {
                         },
                         "purchase_country": "FI",
                         "purchase_currency": "EUR",
-                        "locale": "fi-FI",
+                        "locale": "en-US",
                         "merchant_urls": {
-                            "terms": process.env.GATSBY_KLARNA_CHERIE_URL + "about", // mandatory
+                            "terms": process.env.GATSBY_KLARNA_CHERIE_URL + "about",
                             "confirmation": process.env.GATSBY_KLARNA_CHERIE_URL + "order/confirmation"
                         },
                         "order_lines": [{
@@ -69,11 +69,11 @@ const Product = ({ product }) => {
                             "reference": "19-402-B",
                             "name": "Battery Power Pack Black",
                             "quantity": 1,
-                            "unit_price": 10,
+                            "unit_price": 100000,
                             "tax_rate": 2400,
-                            "total_amount": 10,
+                            "total_amount": 100000,
                             "total_discount_amount": 0,
-                            "total_tax_amount": 2.4,
+                            "total_tax_amount": 24000,
                             "product_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/aurora",
                             "image_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/aurora"
                         }],
@@ -185,7 +185,7 @@ const Product = ({ product }) => {
                                 Tags: <ProductTags tags={product.tags} />
                             </div> */}
                                 {/* <SocialLinks productPath={slug} productNode={productNode} /> */}
-                                <klarna-instant-shopping data-instance-id="purchase-1" />
+                                <klarna-instant-shopping data-instance-id="purchase-1" data-environment="playground"/>
                             </Col>
                         </Row>
                     </Col>

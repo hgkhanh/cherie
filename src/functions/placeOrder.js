@@ -31,10 +31,7 @@ exports.handler = async (event, context, callback) => {
         },
         body: JSON.stringify(order)
     })
-        .then(response => {
-            console.log('response', response);
-            response.json()
-        })
+        .then(response => response.json())
         .then(data => {
             console.log('data', data);
             callback(null, {
