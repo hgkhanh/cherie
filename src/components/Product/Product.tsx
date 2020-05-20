@@ -62,6 +62,7 @@ const Product = ({ product }) => {
                         "locale": "fi-FI",
                         "merchant_urls": {
                             "terms": process.env.GATSBY_KLARNA_CHERIE_URL + "about", // mandatory
+                            "confirmation": process.env.GATSBY_KLARNA_CHERIE_URL + "order/confirmation"
                         },
                         "order_lines": [{
                             "type": "physical",
