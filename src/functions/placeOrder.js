@@ -2,12 +2,12 @@ const fetch = require(`node-fetch`);
 const base64 = require('base-64');
 
 exports.handler = async (event, context, callback) => {
-    // console.log('placeOrder', event.body);
+    console.log('placeOrder', event.body);
     const payload = JSON.parse(event.body);
     const authToken = payload.authorization_token;
     const order = payload.order;
-    // console.log('authToken', authToken);
-    // console.log('order', order);
+    console.log('authToken', authToken);
+    console.log('order', order);
     // TO-DO validate the order (stock, shipping capabilities, prices, etc.)
 
     // Place order
@@ -31,9 +31,12 @@ exports.handler = async (event, context, callback) => {
         },
         body: JSON.stringify(order)
     })
-        .then(response => response.json())
+        .then(response => {
+            console.log('response', response);
+            response.json()
+        })
         .then(data => {
-            console.log(data);
+            console.log('data', data);
             callback(null, {
                 statusCode: 200,
                 body: data
