@@ -17,7 +17,7 @@ exports.handler = async (event, context, callback) => {
         + '/orders';
 
     console.log('url', url);
-    console.log('asdf');
+    console.log('asdf1');
     fetch(url, {
         method: "POST",
         headers: {
@@ -37,7 +37,7 @@ exports.handler = async (event, context, callback) => {
         })
         .then(data => {
             console.log('data', data);
-            if (error_code) {
+            if (data.error_code) {
                 callback(null, {
                     statusCode: 400,
                     body: data
