@@ -1,60 +1,51 @@
 const fetch = require(`node-fetch`);
 const base64 = require('base-64');
 
-exports.handler = async (event, context, callback) => {
-    console.log('placeOrder', event.body);
-    const payload = JSON.parse(event.body);
-    const authToken = payload.authorization_token;
-    const order = payload.order;
-    console.log('authToken', authToken);
-    console.log('order', order);
-    // TO-DO validate the order (stock, shipping capabilities, prices, etc.)
+exports.handler = async (event, context) => {
+    try {
+        console.log('placeOrder', event.body);
+        const payload = JSON.parse(event.body);
+        const authToken = payload.authorization_token;
+        const order = payload.order;
+        console.log('authToken', authToken);
+        console.log('order', order);
+        // TO-DO validate the order (stock, shipping capabilities, prices, etc.)
 
-    // Place order
-    const url = process.env.GATSBY_KLARNA_BASE_URL
-        + '/instantshopping/v1/authorizations/'
-        + authToken
-        + '/orders';
+        // Place order
+        const url = process.env.GATSBY_KLARNA_BASE_URL
+            + '/instantshopping/v1/authorizations/'
+            + authToken
+            + '/orders';
 
-    console.log('url', url);
-    console.log('asdf1');
-    fetch(url, {
-        method: "POST",
-        headers: {
-            'Authorization': 'Basic '
-                + base64.encode(
-                    process.env.GATSBY_KLARNA_API_USERNAME
-                    + ':'
-                    + process.env.GATSBY_KLARNA_API_PASSWORD
-                ),
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(order)
-    })
-        .then(response => {
-            console.log('response', response);
-            return response.json();
-        })
-        .then(data => {
-            console.log('data', data);
-            if (data.error_code) {
-                callback(null, {
-                    statusCode: 400,
-                    body: data
-                });
-            }
-            callback(null, {
-                statusCode: 200,
-                body: data
-            });
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            if (error) {
-                callback(null, {
-                    statusCode: error.code,
-                    body: error.message
-                });
-            }
+        console.log('url', url);
+        console.log('asdf2');
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Authorization': 'Basic '
+                    + base64.encode(
+                        process.env.GATSBY_KLARNA_API_USERNAME
+                        + ':'
+                        + process.env.GATSBY_KLARNA_API_PASSWORD
+                    ),
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(order)
         });
+        console.log('response done');
+        const data = await response.json();
+        console.log('data done');
+        console.log('data', data);
+        return {
+            statusCode: 200,
+            body: JSON.stringify(data)
+        }
+    }
+    catch (error) {
+        console.log('error', error)
+        return {
+            statusCode: 400,
+            body: JSON.stringify(error)
+        }
+    }
 };
