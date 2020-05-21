@@ -17,6 +17,7 @@ exports.handler = async (event, context, callback) => {
         + '/orders';
 
     console.log('url', url);
+    console.log('asdf');
     fetch(url, {
         method: "POST",
         headers: {
@@ -32,7 +33,7 @@ exports.handler = async (event, context, callback) => {
     })
         .then(response => {
             console.log('response', response);
-            return response.json()
+            return response.json();
         })
         .then(data => {
             console.log('data', data);
@@ -47,7 +48,7 @@ exports.handler = async (event, context, callback) => {
                 body: data
             });
         })
-        .catch((error) => {
+        .catch(error => {
             console.error('Error:', error);
             if (error) {
                 callback(null, {
