@@ -11,7 +11,6 @@ exports.handler = async (event, context, callback) => {
     // TO-DO validate the order (stock, shipping capabilities, prices, etc.)
 
     // Place order
-
     const url = process.env.GATSBY_KLARNA_BASE_URL
         + '/instantshopping/v1/authorizations/'
         + authToken
@@ -31,9 +30,18 @@ exports.handler = async (event, context, callback) => {
         },
         body: JSON.stringify(order)
     })
-        .then(response => response.json())
+        .then(response => {
+            console.log('response', response);
+            return response.json()
+        })
         .then(data => {
             console.log('data', data);
+            if (error_code) {
+                callback(null, {
+                    statusCode: 400,
+                    body: data
+                });
+            }
             callback(null, {
                 statusCode: 200,
                 body: data
