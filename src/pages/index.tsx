@@ -161,7 +161,7 @@ const data = useStaticQuery(graphql`
           </Link>
         </Hero>
         <hr className='divider' />
-        <div className='grid'>
+        <div className='grid wide'>
           <div className='gridTitle centerAlign'>
             <h2 className="uppercase">Our Favourites</h2>
           </div>

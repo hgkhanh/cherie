@@ -75,7 +75,7 @@ const Header = ({ location }) => {
 
   if (width <= 576) {
     logoSize = 125;
-  } else if (width < 769) {
+  } else if (width < 900) {
     logoSize = 140;
   }
 
@@ -92,9 +92,14 @@ const Header = ({ location }) => {
   return (
     <React.Fragment>
       <VisibilitySensor onChange={(visible) => setHeaderVisible(visible)}>
-        <div className={styles.sensor} />
+        <div id="headerSensor" className={styles.sensor} />
       </VisibilitySensor>
       <header className={getHeaderClassNames()}>
+        {activeEnv !== 'production' &&
+          <div className={styles.ribbon}>
+            <span>Development</span>
+          </div>
+        }
         <div className={styles.container}>
           {width <= 992 && (
             <Drawer
@@ -154,11 +159,6 @@ const Header = ({ location }) => {
             )}
           </div>
         </div>
-        {activeEnv !== 'production' &&
-          <div className={styles.ribbon}>
-            <span>Development</span>
-          </div>
-        }
       </header>
     </React.Fragment>
   );

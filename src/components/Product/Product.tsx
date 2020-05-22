@@ -26,18 +26,9 @@ const Product = ({ product }) => {
         easing: "ease-in-out",
         lazyLoad: 'progressive'
     };
-    const getContainerClassName = () => {
-        if (width < 769) {
-            return ['grid', styles.container].join(' ');
-        }
-        return ['grid', 'boxContent', styles.container].join(' ');
-    }
 
     const getInfoDivClassName = () => {
-        let classArray = [styles.infoContainer];
-        if (isHeaderVisible) {
-            classArray.push(styles.isAtTop);
-        }
+        let classArray = [styles.infoContainer, styles.flexBlock];
         if (isFooterVisible) {
             classArray.push(styles.isPastFooter);
         }
@@ -100,100 +91,94 @@ const Product = ({ product }) => {
             <Helmet>
                 <script src="https://x.klarnacdn.net/instantshopping/lib/v1/lib.js" async></script>
             </Helmet>
-            <div className={getContainerClassName()}>
-                <Row type='flex' justify='center' align='stretch'>
-                    {width < 769 ? (
-                        <Col span={24}>
-                            <Carousel {...settings}>
-                                {product.galleryImages.map((image, index) =>
+            <div className={styles.container}>
+                {width < 600 ? (
+                    <div className={styles.flexBlock}>
+                        <Carousel {...settings}>
+                            {product.galleryImages.map((image, index) =>
+                                <Image key={index} fluid={image.childCloudinaryAsset.fluid} alt='' />
+                            )}
+                        </Carousel>
+                    </div>
+                ) :
+                    (
+                        <div className={styles.flexBlock}>
+                            {product.galleryImages.map((image, index) =>
+                                <RevealAnimation key={index} opacity>
                                     <Image key={index} fluid={image.childCloudinaryAsset.fluid} alt='' />
-                                )}
-                            </Carousel>
-                        </Col>
-                    ) :
-                        (
-                            <Col span={0} md={12}>
-                                {product.galleryImages.map((image, index) =>
-                                    <RevealAnimation key={index} opacity>
-                                        <Image key={index} fluid={image.childCloudinaryAsset.fluid} alt='' />
-                                    </RevealAnimation>
-                                )}
-                            </Col>
-                        )}
+                                </RevealAnimation>
+                            )}
+                        </div>
+                    )}
 
-                    <Col span={24} md={12} className={getInfoDivClassName()}>
-                        <VisibilitySensor onChange={visiblity => {
-                            setHeaderVisible(visiblity);
-                        }}>
-                            <div className={styles.sensor} />
-                        </VisibilitySensor>
-                        <Row type='flex' justify='center' align='middle'>
-                            <Col className={styles.info} span={24}>
-                                <h1 className={styles.name}>{product.name}</h1>
-                                <h4 className={[styles.price, 'grayText'].join(' ')}>€{_.round((product.price), 2).toFixed(2)}</h4>
-                                <p className={styles.description}>{product.description}</p>
-                                <div className={styles.borderBlock}>
-                                    <Row type='flex' justify='start' align='middle'>
-                                        <Col span={24}>
-                                            {/* <h3>Details And Fit</h3>
+                <div className={getInfoDivClassName()}>
+                    <VisibilitySensor onChange={visiblity => {
+                        setHeaderVisible(visiblity);
+                    }}>
+                        <div id="infoSensor" className={styles.sensor} />
+                    </VisibilitySensor>
+                    <div className={styles.info}>
+                        <h1 className={styles.name}>{product.name}</h1>
+                        <h4 className={[styles.price, 'grayText'].join(' ')}>€{_.round((product.price), 2).toFixed(2)}</h4>
+                        <p className={styles.description}>{product.description}</p>
+                        <div className={styles.borderBlock}>
+                            <div>
+                                {/* <h3>Details And Fit</h3>
                                             <p className='leftAlign grayText'>
                                                 {product.detailsAndFit.map((line, index) => {
                                                     return (<React.Fragment key={index}>{`- ${line}`}<br /></React.Fragment>)
                                                 })}
                                             </p> */}
-                                            <Link className={styles.checkSize} to='/size-guide'><span className="link">Check your size</span></Link>
-                                        </Col>
-                                    </Row>
-                                    {/* <Row type='flex' justify='space-between' align='middle'>
-                                        <Col className='leftAlign' span={8}>
-                                            Sizes
-                                        </Col>
-                                        <Col className='rightAlign' span={8}>
-                                            {product.sizes.map((size, index) => {
-                                                let text = size;
-                                                // if (index < product.sizes.length - 1) {
-                                                //     text += ', ';
-                                                // }
-                                                return (<span className='grayText' key={index}>{text}</span>)
-                                            })}
-                                        </Col>
-                                    </Row> */}
-                                    {/* <Row type='flex' justify='space-between' align='middle'>
-                                        <Col className='leftAlign' span={12}>
-                                            Tags
-                                        </Col>
-                                        <Col className='rightAlign' span={12}>
-                                            {product.tags.map((tag, index) => {
-                                                let text = tag;
-                                                if (index < product.tags.length - 1) {
-                                                    text += ', ';
-                                                }
-                                                return (
-                                                    <Link className='grayText'
-                                                        key={tag}
-                                                        style={{ textDecoration: 'none' }}
-                                                        to={`/tags/${_.kebabCase(tag)}`}
-                                                    >{text}</Link>
-                                                )
-                                            })}
-                                        </Col>
-                                    </Row> */}
+                                <Link className={styles.checkSize} to='/size-guide'><span className="link">Check your size</span></Link>
+                            </div>
+                            {/* <div>
+                                    <div>
+                                        Sizes
+                                    </div>
+                                    <div>
+                                        {product.sizes.map((size, index) => {
+                                            let text = size;
+                                            // if (index < product.sizes.length - 1) {
+                                            //     text += ', ';
+                                            // }
+                                            return (<span className='grayText' key={index}>{text}</span>)
+                                        })}
+                                    </div>
+                                </div> */}
+                            {/* <div>
+                                <div>
+                                    Tags
                                 </div>
-                                {/* <div>
+                                <div>
+                                    {product.tags.map((tag, index) => {
+                                        let text = tag;
+                                        if (index < product.tags.length - 1) {
+                                            text += ', ';
+                                        }
+                                        return (
+                                            <Link className='grayText'
+                                                key={tag}
+                                                style={{ textDecoration: 'none' }}
+                                                to={`/tags/${_.kebabCase(tag)}`}
+                                            >{text}</Link>
+                                        )
+                                    })}
+                                </div>
+                            </div> */}
+                        </div>
+                        {/* <div>
                                 Tags: <ProductTags tags={product.tags} />
                             </div> */}
-                                {/* <SocialLinks productPath={slug} productNode={productNode} /> */}
-                                <klarna-instant-shopping data-instance-id="purchase-1" data-environment="playground" />
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
+                        {/* <SocialLinks productPath={slug} productNode={productNode} /> */}
+                        <klarna-instant-shopping data-instance-id="purchase-1" data-environment="playground" />
+                    </div>
+                </div>
             </div >
 
             <VisibilitySensor onChange={visiblity => {
                 setFooterVisible(visiblity);
             }}>
-                <div className={styles.sensor} />
+                <div id="footerSensor" className={styles.sensor} />
             </VisibilitySensor>
         </React.Fragment>
     );

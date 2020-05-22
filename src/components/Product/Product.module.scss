@@ -1,41 +1,59 @@
 .container {
-  padding: 0 90px;
-}
-@media screen and (max-width: 993px) {
-  .container {
-    padding: 0 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  @include tablet-potrait-up {
+    display: flex;
+    flex-wrap: wrap;
   }
-}
-@media screen and (max-width: 769px) {
-  .container {
-    padding: 0;
+  .flexBlock {
+    text-align: center;
+    flex: 1 1 50%;
+    @include phone-only {
+      flex: 1 1 100%;
+    }
   }
 }
 
 .infoContainer {
   position: relative;
-}
-
-.info {
-  width: 100%;
-  text-align: center;
-  padding: 50px;
-  .description {
-    text-align: justify;
-    color: $font-color-gray;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  @media (max-width: 360px) {
+    padding: 80px 0;
   }
-}
-
-@media screen and (max-width: 993px) {
+  padding: 80px 20px;
+  @include tablet-landscape-up {
+    padding: 80px 40px;
+  }
   .info {
-    padding: 50px 20px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    @include tablet-potrait-up {
+      padding: 20px;
+    }
+    @include tablet-landscape-up {
+      padding: 40px;
+    }
+    @include desktop-up {
+      padding: 80px;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .description {
+      text-align: justify;
+      color: $font-color-gray;
+    }
   }
 }
 
-@media screen and (min-width: 770px) {
+// In smaller screen, only 1 column, no scrolling info
+@include tablet-potrait-up {
   .isPastFooter {
-    padding-left: 10px;
-    padding-right: 10px;
     align-items: flex-end;
     flex-direction: row;
     display: flex;
@@ -45,9 +63,6 @@
       top: auto;
       position: absolute;
     }
-  }
-  .isAtTop .info {
-    position: relative;
   }
   .info {
     position: fixed;
@@ -89,12 +104,7 @@
   width: 100%;
 }
 
-.borderBlock {
-  :global(.ant-row-flex) {
-    border-top: 1px solid #9d9da1;
-    padding: 0;
-  }
-  :global(.ant-col) {
-    padding: 15px 0;
-  }
+.borderBlock > div {
+  border-top: 1px solid #9d9da1;
+  padding: 15px 0;
 }

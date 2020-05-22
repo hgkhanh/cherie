@@ -172,9 +172,12 @@ hr.divider {
 }
 
 .grid {
-  max-width: 1200px;
+  max-width: 900px;
+  &.wide {
+    max-width: 1200px;
+  }
   &.narrow {
-    max-width: 900px;
+    max-width: 600px;
   }
   margin: 0 auto;
   padding: 0;
@@ -188,7 +191,10 @@ hr.divider {
 .gridTitle {
   flex-basis: 100%;
   text-align: left;
-  padding: 35px 0;
+  padding: 20px;
+  @include tablet-potrait-up {
+    padding: 20px 80px;
+  }
   margin: 0;
   &.footTitle {
     padding-top: 0;
@@ -236,15 +242,7 @@ button:focus {
 
 /* Responsive */
 @media screen and (max-width: 769px) {
-  .grid {
-    width: 100%;
-    padding: 0;
-    .gridTitle {
-      padding: 10px 0;
-    }
-  }
-
-  &.boxContent {
+  .boxContent {
     padding: 30px;
   }
   .flexSection {

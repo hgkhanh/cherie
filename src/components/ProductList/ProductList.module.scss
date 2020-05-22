@@ -11,7 +11,7 @@
 .card {
   padding: 10px;
   @include tablet-potrait-up {
-    padding: 40px;
+    padding: 20px 40px;
   }
   flex: 1 1 50%;
   @include desktop-up {
