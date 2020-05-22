@@ -9,7 +9,7 @@ const AboutPage = ({ location }) => {
     <Layout location={location}>
       <Helmet title={`About | ${config.siteTitle}`} />
       <hr className='divider' />
-      <div className='grid centerAlign'>
+      <div className='grid narrow centerAlign'>
         <h1>
           About
         </h1>

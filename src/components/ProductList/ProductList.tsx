@@ -3,7 +3,6 @@ import styles from './ProductList.module.scss';
 import { Link } from 'gatsby';
 import { Spring, config } from 'react-spring/renderprops'
 import VisibilitySensor from 'react-visibility-sensor';
-import { Row, Col } from "antd";
 import Image from 'gatsby-image';
 import { WindowDimensionsContext } from "../../shared/WindowDimensionsProvider";
 
@@ -25,8 +24,8 @@ const ProductCard = ({ product, index }) => {
                 }}
             >
                 {props => (
-                    <Col span={12} md={8} style={{ ...props }}>
-                        <Link to={product.fields.slug} key={product.name} className={styles.card}>
+                    <div className={styles.card} style={{ ...props }}>
+                        <Link to={product.fields.slug} key={product.name}>
                             <Image fluid={product.frontmatter.featureImage.childCloudinaryAsset.fluid} alt={product.name} />
                             <div className={`${styles.description} ${width <= 576 && styles.vertical}`}>
                                 <h3>
@@ -37,7 +36,7 @@ const ProductCard = ({ product, index }) => {
                                 </span> */}
                             </div>
                         </Link>
-                    </Col>
+                    </div>
                 )}
             </Spring>
         </VisibilitySensor>
@@ -47,11 +46,9 @@ const ProductCard = ({ product, index }) => {
 const ProductList = ({ products }) => {
     return (
         <div className={styles.list}>
-            <Row gutter={[{ xs: 10, sm: 15, md: 30, lg: 40, xl: 60, xxl: 80 }, { md: 10, lg: 0 }]} type="flex">
-                {products.map((product, index) =>
-                    <ProductCard product={product.node} key={product.node.frontmatter.name} index={index} />
-                )}
-            </Row>
+            {products.map((product, index) =>
+                <ProductCard product={product.node} key={product.node.frontmatter.name} index={index} />
+            )}
         </div>
     );
 }
