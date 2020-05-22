@@ -12,17 +12,45 @@ const activeEnv =
 const Header = ({ location }) => {
   const logo = useStaticQuery(graphql`
     query LogoQuery {
-      dark: file(name: { eq: "logo-dark" }) {
-        childCloudinaryAsset {
-          fluid(maxWidth: 500) {
-            ...CloudinaryAssetFluid
+      dark_large: file(name: { eq: "logo-dark" }) {
+        childImageSharp {
+          fixed(width: 160) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
-      light: file(name: { eq: "logo-light" }) {
-        childCloudinaryAsset {
-          fluid(maxWidth: 500) {
-            ...CloudinaryAssetFluid
+      dark_medium: file(name: { eq: "logo-dark" }) {
+        childImageSharp {
+          fixed(width: 140) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      dark_small: file(name: { eq: "logo-dark" }) {
+        childImageSharp {
+          fixed(width: 125) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      light_large: file(name: { eq: "logo-light" }) {
+        childImageSharp {
+          fixed(width: 160) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      light_medium: file(name: { eq: "logo-light" }) {
+        childImageSharp {
+          fixed(width: 140) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      light_small: file(name: { eq: "logo-light" }) {
+        childImageSharp {
+          fixed(width: 125) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -45,7 +73,7 @@ const Header = ({ location }) => {
   let _mounted = true;
   useEffect(() => {
     // Check if window exist and screen is small
-    if (typeof window !== 'undefined' && width <= 576) {
+    if (typeof window !== 'undefined' && width <= 600) {
       lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
       window.addEventListener("scroll", handleScroll, { passive: true });
     }
@@ -70,20 +98,25 @@ const Header = ({ location }) => {
 
   const [isHeaderVisible, setHeaderVisible] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { dark, light } = logo;
-  let logoSize = 160;
-
-  if (width <= 576) {
-    logoSize = 125;
+  console.log('logo', logo);
+  let dark = logo.dark_large;
+  let light = logo.light_large;
+  console.log(width);
+  if (width < 600) {
+    dark = logo.dark_small;
+    light = logo.light_small;
   } else if (width < 900) {
-    logoSize = 140;
+    dark = logo.dark_medium;
+    light = logo.light_medium;
   }
 
+  console.log(dark);
+  console.log(light);
   const isHomePage = (location && location.pathname === '/');
   const getHeaderClassNames = () => {
     const isAtTop = isHeaderVisible ? styles.isAtTop : '';
     const homepage = isHomePage ? styles.homepage : '';
-    const downScroll = isDownScroll && width <= 576 ? styles.downScroll : '';
+    const downScroll = isDownScroll && width < 600 ? styles.downScroll : '';
 
     return `${styles.header} ${isAtTop} ${homepage} ${downScroll}`;
   }
@@ -101,7 +134,7 @@ const Header = ({ location }) => {
           </div>
         }
         <div className={styles.container}>
-          {width <= 992 && (
+          {width < 600 && (
             <Drawer
               className='darkTone'
               placement="left"
@@ -116,10 +149,10 @@ const Header = ({ location }) => {
             </Drawer>
           )}
           <div className={`${styles.block} ${styles.fill}`}>
-            {width <= 992 && (
+            {width < 600 && (
               <Icon type="menu" style={{ fontSize: '20px' }} onClick={() => setDrawerOpen(true)} />
             )}
-            {width >= 993 && (
+            {width >= 600 && (
               <nav>
                 <ul className="horizontalList">
                   <li>
@@ -137,18 +170,18 @@ const Header = ({ location }) => {
           </div>
 
           <div className={styles.block}>
-            <Link to='/' className={styles.logoContainer} style={{ width: logoSize }}>
-              <Image loading='eager' fluid={isHeaderVisible && isHomePage ? light.childCloudinaryAsset.fluid : dark.childCloudinaryAsset.fluid} />
+            <Link to='/'>
+              <Image fixed={isHeaderVisible && isHomePage ? light.childImageSharp.fixed : dark.childImageSharp.fixed} />
             </Link>
           </div>
 
           <div className={`${styles.block} ${styles.fill}`}>
-            {(width <= 992) && (
+            {(width < 600) && (
               <a href="/booking">
                 <Icon type="calendar" style={{ fontSize: '20px' }} />
               </a>
             )}
-            {(width >= 993) && (
+            {(width >= 600) && (
               <nav>
                 <ul className="horizontalList">
                   <li>
