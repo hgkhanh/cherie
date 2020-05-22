@@ -154,7 +154,7 @@ const Header = ({ location }) => {
             )}
           </div>
         </div>
-        {activeEnv === 'development' &&
+        {activeEnv !== 'production' &&
           <div className={styles.ribbon}>
             <span>Development</span>
           </div>

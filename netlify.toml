@@ -9,5 +9,5 @@
 # Specific branch context:
 # Deploys from this branch will take these settings
 # and override their current ones.
-[context.dev]
+[context.branch-deploy]
   command = "GATSBY_ACTIVE_ENV=development npm run build"

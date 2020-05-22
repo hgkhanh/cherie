@@ -47,44 +47,42 @@ const Product = ({ product }) => {
     useEffect(() => {
         // Check if window exist and screen is small
         if (typeof window !== 'undefined') {
-            console.log('process.env.GATSBY_KLARNA_BUTTON_KEY', process.env.GATSBY_KLARNA_BUTTON_KEY);
             window.klarnaAsyncCallback = function () {
                 try {
                     Klarna.InstantShopping.load({
                         "setup": {
                             "instance_id": "purchase-1",
                             "key": process.env.GATSBY_KLARNA_BUTTON_KEY,
-                            "environment": "playground",
+                            "environment": process.env.NODE_ENV === "production" ? "production" : "playground",
                             "region": "eu"
                         },
                         "purchase_country": "FI",
                         "purchase_currency": "EUR",
                         "locale": "en-US",
                         "merchant_urls": {
-                            "terms": process.env.GATSBY_KLARNA_CHERIE_URL + "about",
-                            "confirmation": process.env.GATSBY_KLARNA_CHERIE_URL + "order/confirmation"
+                            "terms": process.env.GATSBY_KLARNA_CHERIE_URL + "about"
                         },
                         "order_lines": [{
                             "type": "physical",
-                            "reference": "19-402-B",
-                            "name": "Battery Power Pack Black",
+                            "reference": "DRS-" + product.name,
+                            "name": product.name,
                             "quantity": 1,
-                            "unit_price": 119000,
-                            "tax_rate": 2500,
-                            "total_amount": 119000,
+                            "unit_price": product.price * 100,
+                            "tax_rate": 2400,
+                            "total_amount": product.price * 100,
                             "total_discount_amount": 0,
-                            "total_tax_amount": 23800,
-                            "product_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/aurora",
-                            "image_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/aurora"
+                            "total_tax_amount": _.toInteger(product.price * 100 - (product.price * 100 * 10000) / (10000 + 2400)),
+                            "product_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/" + _.toLower(product.name),
+                            "image_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/" + _.toLower(product.name)
                         }],
                         "merchant_reference1": "45aa52f397871e3a210645d5", // optional
                         "shipping_options": [{ // add multiple if necessary
-                            "id": "express_priority",
-                            "name": "Express 1-2 days",
+                            "id": "standard",
+                            "name": "Standard 4-6 weeks",
                             "description": "Delivery by 4:30pm",
                             "price": 5000,
-                            "tax_amount": 1000,
-                            "tax_rate": 2500,
+                            "tax_amount": 968,
+                            "tax_rate": 2400,
                             "shipping_method": "PickUpStore"
                         }]
                     }, function (response) {
@@ -132,7 +130,7 @@ const Product = ({ product }) => {
                         <Row type='flex' justify='center' align='middle'>
                             <Col className={styles.info} span={24}>
                                 <h1 className={styles.name}>{product.name}</h1>
-                                {/* <h4 className={[styles.price, 'grayText'].join(' ')}>From €{_.round((product.price), 2).toFixed(2)}</h4> */}
+                                <h4 className={[styles.price, 'grayText'].join(' ')}>€{_.round((product.price), 2).toFixed(2)}</h4>
                                 <p className={styles.description}>{product.description}</p>
                                 <div className={styles.borderBlock}>
                                     <Row type='flex' justify='start' align='middle'>
@@ -185,7 +183,7 @@ const Product = ({ product }) => {
                                 Tags: <ProductTags tags={product.tags} />
                             </div> */}
                                 {/* <SocialLinks productPath={slug} productNode={productNode} /> */}
-                                <klarna-instant-shopping data-instance-id="purchase-1" data-environment="playground"/>
+                                <klarna-instant-shopping data-instance-id="purchase-1" data-environment="playground" />
                             </Col>
                         </Row>
                     </Col>
