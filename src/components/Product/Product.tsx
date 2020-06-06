@@ -70,9 +70,9 @@ const Product = ({ product }) => {
                         "shipping_options": [{ // add multiple if necessary
                             "id": "standard",
                             "name": "Standard 4-6 weeks",
-                            "description": "Delivery by 4:30pm",
-                            "price": 5000,
-                            "tax_amount": 968,
+                            "description": "Standard shipping",
+                            "price": 0,
+                            "tax_amount": 0,
                             "tax_rate": 2400,
                             "shipping_method": "PickUpStore"
                         }]

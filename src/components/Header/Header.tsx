@@ -98,10 +98,8 @@ const Header = ({ location }) => {
 
   const [isHeaderVisible, setHeaderVisible] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  console.log('logo', logo);
   let dark = logo.dark_large;
   let light = logo.light_large;
-  console.log(width);
   if (width < 600) {
     dark = logo.dark_small;
     light = logo.light_small;
@@ -109,9 +107,6 @@ const Header = ({ location }) => {
     dark = logo.dark_medium;
     light = logo.light_medium;
   }
-
-  console.log(dark);
-  console.log(light);
   const isHomePage = (location && location.pathname === '/');
   const getHeaderClassNames = () => {
     const isAtTop = isHeaderVisible ? styles.isAtTop : '';
