@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect, MouseEvent } from 'react';
 import Helmet from "react-helmet";
 import styles from './Product.module.scss';
 // import SocialLinks from '../SocialLinks/SocialLinks';
-import { Carousel, Select } from "antd";
+import { Carousel, Select, Modal, Button, Icon } from "antd";
 import { Spring } from 'react-spring/renderprops';
 import VisibilitySensor from 'react-visibility-sensor';
 import { Link } from 'gatsby';
@@ -12,9 +12,9 @@ import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 import SliderArrow from '../SliderArrow';
 import Image from "gatsby-image";
 import RevealAnimation from '../../shared/RevealAnimation';
+import SizeRequestForm from './SizeRequestForm';
 
 const Product = ({ product }) => {
-
     const KLARNA_PRODUCT_OBJECT = {
         "type": "physical",
         "reference": "DRS-" + product.name,
@@ -41,6 +41,9 @@ const Product = ({ product }) => {
     }
     const [isHeaderVisible, setHeaderVisible] = useState(false);
     const [isFooterVisible, setFooterVisible] = useState(false);
+    const [sizePopupVisible, setSizePopupVisible] = useState(false);
+    const [requestSize, setRequestSize] = useState(false);
+    const [popupSuccess, setPopupSuccess] = useState(false);
     const { width } = useContext(WindowDimensionsContext);
     const settings = {
         dots: true,
@@ -85,10 +88,22 @@ const Product = ({ product }) => {
             });
         } else {
             // If size is unavailable, show popup
-
+            setSizePopupVisible(true);
+            setRequestSize(value);
         }
     }
 
+    // When close popup, reset the popupSuccess state
+    useEffect(() => {
+        if (!sizePopupVisible) {
+            setTimeout(() => {
+                setPopupSuccess(false);
+            }, 1000);
+        }
+    }, [sizePopupVisible]);
+
+
+    // Init Klarna on load
     useEffect(() => {
         // Check if window exist and screen is small
         if (typeof window !== 'undefined') {
@@ -140,6 +155,31 @@ const Product = ({ product }) => {
             <Helmet>
                 <script src="https://x.klarnacdn.net/instantshopping/lib/v1/lib.js" async></script>
             </Helmet>
+            <Modal
+                centered footer={null}
+                visible={sizePopupVisible}
+                onCancel={() => setSizePopupVisible(false)}
+            >
+
+                <h1>Fully booked up</h1>
+                <p>Let me know when it becomes available again!</p>
+                <div className={styles.form}>
+                    {popupSuccess ? (
+                        <React.Fragment>
+                            <div className={styles.successMessage}>
+                                <Icon type="check-circle" theme="filled" style={{ color: '#0f7d4a' }} />
+                                <span>We will email you if your size becomes available again.</span>
+                            </div>
+                            <Button size="large" onClick={() => setSizePopupVisible(false)}>Continue Shopping</Button>
+                        </React.Fragment>
+                    ) : (
+                            <SizeRequestForm
+                                productName={product.name} size={requestSize}
+                                popupSuccess={popupSuccess} setPopupSuccess={setPopupSuccess} />
+                        )
+                    }
+                </div>
+            </Modal>
             <div className={styles.container}>
                 {width < 600 ? (
                     <div className={styles.flexBlock}>
@@ -172,6 +212,8 @@ const Product = ({ product }) => {
                         <p className={styles.description}>{product.description}</p>
                         <div className={styles.borderBlock}>
                             <div>
+                                <Link className={styles.checkSize} to='/size-guide'><span className="link">Check your size</span></Link>
+                                
                                 {/* <h3>Details And Fit</h3>
                                             <p className='leftAlign grayText'>
                                                 {product.detailsAndFit.map((line, index) => {
@@ -181,9 +223,7 @@ const Product = ({ product }) => {
                                 <Select style={{ width: '300px' }} size="large" onSelect={(value, event) => handleSizeSelect(value, event)}
                                     tokenSeparators={[',']} placeholder="Select Size" value={selectedSize || undefined}>
                                     {sizes}
-                                </Select>
-                                <Link className={styles.checkSize} to='/size-guide'><span className="link">Check your size</span></Link>
-                            </div>
+                                </Select></div>
                             {/* <div>
                                     <div>
                                         Sizes

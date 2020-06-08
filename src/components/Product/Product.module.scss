@@ -125,3 +125,14 @@
 :global(.ant-select-dropdown-menu-item.disabled) {
   color: rgba(0, 0, 0, 0.25);
 }
+
+.successMessage {
+  padding: 10px;
+  margin: 10px 0;
+  display: flex;
+  background-color: #e0f3ea;
+  align-items: center;
+  i {
+    margin-right: 10px;
+  }
+}
