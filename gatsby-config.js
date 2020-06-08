@@ -43,6 +43,8 @@ module.exports = {
       resolve: `gatsby-source-instagram`,
       options: {
         username: `cheriebridal`,
+        access_token: process.env.GATSBY_INSTAGRAM_ACCESS_TOKEN,
+        instagram_id: process.env.GATSBY_INSTAGRAM_ID
       },
     },
     {
