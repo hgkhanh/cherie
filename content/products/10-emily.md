@@ -16,9 +16,14 @@ galleryImages:
 price: '1099'
 category: Mermaid
 sizes:
-  - '34'
-  - '-'
-  - '52'
+  - "36"
+  - "38"
+  - "40"
+  - "42"
+  - "44"
+  - "46"
+  - "48"
+  - "50"
 tags:
   - Fully-lined
   - bra-friendly
