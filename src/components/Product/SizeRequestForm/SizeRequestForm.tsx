@@ -46,7 +46,7 @@ const SizeRequestForm = ({ form, productName, size, popupSuccess, setPopupSucces
                     (< Input type='email' size="large" required />)}
             </Form.Item>
             <Form.Item>
-                <Button type="primary" htmlType="submit" size="large">Send</Button>
+                <Button type="primary" htmlType="submit" size="large" loading={loading}>Send</Button>
             </Form.Item>
             {isError && !loading && (
                 <h3 className={styles.error}>Something went wrong!&nbsp;&nbsp;
