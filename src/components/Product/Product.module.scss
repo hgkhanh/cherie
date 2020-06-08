@@ -120,3 +120,8 @@
   border-top: 1px solid #9d9da1;
   padding: 15px 0;
 }
+
+/* Customized Ant Design Dropdown menu */
+:global(.ant-select-dropdown-menu-item.disabled) {
+  color: rgba(0, 0, 0, 0.25);
+}

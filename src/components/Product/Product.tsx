@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, MouseEvent } from 'react';
 // import PropTypes from 'prop-types';
 import Helmet from "react-helmet";
 import styles from './Product.module.scss';
 // import SocialLinks from '../SocialLinks/SocialLinks';
-import { Row, Col, Carousel } from "antd";
+import { Carousel, Select } from "antd";
 import { Spring } from 'react-spring/renderprops';
 import VisibilitySensor from 'react-visibility-sensor';
 import { Link } from 'gatsby';
@@ -14,6 +14,31 @@ import Image from "gatsby-image";
 import RevealAnimation from '../../shared/RevealAnimation';
 
 const Product = ({ product }) => {
+
+    const KLARNA_PRODUCT_OBJECT = {
+        "type": "physical",
+        "reference": "DRS-" + product.name,
+        "name": product.name,
+        "quantity": 1,
+        "unit_price": product.price * 100,
+        "tax_rate": 2400,
+        "total_amount": product.price * 100,
+        "total_discount_amount": 0,
+        "total_tax_amount": _.toInteger(product.price * 100 - (product.price * 100 * 10000) / (10000 + 2400)),
+        "product_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/" + _.toLower(product.name),
+        "image_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/" + _.toLower(product.name),
+        "group_identifier": "Dress"
+    }
+    const MIN_SIZE = 34;
+    const MAX_SIZE = 52;
+    const { Option } = Select;
+
+    const sizes = [];
+    const [selectedSize, setSelectedSize] = useState(null);
+    for (let i = MIN_SIZE; i <= MAX_SIZE; i += 2) {
+        sizes.push(<Option key={i}
+            className={product.sizes.includes(i + '') ? '' : 'disabled'}>{i}</Option>);
+    }
     const [isHeaderVisible, setHeaderVisible] = useState(false);
     const [isFooterVisible, setFooterVisible] = useState(false);
     const { width } = useContext(WindowDimensionsContext);
@@ -35,11 +60,47 @@ const Product = ({ product }) => {
         return classArray.join(' ');
     }
 
+    const handleSizeSelect = (value: any, event: any) => {
+        console.log(`Selected size ${value}`);
+        console.log('Selected element ', event);
+        if (product.sizes.includes(value)) {
+            // update the value of the selector
+            setSelectedSize(value);
+            // update the size in Klarna buy button
+            let item = KLARNA_PRODUCT_OBJECT;
+            item.product_attributes = [{
+
+                "identifier": "size",
+                "identifier_label": "Size",
+                "value": value,
+                "value_label": value
+            }];
+            Klarna.InstantShopping.update({
+                "setup": {
+                    "instance_id": "purchase-1"
+                },
+                "items": [item]
+            }, function (response: any) {
+                console.log('Klarna.InstantShopping.update callback with data:' + JSON.stringify(response))
+            });
+        } else {
+            // If size is unavailable, show popup
+
+        }
+    }
+
     useEffect(() => {
         // Check if window exist and screen is small
         if (typeof window !== 'undefined') {
             window.klarnaAsyncCallback = function () {
                 try {
+                    let item = KLARNA_PRODUCT_OBJECT;
+                    item.product_attributes = [{
+                        "identifier": "size",
+                        "identifier_label": "Size",
+                        "value": product.sizes[0],
+                        "value_label": product.sizes[0]
+                    }];
                     Klarna.InstantShopping.load({
                         "setup": {
                             "instance_id": "purchase-1",
@@ -53,19 +114,7 @@ const Product = ({ product }) => {
                         "merchant_urls": {
                             "terms": process.env.GATSBY_KLARNA_CHERIE_URL + "about"
                         },
-                        "order_lines": [{
-                            "type": "physical",
-                            "reference": "DRS-" + product.name,
-                            "name": product.name,
-                            "quantity": 1,
-                            "unit_price": product.price * 100,
-                            "tax_rate": 2400,
-                            "total_amount": product.price * 100,
-                            "total_discount_amount": 0,
-                            "total_tax_amount": _.toInteger(product.price * 100 - (product.price * 100 * 10000) / (10000 + 2400)),
-                            "product_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/" + _.toLower(product.name),
-                            "image_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/" + _.toLower(product.name)
-                        }],
+                        "items": [item],
                         "merchant_reference1": "45aa52f397871e3a210645d5", // optional
                         "shipping_options": [{ // add multiple if necessary
                             "id": "standard",
@@ -76,7 +125,7 @@ const Product = ({ product }) => {
                             "tax_rate": 2400,
                             "shipping_method": "PickUpStore"
                         }]
-                    }, function (response) {
+                    }, function (response: any) {
                         console.log('Klarna.InstantShopping.load callback with data:' + JSON.stringify(response))
                     })
                 } catch (e) {
@@ -129,6 +178,10 @@ const Product = ({ product }) => {
                                                     return (<React.Fragment key={index}>{`- ${line}`}<br /></React.Fragment>)
                                                 })}
                                             </p> */}
+                                <Select style={{ width: '300px' }} size="large" onSelect={(value, event) => handleSizeSelect(value, event)}
+                                    tokenSeparators={[',']} placeholder="Select Size" value={selectedSize || undefined}>
+                                    {sizes}
+                                </Select>
                                 <Link className={styles.checkSize} to='/size-guide'><span className="link">Check your size</span></Link>
                             </div>
                             {/* <div>
