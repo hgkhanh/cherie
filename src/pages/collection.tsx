@@ -40,7 +40,7 @@ const ShopPage = ({ location }) => {
   const products = data.allMarkdownRemark.edges;
   return (
     <Layout location={location}>
-      <div className="grid" >
+      <div className="grid wide" >
         <Helmet title={`Collection | ${siteConfig.siteTitle}`} />
         <Spring
           delay={300}

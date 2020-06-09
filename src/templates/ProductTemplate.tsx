@@ -19,7 +19,7 @@ const ProductTemplate = (props: any) => {
       <SEO productPath={slug} productData={product} productSEO />
       <div className="pageContainer">
         <Product product={product} />
-        <Recommendation excludeId={data.markdownRemark.id}/>
+        <Recommendation excludeId={data.markdownRemark.id} />
       </div>
     </Layout>
   );

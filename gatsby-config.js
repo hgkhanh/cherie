@@ -6,6 +6,10 @@ const urljoin = require("url-join");
 const path = require("path");
 const config = require("./data/SiteConfig");
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+console.log(`Using environment config: '${activeEnv}'`)
+
 module.exports = {
   developMiddleware: app => {
     app.use(
@@ -39,6 +43,8 @@ module.exports = {
       resolve: `gatsby-source-instagram`,
       options: {
         username: `cheriebridal`,
+        access_token: process.env.GATSBY_INSTAGRAM_ACCESS_TOKEN,
+        instagram_id: process.env.GATSBY_INSTAGRAM_ID
       },
     },
     {
@@ -146,7 +152,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: config.googleAnalyticsID
+        trackingId: process.env.GA_TRACKING_ID
       }
     },
     {

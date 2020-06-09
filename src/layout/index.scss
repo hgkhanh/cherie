@@ -172,13 +172,15 @@ hr.divider {
 }
 
 .grid {
-  max-width: 1600px;
+  max-width: 900px;
+  &.wide {
+    max-width: 1200px;
+  }
   &.narrow {
-    max-width: 700px;
-    padding: 10px;
+    max-width: 600px;
   }
   margin: 0 auto;
-  padding: 0 90px;
+  padding: 0;
   position: relative;
   &.darkTone {
     // background: #edc4ad;
@@ -186,12 +188,13 @@ hr.divider {
   }
 }
 
-
-
 .gridTitle {
   flex-basis: 100%;
   text-align: left;
-  padding: 35px 0;
+  padding: 20px;
+  @include tablet-potrait-up {
+    padding: 20px 80px;
+  }
   margin: 0;
   &.footTitle {
     padding-top: 0;
@@ -238,16 +241,8 @@ button:focus {
 // /* Global Layout */
 
 /* Responsive */
-
 @media screen and (max-width: 769px) {
-  .grid {
-    width: 100%;
-    .gridTitle {
-      padding: 10px 0;
-    }
-  }
-
-  &.boxContent {
+  .boxContent {
     padding: 30px;
   }
   .flexSection {

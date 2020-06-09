@@ -11,7 +11,7 @@ import Hero from '../components/Hero';
 // import CampaignModal from '../components/CampaignModal';
 
 const HomePage = ({ location }) => {
-const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
       banner1wide: file(name: {eq: "Banner-01"}) {
         childCloudinaryAsset {
@@ -106,8 +106,11 @@ const data = useStaticQuery(graphql`
 
   useEffect(() => {
     setTimeout(() => {
+      console.log('Showing modal');
       if (!view) {
         setModalActive(true);
+      } else {
+        console.log('User already see this modal. Abort!');
       }
     }, 5000);
   }, []);
@@ -134,11 +137,11 @@ const data = useStaticQuery(graphql`
                     with customisation time frame under three months at competitive prices.
                   </p>
                   <p>With the goal of creating a once-in-a-lifetime experience for our customers,
-                    the name ‘Chérie’ derives from French, with its true meaning of ‘sweetheart’
-                    and its homophone ‘cherry’, a constant reminder of sweetness.
-                    This is a promise from us to you at Chérie Bridal, where the provision of
-                    excellent customer service is the top priority, that every bride who comes
-                    to us is and will always be our ‘sweetheart’.
+                  the name ‘Chérie’ derives from French, with its true meaning of ‘sweetheart’
+                  and its homophone ‘cherry’, a constant reminder of sweetness.
+                  This is a promise from us to you at Chérie Bridal, where the provision of
+                  excellent customer service is the top priority, that every bride who comes
+                  to us is and will always be our ‘sweetheart’.
                   </p>
                   <h4>- The Chérie Bridal Team</h4>
                   <Link to={'/about'} >
@@ -161,7 +164,7 @@ const data = useStaticQuery(graphql`
           </Link>
         </Hero>
         <hr className='divider' />
-        <div className='grid'>
+        <div className='grid wide'>
           <div className='gridTitle centerAlign'>
             <h2 className="uppercase">Our Favourites</h2>
           </div>

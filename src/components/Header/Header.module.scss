@@ -13,13 +13,13 @@
   display: block;
   background: #fff;
   box-shadow: 0 -1px #e3e3e3 inset;
-  transition: top 0.3s ease-in, background 0.3s ease-in-out, box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
+  transition: top 0.3s ease-in, background 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out;
   a,
   h1 {
     color: #454545;
   }
 }
-
 
 .isAtTop.homepage {
   background-color: transparent;
@@ -114,4 +114,15 @@
   right: 0;
   height: 1px;
   top: 20px;
+}
+
+.ribbon {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  background-color: $font-color-gray;
+  opacity: 0.7;
+  span {
+    color: #fff;
+  }
 }
