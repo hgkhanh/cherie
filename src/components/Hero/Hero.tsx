@@ -5,12 +5,15 @@ import { Spring, config } from 'react-spring/renderprops';
 import { Parallax } from 'react-parallax';
 import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 
-const Hero = ({ overlay, overlayAlpha, hasScroll, imageWide, imageVertical, children }) => {
+const Hero = ({ overlay, overlayAlpha, hasScroll, isParallax, imageWide, imageVertical, children }) => {
 
   const [active, setActive] = useState(false);
   const { width } = useContext(WindowDimensionsContext);
 
-  const heroImage = width <= 992 ? imageVertical : imageWide;
+  let heroImage = imageWide;
+  if (imageVertical && width <= 992) {
+    heroImage = imageVertical;
+  }
 
   const scrollBtn = useRef(null);
   const scrollToContent = () => {
@@ -19,7 +22,23 @@ const Hero = ({ overlay, overlayAlpha, hasScroll, imageWide, imageVertical, chil
     }
   };
 
-  if (hasScroll) {
+  if (isParallax) {
+    return (
+      <Parallax bgImage={heroImage.childCloudinaryAsset.fluid.src}
+        bgImageSrcSet={heroImage.childCloudinaryAsset.fluid.srcSet}
+        strength={500} >
+        <div
+          className={styles.hero}>
+          {overlay && (
+            <div className={styles.overlay} style={{ backgroundColor: `rgba(0,0,0, ${overlayAlpha ? overlayAlpha : 0.3})` }} />
+          )}
+          <div className={`${styles.textWrapper} darkTone centerAlign`}>
+            {children}
+          </div>
+        </div>
+      </Parallax>
+    )
+  } else {
     return (
       <BackgroundImage
         className={styles.hero}
@@ -51,22 +70,6 @@ const Hero = ({ overlay, overlayAlpha, hasScroll, imageWide, imageVertical, chil
           </Spring>
         )}
       </BackgroundImage>
-    );
-  } else {
-    return (
-      <Parallax bgImage={heroImage.childCloudinaryAsset.fluid.src}
-        bgImageSrcSet={heroImage.childCloudinaryAsset.fluid.srcSet}
-        strength={500} >
-        <div
-          className={styles.hero}>
-          {overlay && (
-            <div className={styles.overlay} style={{ backgroundColor: `rgba(0,0,0, ${overlayAlpha ? overlayAlpha : 0.3})` }} />
-          )}
-          <div className={`${styles.textWrapper} darkTone centerAlign`}>
-            {children}
-          </div>
-        </div>
-      </Parallax>
     )
   }
 };

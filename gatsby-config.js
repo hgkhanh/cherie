@@ -100,7 +100,6 @@ module.exports = {
         modifyVars: {
           "primary-color": "#C79479",
           "text-color": "#707272",
-          "border-radius-base": "0px",
           "success-color": "#95de64",
           "warning-color": "#ffd666",
           "error-color": "#ff7875"

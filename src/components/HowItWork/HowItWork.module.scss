@@ -1,0 +1,17 @@
+.container {
+    padding: 40px;
+    text-align: center;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    .icon {
+        flex-basis: 50px;
+        margin-right: 20px;
+    }
+    p {
+        text-align: left;
+    }
+}

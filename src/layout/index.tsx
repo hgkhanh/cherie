@@ -23,7 +23,7 @@ const MainLayout = ({ children, location }) => {
           </Helmet>
           <Header location={location} />
           {location && location.pathname !== "/booking" && (
-            <FloatButton to="/booking" icon="calendar" offsetTop={1600} />
+            <FloatButton to="/booking"/>
           )}
           <main>{children}</main>
           <Footer config={config} />

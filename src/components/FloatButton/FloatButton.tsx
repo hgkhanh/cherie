@@ -1,51 +1,22 @@
 import React, { useState, useContext } from 'react';
 import styles from './FloatButton.module.scss';
 import { Link } from "gatsby";
-import { Icon } from "antd";
-import VisibilitySensor from 'react-visibility-sensor';
-import { Spring, config } from 'react-spring/renderprops';
+import { Button } from "antd";
 import { WindowDimensionsContext } from "../../shared/WindowDimensionsProvider";
 
-const FloatButton = ({ to, icon, offsetTop }) => {
-  const [active, setActive] = useState(false);
-  const [visible, setVisible] = useState(false);
+const FloatButton = ({ to }) => {
   const { width } = useContext(WindowDimensionsContext);
 
-  if (width <= 768) {
+  // Show on tablet down
+  if (width < 900) {
     return (
       <React.Fragment>
-        <Spring
-          config={config.slow}
-          to={{
-            opacity: visible ? '1' : '0',
-            transform: active ? 'scale(1.1)' : 'scale(1.0)'
-          }}>
-          {springStyles => (
-            <Link to={to}>
-              <button className={styles.button} style={{ ...springStyles }}
-                onMouseEnter={() => setActive(true)}
-                onMouseLeave={() => setActive(false)}>
-                <Icon type={icon}></Icon>
-              </button>
-            </Link>
-          )}
-        </Spring>
-        <VisibilitySensor onChange={visiblity => {
-
-          // do not hide float button if is scrolling down past the sensor
-          if (visiblity === false) {
-            if (typeof window !== 'undefined') {
-              const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-              if (scrollTop <= offsetTop) {
-                setVisible(false);
-              }
-            }
-          } else {
-            setVisible(true);
-          }
-        }}>
-          <div className={styles.sensor} style={{ top: offsetTop + 'px' }} />
-        </VisibilitySensor>
+        <div className={styles.container}>
+          <Link to={to}>
+            <Button className={styles.button} type="primary">Tap here to book appointment
+                </Button>
+          </Link>
+        </div>
       </React.Fragment>
     );
   }

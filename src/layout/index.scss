@@ -1,4 +1,4 @@
-/* //Typograhpy BlinkMacSystemFont*/
+/* START Typograhpy BlinkMacSystemFont*/
 * {
   font-family: -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Inter",
     "Helvetica Neue", sans-serif;
@@ -11,10 +11,11 @@ h4,
 h5,
 h6,
 span {
-  font-weight: 200;
+  font-weight: 400;
 }
 
 .darkTone {
+
   h1,
   h2,
   h3,
@@ -41,8 +42,10 @@ main {
   background: $color-background;
   line-height: 1.75;
 }
+
 header,
 main {
+
   h1,
   h2,
   h3,
@@ -53,12 +56,18 @@ main {
   p,
   li {
     color: $font-color;
+
     &.grayText {
       color: $font-color-gray;
+    }
+
+    &.darkText {
+      color: $font-color-dark;
     }
   }
 
   .grayText {
+
     h1,
     h2,
     h3,
@@ -69,6 +78,21 @@ main {
     p,
     span {
       color: $font-color-gray;
+    }
+  }
+
+
+  .darkText {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a,
+    p,
+    span {
+      color: $font-color-dark;
     }
   }
 }
@@ -101,11 +125,11 @@ blockquote:before {
   position: absolute;
   left: 10px;
   top: -20px;
-  color: #7a7a7a;
+  color: $font-color-gray;
 }
 
 blockquote cite {
-  color: #999999;
+  color: $font-color-gray;
   display: block;
   margin-top: 10px;
 }
@@ -117,6 +141,7 @@ blockquote cite:before {
 .underline {
   display: inline-block;
   position: relative;
+
   &:before {
     content: "";
     position: absolute;
@@ -124,8 +149,8 @@ blockquote cite:before {
     height: 1px;
     left: 0;
     bottom: 2px;
-    color: #727272;
-    background-color: #727272;
+    color: $font-color-gray;
+    background-color: $font-color-gray;
     transition: width 0.2s ease-in-out;
   }
 
@@ -137,16 +162,18 @@ blockquote cite:before {
 .uppercase {
   text-transform: uppercase !important;
 }
+
 .noBtmMargin {
   margin-bottom: 0 !important;
 }
 
 .link {
-  color: #c79479;
+  color: $color-brand-primary;
 }
-// /* Typography */
 
-/* Global Layout */
+/* END Typography */
+
+/* START Global Layout */
 #gatsby-focus-wrapper {
   background: $color-background;
 }
@@ -165,7 +192,7 @@ hr.divider {
   background: none;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 900px) {
   hr.divider {
     padding-top: 40px;
   }
@@ -173,18 +200,22 @@ hr.divider {
 
 .grid {
   max-width: 900px;
+
   &.wide {
     max-width: 1200px;
   }
+
   &.narrow {
     max-width: 600px;
   }
+
   margin: 0 auto;
   padding: 0;
   position: relative;
+
   &.darkTone {
     // background: #edc4ad;
-    background: #e8c7b5;
+    background: $color-brand-light;
   }
 }
 
@@ -192,10 +223,13 @@ hr.divider {
   flex-basis: 100%;
   text-align: left;
   padding: 20px;
+
   @include tablet-potrait-up {
     padding: 20px 80px;
   }
+
   margin: 0;
+
   &.footTitle {
     padding-top: 0;
     padding-bottom: 35px;
@@ -214,20 +248,18 @@ hr.divider {
   &.flexLeft {
     justify-content: left;
   }
-  &.boxContent {
-    text-align: center;
-  }
 }
 
 .horizontalList {
   list-style: none;
+
   li {
     display: inline-block;
     margin: 0 21px;
   }
 }
 
-@media screen and (max-width: 993px) {
+@media screen and (max-width: 900px) {
   .horizontalList {
     li {
       margin: 0 17px;
@@ -238,17 +270,20 @@ hr.divider {
 button:focus {
   outline: none;
 }
-// /* Global Layout */
+
+/* END Global Layout */
 
 /* Responsive */
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 900px) {
   .boxContent {
     padding: 30px;
   }
+
   .flexSection {
     min-height: auto;
   }
 }
+
 /* //Responsive */
 
 /* Custom UI Component */
@@ -257,13 +292,16 @@ button:focus {
     margin: 0;
     width: 100%;
   }
+
   .slick-arrow {
     color: red;
     z-index: 1;
   }
+
   .slick-prev {
     left: 10px;
   }
+
   .slick-next {
     right: 10px;
   }
@@ -274,7 +312,8 @@ button:focus {
 }
 
 .ant-drawer-wrapper-body {
-  background: #c79479;
+  background: $color-brand-primary;
+
   h1,
   .ant-drawer-close {
     color: #fff;

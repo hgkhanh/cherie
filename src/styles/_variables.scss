@@ -1,6 +1,11 @@
 $color-background: #f6f0ec;
-$font-color: #454545;
-$font-color-gray: #727272;
+$color-brand-primary: #c79479;
+$color-brand-light: #e8c7b5;
+
+
+$font-color-dark: #1f1f1f;
+$font-color: #434343;
+$font-color-gray: #8c8c8c;
 
 // 3 break point: 600, 900, 1200
 @mixin phone-only {

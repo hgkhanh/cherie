@@ -170,7 +170,7 @@ const Header = ({ location }) => {
             </Link>
           </div>
 
-          <div className={`${styles.block} ${styles.fill}`}>
+          <div className={`${styles.block} ${styles.fill} ${width < 900 ? styles.transparent : ''}`}>
             {(width < 600) && (
               <a href="/booking">
                 <Icon type="calendar" style={{ fontSize: '20px' }} />
