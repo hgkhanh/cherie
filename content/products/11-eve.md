@@ -22,7 +22,8 @@ sizes:
   - "48"
   - "50"
 tags:
-  - Fully-lined
-  - bra-friendly
+  - Minimal
+  - Romantic
+  - Classic
 ---
 

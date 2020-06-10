@@ -13,7 +13,10 @@
   @include tablet-potrait-up {
     padding: 20px 40px;
   }
-  flex: 1 1 50%;
+  flex: 1 1 100%;
+  @include tablet-potrait-up {
+    flex: 1 1 50%;
+  }
   @include desktop-up {
     flex: 1 1 33%;
   }

@@ -10,7 +10,7 @@ import InstaSlider from '../components/InstaSlider';
 import Hero from '../components/Hero';
 import ValueBlock from '../components/ValueBlock';
 import HowItWork from '../components/HowItWork';
-import CategoriesBlock from '../components/CategoriesBlock';
+import TagsBlock from '../components/TagsBlock';
 // import CampaignModal from '../components/CampaignModal';
 
 const HomePage = ({ location }) => {
@@ -156,7 +156,7 @@ const HomePage = ({ location }) => {
             </div>
           </div>
         </RevealAnimation>
-        <CategoriesBlock />
+        <TagsBlock />
         <hr className='divider' />
         <div className='gridTitle centerAlign'>
           <h4 className='uppercase'>Get inspired</h4>

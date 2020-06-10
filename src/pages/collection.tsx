@@ -56,7 +56,7 @@ const ShopPage = ({ location }) => {
         >
           {props => (
             <React.Fragment>
-              <h1 className="gridTitle" style={props}>Collection</h1>
+              <h1 className="gridTitle" style={props}>Dresses</h1>
             </React.Fragment>
           )
           }
