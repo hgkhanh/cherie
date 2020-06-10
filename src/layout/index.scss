@@ -83,6 +83,7 @@ main {
 
 
   .darkText {
+
     h1,
     h2,
     h3,
@@ -269,6 +270,13 @@ hr.divider {
 
 button:focus {
   outline: none;
+}
+
+.glassTitle {
+  padding: 10px;
+  backdrop-filter: saturate(160%) blur(5px);
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
 }
 
 /* END Global Layout */

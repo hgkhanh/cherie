@@ -63,7 +63,31 @@ const HomePage = ({ location }) => {
             srcSet
           }
         }
-      } 
+      }
+
+      cat1: file(name: {eq: "Aurora-01"}) {
+        childCloudinaryAsset {
+          fluid(maxWidth: 1600) {
+            ...CloudinaryAssetFluid
+          }
+        }
+      }
+
+      cat2: file(name: {eq: "Ella-01"}) {
+        childCloudinaryAsset {
+          fluid(maxWidth: 1600) {
+            ...CloudinaryAssetFluid
+          }
+        }
+      }
+
+      cat3: file(name: {eq: "Eve-04"}) {
+        childCloudinaryAsset {
+          fluid(maxWidth: 1600) {
+            ...CloudinaryAssetFluid
+          }
+        }
+      }
 
       products: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}}, sort: {fields: fileAbsolutePath, order: ASC}, limit: 6) {
         edges {
@@ -150,36 +174,46 @@ const HomePage = ({ location }) => {
         </Hero>
         <RevealAnimation opacity transform>
           <div className='gridWrapper'>
-            <div className='grid'>
+            <div className='grid narrow'>
               <HowItWork />
             </div>
           </div>
         </RevealAnimation>
-        <Hero overlay={true} hasScroll={false} isParallax={true} imageWide={data.banner3wide}
-          imageVertical={data.banner3wide}>
-          <h2 style={{ marginBottom: 0 }} className='uppercase'>Have all your wedding photos back</h2>
-          <h3 style={{ marginBottom: '1em' }}>and ready to share with us?</h3>
-          <a href='mailto:info@cheriebridal.fi'>
-            <Button size='large' ghost htmlType='submit'>
-              Submit your wedding
-            </Button>
-          </a>
-        </Hero>
+        <Link to='/collection'>
+          <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.cat1}>
+            <div className='glassTitle'>
+              <h2 className='darkText uppercase' style={{ marginBottom: 0 }}>Ball gown</h2>
+            </div>
+          </Hero>
+        </Link>
+        <Link to='/collection'>
+          <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.cat2}>
+            <div className='glassTitle'>
+              <h2 className='darkText uppercase' style={{ marginBottom: 0 }}>Mermaid</h2>
+            </div>
+          </Hero>
+        </Link>
+        <Link to='/collection'>
+          <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.cat3}>
+            <div className='glassTitle'>
+              <h2 className='darkText uppercase' style={{ marginBottom: 0 }}>A line</h2>
+            </div>
+          </Hero>
+        </Link>
         <hr className='divider' />
         <div className='gridTitle centerAlign'>
-          <h3>Get inspired</h3>
-          <h2 className='uppercase'>Our Instagram</h2>
+          <h4 className='uppercase'>Get inspired</h4>
+          <h2>@cheriebridal</h2>
         </div>
         <InstaSlider />
         <hr className='divider' />
         <hr className='divider' />
         <Hero overlay={true} hasScroll={false} isParallax={true} imageWide={data.banner4wide}
           imageVertical={data.banner4wide}>
-          <h3 style={{ marginBottom: 0 }}>Ready to</h3>
-          <h1 style={{ marginBottom: '1em' }}>Find your dress?</h1>
+          <h2 className='uppercase' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be harder than</h2>
           <Link to='/booking'>
-            <Button size='large' ghost htmlType='submit'>
-              Book your appointment
+            <Button block style={{ width: '150px' }}>
+              Get started
           </Button>
           </Link>
         </Hero>
