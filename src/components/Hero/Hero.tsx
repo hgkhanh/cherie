@@ -5,7 +5,7 @@ import { Spring, config } from 'react-spring/renderprops';
 import { Parallax } from 'react-parallax';
 import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 
-const Hero = ({ overlay, overlayAlpha, hasScroll, isParallax, imageWide, imageVertical, children }) => {
+const Hero = ({ overlay, overlayAlpha, hasScroll, isParallax, imageWide, imageVertical, fullScreen, children }) => {
 
   const [active, setActive] = useState(false);
   const { width } = useContext(WindowDimensionsContext);
@@ -28,11 +28,11 @@ const Hero = ({ overlay, overlayAlpha, hasScroll, isParallax, imageWide, imageVe
         bgImageSrcSet={heroImage.childCloudinaryAsset.fluid.srcSet}
         strength={500} >
         <div
-          className={styles.hero}>
+          className={fullScreen ? `${styles.hero} ${styles.fullScreen}` : styles.hero}>
           {overlay && (
             <div className={styles.overlay} style={{ backgroundColor: `rgba(0,0,0, ${overlayAlpha ? overlayAlpha : 0.3})` }} />
           )}
-          <div className={`${styles.textWrapper} darkTone centerAlign`}>
+          <div className={`${styles.textWrapper} centerAlign`}>
             {children}
           </div>
         </div>
@@ -41,14 +41,14 @@ const Hero = ({ overlay, overlayAlpha, hasScroll, isParallax, imageWide, imageVe
   } else {
     return (
       <BackgroundImage
-        className={styles.hero}
+        className={fullScreen ? `${styles.hero} ${styles.fullScreen}` : styles.hero}
         fluid={heroImage.childCloudinaryAsset.fluid}
         loading='eager'
         backgroundColor={`#040e18`}>
         {overlay && (
           <div className={styles.overlay} style={{ backgroundColor: `rgba(0,0,0, ${overlayAlpha ? overlayAlpha : 0.3})` }} />
         )}
-        <div className={`${styles.textWrapper} darkTone centerAlign`}>
+        <div className={`${styles.textWrapper} centerAlign`}>
           {children}
         </div>
         {hasScroll && (

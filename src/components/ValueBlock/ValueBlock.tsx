@@ -33,8 +33,8 @@ const ValueBlock = () => {
                     style={{ width: '100%', height: '100%' }}>
                     <div className={styles.overlay} style={{ backgroundColor: `rgba(255,255,255, 0.3)` }} />
                     <div className={styles.textWrapper}>
-                        <h2 style={{ marginBottom: 0 }} className="uppercase darkText">Better Experience</h2>
-                        <p style={{ marginBottom: 0 }} className="uppercase darkText">A less painfull, less stressful way to find 'the' dress</p>
+                        <h2 style={{ marginBottom: 0 }} className="uppercase darkerText">Better Experience</h2>
+                        <p style={{ marginBottom: 0 }} className="uppercase darkerText">A less painfull, less stressful way to find 'the' dress</p>
                     </div>
                 </BackgroundImage>
             </div>
@@ -44,8 +44,8 @@ const ValueBlock = () => {
                     style={{ width: '100%', height: '100%' }}>
                     <div className={styles.overlay} style={{ backgroundColor: `rgba(255,255,255, 0.3)` }} />
                     <div className={styles.textWrapper}>
-                        <h2 style={{ marginBottom: 0 }} className="uppercase darkText">Better Price</h2>
-                        <p style={{ marginBottom: 0 }} className="uppercase darkText">High quality with unmatched price</p>
+                        <h2 style={{ marginBottom: 0 }} className="uppercase darkerText">Better Price</h2>
+                        <p style={{ marginBottom: 0 }} className="uppercase darkerText">High quality with unmatched price</p>
                     </div>
                 </BackgroundImage>
             </div>
