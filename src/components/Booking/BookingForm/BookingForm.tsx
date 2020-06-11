@@ -76,7 +76,7 @@ const BookingForm = ({ form, date, bookTime }) => {
   };
 
   return (
-    <Form {...formItemLayout} onSubmit={handleSubmit}>
+    <Form {...formItemLayout} onSubmit={handleSubmit} colon={false}>
       <div className={styles.container}>
         <Form.Item label='bookTime' required style={{ display: 'none' }}>
           {getFieldDecorator('bookTime')

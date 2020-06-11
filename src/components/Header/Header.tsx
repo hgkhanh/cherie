@@ -139,7 +139,7 @@ const Header = ({ location }) => {
             >
               <Link to="/collection"><h2>Collection</h2></Link>
               <Link to="/booking"><h2>Booking</h2></Link>
-              <Link to="/blog"><h2>Blog</h2></Link>
+              {/* <Link to="/blog"><h2>Blog</h2></Link> */}
               <Link to="/about"><h2>About</h2></Link>
             </Drawer>
           )}
@@ -153,9 +153,9 @@ const Header = ({ location }) => {
                   <li>
                     <a href="/collection">Collection</a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="/blog">Blog</a>
-                  </li>
+                  </li> */}
                   <li>
                     <a href="/about">About</a>
                   </li>

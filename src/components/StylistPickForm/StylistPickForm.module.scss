@@ -1,0 +1,19 @@
+.container {
+    background-color: #c79479;
+    padding: 40px 0;
+}
+
+.inlineInput {
+    margin: 0;
+    padding: 0 10px;
+}
+
+.inlineLabel {
+    display: inline-block;
+    overflow: hidden;
+    line-height: 40px;
+    white-space: nowrap;
+    text-align: right;
+    vertical-align: middle;
+    color: #fff;
+}

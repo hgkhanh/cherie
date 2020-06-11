@@ -7,7 +7,7 @@ import styles from './ValueBlock.module.scss';
 const ValueBlock = () => {
     const data = useStaticQuery(graphql`
         query {
-            background1: file(name: {eq: "Banner-03"}) {
+            background1: file(name: {eq: "Value-01"}) {
                 childCloudinaryAsset {
                   fluid(maxWidth: 2400) {
                     ...CloudinaryAssetFluid
@@ -15,7 +15,7 @@ const ValueBlock = () => {
                 }
             }  
               
-            background2: file(name: {eq: "Banner-04"}) {
+            background2: file(name: {eq: "Value-02"}) {
                 childCloudinaryAsset {
                     fluid(maxWidth: 1600) {
                     ...CloudinaryAssetFluid
@@ -26,30 +26,43 @@ const ValueBlock = () => {
     `);
 
     return (
-        <div className={styles.container}>
-            <div className={styles.item}>
-                <BackgroundImage
-                    fluid={data.background1.childCloudinaryAsset.fluid}
-                    style={{ width: '100%', height: '100%' }}>
-                    <div className={styles.overlay} style={{ backgroundColor: `rgba(255,255,255, 0.3)` }} />
-                    <div className={styles.textWrapper}>
-                        <h2 style={{ marginBottom: 0 }} className="uppercase darkerText">Better Experience</h2>
-                        <p style={{ marginBottom: 0 }} className="uppercase darkerText">A less painfull, less stressful way to find 'the' dress</p>
-                    </div>
-                </BackgroundImage>
+        <React.Fragment>
+            <div className='sectionTitle centerAlign' style={{ margin: '10px 0' }}>
+                <span>The better and better</span>
             </div>
-            <div className={styles.item}>
-                <BackgroundImage
-                    fluid={data.background2.childCloudinaryAsset.fluid}
-                    style={{ width: '100%', height: '100%' }}>
-                    <div className={styles.overlay} style={{ backgroundColor: `rgba(255,255,255, 0.3)` }} />
-                    <div className={styles.textWrapper}>
-                        <h2 style={{ marginBottom: 0 }} className="uppercase darkerText">Better Price</h2>
-                        <p style={{ marginBottom: 0 }} className="uppercase darkerText">High quality with unmatched price</p>
-                    </div>
-                </BackgroundImage>
+            <div style={{ height: 300 }}>
+                <Hero overlay={false} hasScroll={false} isParallax={false}
+                    imageWide={data.background1} mobileFullHeight={false}>
+                </Hero>
             </div>
-        </div>
+            <div className='gridWrapper' style={{ marginTop: '20px' }}>
+                <div className='grid narrow'>
+                    <div className='sectionTextBlock centerAlign'>
+                        <h3 className='uppercase heavyText'>Better Experience</h3>
+                        <p>
+                            A less painful, less stressful way to find 'the' dress.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr className='divider' />
+            <div style={{ height: 300 }}>
+                <Hero overlay={false} hasScroll={false} isParallax={false}
+                    imageWide={data.background2} mobileFullHeight={false}>
+                </Hero>
+            </div>
+            <div className='gridWrapper' style={{ marginTop: '20px' }}>
+                <div className='grid narrow'>
+                    <div className='sectionTextBlock centerAlign'>
+                        <h3 className='uppercase heavyText'>Better Price</h3>
+                        <p>
+                            High quality with unmatched price.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr className='divider' />
+        </React.Fragment>
     )
 };
 

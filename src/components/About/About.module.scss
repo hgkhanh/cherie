@@ -1,11 +1,16 @@
-.container {
-  line-height: 1.65;
-  p {
-    text-align: center;
+.smallBannerWrapper {
+  height: 50vh;
+}
+@include tablet-potrait-up {
+  flex-direction: row;
+  .smallBannerWrapper {
+      height: 400px;
+      flex: 1 0 33%;
   }
 }
 
-.quote {
-  display: flex;
-  justify-content: center;
+@include desktop-up {
+  .smallBannerWrapper {
+      height: 600px;
+  }
 }

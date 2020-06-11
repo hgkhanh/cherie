@@ -27,7 +27,7 @@ const Tags = ({ pageContext, data }) => {
         >
           {props => (
             <React.Fragment>
-              <h1 className="gridTitle" style={props}>{tag} collection</h1>
+              <h1 className="sectionTitle" style={props}>{tag} collection</h1>
             </React.Fragment>
           )
           }

@@ -27,7 +27,7 @@ const ValueBlock = () => {
 
     return (
         <div className={styles.container}>
-            <h2 className='uppercase'>How It Work</h2>
+            <h3 className='uppercase heavyText'>How It Work</h3>
             <div className={styles.step}>
                 <div className={styles.icon}>
                     <Icon type='form' style={{ fontSize: '40px' }} />

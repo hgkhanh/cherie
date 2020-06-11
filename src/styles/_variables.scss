@@ -7,6 +7,9 @@ $font-color-dark: #1f1f1f;
 $font-color: #434343;
 $font-color-gray: #8c8c8c;
 
+$color-danger: #a8071a;
+$color-success: #237804;
+
 // 3 break point: 600, 900, 1200
 @mixin phone-only {
     @media (max-width: 599px) { @content; }

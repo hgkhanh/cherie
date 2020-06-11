@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Form, Button, Input, Icon } from 'antd';
 import styles from './SizeRequestForm.module.scss';
+import { FormComponentProps } from "antd/lib/form";
 
-interface SizeRequestPayload {
+interface RequestPayload {
     productName: string;
     size: string;
     email: string;
 }
 
-const SizeRequestForm = ({ form, productName, size, popupSuccess, setPopupSuccess }) => {
+const SizeRequestForm = ({ form, productName, size, popupSuccess, setPopupSuccess }: { form: FormComponentProps }) => {
     const [loading, setLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const handleForm = (event: any) => {
@@ -33,14 +34,14 @@ const SizeRequestForm = ({ form, productName, size, popupSuccess, setPopupSucces
         });
     }
 
-    const sendEmail = (payload: SizeRequestPayload) => {
+    const sendEmail = (payload: RequestPayload) => {
         return fetch("/.netlify/functions/sizeRequestEmail", {
             method: "POST",
             body: JSON.stringify(payload),
         });
     }
     return (
-        <Form onSubmit={handleForm}>
+        <Form onSubmit={handleForm} colon={false}>
             <Form.Item label='E-mail'>
                 {form.getFieldDecorator('email')
                     (< Input type='email' size="large" required />)}
@@ -49,7 +50,7 @@ const SizeRequestForm = ({ form, productName, size, popupSuccess, setPopupSucces
                 <Button type="primary" htmlType="submit" size="large" loading={loading}>Send</Button>
             </Form.Item>
             {isError && !loading && (
-                <h3 className={styles.error}>Something went wrong!&nbsp;&nbsp;
+                <h3 className='error'>Something went wrong!&nbsp;&nbsp;
                     <Icon type="frown" theme="twoTone" twoToneColor="#a8071a" /></h3>
             )}
         </Form>

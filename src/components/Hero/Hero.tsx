@@ -5,8 +5,9 @@ import { Spring, config } from 'react-spring/renderprops';
 import { Parallax } from 'react-parallax';
 import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 
-const Hero = ({ overlay, overlayAlpha, hasScroll, isParallax, imageWide, imageVertical, fullScreen, children }) => {
-
+const Hero = ({ overlay, overlayAlpha, hasScroll, isParallax, imageWide, imageVertical, mobileFullHeight, verticalAlign, children }) => {
+  // mobileFullHeight: if true, the hero height will fullscreen (on mobile)
+  // verticalAlign: how to align the text content on the hero: top, center, bottom
   const [active, setActive] = useState(false);
   const { width } = useContext(WindowDimensionsContext);
 
@@ -26,14 +27,15 @@ const Hero = ({ overlay, overlayAlpha, hasScroll, isParallax, imageWide, imageVe
     return (
       <Parallax bgImage={heroImage.childCloudinaryAsset.fluid.src}
         bgImageSrcSet={heroImage.childCloudinaryAsset.fluid.srcSet}
-        strength={500} >
-        <div
-          className={fullScreen ? `${styles.hero} ${styles.fullScreen}` : styles.hero}>
+        strength={500}>
+        <div className={mobileFullHeight ? `${styles.hero} ${styles.mobileFullHeight}` : styles.hero}>
           {overlay && (
             <div className={styles.overlay} style={{ backgroundColor: `rgba(0,0,0, ${overlayAlpha ? overlayAlpha : 0.3})` }} />
           )}
-          <div className={`${styles.textWrapper} centerAlign`}>
-            {children}
+          <div className={verticalAlign ? `${styles.contentWrapper} ${styles[verticalAlign]}` : styles.contentWrapper}>
+            {(verticalAlign === 'bottom') && (<div className={styles.filler}></div>)}
+            <div className={styles.content}>{children}</div>
+            {(verticalAlign === 'top') && (<div className={styles.filler}></div>)}
           </div>
         </div>
       </Parallax>
@@ -41,15 +43,17 @@ const Hero = ({ overlay, overlayAlpha, hasScroll, isParallax, imageWide, imageVe
   } else {
     return (
       <BackgroundImage
-        className={fullScreen ? `${styles.hero} ${styles.fullScreen}` : styles.hero}
+        className={mobileFullHeight ? `${styles.hero} ${styles.mobileFullHeight}` : styles.hero}
         fluid={heroImage.childCloudinaryAsset.fluid}
         loading='eager'
         backgroundColor={`#040e18`}>
         {overlay && (
           <div className={styles.overlay} style={{ backgroundColor: `rgba(0,0,0, ${overlayAlpha ? overlayAlpha : 0.3})` }} />
         )}
-        <div className={`${styles.textWrapper} centerAlign`}>
-          {children}
+        <div className={verticalAlign ? `${styles.contentWrapper} ${styles[verticalAlign]}` : styles.contentWrapper}>
+          {(verticalAlign === 'bottom') && (<div className={styles.filler}></div>)}
+          <div className={styles.content}>{children}</div>
+          {(verticalAlign === 'top') && (<div className={styles.filler}></div>)}
         </div>
         {hasScroll && (
           <Spring

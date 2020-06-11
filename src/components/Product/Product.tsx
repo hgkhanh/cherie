@@ -220,10 +220,11 @@ const Product = ({ product }) => {
                                                     return (<React.Fragment key={index}>{`- ${line}`}<br /></React.Fragment>)
                                                 })}
                                             </p> */}
-                                <Select style={{ width: '300px' }} size="large" onSelect={(value, event) => handleSizeSelect(value, event)}
+                                {/* <Select style={{ width: '300px' }} size="large" onSelect={(value, event) => handleSizeSelect(value, event)}
                                     tokenSeparators={[',']} placeholder="Select Size" value={selectedSize || undefined}>
                                     {sizes}
-                                </Select></div>
+                                </Select> */}
+                            </div>
                             {/* <div>
                                     <div>
                                         Sizes
@@ -263,7 +264,7 @@ const Product = ({ product }) => {
                                 Tags: <ProductTags tags={product.tags} />
                             </div> */}
                         {/* <SocialLinks productPath={slug} productNode={productNode} /> */}
-                        <klarna-instant-shopping data-instance-id="purchase-1" data-environment="playground" />
+                        {/* <klarna-instant-shopping data-instance-id="purchase-1" data-environment="playground" /> */}
                     </div>
                 </div>
             </div >

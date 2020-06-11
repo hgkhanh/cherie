@@ -7,10 +7,12 @@
   height: 100%;
   padding: 10px;
   position: relative;
-  &.fullScreen {
+
+  &.mobileFullHeight {
     min-height: calc(100vh - 80px);
   }
 }
+
 
 .overlay {
   position: absolute;
@@ -18,8 +20,31 @@
   height: 100%;
 }
 
-.textWrapper {
+.contentWrapper {
   position: relative;
+  .content {
+    flex: 1 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+  }
+  &.top, &.bottom {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    .filler {
+      flex-grow: 6;
+    }
+  }
+
+  &.top {
+    .filler {
+      flex-grow: 1;
+    }
+  }
+  
 }
 
 .scrollButton {

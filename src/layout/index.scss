@@ -1,6 +1,6 @@
 /* START Typograhpy BlinkMacSystemFont*/
 * {
-  font-family: -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Inter",
+  font-family: "Avenir" -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Inter",
     "Helvetica Neue", sans-serif;
 }
 
@@ -12,6 +12,9 @@ h5,
 h6,
 span {
   font-weight: 400;
+  &.heavyText {
+    font-weight: 600;
+  }
 }
 
 .darkTone {
@@ -35,11 +38,11 @@ span {
 }
 
 .pageContainer {
-  background: $color-background;
+  // background: $color-background;
 }
 
 main {
-  background: $color-background;
+  // background: $color-background;
   line-height: 1.75;
 }
 
@@ -179,12 +182,35 @@ blockquote cite:before {
 /* END Typography */
 
 /* START Global Layout */
-#gatsby-focus-wrapper {
-  background: $color-background;
-}
+// #gatsby-focus-wrapper {
+//   background: $color-background;
+// }
 
+
+// Grid
 .gridWrapper {
   width: 100%;
+
+  .grid {
+    max-width: 900px;
+
+    &.wide {
+      max-width: 1200px;
+    }
+
+    &.narrow {
+      max-width: 600px;
+    }
+
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+
+    &.darkTone {
+      // background: #edc4ad;
+      background: $color-brand-light;
+    }
+  }
 }
 
 hr.divider {
@@ -203,28 +229,10 @@ hr.divider {
   }
 }
 
-.grid {
-  max-width: 900px;
+// END Grid
 
-  &.wide {
-    max-width: 1200px;
-  }
-
-  &.narrow {
-    max-width: 600px;
-  }
-
-  margin: 0 auto;
-  padding: 0;
-  position: relative;
-
-  &.darkTone {
-    // background: #edc4ad;
-    background: $color-brand-light;
-  }
-}
-
-.gridTitle {
+// Text block
+.sectionTitle {
   flex-basis: 100%;
   text-align: left;
   padding: 20px;
@@ -241,20 +249,12 @@ hr.divider {
   }
 }
 
-.flexSection {
-  display: flex;
-  min-height: 400px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: row;
-  width: 100%;
-
-  &.flexLeft {
-    justify-content: left;
-  }
+.sectionTextBlock {
+  padding: 0 30px;
 }
 
+
+// Header
 .horizontalList {
   list-style: none;
 
@@ -272,6 +272,8 @@ hr.divider {
   }
 }
 
+// END Header
+
 button:focus {
   outline: none;
 }
@@ -283,18 +285,17 @@ button:focus {
   border-radius: 4px;
 }
 
+.error {
+  color: $color-danger;
+}
+
+.success {
+  color: $color-success;
+}
+
 /* END Global Layout */
 
 /* Responsive */
-@media screen and (max-width: 900px) {
-  .boxContent {
-    padding: 30px;
-  }
-
-  .flexSection {
-    min-height: auto;
-  }
-}
 
 /* //Responsive */
 
@@ -306,7 +307,7 @@ button:focus {
   }
 
   .slick-arrow {
-    color: red;
+    color: $color-danger;
     z-index: 1;
   }
 

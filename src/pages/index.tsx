@@ -16,30 +16,15 @@ import TagsBlock from '../components/TagsBlock';
 const HomePage = ({ location }) => {
   const data = useStaticQuery(graphql`
     query {
-      banner1wide: file(name: {eq: "Banner-01"}) {
+      bannerTop: file(name: {eq: "Home-Page-Banner-Top"}) {
         childCloudinaryAsset {
           fluid(maxWidth: 2400) {
             ...CloudinaryAssetFluid
           }
         }
       }
-      banner1vertical: file(name: {eq: "Banner-01-Vertical"}) {
-        childCloudinaryAsset {
-          fluid(maxWidth: 1200) {
-            ...CloudinaryAssetFluid
-          }
-        }
-      }
 
-      banner2wide: file(name: {eq: "Banner-02"}) {
-        childCloudinaryAsset {
-          fluid(maxWidth: 2400) {
-            ...CloudinaryAssetFluid
-          }
-        }
-      } 
-
-      banner3wide: file(name: {eq: "Banner-03"}) {
+      bannerStory: file(name: {eq: "Home-Page-Banner-Story"}) {
         childCloudinaryAsset {
           fluid(maxWidth: 2400) {
             ...CloudinaryAssetFluid
@@ -47,7 +32,7 @@ const HomePage = ({ location }) => {
         }
       }  
       
-      banner4wide: file(name: {eq: "Banner-04"}) {
+      bannerBottom: file(name: {eq: "Home-Page-Banner-Bottom"}) {
         childCloudinaryAsset {
           fluid(maxWidth: 1600) {
             ...CloudinaryAssetFluid
@@ -123,12 +108,11 @@ const HomePage = ({ location }) => {
       {/* <CampaignModal modalBackground={data.modalBackground} visible={modalActive} setVisible={setModalActive} /> */}
       <div className='pageContainer'>
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
-        <Hero overlay={true} hasScroll={false} isParallax={false}
-          imageWide={data.banner1wide} imageVertical={data.banner1vertical} fullScreen={true}>
-          <h2 className='uppercase darkTone' style={{ marginBottom: 0 }}>Ready for the bridal</h2>
-          <h2 className='uppercase darkTone' style={{ marginBottom: '1em' }}>Revolution?</h2>
+        <Hero overlay={false} hasScroll={false} isParallax={false}
+          imageWide={data.bannerTop} mobileFullHeight={true} verticalAlign='bottom'>
+          <h3 className='uppercase centerAlign darkerText heavyText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h3>
           <Link to='/booking'>
-            <Button block style={{ width: '150px' }}>
+            <Button type='primary' block style={{ width: '150px' }}>
               Get started
           </Button>
           </Link>
@@ -140,11 +124,11 @@ const HomePage = ({ location }) => {
             </div>
           </div>
         </RevealAnimation>
-        <Hero overlay={true} overlayAlpha={0.6} hasScroll={false} isParallax={true} imageWide={data.banner2wide}
-          imageVertical={data.banner2wide} fullScreen={true}>
-          <h2 className='uppercase darkTone' style={{ marginBottom: '1em' }}>We are here for you</h2>
+        <Hero overlay={true} overlayAlpha={0.2} hasScroll={false} isParallax={false} imageWide={data.bannerStory}
+          mobileFullHeight={true} verticalAlign='top'>
+          <h2 className='uppercase darkTone heavyText' style={{ marginBottom: '1em' }}>We are here for you</h2>
           <Link to='/about'>
-            <Button block style={{ width: '150px' }}>
+            <Button type='primary' block style={{ width: '150px' }}>
               Our story
           </Button>
           </Link>
@@ -158,18 +142,18 @@ const HomePage = ({ location }) => {
         </RevealAnimation>
         <TagsBlock />
         <hr className='divider' />
-        <div className='gridTitle centerAlign'>
+        <div className='sectionTitle centerAlign'>
           <h4 className='uppercase'>Get inspired</h4>
-          <h2>@cheriebridal</h2>
+          <h2 className='heavyText'>@cheriebridal</h2>
         </div>
         <InstaSlider />
         <hr className='divider' />
         <hr className='divider' />
-        <Hero overlay={true} hasScroll={false} isParallax={true} imageWide={data.banner4wide}
-          imageVertical={data.banner4wide} fullScreen={true}>
-          <h2 className='uppercase darkTone' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be harder than</h2>
+        <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.bannerBottom} mobileFullHeight={true}
+          verticalAlign='bottom'>
+          <h2 className='uppercase heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h2>
           <Link to='/booking'>
-            <Button block style={{ width: '150px' }}>
+            <Button type='primary' block style={{ width: '150px' }}>
               Get started
           </Button>
           </Link>
