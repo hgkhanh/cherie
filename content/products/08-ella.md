@@ -10,6 +10,7 @@ galleryImages:
   - ../images/Ella-01.jpg
   - ../images/Ella-02.jpg
 price: '1399'
+salePrice: '570'
 category: A-line
 sizes:
   - "36"

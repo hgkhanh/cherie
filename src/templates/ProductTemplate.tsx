@@ -48,6 +48,7 @@ export const productQuery = graphql`
           }
           name
           price
+          salePrice
           detailsAndFit
           sizes
           tags

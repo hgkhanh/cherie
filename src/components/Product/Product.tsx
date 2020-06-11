@@ -13,6 +13,7 @@ import SliderArrow from '../SliderArrow';
 import Image from "gatsby-image";
 import RevealAnimation from '../../shared/RevealAnimation';
 import SizeRequestForm from './SizeRequestForm';
+import PurchaseForm from './PurchaseForm';
 
 const Product = ({ product }) => {
     const KLARNA_PRODUCT_OBJECT = {
@@ -36,8 +37,8 @@ const Product = ({ product }) => {
     const sizes = [];
     const [selectedSize, setSelectedSize] = useState(null);
     for (let i = MIN_SIZE; i <= MAX_SIZE; i += 2) {
-        sizes.push(<Option key={i}
-            className={product.sizes.includes(i + '') ? '' : 'disabled'}>{i}</Option>);
+        sizes.push(<Option key={i}>{i}</Option>);
+        // className={product.sizes.includes(i + '') ? '' : 'disabled'}>{i}</Option>);
     }
     const [isHeaderVisible, setHeaderVisible] = useState(false);
     const [isFooterVisible, setFooterVisible] = useState(false);
@@ -66,31 +67,31 @@ const Product = ({ product }) => {
     const handleSizeSelect = (value: any, event: any) => {
         console.log(`Selected size ${value}`);
         console.log('Selected element ', event);
-        if (product.sizes.includes(value)) {
-            // update the value of the selector
-            setSelectedSize(value);
-            // update the size in Klarna buy button
-            let item = KLARNA_PRODUCT_OBJECT;
-            item.product_attributes = [{
+        // if (product.sizes.includes(value)) {
+        // update the value of the selector
+        // setSelectedSize(value);
+        // // update the size in Klarna buy button
+        // let item = KLARNA_PRODUCT_OBJECT;
+        // item.product_attributes = [{
 
-                "identifier": "size",
-                "identifier_label": "Size",
-                "value": value,
-                "value_label": value
-            }];
-            Klarna.InstantShopping.update({
-                "setup": {
-                    "instance_id": "purchase-1"
-                },
-                "items": [item]
-            }, function (response: any) {
-                console.log('Klarna.InstantShopping.update callback with data:' + JSON.stringify(response))
-            });
-        } else {
-            // If size is unavailable, show popup
-            setSizePopupVisible(true);
-            setRequestSize(value);
-        }
+        //     "identifier": "size",
+        //     "identifier_label": "Size",
+        //     "value": value,
+        //     "value_label": value
+        // }];
+        // Klarna.InstantShopping.update({
+        //     "setup": {
+        //         "instance_id": "purchase-1"
+        //     },
+        //     "items": [item]
+        // }, function (response: any) {
+        //     console.log('Klarna.InstantShopping.update callback with data:' + JSON.stringify(response))
+        // });
+        // } else {
+        //     // If size is unavailable, show popup
+        setSizePopupVisible(true);
+        setRequestSize(value);
+        // }
     }
 
     // When close popup, reset the popupSuccess state
@@ -107,61 +108,80 @@ const Product = ({ product }) => {
     useEffect(() => {
         // Check if window exist and screen is small
         if (typeof window !== 'undefined') {
-            window.klarnaAsyncCallback = function () {
-                try {
-                    let item = KLARNA_PRODUCT_OBJECT;
-                    item.product_attributes = [{
-                        "identifier": "size",
-                        "identifier_label": "Size",
-                        "value": product.sizes[0],
-                        "value_label": product.sizes[0]
-                    }];
-                    Klarna.InstantShopping.load({
-                        "setup": {
-                            "instance_id": "purchase-1",
-                            "key": process.env.GATSBY_KLARNA_BUTTON_KEY,
-                            "environment": process.env.NODE_ENV === "production" ? "production" : "playground",
-                            "region": "eu"
-                        },
-                        "purchase_country": "FI",
-                        "purchase_currency": "EUR",
-                        "locale": "en-US",
-                        "merchant_urls": {
-                            "terms": process.env.GATSBY_KLARNA_CHERIE_URL + "about"
-                        },
-                        "items": [item],
-                        "merchant_reference1": "45aa52f397871e3a210645d5", // optional
-                        "shipping_options": [{ // add multiple if necessary
-                            "id": "standard",
-                            "name": "Standard 4-6 weeks",
-                            "description": "Standard shipping",
-                            "price": 0,
-                            "tax_amount": 0,
-                            "tax_rate": 2400,
-                            "shipping_method": "PickUpStore"
-                        }]
-                    }, function (response: any) {
-                        console.log('Klarna.InstantShopping.load callback with data:' + JSON.stringify(response))
-                    })
-                } catch (e) {
-                    console.log(e);
-                }
-            };
+            // window.klarnaAsyncCallback = function () {
+            //     try {
+            //         let item = KLARNA_PRODUCT_OBJECT;
+            //         item.product_attributes = [{
+            //             "identifier": "size",
+            //             "identifier_label": "Size",
+            //             "value": product.sizes[0],
+            //             "value_label": product.sizes[0]
+            //         }];
+            //         Klarna.InstantShopping.load({
+            //             "setup": {
+            //                 "instance_id": "purchase-1",
+            //                 "key": process.env.GATSBY_KLARNA_BUTTON_KEY,
+            //                 "environment": process.env.NODE_ENV === "production" ? "production" : "playground",
+            //                 "region": "eu"
+            //             },
+            //             "purchase_country": "FI",
+            //             "purchase_currency": "EUR",
+            //             "locale": "en-US",
+            //             "merchant_urls": {
+            //                 "terms": process.env.GATSBY_KLARNA_CHERIE_URL + "about"
+            //             },
+            //             "items": [item],
+            //             "merchant_reference1": "45aa52f397871e3a210645d5", // optional
+            //             "shipping_options": [{ // add multiple if necessary
+            //                 "id": "standard",
+            //                 "name": "Standard 4-6 weeks",
+            //                 "description": "Standard shipping",
+            //                 "price": 0,
+            //                 "tax_amount": 0,
+            //                 "tax_rate": 2400,
+            //                 "shipping_method": "PickUpStore"
+            //             }]
+            //         }, function (response: any) {
+            //             console.log('Klarna.InstantShopping.load callback with data:' + JSON.stringify(response))
+            //         })
+            //     } catch (e) {
+            //         console.log(e);
+            //     }
+            // };
         }
     }, []);
 
     return (
         <React.Fragment>
             <Helmet>
-                <script src="https://x.klarnacdn.net/instantshopping/lib/v1/lib.js" async></script>
+                {/* <script src="https://x.klarnacdn.net/instantshopping/lib/v1/lib.js" async></script> */}
             </Helmet>
             <Modal
                 centered footer={null}
                 visible={sizePopupVisible}
                 onCancel={() => setSizePopupVisible(false)}
             >
-
-                <h1>Fully booked up</h1>
+                <h1>Send me this dress offer</h1>
+                <div className={styles.form}>
+                    {popupSuccess ? (
+                        <React.Fragment>
+                            <div className={styles.successMessage}>
+                                <Icon type="check-circle" theme="filled" style={{ color: '#0f7d4a' }} />
+                                <span>Thank you for your order. We will contact you promptly.</span>
+                            </div>
+                            <Button size="large" onClick={() => setSizePopupVisible(false)}>Continue Shopping</Button>
+                        </React.Fragment>
+                    ) : (
+                            <PurchaseForm
+                                productName={product.name} size={requestSize}
+                                popupSuccess={popupSuccess} setPopupSuccess={setPopupSuccess} />
+                            // <SizeRequestForm
+                            //     productName={product.name} size={requestSize}
+                            //     popupSuccess={popupSuccess} setPopupSuccess={setPopupSuccess} />
+                        )
+                    }
+                </div>
+                {/* <h1>Fully booked up</h1>
                 <p>Let me know when it becomes available again!</p>
                 <div className={styles.form}>
                     {popupSuccess ? (
@@ -178,7 +198,7 @@ const Product = ({ product }) => {
                                 popupSuccess={popupSuccess} setPopupSuccess={setPopupSuccess} />
                         )
                     }
-                </div>
+                </div> */}
             </Modal>
             <div className={styles.container}>
                 {width < 600 ? (
@@ -208,22 +228,36 @@ const Product = ({ product }) => {
                     </VisibilitySensor>
                     <div className={styles.info}>
                         <h1 className={styles.name}>{product.name}</h1>
-                        <h4 className={[styles.price, 'grayText'].join(' ')}>€{_.round((product.price), 2).toFixed(2)}</h4>
+                        {product.salePrice ? (
+                            <div>
+                                <span className={[styles.salePrice, 'grayText'].join(' ')}>{_.round((product.salePrice), 2).toFixed(0)}&nbsp;€</span>&nbsp;&nbsp;
+                                <span className={[styles.oldPrice, 'grayText'].join(' ')}>{_.round((product.price), 2).toFixed(0)}&nbsp;€</span>
+                            </div>
+                        ) : (
+                                <span className={[styles.price, 'grayText'].join(' ')}>{_.round((product.price), 2).toFixed(0)}&nbsp;€</span>
+                            )}
+
                         <p className={styles.description}>{product.description}</p>
                         <div className={styles.borderBlock}>
                             <div>
                                 <Link className={styles.checkSize} to='/size-guide'><span className="link">Check your size</span></Link>
-                                
+
                                 {/* <h3>Details And Fit</h3>
                                             <p className='leftAlign grayText'>
                                                 {product.detailsAndFit.map((line, index) => {
                                                     return (<React.Fragment key={index}>{`- ${line}`}<br /></React.Fragment>)
                                                 })}
                                             </p> */}
-                                {/* <Select style={{ width: '300px' }} size="large" onSelect={(value, event) => handleSizeSelect(value, event)}
+                                <hr className='divider' />
+                                {/* <Select style={{ width: '300px' }} size="large"
+                                    // onSelect={(value, event) => handleSizeSelect(value, event)}
                                     tokenSeparators={[',']} placeholder="Select Size" value={selectedSize || undefined}>
                                     {sizes}
                                 </Select> */}
+                                {/* <hr className='divider' /> */}
+                                <Button type='primary' block style={{ width: '150px' }} onClick={handleSizeSelect}>
+                                    Send me offer
+                                </Button>
                             </div>
                             {/* <div>
                                     <div>
@@ -274,7 +308,7 @@ const Product = ({ product }) => {
             }}>
                 <div id="footerSensor" className={styles.sensor} />
             </VisibilitySensor>
-        </React.Fragment>
+        </React.Fragment >
     );
 }
 

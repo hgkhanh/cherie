@@ -6,9 +6,32 @@ import VisibilitySensor from 'react-visibility-sensor';
 import Image from 'gatsby-image';
 import { WindowDimensionsContext } from "../../shared/WindowDimensionsProvider";
 
-const ProductCard = ({ product, index }) => {
+const ProductCard = ({ product, index, showPrice }) => {
     const [isVisible, setVisible] = useState(false);
     const { width } = useContext(WindowDimensionsContext);
+
+    const renderPrice = () => {
+        console.log(product.frontmatter);
+        if (product.frontmatter.salePrice) {
+            return (
+                <div className={styles.priceContainer}>
+                    <span className={styles.salePrice}>
+                        {product.frontmatter.salePrice}&nbsp;€
+                    </span>
+                    &nbsp;&nbsp;
+                    <span className={styles.oldPrice}>
+                        {product.frontmatter.price}&nbsp;€
+                    </span>
+                </div>
+            )
+        } else {
+            return (
+                <span className={styles.price}>
+                    {product.frontmatter.price}&nbsp;€
+                </span>
+            )
+        }
+    }
     return (
         <VisibilitySensor partialVisibility onChange={(visible) => {
             if (visible) {
@@ -31,9 +54,7 @@ const ProductCard = ({ product, index }) => {
                                 <h3>
                                     {product.frontmatter.name}
                                 </h3>
-                                {/* <span className={styles.price}>
-                                    From € {product.frontmatter.price}
-                                </span> */}
+                                {showPrice && renderPrice()}
                             </div>
                         </Link>
                     </div>
@@ -43,11 +64,11 @@ const ProductCard = ({ product, index }) => {
     )
 };
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, showPrice }) => {
     return (
         <div className={styles.list}>
             {products.map((product, index) =>
-                <ProductCard product={product.node} key={product.node.frontmatter.name} index={index} />
+                <ProductCard product={product.node} key={product.node.frontmatter.name} index={index} showPrice={showPrice} />
             )}
         </div>
     );

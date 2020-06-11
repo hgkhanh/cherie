@@ -96,14 +96,14 @@ const WrappedForm = ({ form }: { form: FormComponentProps['form'] }) => {
                     <span className={styles.inlineLabel}>I am going to get married on</span>
                     <Form.Item className={styles.inlineInput}>
                         {getFieldDecorator('month')(
-                            <Select placeholder='month' style={{ width: 150 }}>
+                            <Select placeholder='month' style={{ width: 100 }}>
                                 {monthOptions}
                             </Select>
                         )}
                     </Form.Item>
                     <Form.Item className={styles.inlineInput}>
                         {getFieldDecorator('year')(
-                            <Select placeholder='year' style={{ width: 150 }}>
+                            <Select placeholder='year' style={{ width: 100 }}>
                                 {yearOptions}
                             </Select>
                         )}
@@ -112,7 +112,7 @@ const WrappedForm = ({ form }: { form: FormComponentProps['form'] }) => {
                     <span className={styles.inlineLabel}>I am planning to get married at</span>
                     <Form.Item className={styles.inlineInput}>
                         {getFieldDecorator('venue')(
-                            <Select placeholder='venue type' style={{ width: 150 }}>
+                            <Select placeholder='venue' style={{ width: 100 }}>
                                 {venueOptions}
                             </Select>
                         )}
@@ -120,7 +120,7 @@ const WrappedForm = ({ form }: { form: FormComponentProps['form'] }) => {
                     <span className={styles.inlineLabel}>and want it to feel</span>
                     <Form.Item className={styles.inlineInput}>
                         {getFieldDecorator('vibe')(
-                            <Select placeholder='vibe' style={{ width: 150 }}>
+                            <Select placeholder='vibe' style={{ width: 100 }}>
                                 {vibeOptions}
                             </Select>
                         )}

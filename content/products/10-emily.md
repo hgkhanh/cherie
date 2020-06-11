@@ -14,6 +14,7 @@ galleryImages:
   - ../images/Emily-05.jpg
   - ../images/Emily-06.jpg
 price: '1099'
+salePrice: '450'
 category: Mermaid
 sizes:
   - "36"

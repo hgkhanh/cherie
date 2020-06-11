@@ -50,7 +50,7 @@ const StylistService = () => {
       </div>
       <div style={{ height: 400 }}>
         <Hero overlay={true} hasScroll={false} isParallax={false}
-          imageWide={data.banner5wide} mobileFullHeight={false}>
+          imageWide={data.banner1wide} mobileFullHeight={false}>
         </Hero>
       </div>
     </div>

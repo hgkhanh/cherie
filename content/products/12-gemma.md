@@ -11,6 +11,7 @@ galleryImages:
   - ../images/Gemma-02.jpg
   - ../images/Gemma-03.jpg
 price: '1299'
+salePrice: '590'
 category: A-line
 sizes:
   - "36"

@@ -84,6 +84,19 @@
 
     .price {
       padding-bottom: 30px;
+      font-size: 20px;
+    }
+
+    .oldPrice {
+      display: inline-block;
+      text-decoration: line-through;
+      font-size: 20px;
+    }
+
+    .salePrice {
+      display: inline-block;
+      color: $color-danger;
+      font-size: 20px;
     }
 
     .checkSize {

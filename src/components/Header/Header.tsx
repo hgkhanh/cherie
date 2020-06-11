@@ -139,6 +139,7 @@ const Header = ({ location }) => {
             >
               <Link to="/collection"><h2>Collection</h2></Link>
               <Link to="/booking"><h2>Booking</h2></Link>
+              <Link to="/booking"><h2>Special Offers</h2></Link>
               {/* <Link to="/blog"><h2>Blog</h2></Link> */}
               <Link to="/about"><h2>About</h2></Link>
             </Drawer>
@@ -152,6 +153,9 @@ const Header = ({ location }) => {
                 <ul className="horizontalList">
                   <li>
                     <a href="/collection">Collection</a>
+                  </li>
+                  <li>
+                    <a href="/special">Special</a>
                   </li>
                   {/* <li>
                     <a href="/blog">Blog</a>

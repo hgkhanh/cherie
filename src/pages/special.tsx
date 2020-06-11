@@ -6,11 +6,12 @@ import siteConfig from "../../data/SiteConfig";
 import ProductList from "../components/ProductList";
 import { Spring, config } from 'react-spring/renderprops';
 
-const ShopPage = ({ location }) => {
+const SpecialPage = ({ location }) => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}}
-        , sort: {fields: fileAbsolutePath, order: ASC}) {
+      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}, 
+        frontmatter: {salePrice: {ne: null}}}, 
+        sort: {fields: fileAbsolutePath, order: ASC}) {
         edges {
           node {
             id
@@ -28,8 +29,8 @@ const ShopPage = ({ location }) => {
                 }
               }
               description
-              price
-              salePrice
+            price
+            salePrice
               sizes
               tags
             }
@@ -42,7 +43,7 @@ const ShopPage = ({ location }) => {
   return (
     <Layout location={location}>
       <div className="grid wide" >
-        <Helmet title={`Collection | ${siteConfig.siteTitle}`} />
+        <Helmet title={`Special | ${siteConfig.siteTitle}`} />
         <Spring
           delay={300}
           config={config.default}
@@ -57,15 +58,15 @@ const ShopPage = ({ location }) => {
         >
           {props => (
             <React.Fragment>
-              <h1 className="sectionTitle" style={props}>Dresses</h1>
+              <h1 className="sectionTitle" style={props}>Special Offers</h1>
             </React.Fragment>
           )
           }
         </Spring>
-        <ProductList products={products} showPrice={false} />
+        <ProductList products={products} showPrice={true}/>
       </div>
     </Layout>
   );
 };
 
-export default ShopPage;
+export default SpecialPage;
