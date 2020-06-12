@@ -68,19 +68,17 @@ const WrappedForm = ({ form }: { form: FormComponentProps['form'] }) => {
             vibe: form.getFieldValue('vibe'),
             email: form.getFieldValue('email')
         }
-        setIsSuccess(true);
-        setLoading(false);
-        // sendEmail(payload).then((response) => {
-        //     console.log('Stylist pick - email sent', response);
-        //     setLoading(false);
-        //     if (response.ok) {
-        //         setIsSuccess(true);
-        //         return;
-        //     } else {
-        //         console.log('Error', response.statusText);
-        //         setIsError(true);
-        //     }
-        // });
+        sendEmail(payload).then((response) => {
+            console.log('Stylist pick - email sent', response);
+            setLoading(false);
+            if (response.ok) {
+                setIsSuccess(true);
+                return;
+            } else {
+                console.log('Error', response.statusText);
+                setIsError(true);
+            }
+        });
     }
 
     const sendEmail = (payload: RequestPayload) => {
@@ -147,9 +145,9 @@ const WrappedForm = ({ form }: { form: FormComponentProps['form'] }) => {
                 <div className='sectionTextBlock'>
                     {
                         isSuccess ? (
-                            <div className='success'>
+                            <div>
                                 <Icon type="check-circle" theme="filled" style={{ color: '#237804' }} />
-                                <span>&nbsp;&nbsp;Thank you! We will contact you promptly!</span>
+                                <span style={{ color: '#fff' }}>&nbsp;&nbsp;Thank you! We will contact you promptly!</span>
                             </div>
                         ) : (
                                 renderForm()
