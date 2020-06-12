@@ -6,7 +6,7 @@ import siteConfig from "../../data/SiteConfig";
 import ProductList from "../components/ProductList";
 import { Spring, config } from 'react-spring/renderprops';
 
-const Tags = ({ pageContext, data }) => {
+const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext;
   const products = data.allMarkdownRemark.edges;
   return (
