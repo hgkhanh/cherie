@@ -38,7 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const productPage = path.resolve("src/templates/ProductTemplate.tsx");
   const postPage = path.resolve("src/templates/PostTemplate.tsx");
-  // const tagPage = path.resolve("src/templates/tag.tsx");
+  const tagPage = path.resolve("src/templates/TagTemplate.tsx");
   // const categoryPage = path.resolve("src/templates/category.tsx");
   // const listingPage = path.resolve("./src/templates/listing.tsx");
 
@@ -72,6 +72,12 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
+      tags: allMarkdownRemark(limit: 200) {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
     }
   `);
 
@@ -80,11 +86,11 @@ exports.createPages = async ({ graphql, actions }) => {
     throw markdownQueryResult.errors;
   }
 
-  // const tagSet = new Set();
   // const categorySet = new Set();
 
   const productsEdges = markdownQueryResult.data.products.edges;
   const postsEdges = markdownQueryResult.data.posts.edges;
+  const tags = markdownQueryResult.data.tags.group;
 
   // Sort products
   // productsEdges.sort((productA, productB) => {
@@ -123,13 +129,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Product page creating
   productsEdges.forEach((edge) => {
-    // Generate a list of tags
-    // if (edge.node.frontmatter.tags) {
-    //   edge.node.frontmatter.tags.forEach(tag => {
-    //     tagSet.add(tag);
-    //   });
-    // }
-
     // Generate a list of categories
     // if (edge.node.frontmatter.category) {
     //   categorySet.add(edge.node.frontmatter.category);
@@ -160,21 +159,25 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-//   //  Create tag pages
-//   tagSet.forEach(tag => {
-//     createPage({
-//       path: `/tags/${_.kebabCase(tag)}/`,
-//       component: tagPage,
-//       context: { tag }
-//     });
-//   });
+  //  Create tag pages
+  tags.forEach(tag => {
+    console.log(tag);
+    console.log(_.kebabCase(tag.fieldValue));
+    createPage({
+      path: `/collection/${_.kebabCase(tag.fieldValue)}/`,
+      component: tagPage,      
+      context: {
+        tag: tag.fieldValue,
+      },
+    });
+  });
 
-//   // Create category pages
-//   categorySet.forEach(category => {
-//     createPage({
-//       path: `/categories/${_.kebabCase(category)}/`,
-//       component: categoryPage,
-//       context: { category }
-//     });
-//   });
+  // // Create category pages
+  // categorySet.forEach(category => {
+  //   createPage({
+  //     path: `/categories/${_.kebabCase(category)}/`,
+  //     component: categoryPage,
+  //     context: { category }
+  //   });
+  // });
 };

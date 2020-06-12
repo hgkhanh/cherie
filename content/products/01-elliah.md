@@ -12,13 +12,19 @@ galleryImages:
   - ../images/Elliah-01.jpg
   - ../images/Elliah-03.jpg
 price: '1299'
+salePrice: '650'
 category: A-line
 sizes:
-  - '34'
-  - '-'
-  - '52'
+  - "36"
+  - "38"
+  - "40"
+  - "42"
+  - "44"
+  - "46"
+  - "48"
+  - "50"
 tags:
-  - Fully-lined
-  - bra-friendly
+  - Minimal
+  - Elegant
 ---
 

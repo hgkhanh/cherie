@@ -8,35 +8,23 @@ import RevealAnimation from '../shared/RevealAnimation';
 import ProductList from '../components/ProductList';
 import InstaSlider from '../components/InstaSlider';
 import Hero from '../components/Hero';
+import ValueBlock from '../components/ValueBlock';
+import HowItWork from '../components/HowItWork';
+import TagsBlock from '../components/TagsBlock';
 // import CampaignModal from '../components/CampaignModal';
 
 const HomePage = ({ location }) => {
-const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
-      banner1wide: file(name: {eq: "Banner-01"}) {
+      bannerTop: file(name: {eq: "Home-Page-Banner-Top"}) {
         childCloudinaryAsset {
           fluid(maxWidth: 2400) {
             ...CloudinaryAssetFluid
           }
         }
       }
-      banner1vertical: file(name: {eq: "Banner-01-Vertical"}) {
-        childCloudinaryAsset {
-          fluid(maxWidth: 1200) {
-            ...CloudinaryAssetFluid
-          }
-        }
-      }
 
-      banner2wide: file(name: {eq: "Banner-02"}) {
-        childCloudinaryAsset {
-          fluid(maxWidth: 2400) {
-            ...CloudinaryAssetFluid
-          }
-        }
-      } 
-
-      banner3wide: file(name: {eq: "Banner-03"}) {
+      bannerStory: file(name: {eq: "Home-Page-Banner-Story"}) {
         childCloudinaryAsset {
           fluid(maxWidth: 2400) {
             ...CloudinaryAssetFluid
@@ -44,7 +32,7 @@ const data = useStaticQuery(graphql`
         }
       }  
       
-      banner4wide: file(name: {eq: "Banner-04"}) {
+      bannerBottom: file(name: {eq: "Home-Page-Banner-Bottom"}) {
         childCloudinaryAsset {
           fluid(maxWidth: 1600) {
             ...CloudinaryAssetFluid
@@ -61,7 +49,7 @@ const data = useStaticQuery(graphql`
             srcSet
           }
         }
-      } 
+      }
 
       products: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/products\\//"}}, sort: {fields: fileAbsolutePath, order: ASC}, limit: 6) {
         edges {
@@ -106,8 +94,11 @@ const data = useStaticQuery(graphql`
 
   useEffect(() => {
     setTimeout(() => {
+      console.log('Showing modal');
       if (!view) {
         setModalActive(true);
+      } else {
+        console.log('User already see this modal. Abort!');
       }
     }, 5000);
   }, []);
@@ -117,87 +108,49 @@ const data = useStaticQuery(graphql`
       {/* <CampaignModal modalBackground={data.modalBackground} visible={modalActive} setVisible={setModalActive} /> */}
       <div className='pageContainer'>
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
-        <Hero overlay={false} hasScroll={true}
-          imageWide={data.banner1wide} imageVertical={data.banner1vertical}></Hero>
-        <hr className='divider' />
-        <RevealAnimation opacity transform>
-          <div className='gridWrapper'>
-            <div className='grid flexSection boxContent'>
-              <Row className='gridTitle centerAlign' type='flex' justify='center'>
-                <Col className='gutter-row' span={24}><h2 className="uppercase" style={{ marginBottom: '2em' }}>Who We Are</h2>
-                </Col>
-                <Col className='gutter-row' span={24} sm={16} md={12} lg={10}>
-                  <p style={{ marginBottom: '2em' }}>
-                    Chérie Bridal is a Helsinki-based made-to-order boutique which aims to provide
-                    customers with the most enjoyable experience of finding your true match of a
-                    wedding dress, sincerely tailor-made to your preference and identity,
-                    with customisation time frame under three months at competitive prices.
-                  </p>
-                  <p>With the goal of creating a once-in-a-lifetime experience for our customers,
-                    the name ‘Chérie’ derives from French, with its true meaning of ‘sweetheart’
-                    and its homophone ‘cherry’, a constant reminder of sweetness.
-                    This is a promise from us to you at Chérie Bridal, where the provision of
-                    excellent customer service is the top priority, that every bride who comes
-                    to us is and will always be our ‘sweetheart’.
-                  </p>
-                  <h4>- The Chérie Bridal Team</h4>
-                  <Link to={'/about'} >
-                    <h3 className='underline uppercase'>Learn more</h3>
-                  </Link>
-                </Col>
-              </Row>
-            </div>
-          </div>
-        </RevealAnimation>
-        <hr className='divider' />
-        <Hero overlay={true} overlayAlpha={0.6} hasScroll={false} imageWide={data.banner2wide}
-          imageVertical={data.banner2wide}>
-          <h3 style={{ marginBottom: 0 }} >Made-to-order dresses</h3>
-          <h2 style={{ marginBottom: '1em' }} className="uppercase">Chérie Store</h2>
-          <Link to='/booking'>
-            <Button size='large' ghost htmlType="submit">
-              Book An Appointment
+        <Hero overlay={false} hasScroll={false} isParallax={false}
+          imageWide={data.bannerTop} mobileFullHeight={true} verticalAlign='bottom'>
+          <h1 className='uppercase centerAlign darkerText heavyText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h1>
+          <Link to='/contact'>
+            <Button type='primary' block style={{ width: '150px' }}>
+              Get started
           </Button>
           </Link>
         </Hero>
-        <hr className='divider' />
-        <div className='grid'>
-          <div className='gridTitle centerAlign'>
-            <h2 className="uppercase">Our Favourites</h2>
-          </div>
-          <ProductList products={products} />
-          <div className='gridTitle footTitle centerAlign'>
-            <Link to={'/collection'} >
-              <h3 className='underline uppercase'>See more</h3>
-            </Link>
-          </div>
-        </div>
-        <hr className='divider' />
-        <Hero overlay={true} hasScroll={false} imageWide={data.banner3wide}
-          imageVertical={data.banner3wide}>
-          <h2 style={{ marginBottom: 0 }} className="uppercase">Have all your wedding photos back</h2>
-          <h3 style={{ marginBottom: '1em' }}>and ready to share with us?</h3>
-          <a href="mailto:info@cheriebridal.fi">
-            <Button size='large' ghost htmlType="submit">
-              Submit your wedding
-            </Button>
-          </a>
+        <RevealAnimation opacity transform>
+          <ValueBlock />
+        </RevealAnimation>
+        <Hero overlay={true} overlayAlpha={0.2} hasScroll={false} isParallax={false} imageWide={data.bannerStory}
+          mobileFullHeight={true} verticalAlign='top'>
+          <h1 className='uppercase darkTone heavyText' style={{ marginBottom: '1em' }}>We are here for you</h1>
+          <Link to='/about'>
+            <Button type='primary' block style={{ width: '150px' }}>
+              Our story
+          </Button>
+          </Link>
         </Hero>
+        <RevealAnimation opacity transform>
+          <div className='gridWrapper'>
+            <div className='grid narrow'>
+              <HowItWork />
+            </div>
+          </div>
+        </RevealAnimation>
+        <TagsBlock />
         <hr className='divider' />
-        <div className='gridTitle centerAlign'>
-          <h3>Get inspired</h3>
-          <h2 className="uppercase">Our Instagram</h2>
+        <div className='sectionTitle centerAlign'>
+          <h4 className='uppercase'>Get inspired</h4>
+          <h2 className='heavyText'>@cheriebridal</h2>
         </div>
         <InstaSlider />
         <hr className='divider' />
         <hr className='divider' />
-        <Hero overlay={true} hasScroll={false} imageWide={data.banner4wide}
-          imageVertical={data.banner4wide}>
-          <h3 style={{ marginBottom: 0 }}>Ready to</h3>
-          <h1 style={{ marginBottom: '1em' }}>Find your dress?</h1>
-          <Link to='/booking'>
-            <Button size='large' ghost htmlType="submit">
-              Book your appointment
+        <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.bannerBottom} mobileFullHeight={true}
+          verticalAlign='bottom'>
+          <h1 className='uppercase heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h1>
+          <Link to='/contact'>
+            <Button type='primary' block style={{ width: '150px' }}>
+              Get started
           </Button>
           </Link>
         </Hero>

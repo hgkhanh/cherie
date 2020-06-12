@@ -21,10 +21,10 @@ const MainLayout = ({ children, location }) => {
             <meta name='description' content={config.siteDescription} />
             <html lang='en' />
           </Helmet>
-          <Header location={location}/>
-          { location && location.pathname !=="/booking" && (
-            <FloatButton to="/booking" icon="calendar" offsetTop={1600}/>  
-          )}      
+          <Header location={location} />
+          {location && location.pathname !== "/booking" && (
+            <FloatButton to="/booking"/>
+          )}
           <main>{children}</main>
           <Footer config={config} />
         </React.Fragment>

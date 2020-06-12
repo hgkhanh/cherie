@@ -1,0 +1,20 @@
+.checkList {
+    margin: 40px 0;
+    padding: 0 40px;
+
+    .item {
+        display: flex;
+        margin-bottom: 10px;
+
+        .icon {
+            flex-basis: 30px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        span {
+            text-align: left;
+        }
+    }
+}

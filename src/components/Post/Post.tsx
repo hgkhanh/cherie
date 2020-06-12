@@ -4,7 +4,6 @@ import Image from 'gatsby-image';
 import moment from 'moment';
 
 const Post = ({ post }) => {
-    console.log(post);
     const {
         html,
         frontmatter: {

@@ -76,42 +76,38 @@ const BookingForm = ({ form, date, bookTime }) => {
   };
 
   return (
-    <Form {...formItemLayout} onSubmit={handleSubmit}>
-      <Row className={styles.container} gutter={[10, 10]}>
-        <Col span={24} lg={{ span: 12, offset: 6 }} >
-          <Form.Item label='bookTime' required style={{ display: 'none' }}>
-            {getFieldDecorator('bookTime')
-              (<DatePicker showTime placeholder="Select Time" />)}
-          </Form.Item>
-          <Form.Item label='Name' required>
-            {getFieldDecorator('name')
-              (<Input />)}
-          </Form.Item>
-          <Form.Item label='E-mail' required>
-            {getFieldDecorator('email')
-              (<Input type='email' />)}
-          </Form.Item>
-          <Form.Item label='Phone' required>
-            {getFieldDecorator('phone')
-              (<Input />)}
-          </Form.Item>
-          <Form.Item label='Budget'>
-            {getFieldDecorator('budget', { initialValue: ''})
-              (<Input prefix='€' suffix='EUR' type='number'/>)}
-          </Form.Item>
-          <Form.Item label='Note'>
-            {getFieldDecorator('note', { initialValue: ''})
-              (<TextArea autoSize={{ minRows: 3 }} />)}
-          </Form.Item>
-        </Col>
-        <Col span={24} sm={{ push: 0 }} md={{ push: 4 }} lg={{ span: 12, offset: 4 }} className='rightAlign' >
-          <Form.Item >
-            <Button type="primary" htmlType="submit">
-              Book
+    <Form {...formItemLayout} onSubmit={handleSubmit} colon={false}>
+      <div className={styles.container}>
+        <Form.Item label='bookTime' required style={{ display: 'none' }}>
+          {getFieldDecorator('bookTime')
+            (<DatePicker showTime placeholder="Select Time" />)}
+        </Form.Item>
+        <Form.Item label='Name' required>
+          {getFieldDecorator('name')
+            (<Input />)}
+        </Form.Item>
+        <Form.Item label='E-mail' required>
+          {getFieldDecorator('email')
+            (<Input type='email' />)}
+        </Form.Item>
+        <Form.Item label='Phone' required>
+          {getFieldDecorator('phone')
+            (<Input />)}
+        </Form.Item>
+        <Form.Item label='Budget'>
+          {getFieldDecorator('budget', { initialValue: '' })
+            (<Input prefix='€' suffix='EUR' type='number' />)}
+        </Form.Item>
+        <Form.Item label='Note'>
+          {getFieldDecorator('note', { initialValue: '' })
+            (<TextArea autoSize={{ minRows: 3 }} />)}
+        </Form.Item>
+        <Form.Item className={styles.button} >
+          <Button type="primary" htmlType="submit">
+            Book
             </Button>
-          </Form.Item>
-        </Col>
-      </Row>
+        </Form.Item>
+      </div>
     </Form>
   );
 }

@@ -7,20 +7,50 @@ import { Drawer, Icon } from 'antd';
 import Image from 'gatsby-image';
 import debounce from 'lodash/debounce';
 
+const activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
 const Header = ({ location }) => {
   const logo = useStaticQuery(graphql`
     query LogoQuery {
-      dark: file(name: { eq: "logo-dark" }) {
-        childCloudinaryAsset {
-          fluid(maxWidth: 500) {
-            ...CloudinaryAssetFluid
+      dark_large: file(name: { eq: "logo-dark" }) {
+        childImageSharp {
+          fixed(width: 160) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
-      light: file(name: { eq: "logo-light" }) {
-        childCloudinaryAsset {
-          fluid(maxWidth: 500) {
-            ...CloudinaryAssetFluid
+      dark_medium: file(name: { eq: "logo-dark" }) {
+        childImageSharp {
+          fixed(width: 140) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      dark_small: file(name: { eq: "logo-dark" }) {
+        childImageSharp {
+          fixed(width: 125) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      light_large: file(name: { eq: "logo-light" }) {
+        childImageSharp {
+          fixed(width: 160) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      light_medium: file(name: { eq: "logo-light" }) {
+        childImageSharp {
+          fixed(width: 140) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      light_small: file(name: { eq: "logo-light" }) {
+        childImageSharp {
+          fixed(width: 125) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -43,7 +73,7 @@ const Header = ({ location }) => {
   let _mounted = true;
   useEffect(() => {
     // Check if window exist and screen is small
-    if (typeof window !== 'undefined' && width <= 576) {
+    if (typeof window !== 'undefined' && width <= 600) {
       lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
       window.addEventListener("scroll", handleScroll, { passive: true });
     }
@@ -68,20 +98,20 @@ const Header = ({ location }) => {
 
   const [isHeaderVisible, setHeaderVisible] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { dark, light } = logo;
-  let logoSize = 160;
-
-  if (width <= 576) {
-    logoSize = 125;
-  } else if (width < 769) {
-    logoSize = 140;
+  let dark = logo.dark_large;
+  let light = logo.light_large;
+  if (width < 600) {
+    dark = logo.dark_small;
+    light = logo.light_small;
+  } else if (width < 900) {
+    dark = logo.dark_medium;
+    light = logo.light_medium;
   }
-
   const isHomePage = (location && location.pathname === '/');
   const getHeaderClassNames = () => {
     const isAtTop = isHeaderVisible ? styles.isAtTop : '';
     const homepage = isHomePage ? styles.homepage : '';
-    const downScroll = isDownScroll && width <= 576 ? styles.downScroll : '';
+    const downScroll = isDownScroll && width < 600 ? styles.downScroll : '';
 
     return `${styles.header} ${isAtTop} ${homepage} ${downScroll}`;
   }
@@ -90,11 +120,19 @@ const Header = ({ location }) => {
   return (
     <React.Fragment>
       <VisibilitySensor onChange={(visible) => setHeaderVisible(visible)}>
-        <div className={styles.sensor} />
+        <div id="headerSensor" className={styles.sensor} />
       </VisibilitySensor>
       <header className={getHeaderClassNames()}>
+        <div className={styles.ribbon}>
+          <span>FREE SHIPPING - SPECIAL PRICE UP TO 50% OFF</span>
+        </div>
+        {false && activeEnv !== 'production' &&
+          <div className={styles.ribbon}>
+            <span>Development</span>
+          </div>
+        }
         <div className={styles.container}>
-          {width <= 992 && (
+          {width < 600 && (
             <Drawer
               className='darkTone'
               placement="left"
@@ -104,23 +142,27 @@ const Header = ({ location }) => {
             >
               <Link to="/collection"><h2>Collection</h2></Link>
               <Link to="/booking"><h2>Booking</h2></Link>
-              <Link to="/blog"><h2>Blog</h2></Link>
+              <Link to="/special"><h2>Special Offers</h2></Link>
+              {/* <Link to="/blog"><h2>Blog</h2></Link> */}
               <Link to="/about"><h2>About</h2></Link>
             </Drawer>
           )}
           <div className={`${styles.block} ${styles.fill}`}>
-            {width <= 992 && (
+            {width < 600 && (
               <Icon type="menu" style={{ fontSize: '20px' }} onClick={() => setDrawerOpen(true)} />
             )}
-            {width >= 993 && (
+            {width >= 600 && (
               <nav>
                 <ul className="horizontalList">
                   <li>
                     <a href="/collection">Collection</a>
                   </li>
                   <li>
-                    <a href="/blog">Blog</a>
+                    <a href="/special">Special</a>
                   </li>
+                  {/* <li>
+                    <a href="/blog">Blog</a>
+                  </li> */}
                   <li>
                     <a href="/about">About</a>
                   </li>
@@ -130,18 +172,18 @@ const Header = ({ location }) => {
           </div>
 
           <div className={styles.block}>
-            <Link to='/' className={styles.logoContainer} style={{ width: logoSize }}>
-              <Image loading='eager' fluid={isHeaderVisible && isHomePage ? light.childCloudinaryAsset.fluid : dark.childCloudinaryAsset.fluid} />
+            <Link to='/'>
+              <Image fixed={isHeaderVisible && isHomePage ? light.childImageSharp.fixed : dark.childImageSharp.fixed} />
             </Link>
           </div>
 
-          <div className={`${styles.block} ${styles.fill}`}>
-            {(width <= 992) && (
+          <div className={`${styles.block} ${styles.fill} ${width < 900 ? styles.transparent : ''}`}>
+            {(width < 600) && (
               <a href="/booking">
                 <Icon type="calendar" style={{ fontSize: '20px' }} />
               </a>
             )}
-            {(width >= 993) && (
+            {(width >= 600) && (
               <nav>
                 <ul className="horizontalList">
                   <li>

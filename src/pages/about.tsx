@@ -1,21 +1,17 @@
 import React from "react";
 import Helmet from "react-helmet";
 import Layout from "../layout";
-import About from "../components/About";
 import config from "../../data/SiteConfig";
+import About from '../components/About';
 
 const AboutPage = ({ location }) => {
+
   return (
     <Layout location={location}>
       <Helmet title={`About | ${config.siteTitle}`} />
-      <hr className='divider' />
-      <div className='grid centerAlign'>
-        <h1>
-          About
-        </h1>
-        <About />
+      <div className="grid wide" >
+      <About />
       </div>
-      <hr className='divider' />
     </Layout>
   );
 }

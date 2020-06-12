@@ -10,13 +10,19 @@ galleryImages:
   - ../images/Ella-01.jpg
   - ../images/Ella-02.jpg
 price: '1399'
+salePrice: '570'
 category: A-line
 sizes:
-  - '34'
-  - '-'
-  - '52'
+  - "36"
+  - "38"
+  - "40"
+  - "42"
+  - "44"
+  - "46"
+  - "48"
+  - "50"
 tags:
-  - Fully-lined
-  - bra-friendly
+  - Minimal
+  - Elegant
 ---
 

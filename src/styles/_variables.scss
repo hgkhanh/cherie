@@ -1,3 +1,28 @@
 $color-background: #f6f0ec;
-$font-color: #454545;
-$font-color-gray: #727272;
+$color-brand-primary: #c79479;
+$color-brand-light: #e8c7b5;
+
+
+$font-color-dark: #1f1f1f;
+$font-color: #434343;
+$font-color-gray: #8c8c8c;
+
+$color-danger: #a8071a;
+$color-success: #237804;
+
+// 3 break point: 600, 900, 1200
+@mixin phone-only {
+    @media (max-width: 599px) { @content; }
+}
+
+@mixin tablet-potrait-up {
+    @media (min-width: 600px) { @content; }
+}
+
+@mixin tablet-landscape-up {
+    @media (min-width: 900px) { @content; }
+}
+
+@mixin desktop-up {
+    @media (min-width: 1200px) { @content; }
+}

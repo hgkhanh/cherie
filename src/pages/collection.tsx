@@ -29,6 +29,7 @@ const ShopPage = ({ location }) => {
               }
               description
               price
+              salePrice
               sizes
               tags
             }
@@ -40,7 +41,7 @@ const ShopPage = ({ location }) => {
   const products = data.allMarkdownRemark.edges;
   return (
     <Layout location={location}>
-      <div className="grid" >
+      <div className="grid wide" >
         <Helmet title={`Collection | ${siteConfig.siteTitle}`} />
         <Spring
           delay={300}
@@ -56,12 +57,12 @@ const ShopPage = ({ location }) => {
         >
           {props => (
             <React.Fragment>
-              <h1 className="gridTitle" style={props}>Collection</h1>
+              <h1 className="sectionTitle" style={props}>Dresses</h1>
             </React.Fragment>
           )
           }
         </Spring>
-        <ProductList products={products} />
+        <ProductList products={products} showPrice={false} />
       </div>
     </Layout>
   );

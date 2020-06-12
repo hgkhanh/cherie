@@ -3,13 +3,35 @@ import styles from './ProductList.module.scss';
 import { Link } from 'gatsby';
 import { Spring, config } from 'react-spring/renderprops'
 import VisibilitySensor from 'react-visibility-sensor';
-import { Row, Col } from "antd";
 import Image from 'gatsby-image';
 import { WindowDimensionsContext } from "../../shared/WindowDimensionsProvider";
 
-const ProductCard = ({ product, index }) => {
+const ProductCard = ({ product, index, showPrice }) => {
     const [isVisible, setVisible] = useState(false);
     const { width } = useContext(WindowDimensionsContext);
+
+    const renderPrice = () => {
+        console.log(product.frontmatter);
+        if (product.frontmatter.salePrice) {
+            return (
+                <div className={styles.priceContainer}>
+                    <span className={styles.salePrice}>
+                        {product.frontmatter.salePrice}&nbsp;€
+                    </span>
+                    &nbsp;&nbsp;
+                    <span className={styles.oldPrice}>
+                        {product.frontmatter.price}&nbsp;€
+                    </span>
+                </div>
+            )
+        } else {
+            return (
+                <span className={styles.price}>
+                    {product.frontmatter.price}&nbsp;€
+                </span>
+            )
+        }
+    }
     return (
         <VisibilitySensor partialVisibility onChange={(visible) => {
             if (visible) {
@@ -25,33 +47,29 @@ const ProductCard = ({ product, index }) => {
                 }}
             >
                 {props => (
-                    <Col span={12} md={8} style={{ ...props }}>
-                        <Link to={product.fields.slug} key={product.name} className={styles.card}>
+                    <div className={styles.card} style={{ ...props }}>
+                        <Link to={product.fields.slug} key={product.name}>
                             <Image fluid={product.frontmatter.featureImage.childCloudinaryAsset.fluid} alt={product.name} />
                             <div className={`${styles.description} ${width <= 576 && styles.vertical}`}>
                                 <h3>
                                     {product.frontmatter.name}
                                 </h3>
-                                {/* <span className={styles.price}>
-                                    From € {product.frontmatter.price}
-                                </span> */}
+                                {showPrice && renderPrice()}
                             </div>
                         </Link>
-                    </Col>
+                    </div>
                 )}
             </Spring>
         </VisibilitySensor>
     )
 };
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, showPrice }) => {
     return (
         <div className={styles.list}>
-            <Row gutter={[{ xs: 10, sm: 15, md: 30, lg: 40, xl: 60, xxl: 80 }, { md: 10, lg: 0 }]} type="flex">
-                {products.map((product, index) =>
-                    <ProductCard product={product.node} key={product.node.frontmatter.name} index={index} />
-                )}
-            </Row>
+            {products.map((product, index) =>
+                <ProductCard product={product.node} key={product.node.frontmatter.name} index={index} showPrice={showPrice} />
+            )}
         </div>
     );
 }
