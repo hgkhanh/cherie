@@ -14,9 +14,9 @@ const Footer = () => {
         <Link to="/about">
           <h3>About</h3>
         </Link>
-        <Link to="/faq">
+        {/* <Link to="/faq">
           <h3 className="">FAQ</h3>
-        </Link>
+        </Link> */}
         <a href="mailto:info@cheriebridal.fi" target="_blank" rel="noopener">
           <h3 className="">Contact</h3>
         </a>

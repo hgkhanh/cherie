@@ -10,7 +10,7 @@ const AboutPage = ({ location }) => {
   return (
     <Layout location={location}>
       <Helmet title={`Contact | ${config.siteTitle}`} />
-      <h2 className="sectionTitle centerAlign">Let's find you a gown</h2>
+      <h2 className="sectionTitle centerAlign">Let's find you a gown!</h2>
       <StylistPickForm />
       <StylistService />
     </Layout>

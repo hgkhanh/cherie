@@ -30,10 +30,8 @@ const WrappedForm = ({ form }: { form: FormComponentProps['form'] }) => {
     // yearOptions.push(<Option key='year_0' value="I'm not sure">I'm not sure</Option>);
 
     const VENUE_TYPES = [
-        'Backyard', 'Ballroom', 'Barn',
-        'Beach', 'City Hall', 'Garden',
-        'Industrial', 'Rooftop', 'Vineyard',
-        'Other'
+        'Church', 'Backyard', 'Cottage',
+        'Beach', 'Indoor', 'Outdoor'
     ];
     let venueOptions: Array<React.ReactElement> = [];
     for (let i = 0; i < VENUE_TYPES.length; i++) {
@@ -42,10 +40,13 @@ const WrappedForm = ({ form }: { form: FormComponentProps['form'] }) => {
 
     const VIBE_TYPES = [
         'Romantic',
+        'Modern',
+        'Feminine',
+        'Sexy',
+        'Classy',
         'Elegant',
-        'Cozy',
-        'Casual',
-        'Classic'
+        'Timeless',
+        'Simple'
     ];
     let vibeOptions: Array<React.ReactElement> = [];
     for (let i = 0; i < VIBE_TYPES.length; i++) {

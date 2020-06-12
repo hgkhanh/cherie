@@ -123,7 +123,10 @@ const Header = ({ location }) => {
         <div id="headerSensor" className={styles.sensor} />
       </VisibilitySensor>
       <header className={getHeaderClassNames()}>
-        {activeEnv !== 'production' &&
+        <div className={styles.ribbon}>
+          <span>FREE SHIPPING - SPECIAL PRICE UP TO 50% OFF</span>
+        </div>
+        {false && activeEnv !== 'production' &&
           <div className={styles.ribbon}>
             <span>Development</span>
           </div>
@@ -139,7 +142,7 @@ const Header = ({ location }) => {
             >
               <Link to="/collection"><h2>Collection</h2></Link>
               <Link to="/booking"><h2>Booking</h2></Link>
-              <Link to="/booking"><h2>Special Offers</h2></Link>
+              <Link to="/special"><h2>Special Offers</h2></Link>
               {/* <Link to="/blog"><h2>Blog</h2></Link> */}
               <Link to="/about"><h2>About</h2></Link>
             </Drawer>

@@ -63,14 +63,14 @@ const About = () => {
       <div className='gridWrapper'>
         <div className='grid narrow'>
           <div className='sectionTextBlock centerAlign'>
-            <p className='leftAlign'>
+            <p className='leftAlign grayText'>
               Wedding is one of the most important milestones in life,
               where two people celebrate their loves with the witness of the beloved guests.
               And no one is the bigger star than brides and groom on their wedding day.
               For many brides, the wedding dress serves as a statement piece that makes
               them feel perfectly special on their memorable day.
             </p>
-            <p className='leftAlign'>
+            <p className='leftAlign grayText'>
               Unfortunately, finding the perfect wedding dress is the biggest challenge when
               most of us have zero experience in wedding dress shopping. The last time we went
               on an appointment, we were frustrated by the countless choices, higher prices and time consuming.
@@ -106,7 +106,7 @@ const About = () => {
         <div className='grid narrow'>
           <div className='sectionTextBlock leftAlign'>
             <h2 className='uppercase heavyText' style={{ marginBottom: '1em' }}>Cater to your need</h2>
-            <p>
+            <p className='grayText'>
               We believe that everybody is anything but ordinary and what we wear represents
               much of ourselves. That’s why Cherie says no to one-size-fit-all. We offer
               consultation and alternation service. Anything you need, from simply
@@ -128,7 +128,7 @@ const About = () => {
         <div className='grid narrow'>
           <div className='sectionTextBlock leftAlign'>
             <h2 className='uppercase heavyText' style={{ marginBottom: '1em' }}>Handcrafted with love</h2>
-            <p>
+            <p className='grayText'>
               We say no to glue. Using glue may save time, but it will turn your dress yellowish after a while. 
               That’s why we sew the beading, ruffles and laces entirely by hand, whenever it needs. 
               So rest assured, that your dress will be long lasting to pass on to the next generation.
@@ -148,7 +148,7 @@ const About = () => {
         <div className='grid narrow'>
           <div className='sectionTextBlock leftAlign'>
             <h2 className='uppercase heavyText' style={{ marginBottom: '1em' }}>Comfort and stylish</h2>
-            <p>
+            <p className='grayText'>
             Comfy bride is the best bride. But a stunning comfy bride is even better. 
             We’ve included some thoughtful touches to make the dress more comfortable. 
             A hidden pocket to carry your phone. A invisible zipper helps you get dress 

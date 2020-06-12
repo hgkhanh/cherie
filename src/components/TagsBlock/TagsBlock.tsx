@@ -52,7 +52,7 @@ const TagsBlock = () => {
         </Link>
       </div>
       <div className={styles.item}>
-        <Link to='/collection/classic'>
+        <Link to='/collection/elegant'>
           <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.catImage3} />
           <div className={styles.title}>
             <h3 style={{ marginBottom: 0 }}>Elegant</h3>

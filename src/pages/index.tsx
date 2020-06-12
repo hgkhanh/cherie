@@ -110,23 +110,19 @@ const HomePage = ({ location }) => {
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
         <Hero overlay={false} hasScroll={false} isParallax={false}
           imageWide={data.bannerTop} mobileFullHeight={true} verticalAlign='bottom'>
-          <h3 className='uppercase centerAlign darkerText heavyText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h3>
-          <Link to='/booking'>
+          <h1 className='uppercase centerAlign darkerText heavyText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h1>
+          <Link to='/contact'>
             <Button type='primary' block style={{ width: '150px' }}>
               Get started
           </Button>
           </Link>
         </Hero>
         <RevealAnimation opacity transform>
-          <div className='gridWrapper'>
-            <div className='grid wide'>
-              <ValueBlock />
-            </div>
-          </div>
+          <ValueBlock />
         </RevealAnimation>
         <Hero overlay={true} overlayAlpha={0.2} hasScroll={false} isParallax={false} imageWide={data.bannerStory}
           mobileFullHeight={true} verticalAlign='top'>
-          <h2 className='uppercase darkTone heavyText' style={{ marginBottom: '1em' }}>We are here for you</h2>
+          <h1 className='uppercase darkTone heavyText' style={{ marginBottom: '1em' }}>We are here for you</h1>
           <Link to='/about'>
             <Button type='primary' block style={{ width: '150px' }}>
               Our story
@@ -151,8 +147,8 @@ const HomePage = ({ location }) => {
         <hr className='divider' />
         <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.bannerBottom} mobileFullHeight={true}
           verticalAlign='bottom'>
-          <h2 className='uppercase heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h2>
-          <Link to='/booking'>
+          <h1 className='uppercase heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h1>
+          <Link to='/contact'>
             <Button type='primary' block style={{ width: '150px' }}>
               Get started
           </Button>

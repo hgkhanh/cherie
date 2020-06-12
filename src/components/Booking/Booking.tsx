@@ -96,7 +96,7 @@ const Booking = () => {
   return (
     <div className={styles.container}>
       <h1 className="uppercase">Let's make our first date!</h1>
-      <h3 className="uppercase">We kindly ask that you read the information<br />
+      {/* <h3 className="uppercase">We kindly ask that you read the information<br />
             below before booking an appointment with us</h3>
       <br />
       <ul className={styles.bullet}>
@@ -127,7 +127,7 @@ const Booking = () => {
           </Link>
               before booking an appointment.
             </li>
-      </ul>
+      </ul> */}
       <div className={styles.form}>
         <h1 className="noBtmMargin">
           Pick a date and time

@@ -2,9 +2,11 @@
   &.downScroll {
     top: -43px;
   }
+
   &.homepage {
     position: fixed;
   }
+
   position: sticky;
   width: 100%;
   top: 0;
@@ -13,8 +15,11 @@
   display: block;
   background: #fff;
   box-shadow: 0 -1px #e3e3e3 inset;
-  transition: top 0.3s ease-in, background 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
-    -webkit-box-shadow 0.3s ease-in-out;
+  transition: top 0.3s ease-in,
+  background 0.3s ease-in-out,
+  box-shadow 0.3s ease-in-out,
+  -webkit-box-shadow 0.3s ease-in-out;
+
   a,
   h1 {
     color: #454545;
@@ -24,6 +29,7 @@
 .isAtTop.homepage {
   background-color: transparent;
   box-shadow: 0 -1px rgba(255, 255, 255, 0.25) inset;
+
   div,
   h1,
   h2,
@@ -36,6 +42,7 @@
   span {
     color: #fff;
   }
+
   .menuToggle {
     span {
       background: #fff;
@@ -49,16 +56,20 @@
   align-items: center;
   justify-content: space-between;
   transition: opacity 0.3s ease-in-out;
+
   .block {
     display: flex;
     align-items: center;
+
     h1 {
       line-height: 32px;
     }
+
     &:last-child {
       justify-content: flex-end;
     }
   }
+
   .fill {
     flex: 1 0 0;
   }
@@ -71,6 +82,7 @@
 }
 
 @media screen and (min-width: 577px) {
+
   .container,
   :global(.ant-drawer-close),
   :global(.ant-drawer-body) {
@@ -79,6 +91,7 @@
 }
 
 @media screen and (min-width: 769px) {
+
   .container,
   :global(.ant-drawer-close),
   :global(.ant-drawer-body) {
@@ -121,7 +134,9 @@
   padding: 10px;
   justify-content: center;
   background-color: $font-color-gray;
-  opacity: 0.7;
+  // opacity: 0.7;
+  background-color: rgba(199, 148, 121, 0.5);
+
   span {
     color: #fff;
   }

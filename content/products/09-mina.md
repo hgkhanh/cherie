@@ -24,6 +24,5 @@ sizes:
 tags:
   - Minimal
   - Romantic
-  - Classic
 ---
 

@@ -1,10 +1,12 @@
-import React from 'react';
-import BackgroundImage from 'gatsby-background-image';
+import React, { useContext } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Hero from '../Hero';
 import styles from './ValueBlock.module.scss';
+import { WindowDimensionsContext } from "../../shared/WindowDimensionsProvider";
+
 
 const ValueBlock = () => {
+    const { width } = useContext(WindowDimensionsContext);
     const data = useStaticQuery(graphql`
         query {
             background1: file(name: {eq: "Value-01"}) {
@@ -25,45 +27,84 @@ const ValueBlock = () => {
         }
     `);
 
-    return (
-        <React.Fragment>
-            <div className='sectionTitle centerAlign' style={{ margin: '10px 0' }}>
-                <span>The better and better</span>
+    if (width < 900) {
+        return (
+            <div className='gridWrapper'>
+                <div className='grid wide'>
+                    <div className='sectionTitle centerAlign' style={{ margin: '10px 0' }}>
+                        <span>The better and better</span>
+                    </div>
+                    <div style={{ height: 300 }}>
+                        <Hero overlay={false} hasScroll={false} isParallax={false}
+                            imageWide={data.background1} mobileFullHeight={false}>
+                        </Hero>
+                    </div>
+                    <div className='gridWrapper' style={{ marginTop: '20px' }}>
+                        <div className='grid narrow'>
+                            <div className='sectionTextBlock centerAlign'>
+                                <h3 className='uppercase heavyText'>Better Experience</h3>
+                                <p>
+                                    A less painful, less stressful way to find 'the' dress.
+                    </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr className='divider' />
+                    <div style={{ height: 300 }}>
+                        <Hero overlay={false} hasScroll={false} isParallax={false}
+                            imageWide={data.background2} mobileFullHeight={false}>
+                        </Hero>
+                    </div>
+                    <div className='gridWrapper' style={{ marginTop: '20px' }}>
+                        <div className='grid narrow'>
+                            <div className='sectionTextBlock centerAlign'>
+                                <h3 className='uppercase heavyText'>Better Price</h3>
+                                <p>
+                                    High quality with unmatched price.
+                    </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr className='divider' />
+                </div>
             </div>
-            <div style={{ height: 300 }}>
-                <Hero overlay={false} hasScroll={false} isParallax={false}
-                    imageWide={data.background1} mobileFullHeight={false}>
-                </Hero>
-            </div>
-            <div className='gridWrapper' style={{ marginTop: '20px' }}>
-                <div className='grid narrow'>
-                    <div className='sectionTextBlock centerAlign'>
-                        <h3 className='uppercase heavyText'>Better Experience</h3>
-                        <p>
+        )
+    } else {
+        return (
+            <React.Fragment>
+                <div className='sectionTitle centerAlign' style={{ margin: '10px 0' }}>
+                    <h2>The better and better</h2>
+                </div>
+                <div className={styles.container}>
+                    <div className={styles.image} style={{ height: 500 }}>
+                        <Hero overlay={false} hasScroll={false} isParallax={false}
+                            imageWide={data.background1} mobileFullHeight={false}>
+                        </Hero>
+                    </div>
+                    <div className={styles.text}>
+                        <h1 className='uppercase heavyText'>Better Experience</h1>
+                        <h2 className='grayText'>
                             A less painful, less stressful way to find 'the' dress.
-                        </p>
+                        </h2>
                     </div>
                 </div>
-            </div>
-            <hr className='divider' />
-            <div style={{ height: 300 }}>
-                <Hero overlay={false} hasScroll={false} isParallax={false}
-                    imageWide={data.background2} mobileFullHeight={false}>
-                </Hero>
-            </div>
-            <div className='gridWrapper' style={{ marginTop: '20px' }}>
-                <div className='grid narrow'>
-                    <div className='sectionTextBlock centerAlign'>
-                        <h3 className='uppercase heavyText'>Better Price</h3>
-                        <p>
+                <div className={styles.container} >
+                    <div className={styles.text}>
+                        <h1 className='uppercase heavyText'>Better Price</h1>
+                        <h2 className='grayText'>
                             High quality with unmatched price.
-                        </p>
+                        </h2>
                     </div>
+                    <div className={styles.item} style={{ height: 500 }}>
+                        <Hero overlay={false} hasScroll={false} isParallax={false}
+                            imageWide={data.background2} mobileFullHeight={false}>
+                        </Hero>
+                    </div>
+
                 </div>
-            </div>
-            <hr className='divider' />
-        </React.Fragment>
-    )
+            </React.Fragment >
+        )
+    }
 };
 
 
