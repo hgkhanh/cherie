@@ -134,7 +134,7 @@ const Booking = () => {
             </h1>
         <h3>
           Duration: 60 mins <br />
-          Location: Sepankatu 15, 00150, Helsinki (<a href="//goo.gl/maps/xDcRUSp836pwG9vdA" target="_blank" rel="noopener">
+          Location: Sepankatu 15, 00150, Helsinki (<a href="//goo.gl/maps/sGsqDJexpQtTDLQA8" target="_blank" rel="noopener">
             <span className="link">Map</span>
           </a>)
         </h3>

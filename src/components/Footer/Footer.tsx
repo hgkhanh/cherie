@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className={`${styles.footer}`}>
       <hr className="divider" />
       <div className={styles.linkContainer}>
-        <a href="//goo.gl/maps/xDcRUSp836pwG9vdA" target="_blank" rel="noopener">
+        <a href="//goo.gl/maps/sGsqDJexpQtTDLQA8" target="_blank" rel="noopener">
           <h3>Location</h3>
         </a>
         <Link to="/about">
