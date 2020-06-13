@@ -8,7 +8,6 @@ import { WindowDimensionsContext } from "../shared/WindowDimensionsProvider";
 
 const SizeTable = () => {
   const { width } = useContext(WindowDimensionsContext);
-  console.log('width',width);
   const dataSource1 = [
     {
       key: '1',

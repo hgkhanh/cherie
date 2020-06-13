@@ -31,7 +31,6 @@ const TagsBlock = () => {
             }
         }
     `);
-  console.log(data);
 
   return (
     <div className={styles.container}>

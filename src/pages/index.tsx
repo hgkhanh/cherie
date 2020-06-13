@@ -16,9 +16,17 @@ import TagsBlock from '../components/TagsBlock';
 const HomePage = ({ location }) => {
   const data = useStaticQuery(graphql`
     query {
+      bannerTopMobile: file(name: {eq: "Home-Page-Banner-Top"}) {
+        childCloudinaryAsset {
+          fluid(maxWidth: 600) {
+            ...CloudinaryAssetFluid
+          }
+        }
+      }
+
       bannerTop: file(name: {eq: "Home-Page-Banner-Top"}) {
         childCloudinaryAsset {
-          fluid(maxWidth: 2400) {
+          fluid(maxWidth: 1600) {
             ...CloudinaryAssetFluid
           }
         }
@@ -26,7 +34,7 @@ const HomePage = ({ location }) => {
 
       bannerStory: file(name: {eq: "Home-Page-Banner-Story"}) {
         childCloudinaryAsset {
-          fluid(maxWidth: 2400) {
+          fluid(maxWidth: 1600) {
             ...CloudinaryAssetFluid
           }
         }
@@ -92,16 +100,17 @@ const HomePage = ({ location }) => {
     }
   }, [view]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      console.log('Showing modal');
-      if (!view) {
-        setModalActive(true);
-      } else {
-        console.log('User already see this modal. Abort!');
-      }
-    }, 5000);
-  }, []);
+  // Modal
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     console.log('Showing modal');
+  //     if (!view) {
+  //       setModalActive(true);
+  //     } else {
+  //       console.log('User already see this modal. Abort!');
+  //     }
+  //   }, 5000);
+  // }, []);
 
   return (
     <Layout location={location}>
@@ -109,7 +118,7 @@ const HomePage = ({ location }) => {
       <div className='pageContainer'>
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
         <Hero overlay={false} hasScroll={false} isParallax={false}
-          imageWide={data.bannerTop} mobileFullHeight={true} verticalAlign='bottom'>
+          imageWide={data.bannerTop} imageVertical={data.bannerTopMobile} mobileFullHeight={true} verticalAlign='bottom'>
           <h1 className='uppercase centerAlign darkerText heavyText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h1>
           <Link to='/contact'>
             <Button type='primary' block style={{ width: '150px' }}>

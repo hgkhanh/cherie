@@ -11,7 +11,6 @@ const ProductCard = ({ product, index, showPrice }) => {
     const { width } = useContext(WindowDimensionsContext);
 
     const renderPrice = () => {
-        console.log(product.frontmatter);
         if (product.frontmatter.salePrice) {
             return (
                 <div className={styles.priceContainer}>
