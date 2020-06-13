@@ -131,7 +131,7 @@ const HomePage = ({ location }) => {
         </RevealAnimation>
         <Hero overlay={true} overlayAlpha={0.2} hasScroll={false} isParallax={false} imageWide={data.bannerStory}
           mobileFullHeight={true} verticalAlign='top'>
-          <h1 className='uppercase darkTone heavyText' style={{ marginBottom: '1em' }}>We are here for you</h1>
+          <h1 className='uppercase darkTone heavyText centerAlign' style={{ marginBottom: '1em' }}>We are here for you</h1>
           <Link to='/about'>
             <Button type='primary' block style={{ width: '150px' }}>
               Our story
