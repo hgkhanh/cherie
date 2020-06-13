@@ -12,6 +12,9 @@
             width: 90%;
             background-color: $font-color-white;
         }
+        &:hover::before {
+          width: 0;
+        }
     }
 }
 
@@ -27,7 +30,10 @@
 }
 
 .selectOption {
-    width: 200px;
+    width: 150px;
+    @include phone-only {
+        width: 90px;
+    }
 
     :global(.ant-select-dropdown-menu),
     :global(.ant-select-dropdown-menu-item) {

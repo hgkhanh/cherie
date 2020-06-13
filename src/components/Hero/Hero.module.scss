@@ -9,7 +9,7 @@
   position: relative;
 
   &.mobileFullHeight {
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 160px);
   }
 }
 
@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: column;
     .filler {
-      flex-grow: 6;
+      flex-grow: 4;
     }
   }
 
