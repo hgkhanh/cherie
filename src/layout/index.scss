@@ -27,12 +27,12 @@ span {
   h6,
   p,
   a {
-    color: #fff;
+    color: $font-color-white;
   }
 
   :not(.ant-btn:hover) {
     span {
-      color: #fff;
+      color: $font-color-white;
     }
   }
 }
@@ -69,7 +69,7 @@ main {
     }
 
     &.darkTone {
-      color: #fff;
+      color: $font-color-white;
     }
   }
 
@@ -329,7 +329,7 @@ button:focus {
 
   h1,
   .ant-drawer-close {
-    color: #fff;
+    color: $font-color-white;
     left: 0;
   }
 

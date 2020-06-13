@@ -75,7 +75,7 @@ const StylistService = () => {
               the price would be higher. We work directly with the dressmaker to prevent any unnecessary 
               add-on costs, thus, make our price cheaper but still keeping high quality.</p>
           </Panel>
-          <Panel header='How long does the dressmaking take?' key='3'>
+          <Panel header='How long does the dressmaking take?' key='4'>
             <p>Depend on the complexity, the process can take up to 2 months. We advise that you should 
               start shopping at least 3 months before your wedding to avoid any rushing fee.</p>
           </Panel>

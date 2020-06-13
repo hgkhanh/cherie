@@ -27,7 +27,7 @@ const WrappedForm = ({ form }: { form: FormComponentProps['form'] }) => {
     for (let i = currentYear; i <= currentYear + 3; i++) {
         yearOptions.push(<Option key={i} value={i}>{i}</Option>);
     }
-    // yearOptions.push(<Option key='year_0' value="I'm not sure">I'm not sure</Option>);
+    yearOptions.push(<Option key='year_0' value="I'm not sure">I'm not sure</Option>);
 
     const VENUE_TYPES = [
         'Church', 'Backyard', 'Cottage',
@@ -90,52 +90,73 @@ const WrappedForm = ({ form }: { form: FormComponentProps['form'] }) => {
 
     const renderForm = () => {
         return (
-            <Form colon={false} onSubmit={handleForm}>
+            <Form className={styles.formContainer} colon={false} onSubmit={handleForm}>
                 <Input.Group compact>
                     <span className={styles.inlineLabel}>I am going to get married on</span>
-                    <Form.Item className={styles.inlineInput}>
+                    <Form.Item className={`${styles.inlineInput} underline`}>
                         {getFieldDecorator('month')(
-                            <Select placeholder='month' style={{ width: 100 }}>
+                            <Select placeholder='month' style={{ width: 'auto', minWidth: 60 }}
+                                dropdownRender={menu => (
+                                    <div className={styles.selectOption}>
+                                        {menu}
+                                    </div>
+                                )}>
                                 {monthOptions}
                             </Select>
                         )}
                     </Form.Item>
-                    <Form.Item className={styles.inlineInput}>
+                    <Form.Item className={`${styles.inlineInput} underline`}>
                         {getFieldDecorator('year')(
-                            <Select placeholder='year' style={{ width: 100 }}>
+                            <Select placeholder='year' style={{ width: 'auto', minWidth: 50 }}
+                                dropdownRender={menu => (
+                                    <div className={styles.selectOption}>
+                                        {menu}
+                                    </div>
+                                )}>
                                 {yearOptions}
                             </Select>
                         )}
                     </Form.Item>
-                    <span className={styles.inlineLabel}>.&nbsp;&nbsp;</span>
-                    <span className={styles.inlineLabel}>I am planning to get married at</span>
-                    <Form.Item className={styles.inlineInput}>
+                    <span className={styles.inlineLabel}>.</span>
+                    <span className={styles.inlineLabel}>I'm planning to get married at</span>
+                    <Form.Item className={`${styles.inlineInput} underline`}>
                         {getFieldDecorator('venue')(
-                            <Select placeholder='venue' style={{ width: 100 }}>
+                            <Select placeholder='venue' style={{ width: 'auto', minWidth: 60, paddingRight: 10 }}
+                                dropdownRender={menu => (
+                                    <div className={styles.selectOption}>
+                                        {menu}
+                                    </div>
+                                )}>
                                 {venueOptions}
                             </Select>
                         )}
                     </Form.Item>
                     <span className={styles.inlineLabel}>and want it to feel</span>
-                    <Form.Item className={styles.inlineInput}>
+                    <Form.Item className={`${styles.inlineInput} underline`}>
                         {getFieldDecorator('vibe')(
-                            <Select placeholder='vibe' style={{ width: 100 }}>
+                            <Select placeholder='vibe' style={{ width: 'auto', minWidth: 40 }}
+                                dropdownRender={menu => (
+                                    <div className={styles.selectOption}>
+                                        {menu}
+                                    </div>
+                                )}>
                                 {vibeOptions}
                             </Select>
                         )}
                     </Form.Item>
-                    <span className={styles.inlineLabel}>.&nbsp;&nbsp;</span>
-                    <span className={styles.inlineLabel}>You can contact me at</span>
-                    <Form.Item className={styles.inlineInput} required>
+                    <span className={styles.inlineLabel}>.</span><br/>
+                    <span className={styles.inlineLabel}>Send me the stylist picks to this email</span>
+                    <Form.Item className={`${styles.inlineInput} underline`} required>
                         {getFieldDecorator('email')(
-                            <Input type='email' placeholder='your@email.com' required />
+                            <Input type='email' placeholder='your@email.com' required
+                                className={styles.textInput}/>
                         )}
                     </Form.Item>
                 </Input.Group>
-                <Form.Item className='centerAlign'>
-                    <Button block style={{ width: 150}} htmlType="submit" loading={loading}>Submit</Button>
+                <Form.Item className={styles.buttonContainer}>
+                    <Button block style={{ width: 150 }} htmlType="submit" loading={loading}>Submit</Button>
                 </Form.Item>
-            </Form>
+            </Form >
         )
     }
 
@@ -147,7 +168,7 @@ const WrappedForm = ({ form }: { form: FormComponentProps['form'] }) => {
                         isSuccess ? (
                             <div>
                                 <Icon type="check-circle" theme="filled" style={{ color: '#237804' }} />
-                                <span style={{ color: '#fff' }}>&nbsp;&nbsp;Thank you! We will contact you promptly!</span>
+                                <span style={{ color: '#fafafa' }}>&nbsp;&nbsp;Thank you! We will contact you promptly!</span>
                             </div>
                         ) : (
                                 renderForm()
