@@ -9,7 +9,7 @@ import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
 const InstaSlider = () => {
   const data = useStaticQuery(graphql`
     query {
-        allInstaNode {
+        allInstaNode(sort: {fields: timestamp, order: DESC}) {
           edges {
             node {
               id
@@ -47,7 +47,8 @@ const InstaSlider = () => {
     easing: "ease-in-out",
     lazyLoad: 'eager',
     draggable: true,
-    swipeToSlide: true
+    swipeToSlide: true,
+    initialSlide: 4,
   };
 
   if (width > 576) {
