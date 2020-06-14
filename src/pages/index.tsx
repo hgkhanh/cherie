@@ -120,7 +120,7 @@ const HomePage = ({ location }) => {
         <Hero overlay={false} hasScroll={false} isParallax={false}
           imageWide={data.bannerTop} imageVertical={data.bannerTopMobile} mobileFullHeight={true} verticalAlign='bottom'>
           <h1 className='uppercase centerAlign darkerText heavyText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h1>
-          <Link to='/contact'>
+          <Link to='/stylist-pick'>
             <Button type='primary' block style={{ width: '150px' }}>
               Get started
           </Button>
@@ -157,7 +157,7 @@ const HomePage = ({ location }) => {
         <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.bannerBottom} mobileFullHeight={true}
           verticalAlign='bottom'>
           <h1 className='uppercase heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h1>
-          <Link to='/contact'>
+          <Link to='/stylist-pick'>
             <Button type='primary' block style={{ width: '150px' }}>
               Get started
           </Button>

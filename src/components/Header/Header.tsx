@@ -125,7 +125,7 @@ const Header = ({ location }) => {
       <header className={getHeaderClassNames()}>
         <div className={styles.ribbon}>
           <Link to="/special">
-            <span className='uppercase darkTone'>Free Shipping - Special price up to 50% Off</span>
+            <span className={isHeaderVisible ? 'uppercase darkTone' : 'uppercase'}>Free Shipping - Special price up to 50% Off</span>
           </Link>
         </div>
         {false && activeEnv !== 'production' &&
