@@ -24,9 +24,9 @@ const HomePage = ({ location }) => {
         }
       }
 
-      bannerTop: file(name: {eq: "Home-Page-Banner-Top-Wide"}) {
+      bannerTop: file(name: {eq: "Home-Page-Banner-Top-Wide-2"}) {
         childCloudinaryAsset {
-          fluid(maxWidth: 1600) {
+          fluid(maxWidth: 2000) {
             ...CloudinaryAssetFluid
           }
         }
