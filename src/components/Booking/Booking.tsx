@@ -12,10 +12,10 @@ const Booking = () => {
   const db = firebase.firestore();
   const [bookingData, setBookingData] = useState([]);
   const allSlot = [
-    10, 14, 11, 15, 12, 16, 17
+    12, 13, 14, 15, 16, 17, 18
   ];
   const allSlotSaturday = [
-    10, 14, 11, 12
+    12, 13, 14, 15, 16
   ];
   const [bookedSlot, setBookedSlot] = useState([]);
   const [date, setDate] = useState(moment());
@@ -152,9 +152,9 @@ const Booking = () => {
                     (
                       allSlotSaturday.map(slot => {
                         return (
-                          <Col span={12} offset={slot === 12 ? 12 : 0} pull={slot === 12 ? 12 : 0} key={slot}>
+                          <Col span={12} key={slot}>
                             <Radio.Button disabled={bookedSlot.includes(slot)} value={slot}>
-                              {`${slot}.00 ${slot > 11 ? 'PM' : 'AM'}`}
+                              {`${slot}.00`}
                               <span></span>
                             </Radio.Button>
                           </Col>
@@ -164,9 +164,9 @@ const Booking = () => {
                     (
                       allSlot.map(slot => {
                         return (
-                          <Col span={12} offset={slot > 16 ? 12 : 0} key={slot}>
+                          <Col span={12} key={slot}>
                             <Radio.Button disabled={bookedSlot.includes(slot)} value={slot}>
-                              {`${slot}.00 ${slot > 11 ? 'PM' : 'AM'}`}
+                              {`${slot}.00`}
                               <span></span>
                             </Radio.Button>
                           </Col>

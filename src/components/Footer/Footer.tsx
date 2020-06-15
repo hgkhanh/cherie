@@ -34,8 +34,8 @@ const Footer = () => {
       </p>
       <p style={{ color: "#9D9D9D" }}>
         Opening hours<br />
-        Mon-Fri: 10 - 18 <br />
-        Sat: 10 - 15<br />
+        Mon-Fri: 12 - 19 <br />
+        Sat: 12 - 17<br />
         Sun: Closed
       </p>
     </footer >
