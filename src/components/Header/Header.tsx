@@ -124,9 +124,9 @@ const Header = ({ location }) => {
       </VisibilitySensor>
       <header className={getHeaderClassNames()}>
         <div className={styles.ribbon}>
-          <Link to="/special">
+          {/* <Link to="/special">
             <span className={isHeaderVisible ? 'uppercase darkTone' : 'uppercase'}>Free Shipping - Special price up to 50% Off</span>
-          </Link>
+          </Link> */}
         </div>
         {false && activeEnv !== 'production' &&
           <div className={styles.ribbon}>
@@ -144,7 +144,7 @@ const Header = ({ location }) => {
             >
               <Link to="/collection"><h2>Collection</h2></Link>
               <Link to="/booking"><h2>Booking</h2></Link>
-              <Link to="/special"><h2>Special Offers</h2></Link>
+              {/* <Link to="/special"><h2>Special Offers</h2></Link> */}
               <Link to="/stylist-pick"><h2>Stylist Pick</h2></Link>
               {/* <Link to="/blog"><h2>Blog</h2></Link> */}
               <Link to="/about"><h2>About</h2></Link>
@@ -160,9 +160,9 @@ const Header = ({ location }) => {
                   <li>
                     <a href="/collection">Collection</a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="/special">Special</a>
-                  </li>
+                  </li> */}
                   {/* <li>
                     <a href="/blog">Blog</a>
                   </li> */}

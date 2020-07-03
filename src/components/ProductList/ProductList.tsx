@@ -11,7 +11,7 @@ const ProductCard = ({ product, index, showPrice }) => {
     const { width } = useContext(WindowDimensionsContext);
 
     const renderPrice = () => {
-        if (product.frontmatter.salePrice) {
+        if (product.frontmatter.salePrice && parseInt(product.frontmatter.salePrice) < parseInt(product.frontmatter.salePrice)) {
             return (
                 <div className={styles.priceContainer}>
                     <span className={styles.salePrice}>

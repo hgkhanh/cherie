@@ -108,53 +108,39 @@ const Product = ({ product }) => {
     useEffect(() => {
         // Check if window exist and screen is small
         if (typeof window !== 'undefined') {
-            // window.klarnaAsyncCallback = function () {
-            //     try {
-            //         let item = KLARNA_PRODUCT_OBJECT;
-            //         item.product_attributes = [{
-            //             "identifier": "size",
-            //             "identifier_label": "Size",
-            //             "value": product.sizes[0],
-            //             "value_label": product.sizes[0]
-            //         }];
-            //         Klarna.InstantShopping.load({
-            //             "setup": {
-            //                 "instance_id": "purchase-1",
-            //                 "key": process.env.GATSBY_KLARNA_BUTTON_KEY,
-            //                 "environment": process.env.NODE_ENV === "production" ? "production" : "playground",
-            //                 "region": "eu"
-            //             },
-            //             "purchase_country": "FI",
-            //             "purchase_currency": "EUR",
-            //             "locale": "en-US",
-            //             "merchant_urls": {
-            //                 "terms": process.env.GATSBY_KLARNA_CHERIE_URL + "about"
-            //             },
-            //             "items": [item],
-            //             "merchant_reference1": "45aa52f397871e3a210645d5", // optional
-            //             "shipping_options": [{ // add multiple if necessary
-            //                 "id": "standard",
-            //                 "name": "Standard 4-6 weeks",
-            //                 "description": "Standard shipping",
-            //                 "price": 0,
-            //                 "tax_amount": 0,
-            //                 "tax_rate": 2400,
-            //                 "shipping_method": "PickUpStore"
-            //             }]
-            //         }, function (response: any) {
-            //             console.log('Klarna.InstantShopping.load callback with data:' + JSON.stringify(response))
-            //         })
-            //     } catch (e) {
-            //         console.log(e);
-            //     }
-            // };
+            window.klarnaAsyncCallback = function () {
+                try {
+                    let item = KLARNA_PRODUCT_OBJECT;
+                    item.product_attributes = [{
+                        "identifier": "size",
+                        "identifier_label": "Size",
+                        "value": product.sizes[0],
+                        "value_label": product.sizes[0]
+                    }];
+                    Klarna.InstantShopping.load({
+                        "setup": {
+                            "instance_id": "purchase-1",
+                            "key": "e2313452-03b3-4e95-9697-27fc37c7dd05",
+                            "environment": "production",
+                            "region": "eu"
+                        },
+                        "purchase_country": "FI",
+                        "locale": "en-US",
+                        "items": [item]
+                    }, function (response: any) {
+                        console.log('Klarna.InstantShopping.load callback with data:' + JSON.stringify(response))
+                    })
+                } catch (e) {
+                    console.log(e);
+                }
+            };
         }
     }, []);
 
     return (
         <React.Fragment>
             <Helmet>
-                {/* <script src="https://x.klarnacdn.net/instantshopping/lib/v1/lib.js" async></script> */}
+                <script src="https://x.klarnacdn.net/instantshopping/lib/v1/lib.js" async></script>
             </Helmet>
             <Modal
                 centered footer={null}
@@ -228,7 +214,7 @@ const Product = ({ product }) => {
                     </VisibilitySensor>
                     <div className={styles.info}>
                         <h1 className={styles.name}>{product.name}</h1>
-                        {product.salePrice ? (
+                        {(product.salePrice && parseInt(product.salePrice) < parseInt(product.price)) ? (
                             <div>
                                 <span className={[styles.salePrice, 'grayText'].join(' ')}>{_.round((product.salePrice), 2).toFixed(0)}&nbsp;€</span>&nbsp;&nbsp;
                                 <span className={[styles.oldPrice, 'grayText'].join(' ')}>{_.round((product.price), 2).toFixed(0)}&nbsp;€</span>
@@ -249,15 +235,15 @@ const Product = ({ product }) => {
                                                 })}
                                             </p> */}
                                 <hr className='divider' />
-                                {/* <Select style={{ width: '300px' }} size="large"
+                                <Select style={{ width: '300px' }} size="large"
                                     // onSelect={(value, event) => handleSizeSelect(value, event)}
                                     tokenSeparators={[',']} placeholder="Select Size" value={selectedSize || undefined}>
                                     {sizes}
-                                </Select> */}
+                                </Select>
                                 {/* <hr className='divider' /> */}
-                                <Button type='primary' block style={{ width: '150px' }} onClick={handleSizeSelect}>
+                                {/* <Button type='primary' block style={{ width: '150px' }} onClick={handleSizeSelect}>
                                     Send me offer
-                                </Button>
+                                </Button> */}
                             </div>
                             {/* <div>
                                     <div>
@@ -298,7 +284,7 @@ const Product = ({ product }) => {
                                 Tags: <ProductTags tags={product.tags} />
                             </div> */}
                         {/* <SocialLinks productPath={slug} productNode={productNode} /> */}
-                        {/* <klarna-instant-shopping data-instance-id="purchase-1" data-environment="playground" /> */}
+                        <klarna-instant-shopping data-instance-id="purchase-1" />
                     </div>
                 </div>
             </div >
