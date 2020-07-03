@@ -240,10 +240,10 @@ const Product = ({ product }) => {
                                     tokenSeparators={[',']} placeholder="Select Size" value={selectedSize || undefined}>
                                     {sizes}
                                 </Select>
-                                {/* <hr className='divider' /> */}
-                                {/* <Button type='primary' block style={{ width: '150px' }} onClick={handleSizeSelect}>
+                                <hr className='divider' />
+                                <Button type='primary' block style={{ width: '150px' }} onClick={handleSizeSelect}>
                                     Send me offer
-                                </Button> */}
+                                </Button>
                             </div>
                             {/* <div>
                                     <div>
