@@ -81,15 +81,24 @@ const Booking = () => {
     year + "-12-25",
     year + "-12-26",
   ];
-  const isHoliday = (date) => {
-    return holiday.some(holiday => {
-      return date.isSame(moment(holiday), 'day');
+
+  const offDays = [
+    year + "-07-24",
+    year + "-07-25",
+    year + "-07-26",
+    year + "-07-27",
+  ];
+
+  const isOffDay = (date) => {
+    const listOfDays = holiday.concat(offDays);
+    return listOfDays.some(day => {
+      return date.isSame(moment(day), 'day');
     });
   }
 
   const disabledDate = (current) => {
     return current && current < moment().endOf('day')
-      || current.weekday() === 0 || isHoliday(current)
+      || current.weekday() === 0 || isOffDay(current)
       || isBeforeOpening(current);
   }
 

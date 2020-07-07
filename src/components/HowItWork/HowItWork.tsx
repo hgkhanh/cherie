@@ -33,7 +33,7 @@ const ValueBlock = () => {
                     <Icon type='form' style={{ fontSize: '40px' }} />
                 </div>
                 <div>
-                    <p>Start: Anser a few questions about your weddings, preference stles or special requirements</p>
+                    <p>Start: Answer a few questions about your weddings, preference styles or special requirements</p>
                 </div>
             </div>
             <div className={styles.step}>
