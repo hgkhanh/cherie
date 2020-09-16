@@ -10,22 +10,22 @@ $font-color: #434343;
 $font-color-gray: #8c8c8c;
 $font-color-white: #fafafa;
 
-$color-danger: #a8071a;
-$color-success: #237804;
+$color-danger: #d9534f;
+$color-success: #5cb85c;
 
 // 3 break point: 600, 900, 1200
-@mixin phone-only {
+@mixin PhoneOnly {
     @media (max-width: 599px) { @content; }
 }
 
-@mixin tablet-potrait-up {
+@mixin TabletPotraitUp {
     @media (min-width: 600px) { @content; }
 }
 
-@mixin tablet-landscape-up {
+@mixin TabletLandscapeUp {
     @media (min-width: 900px) { @content; }
 }
 
-@mixin desktop-up {
+@mixin DesktopUp {
     @media (min-width: 1200px) { @content; }
 }

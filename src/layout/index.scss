@@ -41,6 +41,14 @@ span {
   // background: $color-background;
 }
 
+.textContent {
+  margin: 10px;
+
+  @media screen and (min-width: 900px) {
+    margin: 0;
+  }
+}
+
 main {
   // background: $color-background;
   line-height: 1.75;
@@ -237,7 +245,7 @@ hr.divider {
   text-align: left;
   padding: 20px;
 
-  @include tablet-potrait-up {
+  @include TabletPotraitUp {
     padding: 20px 80px;
   }
 

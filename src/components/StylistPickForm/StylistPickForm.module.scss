@@ -31,7 +31,7 @@
 
 .selectOption {
     width: 150px;
-    @include phone-only {
+    @include PhoneOnly {
         width: 90px;
     }
 

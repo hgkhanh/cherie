@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 0;
 
-  @include tablet-potrait-up {
+  @include TabletPotraitUp {
     display: flex;
     flex-wrap: wrap;
   }
@@ -12,7 +12,7 @@
     text-align: center;
     flex: 1 1 50%;
 
-    @include phone-only {
+    @include PhoneOnly {
       flex: 1 1 100%;
     }
   }
@@ -29,15 +29,15 @@
   text-align: center;
   padding: 10px;
 
-  @include tablet-potrait-up {
+  @include TabletPotraitUp {
     padding: 20px;
   }
 
-  @include tablet-landscape-up {
+  @include TabletLandscapeUp {
     padding: 40px;
   }
 
-  @include desktop-up {
+  @include DesktopUp {
     padding: 80px;
   }
 
@@ -49,14 +49,14 @@
     text-align: justify;
     color: $font-color-gray;
 
-    @include phone-only {
+    @include PhoneOnly {
       padding: 10px;
     }
   }
 }
 
 // In smaller screen, only 1 column, no scrolling info
-@include tablet-potrait-up {
+@include TabletPotraitUp {
   .isPastFooter {
     align-items: flex-end;
     flex-direction: row;

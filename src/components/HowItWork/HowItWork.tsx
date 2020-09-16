@@ -4,7 +4,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby';
 import { Icon, Button } from 'antd';
 import styles from './HowItWork.module.scss';
 
-const ValueBlock = () => {
+const HowItWork = () => {
     const data = useStaticQuery(graphql`
         query {
             background1: file(name: {eq: "Banner-03"}) {
@@ -70,4 +70,4 @@ const ValueBlock = () => {
 };
 
 
-export default ValueBlock;
+export default HowItWork;
