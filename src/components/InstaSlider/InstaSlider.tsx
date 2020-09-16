@@ -5,6 +5,7 @@ import { Carousel } from "antd";
 import Image from 'gatsby-image';
 import SliderArrow from '../SliderArrow';
 import { WindowDimensionsContext } from '../../shared/WindowDimensionsProvider';
+import _ from 'lodash';
 
 const InstaSlider = () => {
   const data = useStaticQuery(graphql`
@@ -59,7 +60,7 @@ const InstaSlider = () => {
     settings.centerPadding = '120px';
     settings.slidesToShow = 3;
     settings.arrows = true;
-    settings.prevArrow = <SliderArrow to="prev" /> ,
+    settings.prevArrow = <SliderArrow to="prev" />,
       settings.nextArrow = <SliderArrow to="next" />
   }
 
@@ -78,18 +79,15 @@ const InstaSlider = () => {
   const pictures = data.allInstaNode.edges;
   return (
     <Carousel {...settings}>
-      {pictures.map((pic, index) => {
-        return (
-          <a key={index} className={styles.container} href={`//instagram.com/p/${pic.node.id}`}>
-            <Image className={styles.slide}
-              sizes={{ ...pic.node.localFile.childImageSharp.fluid, aspectRatio: 1 }} alt='' />
-            {/* <div className={styles.overlay}>
-              <h3>{pic.node.likes} likes</h3>
-              <p>{pic.node.caption}</p>
-              <p>{moment(pic.node.timestamp).format("dddd, MMMM Do")}</p>
-            </div> */}
-          </a>
-        )
+      {pictures.map((pic: any, index: number) => {
+        if (_.has(pic, 'node.localFile.childImageSharp')) {
+          return (
+            <a key={index} className={styles.container} href={`//instagram.com/p/${pic.node.id}`}>
+              <Image className={styles.slide}
+                sizes={{ ...pic.node.localFile.childImageSharp.fluid, aspectRatio: 1 }} alt='' />
+            </a>
+          )
+        }
       }
       )}
     </Carousel>
