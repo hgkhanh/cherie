@@ -37,44 +37,62 @@
     }
 }
 
-@include desktopUp {
+@include tabletLandscapeUp {
     .cardContainer {
         padding: 64px;
+        display: flex;
+        justify-content: center;
     }
 
     .card {
         padding: 0;
-        height: 400px;
-        width: 900px;
-        margin: 0 auto;
+        width: 800px;
 
         .image {
             position: relative;
-            height: 400px;
-            width: 600px;
         }
 
         .text {
             position: absolute;
             top: 60px;
             width: 300px;
+            text-align: left;
         }
     }
 
 
-
-    &.right {
-        .card {
-            .text {
-                left: 500px;
-            }
-        }
-    }
 
     &.left {
         background-color: $color-background-alternate;
 
+        .image {
+            height: 500px;
+            width: 450px;
+        }
+
         .card {
+
+            height: 500px;
+            margin-left: 64px;
+
+            .text {
+                left: 400px;
+            }
+        }
+    }
+
+    &.right {
+
+        .image {
+            height: 400px;
+            width: 600px;
+        }
+
+        .card {
+
+            height: 400px;
+            margin-right: 64px;
+
             .image {
                 margin-left: 200px;
             }

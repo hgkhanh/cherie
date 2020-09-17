@@ -1,17 +1,20 @@
 .container {
-    padding: 40px;
+    padding: 2em;
     text-align: center;
+    @include tabletLandscapeUp {
+        padding: 4em 0;
+    }
 }
 
 .step {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 1em;
     .icon {
-        flex-basis: 50px;
-        margin-right: 20px;
+        margin-right: 2em;
     }
     p {
         text-align: left;
+        margin-bottom: 0;
     }
 }

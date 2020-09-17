@@ -27,7 +27,7 @@ const HowItWork = () => {
 
     return (
         <div className={styles.container}>
-            <h3 className='uppercase heavyText'>How It Work</h3>
+            <h2 className='uppercase heavyText'>How It Work</h2>
             <div className={styles.step}>
                 <div className={styles.icon}>
                     <Icon type='form' style={{ fontSize: '40px' }} />

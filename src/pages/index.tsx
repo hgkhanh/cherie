@@ -130,7 +130,7 @@ const HomePage = ({ location }) => {
         <RevealAnimation opacity transform>
           <ValueBlock />
         </RevealAnimation>
-        <Hero overlay={true} overlayAlpha={0.2} hasScroll={false} isParallax={false} imageWide={data.bannerStory}
+        <Hero overlay={true} overlayAlpha={0.4} hasScroll={false} isParallax={false} imageWide={data.bannerStory}
           mobileFullHeight={true} verticalAlign='top'>
           <h2 className='uppercase darkTone heavyText centerAlign' style={{ marginBottom: '1em' }}>We are here for you</h2>
           <Link to='/about'>
@@ -155,9 +155,9 @@ const HomePage = ({ location }) => {
         <InstaSlider />
         <hr className='divider' />
         <hr className='divider' />
-        <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.bannerBottom} mobileFullHeight={true}
+        <Hero overlay={true} overlayAlpha={0.4} hasScroll={false} isParallax={false} imageWide={data.bannerBottom} mobileFullHeight={true}
           verticalAlign='bottom'>
-          <h2 className='uppercase heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h2>
+          <h2 className='uppercase darkTone heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h2>
           <Link to='/stylist-pick'>
             <Button type='primary' block style={{ minWidth: '150px' }}>
               Get started

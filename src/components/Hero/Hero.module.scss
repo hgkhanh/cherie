@@ -8,8 +8,15 @@
   padding: 10px;
   position: relative;
 
-  &.mobileFullHeight {
-    min-height: calc(100vh - 160px);
+  @include phoneOnly {
+    &.mobileFullHeight {
+      min-height: calc(100vh - 160px);
+    }
+  }
+  
+  @include tabletPotraitUp {
+    min-height: 600px;
+    height: 600px;
   }
 }
 
