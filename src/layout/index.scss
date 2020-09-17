@@ -38,7 +38,7 @@ span {
 }
 
 .pageContainer {
-  // background: $color-background;
+  background: $color-background;
 }
 
 .textContent {
@@ -245,7 +245,7 @@ hr.divider {
   text-align: left;
   padding: 20px;
 
-  @include TabletPotraitUp {
+  @include tabletPotraitUp {
     padding: 20px 80px;
   }
 
@@ -304,7 +304,10 @@ button:focus {
 /* END Global Layout */
 
 /* Responsive */
-
+.sensor {
+  height: 1px;
+  background: $color-background;
+}
 /* //Responsive */
 
 /* Custom UI Component */
