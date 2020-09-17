@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Helmet from "react-helmet";
+import { Helmet } from 'react-helmet';
 import { Router } from "@reach/router"
-import Layout from "../layout";
+import Layout from "../components/Layout";
 import Booking from "../components/Booking";
 import Details from "../components/Booking/Details";
 import Cancel from "../components/Booking/Cancel";
@@ -12,6 +12,7 @@ const BookingPage = ({ location }) => {
   return (
     <Layout location={location}>
       <Helmet title={`Booking | ${config.siteTitle}`} />
+      <h1 className='visuallyHidden'>Booking</h1>
       <hr className='divider' />
       <div className='grid centerAlign'>
         <Location>

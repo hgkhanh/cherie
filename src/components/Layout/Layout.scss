@@ -1,7 +1,42 @@
+@import '../../styles/normalize';
+
 /* START Typograhpy BlinkMacSystemFont*/
 * {
-  font-family: "Avenir" -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Inter",
+  font-family: "Avenir"-apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Inter",
     "Helvetica Neue", sans-serif;
+}
+
+button {
+  height: auto;
+  padding: 0.5em;
+}
+
+@include desktopUp {
+
+  h1 {
+    font-size: 4em;
+  }
+
+  h2 {
+    font-size: 3em;
+  }
+
+  h3 {
+    font-size: 2em;
+  }
+
+  h4 {
+    font-size: 1.5em;
+  }
+
+  span, p, li, dt, dd, a {
+    font-size: 1.15em;
+  }
+
+  button:global(.ant-btn) {
+    padding: 0.5em 1em;
+    height: auto;
+  }
 }
 
 h1,
@@ -12,6 +47,7 @@ h5,
 h6,
 span {
   font-weight: 400;
+
   &.heavyText {
     font-weight: 600;
   }
@@ -50,8 +86,9 @@ span {
 }
 
 main {
-  // background: $color-background;
   line-height: 1.75;
+
+
 }
 
 header,
@@ -308,6 +345,7 @@ button:focus {
   height: 1px;
   background: $color-background;
 }
+
 /* //Responsive */
 
 /* Custom UI Component */
@@ -354,3 +392,17 @@ button.ant-btn {
 }
 
 // /* Custom UI Component */
+
+/* SEO */
+.visuallyHidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(0px 0px 99.9% 99.9%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  padding: 0;
+  border: 0;
+}
+
+// /* SEO */

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import Helmet from "react-helmet";
-import Layout from "../layout";
+import { Helmet } from 'react-helmet';
 import siteConfig from "../../data/SiteConfig";
 import ProductList from "../components/ProductList";
 import { Spring, config } from 'react-spring/renderprops';
+import Layout from "../components/Layout";
 
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext;

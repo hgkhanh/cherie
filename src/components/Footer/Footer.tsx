@@ -9,16 +9,16 @@ const Footer = () => {
       <hr className="divider" />
       <div className={styles.linkContainer}>
         <a href="//goo.gl/maps/sGsqDJexpQtTDLQA8" target="_blank" rel="noopener">
-          <h3>Location</h3>
+          <h4>Location</h4>
         </a>
         <Link to="/about">
-          <h3>About</h3>
+          <h4>About</h4>
         </Link>
         {/* <Link to="/faq">
           <h3 className="">FAQ</h3>
         </Link> */}
         <a href="mailto:info@cheriebridal.fi" target="_blank" rel="noopener">
-          <h3 className="">Contact</h3>
+          <h4 className="">Contact</h4>
         </a>
       </div>
       <div>

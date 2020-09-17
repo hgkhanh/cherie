@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import Helmet from 'react-helmet';
-import config from '../../data/SiteConfig';
-import Header from '../components/Header';
-import FloatButton from '../components/FloatButton';
-import Footer from '../components/Footer';
-import './index.scss';
-import WindowDimensionsProvider from '../shared/WindowDimensionsProvider';
-import FirebaseProvider from '../shared/FirebaseProvider';
+import config from '../../../data/SiteConfig';
+import Header from '../Header';
+import FloatButton from '../FloatButton';
+import Footer from '../Footer';
+import './Layout.scss';
+import WindowDimensionsProvider from '../../shared/WindowDimensionsProvider';
+import FirebaseProvider from '../../shared/FirebaseProvider';
 import VisibilitySensor from 'react-visibility-sensor';
 
-const MainLayout = ({ children, location }) => {
+const Layout = ({ children, location }) => {
   const [isFooterVisible, setFooterVisible] = useState(false);
 
   return (
@@ -42,4 +42,4 @@ const MainLayout = ({ children, location }) => {
   );
 }
 
-export default MainLayout;
+export default Layout;

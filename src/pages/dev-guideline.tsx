@@ -1,20 +1,18 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import Helmet from "react-helmet";
-import Layout from "../layout";
+import { Helmet } from 'react-helmet';
+import Layout from "../components/Layout";
 import siteConfig from "../../data/SiteConfig";
 import Blog from "../components/Blog";
 
 const Typography = ({ location }) => {
   return (
     <Layout location={location}>
-      <Helmet title={`Blog | ${siteConfig.siteTitle}`} />
+      <Helmet title={`Developer Guidelines | ${siteConfig.siteTitle}`} />
+      <h1 className="centerAlign">Developer Guidelines</h1>
       <div className="gridWrapper">
         <div className="grid">
           <div className="textContent">
-            <hr className="divider" />
-            <h1>Layout</h1>
-            <hr className="divider" />
             <header>
               <h1>Grid</h1>
             </header>

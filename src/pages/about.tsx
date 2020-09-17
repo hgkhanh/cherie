@@ -1,6 +1,6 @@
 import React from "react";
-import Helmet from "react-helmet";
-import Layout from "../layout";
+import { Helmet } from 'react-helmet';
+import Layout from "../components/Layout";
 import config from "../../data/SiteConfig";
 import About from '../components/About';
 
@@ -10,7 +10,7 @@ const AboutPage = ({ location }) => {
     <Layout location={location}>
       <Helmet title={`About | ${config.siteTitle}`} />
       <div className="grid wide" >
-      <About />
+        <About />
       </div>
     </Layout>
   );

@@ -104,7 +104,7 @@ const Booking = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className="uppercase">Let's make our first date!</h1>
+      <h2 className="uppercase">Let's make our first date!</h2>
       {/* <h3 className="uppercase">We kindly ask that you read the information<br />
             below before booking an appointment with us</h3>
       <br />
@@ -138,22 +138,22 @@ const Booking = () => {
             </li>
       </ul> */}
       <div className={styles.form}>
-        <h1 className="noBtmMargin">
+        <h3 className="noBtmMargin">
           Pick a date and time
-            </h1>
-        <h3>
+            </h3>
+        <span>
           Duration: 60 mins <br />
           Location: Sepankatu 15, 00150, Helsinki (<a href="//goo.gl/maps/sGsqDJexpQtTDLQA8" target="_blank" rel="noopener">
             <span className="link">Map</span>
           </a>)
-        </h3>
+        </span>
         <div className={styles.timeSelectContainer}>
           <div className={styles.calendar}>
-            <h2>Select date</h2>
+            <h3>Select date</h3>
             <Calendar fullscreen={false} disabledDate={disabledDate} onSelect={handleDateSelect} />
           </div>
           <div>
-            <h2>Select time</h2>
+            <h3>Select time</h3>
             <Row className={styles.slot} gutter={[10, 10]}>
               <Radio.Group buttonStyle='solid' onChange={handleTimeSelect}>
                 {

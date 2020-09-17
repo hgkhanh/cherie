@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import siteConfig from '../../data/SiteConfig';
-import Layout from '../layout';
 import { Row, Col, Button } from 'antd';
 import RevealAnimation from '../shared/RevealAnimation';
 import ProductList from '../components/ProductList';
@@ -12,6 +11,7 @@ import ValueBlock from '../components/ValueBlock';
 import HowItWork from '../components/HowItWork';
 import TagsBlock from '../components/TagsBlock';
 // import CampaignModal from '../components/CampaignModal';
+import Layout from "../components/Layout";
 
 const HomePage = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -117,11 +117,12 @@ const HomePage = ({ location }) => {
       {/* <CampaignModal modalBackground={data.modalBackground} visible={modalActive} setVisible={setModalActive} /> */}
       <div className='pageContainer'>
         <Helmet title={`Home | ${siteConfig.siteTitle}`} />
+        <h1 className='visuallyHidden'>Home</h1>
         <Hero overlay={false} hasScroll={false} isParallax={false}
           imageWide={data.bannerTop} imageVertical={data.bannerTopMobile} mobileFullHeight={true} verticalAlign='bottom'>
-          <h1 className='uppercase centerAlign darkerText heavyText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h1>
+          <h2 className='uppercase centerAlign darkerText heavyText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h2>
           <Link to='/stylist-pick'>
-            <Button type='primary' block style={{ width: '150px' }}>
+            <Button type='primary' block style={{ minWidth: '150px' }}>
               Get started
           </Button>
           </Link>
@@ -131,9 +132,9 @@ const HomePage = ({ location }) => {
         </RevealAnimation>
         <Hero overlay={true} overlayAlpha={0.2} hasScroll={false} isParallax={false} imageWide={data.bannerStory}
           mobileFullHeight={true} verticalAlign='top'>
-          <h1 className='uppercase darkTone heavyText centerAlign' style={{ marginBottom: '1em' }}>We are here for you</h1>
+          <h2 className='uppercase darkTone heavyText centerAlign' style={{ marginBottom: '1em' }}>We are here for you</h2>
           <Link to='/about'>
-            <Button type='primary' block style={{ width: '150px' }}>
+            <Button type='primary' block style={{ minWidth: '150px' }}>
               Our story
           </Button>
           </Link>
@@ -156,14 +157,13 @@ const HomePage = ({ location }) => {
         <hr className='divider' />
         <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.bannerBottom} mobileFullHeight={true}
           verticalAlign='bottom'>
-          <h1 className='uppercase heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h1>
+          <h2 className='uppercase heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h2>
           <Link to='/stylist-pick'>
-            <Button type='primary' block style={{ width: '150px' }}>
+            <Button type='primary' block style={{ minWidth: '150px' }}>
               Get started
           </Button>
           </Link>
         </Hero>
-        <hr className='divider' />
       </div>
     </Layout>
   );

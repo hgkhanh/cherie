@@ -1,11 +1,11 @@
 import React from "react";
-import Helmet from "react-helmet";
+import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from "gatsby";
-import Layout from "../layout";
 import Product from "../components/Product/Product";
 import SEO from "../components/SEO";
 import Recommendation from "../components/Recommendation";
 import config from "../../data/SiteConfig";
+import Layout from "../components/Layout";
 
 const ProductTemplate = (props: any) => {
   const { data, pageContext } = props;

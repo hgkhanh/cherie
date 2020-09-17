@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, MouseEvent } from 'react';
 // import PropTypes from 'prop-types';
-import Helmet from "react-helmet";
+import { Helmet } from 'react-helmet';
 import styles from './Product.module.scss';
 // import SocialLinks from '../SocialLinks/SocialLinks';
 import { Carousel, Select, Modal, Button, Icon } from "antd";
