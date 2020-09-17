@@ -1,7 +1,7 @@
 .container {
   margin: 0 10px;
 
-  @include PhoneOnly {
+  @include phoneOnly {
     padding: 30px;
   }
 }
@@ -17,7 +17,7 @@
 .bullet {
   text-align: justify;
 
-  @include PhoneOnly {
+  @include phoneOnly {
     padding-left: 20px;
   }
 
@@ -35,7 +35,7 @@
   &>div {
     flex: 1 1 100%;
 
-    @include TabletPotraitUp {
+    @include tabletPotraitUp {
       flex: 1 1 50%;
     }
   }

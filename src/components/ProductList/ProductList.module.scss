@@ -1,7 +1,7 @@
 .list {
   padding: 0 10px;
 
-  @include TabletPotraitUp {
+  @include tabletPotraitUp {
     padding: 0 40px;
   }
 
@@ -12,17 +12,17 @@
 .card {
   padding: 10px;
 
-  @include TabletPotraitUp {
+  @include tabletPotraitUp {
     padding: 20px 40px;
   }
 
   flex: 1 1 100%;
 
-  @include TabletPotraitUp {
+  @include tabletPotraitUp {
     flex: 1 1 50%;
   }
 
-  @include DesktopUp {
+  @include desktopUp {
     flex: 1 1 33%;
   }
 

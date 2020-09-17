@@ -20,7 +20,7 @@
         }
     }
 
-    @include TabletPotraitUp {
+    @include tabletPotraitUp {
         flex-direction: row;
 
         .item {
@@ -29,7 +29,7 @@
         }
     }
 
-    @include DesktopUp {
+    @include desktopUp {
         .item {
             height: 600px;
         }

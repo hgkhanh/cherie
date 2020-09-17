@@ -25,7 +25,7 @@ const Product = ({ product }) => {
         "tax_rate": 2400,
         "total_amount": product.price * 100,
         "total_discount_amount": 0,
-        "total_tax_amount": toInteger(product.price * 100 - (product.price * 100 * 10000) / (10000 + 2400)),
+        "total_tax_amount": _.toInteger(product.price * 100 - (product.price * 100 * 10000) / (10000 + 2400)),
         "product_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/" + _.toLower(product.name),
         "image_url": process.env.GATSBY_KLARNA_CHERIE_URL + "dresses/" + _.toLower(product.name),
         "group_identifier": "Dress"

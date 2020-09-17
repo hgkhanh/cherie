@@ -1,7 +1,7 @@
 .smallBannerWrapper {
   height: 50vh;
 }
-@include TabletLandscapeUp {
+@include tabletLandscapeUp {
   flex-direction: row;
   .smallBannerWrapper {
       height: 400px;
@@ -9,7 +9,7 @@
   }
 }
 
-@include DesktopUp {
+@include desktopUp {
   .smallBannerWrapper {
       height: 600px;
   }

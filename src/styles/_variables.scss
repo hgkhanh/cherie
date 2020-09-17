@@ -14,18 +14,18 @@ $color-danger: #d9534f;
 $color-success: #5cb85c;
 
 // 3 break point: 600, 900, 1200
-@mixin PhoneOnly {
+@mixin phoneOnly {
     @media (max-width: 599px) { @content; }
 }
 
-@mixin TabletPotraitUp {
+@mixin tabletPotraitUp {
     @media (min-width: 600px) { @content; }
 }
 
-@mixin TabletLandscapeUp {
+@mixin tabletLandscapeUp {
     @media (min-width: 900px) { @content; }
 }
 
-@mixin DesktopUp {
+@mixin desktopUp {
     @media (min-width: 1200px) { @content; }
 }
