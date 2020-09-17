@@ -1,14 +1,87 @@
-.container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.card {
+    text-align: center;
+    padding: 260px 40px 0 40px;
+    position: relative;
 
     &>div {
-        flex-basis: 50%;
+        flex: 1 0 100%;
+        width: 100%;
+    }
+
+    .image {
+        height: 260px;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     .text {
+        height: 100px;
+        background: $color-white;
+        align-items: flex-start;
+        position: relative;
+        left: 0;
+        top: -40px;
+        padding: 30px;
+        width: 100%;
+        height: auto;
         margin: 0 auto;
-        max-width: 400px;
+
+        @include tabletPotraitUp {
+            width: 66%;
+        }
+
+        @include tabletLandscapeUp {
+            width: 50%;
+        }
+    }
+}
+
+@include desktopUp {
+    .cardContainer {
+        padding: 64px;
+    }
+
+    .card {
+        padding: 0;
+        height: 400px;
+        width: 900px;
+        margin: 0 auto;
+
+        .image {
+            position: relative;
+            height: 400px;
+            width: 600px;
+        }
+
+        .text {
+            position: absolute;
+            top: 60px;
+            width: 300px;
+        }
+    }
+
+
+
+    &.right {
+        .card {
+            .text {
+                left: 500px;
+            }
+        }
+    }
+
+    &.left {
+        background-color: $color-background-alternate;
+
+        .card {
+            .image {
+                margin-left: 200px;
+            }
+
+            .text {
+                left: 0;
+            }
+        }
     }
 }
