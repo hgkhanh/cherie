@@ -1,6 +1,10 @@
 .container {
     background-color: #c79479;
-    padding: 40px 0;
+    padding: 2em 0;
+
+    @include desktopUp {
+        padding: 4em 0;
+    }
 }
 
 .inlineInput {
@@ -12,8 +16,9 @@
             width: 90%;
             background-color: $font-color-white;
         }
+
         &:hover::before {
-          width: 0;
+            width: 0;
         }
     }
 }
@@ -31,6 +36,7 @@
 
 .selectOption {
     width: 150px;
+
     @include phoneOnly {
         width: 90px;
     }

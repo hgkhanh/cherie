@@ -1,21 +1,29 @@
 .footer {
   text-align: center;
-  background: $color-background;
+  background: $color-background-dark;
   padding-top: 20px;
   padding-bottom: 40px;
   position: relative;
+
   h4 {
-    color: #727272;
+    color: $font-color-gray;
     font-weight: 300;
+  }
+
+  p {
+    color: $font-color-gray;
   }
 }
 
 .linkContainer {
   display: flex;
   justify-content: center;
+
   a {
+    color: $font-color-gray;
     padding-right: 20px;
   }
+
   a:last-child {
     padding-right: 0;
   }

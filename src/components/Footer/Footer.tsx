@@ -26,13 +26,13 @@ const Footer = () => {
           <Icon type="instagram" />
         </a>
       </div>
-      <p style={{ color: "#9D9D9D" }}>
+      <p>
         Chérie bridal shop<br />
         Sepänkatu 15, 00150, Helsinki<br />
         p: 0505 116 776<br />
         e: info@cheriebridal.fi
       </p>
-      <p style={{ color: "#9D9D9D" }}>
+      <p>
         Opening hours<br />
         Mon-Fri: 12 - 19 <br />
         Sat: 12 - 17<br />

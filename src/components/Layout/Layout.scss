@@ -29,7 +29,12 @@ button {
     font-size: 1.5em;
   }
 
-  span, p, li, dt, dd, a {
+  span,
+  p,
+  li,
+  dt,
+  dd,
+  a {
     font-size: 1.15em;
   }
 
@@ -85,10 +90,9 @@ span {
   }
 }
 
-main {
+main, body {
+  background: $color-background;
   line-height: 1.75;
-
-
 }
 
 header,

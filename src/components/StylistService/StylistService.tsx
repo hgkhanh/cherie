@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Icon, Collapse } from 'antd';
 import styles from './StylistService.module.scss';
-import Hero from '../Hero';
+import Image from "gatsby-image";
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 
 
@@ -10,7 +10,7 @@ import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 const StylistService = () => {
   const data = useStaticQuery(graphql`
     query {
-      banner1wide: file(name: {eq: "Contact-Banner-01"}) {
+      banner1wide: file(name: {eq: "Contact-Banner-02"}) {
         childCloudinaryAsset {
           fluid(maxWidth: 1600) {
             ...CloudinaryAssetFluid
@@ -51,11 +51,11 @@ const StylistService = () => {
           </div>
         </div>
       </div>
-      <div style={{ height: 400 }}>
-        <Hero overlay={true} hasScroll={false} isParallax={false}
-          imageWide={data.banner1wide} mobileFullHeight={false}>
-        </Hero>
+      <div>
+        <Image style={{ height: '200px' }} fluid={data.banner1wide.childCloudinaryAsset.fluid} >
+        </Image>
       </div>
+      <hr className="divider" />
       <div className='gridWrapper'>
         <div className='grid narrow'>
           <Collapse defaultActiveKey={['1']}
@@ -92,6 +92,7 @@ const StylistService = () => {
           </Collapse>
         </div>
       </div>
+      <hr className="divider" />
     </div >
   )
 };
