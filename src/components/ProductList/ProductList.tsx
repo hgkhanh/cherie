@@ -5,6 +5,7 @@ import { Spring, config } from 'react-spring/renderprops'
 import VisibilitySensor from 'react-visibility-sensor';
 import Image from 'gatsby-image';
 import { WindowDimensionsContext } from "../../shared/WindowDimensionsProvider";
+import cx from 'classnames';
 
 const ProductCard = ({ product, index, showPrice }) => {
     const [isVisible, setVisible] = useState(false);
@@ -49,7 +50,11 @@ const ProductCard = ({ product, index, showPrice }) => {
                     <div className={styles.card} style={{ ...props }}>
                         <Link to={product.fields.slug} key={product.name}>
                             <Image fluid={product.frontmatter.featureImage.childCloudinaryAsset.fluid} alt={product.name} />
-                            <div className={`${styles.description} ${width <= 576 && styles.vertical}`}>
+                            <div className={cx(
+                                styles.description,
+                                { [styles.vertical]: width < 600 },
+                                { [styles.center]: !showPrice }
+                            )}>
                                 <h3>
                                     {product.frontmatter.name}
                                 </h3>
