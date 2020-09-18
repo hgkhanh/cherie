@@ -92,7 +92,6 @@ const StylistService = () => {
           </Collapse>
         </div>
       </div>
-      <hr className="divider" />
     </div >
   )
 };

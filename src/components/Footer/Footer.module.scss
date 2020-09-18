@@ -1,4 +1,10 @@
 .footer {
+  margin-top: 1em;
+
+  @include desktopUp {
+    margin-top: 2em;
+  }
+
   text-align: center;
   background: $color-background-dark;
   padding-top: 20px;

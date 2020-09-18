@@ -115,56 +115,54 @@ const HomePage = ({ location }) => {
   return (
     <Layout location={location}>
       {/* <CampaignModal modalBackground={data.modalBackground} visible={modalActive} setVisible={setModalActive} /> */}
-      <div className='pageContainer'>
-        <Helmet title={`Home | ${siteConfig.siteTitle}`} />
-        <h1 className='visuallyHidden'>Home</h1>
-        <Hero overlay={false} hasScroll={false} isParallax={false}
-          imageWide={data.bannerTop} imageVertical={data.bannerTopMobile} mobileFullHeight={true} verticalAlign='bottom'>
-          <h2 className='uppercase centerAlign darkerText heavyText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h2>
-          <Link to='/stylist-pick'>
-            <Button type='primary' block style={{ minWidth: '150px' }}>
-              Get started
+      <Helmet title={`Home | ${siteConfig.siteTitle}`} />
+      <h1 className='visuallyHidden'>Home</h1>
+      <Hero overlay={false} hasScroll={false} isParallax={false}
+        imageWide={data.bannerTop} imageVertical={data.bannerTopMobile} mobileFullHeight={true} verticalAlign='bottom'>
+        <h2 className='uppercase centerAlign darkerText heavyText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h2>
+        <Link to='/stylist-pick'>
+          <Button type='primary' block style={{ minWidth: '150px' }}>
+            Get started
           </Button>
-          </Link>
-        </Hero>
-        <RevealAnimation opacity transform>
-          <ValueBlock />
-        </RevealAnimation>
-        <Hero overlay={true} overlayAlpha={0.4} hasScroll={false} isParallax={false} imageWide={data.bannerStory}
-          mobileFullHeight={true} verticalAlign='top'>
-          <h2 className='uppercase darkTone heavyText centerAlign' style={{ marginBottom: '1em' }}>We are here for you</h2>
-          <Link to='/about'>
-            <Button type='primary' block style={{ minWidth: '150px' }}>
-              Our story
+        </Link>
+      </Hero>
+      <RevealAnimation opacity transform>
+        <ValueBlock />
+      </RevealAnimation>
+      <Hero overlay={true} overlayAlpha={0.4} hasScroll={false} isParallax={false} imageWide={data.bannerStory}
+        mobileFullHeight={true} verticalAlign='top'>
+        <h2 className='uppercase darkTone heavyText centerAlign' style={{ marginBottom: '1em' }}>We are here for you</h2>
+        <Link to='/about'>
+          <Button type='primary' block style={{ minWidth: '150px' }}>
+            Our story
           </Button>
-          </Link>
-        </Hero>
-        <RevealAnimation opacity transform>
-          <div className='gridWrapper'>
-            <div className='grid narrow'>
-              <HowItWork />
-            </div>
+        </Link>
+      </Hero>
+      <RevealAnimation opacity transform>
+        <div className='gridWrapper'>
+          <div className='grid narrow'>
+            <HowItWork />
           </div>
-        </RevealAnimation>
-        <TagsBlock />
-        <hr className='divider' />
-        <div className='sectionTitle centerAlign'>
-          <h4 className='uppercase'>Get inspired</h4>
-          <h2 className='heavyText'>@cheriebridal</h2>
         </div>
-        <InstaSlider />
-        <hr className='divider' />
-        <hr className='divider' />
-        <Hero overlay={true} overlayAlpha={0.4} hasScroll={false} isParallax={false} imageWide={data.bannerBottom} mobileFullHeight={true}
-          verticalAlign='bottom'>
-          <h2 className='uppercase darkTone heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h2>
-          <Link to='/stylist-pick'>
-            <Button type='primary' block style={{ minWidth: '150px' }}>
-              Get started
-          </Button>
-          </Link>
-        </Hero>
+      </RevealAnimation>
+      <TagsBlock />
+      <hr className='divider' />
+      <div className='sectionTitle centerAlign'>
+        <h4 className='uppercase'>Get inspired</h4>
+        <h2 className='heavyText'>@cheriebridal</h2>
       </div>
+      <InstaSlider />
+      <hr className='divider' />
+      <hr className='divider' />
+      <Hero overlay={true} overlayAlpha={0.4} hasScroll={false} isParallax={false} imageWide={data.bannerBottom} mobileFullHeight={true}
+        verticalAlign='bottom'>
+        <h2 className='uppercase darkTone heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h2>
+        <Link to='/stylist-pick'>
+          <Button type='primary' block style={{ minWidth: '150px' }}>
+            Get started
+          </Button>
+        </Link>
+      </Hero>
     </Layout>
   );
 };

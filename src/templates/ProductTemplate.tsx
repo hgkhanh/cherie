@@ -17,10 +17,8 @@ const ProductTemplate = (props: any) => {
         <title>{`${product.name} | ${config.siteTitle}`}</title>
       </Helmet>
       <SEO productPath={slug} productData={product} productSEO />
-      <div className="pageContainer">
-        <Product product={product} />
-        <Recommendation excludeId={data.markdownRemark.id} />
-      </div>
+      <Product product={product} />
+      <Recommendation excludeId={data.markdownRemark.id} />
     </Layout>
   );
 }
