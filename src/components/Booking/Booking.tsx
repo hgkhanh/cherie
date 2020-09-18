@@ -96,47 +96,18 @@ const Booking = () => {
     });
   }
 
+  // Off sunday, monday, offDays, holiday, before opening day
   const disabledDate = (current) => {
     return current && current < moment().endOf('day')
-      || current.weekday() === 0 || isOffDay(current)
+      || current.weekday() === 0 // Sunday off
+      || current.weekday() === 1 // Monday off
+      || isOffDay(current)
       || isBeforeOpening(current);
   }
 
   return (
     <div className={styles.container}>
       <h2 className="uppercase">Let's make our first date!</h2>
-      {/* <h3 className="uppercase">We kindly ask that you read the information<br />
-            below before booking an appointment with us</h3>
-      <br />
-      <ul className={styles.bullet}>
-        <li>
-          Our gowns are all made-to-order. These would take 4-6 weeks to be
-          ready, so the “sweet spot” is to purchase 3-4 months before your
-          wedding, especially if it requires alteration. In case of rush
-          order, there will be a rushing fee of 150 euros.
-            </li>
-        <li>
-          Our price range is 1,000 - 2,000 euros. With the majority of
-          gowns range from 1,200 - 1,600 euros.
-            </li>
-        <li>
-          Sample sizes range from 36 - 44, but we have creative ways to fit
-          up to size 46-48. If you are size 46 or up, kindly email us at
-              <b>&nbsp;&nbsp;info@cheriebridal.fi&nbsp;</b>
-              beforehand so we could show you the styles that would fit
-              comfortably. Don’t know your size? Please check the size guide
-              <Link to="/size-guide" >
-            <span className="link">&nbsp;here&nbsp;</span>
-          </Link>.
-            </li>
-        <li>
-          We highly recommend that you read our
-              <Link to="/faq" >
-            <span className="link">&nbsp;FAQ&nbsp;</span>
-          </Link>
-              before booking an appointment.
-            </li>
-      </ul> */}
       <div className={styles.form}>
         <h3 className="noBtmMargin">
           Pick a date and time

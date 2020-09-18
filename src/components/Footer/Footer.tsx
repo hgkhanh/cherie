@@ -34,9 +34,9 @@ const Footer = () => {
       </p>
       <p>
         Opening hours<br />
-        Mon-Fri: 12 - 19 <br />
+        Tue-Fri: 12 - 19 <br />
         Sat: 12 - 17<br />
-        Sun: Closed
+        Sun &amp; Mon: Closed
       </p>
     </footer >
   );
