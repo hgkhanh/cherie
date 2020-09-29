@@ -155,7 +155,7 @@ const About = () => {
       {/* Banner 6: Text on Hero */}
       <Hero overlay={false} hasScroll={false} isParallax={false}
         imageWide={data.banner6wide} mobileFullHeight={true} verticalAlign='top'>
-        <h1 className='uppercase darkTone heavyText centerAlign' style={{ marginTop: '60px' }}>Feel special in your own way</h1>
+        <h1 className='uppercase darkTone centerAlign' style={{ marginTop: '60px' }}>Feel special in your own way</h1>
       </Hero>
     </React.Fragment>
   );

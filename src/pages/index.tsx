@@ -119,9 +119,9 @@ const HomePage = ({ location }) => {
       <h1 className='visuallyHidden'>Home</h1>
       <Hero overlay={false} hasScroll={false} isParallax={false}
         imageWide={data.bannerTop} imageVertical={data.bannerTopMobile} mobileFullHeight={true} verticalAlign='bottom'>
-        <h2 className='uppercase centerAlign darkerText heavyText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h2>
+        <h2 className='uppercase centerAlign darkerText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h2>
         <Link to='/stylist-pick'>
-          <Button type='primary' block style={{ minWidth: '150px' }}>
+          <Button type='primary' block>
             Get started
           </Button>
         </Link>
@@ -131,9 +131,9 @@ const HomePage = ({ location }) => {
       </RevealAnimation>
       <Hero overlay={true} overlayAlpha={0.4} hasScroll={false} isParallax={false} imageWide={data.bannerStory}
         mobileFullHeight={true} verticalAlign='top'>
-        <h2 className='uppercase darkTone heavyText centerAlign' style={{ marginBottom: '1em' }}>We are here for you</h2>
+        <h2 className='uppercase darkTone centerAlign' style={{ marginBottom: '1em' }}>We are here for you</h2>
         <Link to='/about'>
-          <Button type='primary' block style={{ minWidth: '150px' }}>
+          <Button type='primary' block>
             Our story
           </Button>
         </Link>
@@ -156,9 +156,9 @@ const HomePage = ({ location }) => {
       <hr className='divider' />
       <Hero overlay={true} overlayAlpha={0.4} hasScroll={false} isParallax={false} imageWide={data.bannerBottom} mobileFullHeight={true}
         verticalAlign='bottom'>
-        <h2 className='uppercase darkTone heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h2>
+        <h2 className='uppercase darkTone centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h2>
         <Link to='/stylist-pick'>
-          <Button type='primary' block style={{ minWidth: '150px' }}>
+          <Button type='primary' block>
             Get started
           </Button>
         </Link>

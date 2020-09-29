@@ -154,7 +154,7 @@ const WrappedForm = ({ form }: { form: FormComponentProps['form'] }) => {
                     </Form.Item>
                 </Input.Group>
                 <Form.Item className={styles.buttonContainer}>
-                    <Button block style={{ width: 150 }} htmlType="submit" loading={loading}>Submit</Button>
+                    <Button block style={{ width: 'auto' }} htmlType="submit" loading={loading}>Submit</Button>
                 </Form.Item>
             </Form >
         )

@@ -1,5 +1,13 @@
 @import '../../styles/normalize';
 
+@font-face {
+  font-family: "FreightDispProLight";
+  src: url("../../../static/fonts/3AE99E_0_0.eot");
+  src: url("../../../static/fonts/3AE99E_0_0.eot?#iefix") format("embedded-opentype"),
+    url("../../../static/fonts/3AE99E_0_0.woff2") format("woff2"), url("../../../static/fonts/3AE99E_0_0.woff") format("woff"),
+    url("../../../static/fonts/3AE99E_0_0.ttf") format("truetype");
+}
+
 /* START Typograhpy BlinkMacSystemFont*/
 * {
   font-family: "Avenir"-apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Inter",
@@ -14,19 +22,19 @@ button {
 @include desktopUp {
 
   h1 {
-    font-size: 4em;
-  }
-
-  h2 {
     font-size: 3em;
   }
 
-  h3 {
+  h2 {
     font-size: 2em;
   }
 
-  h4 {
+  h3 {
     font-size: 1.5em;
+  }
+
+  h4 {
+    font-size: 1.25em;
   }
 
   span,
@@ -58,6 +66,12 @@ span {
   }
 }
 
+h1,
+h2 {
+  font-family: "FreightDispProLight";
+  font-weight: lighter;
+}
+
 .darkTone {
 
   h1,
@@ -86,7 +100,8 @@ span {
   }
 }
 
-main, body {
+main,
+body {
   background: $color-background;
   line-height: 1.75;
 }
@@ -213,7 +228,7 @@ blockquote cite:before {
 }
 
 .uppercase {
-  text-transform: uppercase !important;
+  text-transform: capitalize !important;
 }
 
 .noBtmMargin {
@@ -388,7 +403,11 @@ button:focus {
 }
 
 button.ant-btn {
-  text-transform: uppercase;
+  text-transform: capitalize;
+
+  @include desktopUp {
+    padding: 5px 20px;
+  }
 }
 
 // /* Custom UI Component */

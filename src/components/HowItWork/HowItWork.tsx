@@ -61,7 +61,7 @@ const HowItWork = () => {
                 </div>
             </div>
             <Link to='/booking'>
-                <Button type='primary' style={{ width: '150px' }}>
+                <Button type='primary'>
                     Get Started
                 </Button>
             </Link>
