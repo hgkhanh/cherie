@@ -186,15 +186,15 @@ const Header = ({ location }) => {
                 <Icon type="calendar" style={{ fontSize: '20px' }} />
               </a>
             )}
-            {false && (width >= 600) && (
+            {(width >= 600) && (
               <nav>
                 <ul className="horizontalList">
                   <li>
                     <a href="/stylist-pick">Stylist Pick</a>
                   </li>
-                  <li>
-                    <a href="/booking">Book an Appointment</a>
-                  </li>
+                  {/*<li>*/}
+                  {/*  <a href="/booking">Book an Appointment</a>*/}
+                  {/*</li>*/}
                 </ul>
               </nav>
             )}
