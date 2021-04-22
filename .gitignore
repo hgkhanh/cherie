@@ -1,7 +1,10 @@
-.env*
+### IDE ###
+.idea
 ### Netlify ###
 functions/*
 ### Node ###
+# Local data
+.env*
 # Logs
 logs
 *.log
