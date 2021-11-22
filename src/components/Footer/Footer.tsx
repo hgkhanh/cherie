@@ -22,24 +22,32 @@ const Footer = () => {
         </a>
       </div>
       <div>
-        <a href="//www.instagram.com/cheriebridal/" target="_blank" rel="noopener">
+        <a
+          href="//www.instagram.com/cheriebridal/"
+          target="_blank"
+          rel="noopener"
+        >
           <Icon type="instagram" />
         </a>
       </div>
       <p>
-        Chérie bridal shop<br />
+        Chérie bridal shop
+        <br />
         {/*Sepänkatu 15, 00150, Helsinki<br />*/}
-        p: 0505 116 776<br />
+        p: 0505 116 776
+        <br />
         e: info@cheriebridal.fi
       </p>
       <p>
-        Opening hours<br />
+        Opening hours
+        <br />
         Tue-Fri: 12 - 19 <br />
-        Sat: 12 - 17<br />
+        Sat: 12 - 17
+        <br />
         Sun &amp; Mon: Closed
       </p>
-    </footer >
+    </footer>
   );
-}
+};
 
 export default Footer;
