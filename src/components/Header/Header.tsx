@@ -149,9 +149,9 @@ const Header = ({ location }) => {
                 <h2>Collection</h2>
               </Link>
               {/*<Link to="/booking"><h2>Booking</h2></Link>*/}
-              <Link to="/special">
-                <h2>Special Offers</h2>
-              </Link>
+              {/*<Link to="/special">*/}
+              {/*  <h2>Special Offers</h2>*/}
+              {/*</Link>*/}
               <Link to="/stylist-pick">
                 <h2>Stylist Pick</h2>
               </Link>
