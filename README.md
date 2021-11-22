@@ -2,17 +2,17 @@ Static e-commerce site for Cherie Bridal
 Live at https://www.cheriebridal.fi
 
 # Tech stack
-- Gatsby ( Static site generator based on React)
+- Gatsby
 - Netlify
+- Firebase
 
 # Library, tooling and framework
-- Gatsby advanced starter
+- React
 - Ant Design framework
-- React Spring
 - Netlify CMS
 - Netlify Lamda
 - Cloudinary  (Image hosting, transformation)
-- Firebase  (Booking data)
+- Firebase Cloud Firestore (Booking data)
 - Sendgrid  (Email automation)
 
 # Author

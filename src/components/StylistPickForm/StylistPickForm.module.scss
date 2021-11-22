@@ -1,19 +1,98 @@
 .container {
     background-color: #c79479;
-    padding: 40px 0;
+    padding: 2em 0;
+
+    @include desktopUp {
+        padding: 4em 0;
+    }
 }
 
 .inlineInput {
     margin: 0;
-    padding: 0 10px;
+    padding: 0;
+
+    &:global(.underline) {
+        &:before {
+            width: 90%;
+            background-color: $font-color-white;
+        }
+
+        &:hover::before {
+            width: 0;
+        }
+    }
 }
 
 .inlineLabel {
     display: inline-block;
+    padding-right: 10px;
     overflow: hidden;
     line-height: 40px;
     white-space: nowrap;
     text-align: right;
     vertical-align: middle;
-    color: #fff;
+    color: $font-color-white;
+}
+
+.selectOption {
+    width: 150px;
+
+    @include phoneOnly {
+        width: 90px;
+    }
+
+    :global(.ant-select-dropdown-menu),
+    :global(.ant-select-dropdown-menu-item) {
+        background-color: $color-white;
+    }
+}
+
+.formContainer {
+    :global(.ant-select-selection) {
+        background-color: transparent;
+        border: none;
+
+        :global(.ant-select-selection__placeholder),
+        :global(.ant-select-selection-selected-value),
+        :global(.ant-select-selection-selected-value) {
+            color: $font-color-white;
+            font-size: 1.2em;
+            font-weight: 200;
+        }
+
+        :global(.ant-select-selection__placeholder) {
+            text-align: center;
+            width: 100%
+        }
+
+        :global(.ant-select-selection__rendered) {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        :global(.ant-select-arrow) {
+            display: none;
+        }
+    }
+}
+
+.textInput {
+    width: auto;
+    min-width: 40px;
+    background: transparent;
+    border: none;
+    color: $font-color-white;
+    font-size: 1.2em;
+    font-weight: 200;
+
+    &::placeholder {
+        color: $font-color-white;
+    }
+}
+
+.buttonContainer {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
 }

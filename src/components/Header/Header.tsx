@@ -123,9 +123,11 @@ const Header = ({ location }) => {
         <div id="headerSensor" className={styles.sensor} />
       </VisibilitySensor>
       <header className={getHeaderClassNames()}>
-        <div className={styles.ribbon}>
-          <span>FREE SHIPPING - SPECIAL PRICE UP TO 50% OFF</span>
-        </div>
+        {/* <div className={styles.ribbon}>
+          <Link to="/special">
+            <span className={isHeaderVisible ? 'uppercase darkTone' : 'uppercase'}>Free Shipping - Special price up to 50% Off</span>
+          </Link>
+        </div> */}
         {false && activeEnv !== 'production' &&
           <div className={styles.ribbon}>
             <span>Development</span>
@@ -141,8 +143,9 @@ const Header = ({ location }) => {
               visible={drawerOpen}
             >
               <Link to="/collection"><h2>Collection</h2></Link>
-              <Link to="/booking"><h2>Booking</h2></Link>
+              {/*<Link to="/booking"><h2>Booking</h2></Link>*/}
               <Link to="/special"><h2>Special Offers</h2></Link>
+              <Link to="/stylist-pick"><h2>Stylist Pick</h2></Link>
               {/* <Link to="/blog"><h2>Blog</h2></Link> */}
               <Link to="/about"><h2>About</h2></Link>
             </Drawer>
@@ -157,9 +160,9 @@ const Header = ({ location }) => {
                   <li>
                     <a href="/collection">Collection</a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="/special">Special</a>
-                  </li>
+                  </li> */}
                   {/* <li>
                     <a href="/blog">Blog</a>
                   </li> */}
@@ -178,7 +181,7 @@ const Header = ({ location }) => {
           </div>
 
           <div className={`${styles.block} ${styles.fill} ${width < 900 ? styles.transparent : ''}`}>
-            {(width < 600) && (
+            {false && (width < 600) && (
               <a href="/booking">
                 <Icon type="calendar" style={{ fontSize: '20px' }} />
               </a>
@@ -187,8 +190,11 @@ const Header = ({ location }) => {
               <nav>
                 <ul className="horizontalList">
                   <li>
-                    <a href="/booking">Book an Appointment</a>
+                    <a href="/stylist-pick">Stylist Pick</a>
                   </li>
+                  {/*<li>*/}
+                  {/*  <a href="/booking">Book an Appointment</a>*/}
+                  {/*</li>*/}
                 </ul>
               </nav>
             )}

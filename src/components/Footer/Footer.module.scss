@@ -1,22 +1,35 @@
 .footer {
+  margin-top: 1em;
+
+  @include desktopUp {
+    margin-top: 2em;
+  }
+
   text-align: center;
-  // background: $color-background;
-  // background: #C79479;
+  background: $color-background-dark;
   padding-top: 20px;
   padding-bottom: 40px;
   position: relative;
-  h3 {
-    color: #727272;
+
+  h4 {
+    color: $font-color-gray;
     font-weight: 300;
+  }
+
+  p {
+    color: $font-color-gray;
   }
 }
 
 .linkContainer {
   display: flex;
   justify-content: center;
+
   a {
+    color: $font-color-gray;
     padding-right: 20px;
   }
+
   a:last-child {
     padding-right: 0;
   }

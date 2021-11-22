@@ -4,7 +4,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby';
 import { Icon, Button } from 'antd';
 import styles from './HowItWork.module.scss';
 
-const ValueBlock = () => {
+const HowItWork = () => {
     const data = useStaticQuery(graphql`
         query {
             background1: file(name: {eq: "Banner-03"}) {
@@ -27,13 +27,13 @@ const ValueBlock = () => {
 
     return (
         <div className={styles.container}>
-            <h3 className='uppercase heavyText'>How It Work</h3>
+            <h2 className='uppercase heavyText'>How It Work</h2>
             <div className={styles.step}>
                 <div className={styles.icon}>
                     <Icon type='form' style={{ fontSize: '40px' }} />
                 </div>
                 <div>
-                    <p>Start: Anser a few questions about your weddings, preference stles or special requirements</p>
+                    <p>Start: Answer a few questions about your weddings, preference styles or special requirements</p>
                 </div>
             </div>
             <div className={styles.step}>
@@ -61,7 +61,7 @@ const ValueBlock = () => {
                 </div>
             </div>
             <Link to='/booking'>
-                <Button type='primary' style={{ width: '150px' }}>
+                <Button type='primary'>
                     Get Started
                 </Button>
             </Link>
@@ -70,4 +70,4 @@ const ValueBlock = () => {
 };
 
 
-export default ValueBlock;
+export default HowItWork;

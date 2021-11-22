@@ -1,28 +1,41 @@
-$color-background: #f6f0ec;
+$color-background: #fffaf8;
+$color-background-alternate: #f7f5ec;
+$color-background-dark: #333333;
 $color-brand-primary: #c79479;
 $color-brand-light: #e8c7b5;
+$color-gray: #d9d9d9;
+$color-white: #fff;
 
 
 $font-color-dark: #1f1f1f;
 $font-color: #434343;
 $font-color-gray: #8c8c8c;
+$font-color-white: #fafafa;
 
-$color-danger: #a8071a;
-$color-success: #237804;
+$color-danger: #d9534f;
+$color-success: #5cb85c;
 
 // 3 break point: 600, 900, 1200
-@mixin phone-only {
-    @media (max-width: 599px) { @content; }
+@mixin phoneOnly {
+    @media (max-width: 599px) {
+        @content;
+    }
 }
 
-@mixin tablet-potrait-up {
-    @media (min-width: 600px) { @content; }
+@mixin tabletPotraitUp {
+    @media (min-width: 600px) {
+        @content;
+    }
 }
 
-@mixin tablet-landscape-up {
-    @media (min-width: 900px) { @content; }
+@mixin tabletLandscapeUp {
+    @media (min-width: 900px) {
+        @content;
+    }
 }
 
-@mixin desktop-up {
-    @media (min-width: 1200px) { @content; }
+@mixin desktopUp {
+    @media (min-width: 1200px) {
+        @content;
+    }
 }

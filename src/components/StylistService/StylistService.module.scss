@@ -1,6 +1,7 @@
 .checkList {
-    margin: 40px 0;
+    margin: 40px auto;
     padding: 0 40px;
+    max-width: 400px;
 
     .item {
         display: flex;
@@ -15,6 +16,24 @@
 
         span {
             text-align: left;
+        }
+    }
+}
+
+.collapse {
+    background: transparent;
+    .collapseItem {
+        border: none;
+
+        :global(.ant-collapse-header) {
+            color: $font-color;
+            font-size: 1.2em;
+        }
+
+        :global(.ant-collapse-content) {
+            p {
+                color: $font-color-gray;
+            }
         }
     }
 }

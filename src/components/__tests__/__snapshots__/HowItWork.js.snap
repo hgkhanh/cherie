@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HowItWork renders correctly 1`] = `
+<div
+  className="container"
+>
+  <h2
+    className="uppercase heavyText"
+  >
+    How It Work
+  </h2>
+  <div
+    className="step"
+  >
+    <div
+      className="icon"
+    >
+      <i
+        aria-label="icon: form"
+        className="anticon anticon-form"
+        style={
+          Object {
+            "fontSize": "40px",
+          }
+        }
+      >
+        <svg
+          aria-hidden="true"
+          className=""
+          data-icon="form"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <path
+            d="M904 512h-56c-4.4 0-8 3.6-8 8v320H184V184h320c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V520c0-4.4-3.6-8-8-8z"
+          />
+          <path
+            d="M355.9 534.9L354 653.8c-.1 8.9 7.1 16.2 16 16.2h.4l118-2.9c2-.1 4-.9 5.4-2.3l415.9-415c3.1-3.1 3.1-8.2 0-11.3L785.4 114.3c-1.6-1.6-3.6-2.3-5.7-2.3s-4.1.8-5.7 2.3l-415.8 415a8.3 8.3 0 0 0-2.3 5.6zm63.5 23.6L779.7 199l45.2 45.1-360.5 359.7-45.7 1.1.7-46.4z"
+          />
+        </svg>
+      </i>
+    </div>
+    <div>
+      <p>
+        Start: Answer a few questions about your weddings, preference styles or special requirements
+      </p>
+    </div>
+  </div>
+  <div
+    className="step"
+  >
+    <div
+      className="icon"
+    >
+      <i
+        aria-label="icon: tag"
+        className="anticon anticon-tag"
+        style={
+          Object {
+            "fontSize": "40px",
+          }
+        }
+      >
+        <svg
+          aria-hidden="true"
+          className=""
+          data-icon="tag"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <path
+            d="M938 458.8l-29.6-312.6c-1.5-16.2-14.4-29-30.6-30.6L565.2 86h-.4c-3.2 0-5.7 1-7.6 2.9L88.9 557.2a9.96 9.96 0 0 0 0 14.1l363.8 363.8c1.9 1.9 4.4 2.9 7.1 2.9s5.2-1 7.1-2.9l468.3-468.3c2-2.1 3-5 2.8-8zM459.7 834.7L189.3 564.3 589 164.6 836 188l23.4 247-399.7 399.7zM680 256c-48.5 0-88 39.5-88 88s39.5 88 88 88 88-39.5 88-88-39.5-88-88-88zm0 120c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"
+          />
+        </svg>
+      </i>
+    </div>
+    <div>
+      <p>
+        Refine: Receive our stylist picks, from that we can discuss further about the styles and alteration if needed
+      </p>
+    </div>
+  </div>
+  <div
+    className="step"
+  >
+    <div
+      className="icon"
+    >
+      <i
+        aria-label="icon: shopping"
+        className="anticon anticon-shopping"
+        style={
+          Object {
+            "fontSize": "40px",
+          }
+        }
+      >
+        <svg
+          aria-hidden="true"
+          className=""
+          data-icon="shopping"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <path
+            d="M832 312H696v-16c0-101.6-82.4-184-184-184s-184 82.4-184 184v16H192c-17.7 0-32 14.3-32 32v536c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V344c0-17.7-14.3-32-32-32zm-432-16c0-61.9 50.1-112 112-112s112 50.1 112 112v16H400v-16zm392 544H232V384h96v88c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-88h224v88c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-88h96v456z"
+          />
+        </svg>
+      </i>
+    </div>
+    <div>
+      <p>
+        Order: Placing order if you decide to go with us
+      </p>
+    </div>
+  </div>
+  <div
+    className="step"
+  >
+    <div
+      className="icon"
+    >
+      <i
+        aria-label="icon: smile"
+        className="anticon anticon-smile"
+        style={
+          Object {
+            "fontSize": "40px",
+          }
+        }
+      >
+        <svg
+          aria-hidden="true"
+          className=""
+          data-icon="smile"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <path
+            d="M288 421a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm352 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0zM512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm263 711c-34.2 34.2-74 61-118.3 79.8C611 874.2 562.3 884 512 884c-50.3 0-99-9.8-144.8-29.2A370.4 370.4 0 0 1 248.9 775c-34.2-34.2-61-74-79.8-118.3C149.8 611 140 562.3 140 512s9.8-99 29.2-144.8A370.4 370.4 0 0 1 249 248.9c34.2-34.2 74-61 118.3-79.8C413 149.8 461.7 140 512 140c50.3 0 99 9.8 144.8 29.2A370.4 370.4 0 0 1 775.1 249c34.2 34.2 61 74 79.8 118.3C874.2 413 884 461.7 884 512s-9.8 99-29.2 144.8A368.89 368.89 0 0 1 775 775zM664 533h-48.1c-4.2 0-7.8 3.2-8.1 7.4C604 589.9 562.5 629 512 629s-92.1-39.1-95.8-88.6c-.3-4.2-3.9-7.4-8.1-7.4H360a8 8 0 0 0-8 8.4c4.4 84.3 74.5 151.6 160 151.6s155.6-67.3 160-151.6a8 8 0 0 0-8-8.4z"
+          />
+        </svg>
+      </i>
+    </div>
+    <div>
+      <p>
+        Receive: Order arrives, you can pick up at our store or have it send to your home
+      </p>
+    </div>
+  </div>
+  <a
+    href="/booking"
+  >
+    <button
+      className="ant-btn ant-btn-primary"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        Get Started
+      </span>
+    </button>
+  </a>
+</div>
+`;

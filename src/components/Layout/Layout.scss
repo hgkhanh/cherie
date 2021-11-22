@@ -1,7 +1,55 @@
+@import '../../styles/normalize';
+
+@font-face {
+  font-family: "FreightDispProLight";
+  src: url("../../../static/fonts/3AE99E_0_0.eot");
+  src: url("../../../static/fonts/3AE99E_0_0.eot?#iefix") format("embedded-opentype"),
+    url("../../../static/fonts/3AE99E_0_0.woff2") format("woff2"), url("../../../static/fonts/3AE99E_0_0.woff") format("woff"),
+    url("../../../static/fonts/3AE99E_0_0.ttf") format("truetype");
+}
+
 /* START Typograhpy BlinkMacSystemFont*/
 * {
-  font-family: "Avenir" -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Inter",
+  font-family: "Avenir"-apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Inter",
     "Helvetica Neue", sans-serif;
+}
+
+button {
+  height: auto;
+  padding: 0.5em;
+}
+
+@include desktopUp {
+
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  h4 {
+    font-size: 1.25em;
+  }
+
+  span,
+  p,
+  li,
+  dt,
+  dd,
+  a {
+    font-size: 1.15em;
+  }
+
+  button:global(.ant-btn) {
+    padding: 0.5em 1em;
+    height: auto;
+  }
 }
 
 h1,
@@ -12,9 +60,16 @@ h5,
 h6,
 span {
   font-weight: 400;
+
   &.heavyText {
     font-weight: 600;
   }
+}
+
+h1,
+h2 {
+  font-family: "FreightDispProLight";
+  font-weight: lighter;
 }
 
 .darkTone {
@@ -27,22 +82,27 @@ span {
   h6,
   p,
   a {
-    color: #fff;
+    color: $font-color-white;
   }
 
   :not(.ant-btn:hover) {
     span {
-      color: #fff;
+      color: $font-color-white;
     }
   }
 }
 
-.pageContainer {
-  // background: $color-background;
+.textContent {
+  margin: 10px;
+
+  @media screen and (min-width: 900px) {
+    margin: 0;
+  }
 }
 
-main {
-  // background: $color-background;
+main,
+body {
+  background: $color-background;
   line-height: 1.75;
 }
 
@@ -69,7 +129,7 @@ main {
     }
 
     &.darkTone {
-      color: #fff;
+      color: $font-color-white;
     }
   }
 
@@ -168,7 +228,7 @@ blockquote cite:before {
 }
 
 .uppercase {
-  text-transform: uppercase !important;
+  text-transform: capitalize !important;
 }
 
 .noBtmMargin {
@@ -237,7 +297,7 @@ hr.divider {
   text-align: left;
   padding: 20px;
 
-  @include tablet-potrait-up {
+  @include tabletPotraitUp {
     padding: 20px 80px;
   }
 
@@ -296,6 +356,10 @@ button:focus {
 /* END Global Layout */
 
 /* Responsive */
+.sensor {
+  height: 1px;
+  background: $color-background;
+}
 
 /* //Responsive */
 
@@ -329,7 +393,7 @@ button:focus {
 
   h1,
   .ant-drawer-close {
-    color: #fff;
+    color: $font-color-white;
     left: 0;
   }
 
@@ -339,7 +403,25 @@ button:focus {
 }
 
 button.ant-btn {
-  text-transform: uppercase;
+  text-transform: capitalize;
+
+  @include desktopUp {
+    padding: 5px 20px;
+  }
 }
 
 // /* Custom UI Component */
+
+/* SEO */
+.visuallyHidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(0px 0px 99.9% 99.9%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  padding: 0;
+  border: 0;
+}
+
+// /* SEO */

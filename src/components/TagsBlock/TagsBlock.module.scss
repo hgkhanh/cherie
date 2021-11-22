@@ -15,12 +15,12 @@
             padding: 5px 0;
             h3 {
                 text-transform: uppercase;
-                color: #fff;
+                color: $font-color-white;
             }
         }
     }
 
-    @include tablet-potrait-up {
+    @include tabletPotraitUp {
         flex-direction: row;
 
         .item {
@@ -29,7 +29,7 @@
         }
     }
 
-    @include desktop-up {
+    @include desktopUp {
         .item {
             height: 600px;
         }

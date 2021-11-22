@@ -1,39 +1,37 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import Helmet from "react-helmet";
-import Layout from "../layout";
+import { Helmet } from 'react-helmet';
 import siteConfig from "../../data/SiteConfig";
 import ProductList from "../components/ProductList";
 import { Spring, config } from 'react-spring/renderprops';
+import Layout from "../components/Layout";
 
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext;
   const products = data.allMarkdownRemark.edges;
   return (
     <Layout location={location}>
-      <div className="grid wide" >
-        <Helmet title={`${tag} Collection | ${siteConfig.siteTitle}`} />
-        <Spring
-          delay={300}
-          config={config.default}
-          from={{
-            opacity: 0,
-            transform: "translateY(10px)"
-          }}
-          to={{
-            opacity: 1,
-            transform: "translateY(0px)"
-          }}
-        >
-          {props => (
-            <React.Fragment>
-              <h1 className="sectionTitle" style={props}>{tag} collection</h1>
-            </React.Fragment>
-          )
-          }
-        </Spring>
-        <ProductList products={products} />
-      </div>
+      <Helmet title={`${tag} Collection | ${siteConfig.siteTitle}`} />
+      <Spring
+        delay={300}
+        config={config.default}
+        from={{
+          opacity: 0,
+          transform: "translateY(10px)"
+        }}
+        to={{
+          opacity: 1,
+          transform: "translateY(0px)"
+        }}
+      >
+        {props => (
+          <React.Fragment>
+            <h1 className="sectionTitle" style={props}>{tag} collection</h1>
+          </React.Fragment>
+        )
+        }
+      </Spring>
+      <ProductList products={products} />
     </Layout>
   );
 }

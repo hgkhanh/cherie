@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import siteConfig from '../../data/SiteConfig';
-import Layout from '../layout';
 import { Row, Col, Button } from 'antd';
 import RevealAnimation from '../shared/RevealAnimation';
 import ProductList from '../components/ProductList';
@@ -12,13 +11,22 @@ import ValueBlock from '../components/ValueBlock';
 import HowItWork from '../components/HowItWork';
 import TagsBlock from '../components/TagsBlock';
 // import CampaignModal from '../components/CampaignModal';
+import Layout from "../components/Layout";
 
 const HomePage = ({ location }) => {
   const data = useStaticQuery(graphql`
     query {
-      bannerTop: file(name: {eq: "Home-Page-Banner-Top"}) {
+      bannerTopMobile: file(name: {eq: "Home-Page-Banner-Top"}) {
         childCloudinaryAsset {
-          fluid(maxWidth: 2400) {
+          fluid(maxWidth: 600) {
+            ...CloudinaryAssetFluid
+          }
+        }
+      }
+
+      bannerTop: file(name: {eq: "Home-Page-Banner-Top-Wide-2"}) {
+        childCloudinaryAsset {
+          fluid(maxWidth: 2000) {
             ...CloudinaryAssetFluid
           }
         }
@@ -26,7 +34,7 @@ const HomePage = ({ location }) => {
 
       bannerStory: file(name: {eq: "Home-Page-Banner-Story"}) {
         childCloudinaryAsset {
-          fluid(maxWidth: 2400) {
+          fluid(maxWidth: 1600) {
             ...CloudinaryAssetFluid
           }
         }
@@ -92,70 +100,69 @@ const HomePage = ({ location }) => {
     }
   }, [view]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      console.log('Showing modal');
-      if (!view) {
-        setModalActive(true);
-      } else {
-        console.log('User already see this modal. Abort!');
-      }
-    }, 5000);
-  }, []);
+  // Modal
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     console.log('Showing modal');
+  //     if (!view) {
+  //       setModalActive(true);
+  //     } else {
+  //       console.log('User already see this modal. Abort!');
+  //     }
+  //   }, 5000);
+  // }, []);
 
   return (
     <Layout location={location}>
       {/* <CampaignModal modalBackground={data.modalBackground} visible={modalActive} setVisible={setModalActive} /> */}
-      <div className='pageContainer'>
-        <Helmet title={`Home | ${siteConfig.siteTitle}`} />
-        <Hero overlay={false} hasScroll={false} isParallax={false}
-          imageWide={data.bannerTop} mobileFullHeight={true} verticalAlign='bottom'>
-          <h1 className='uppercase centerAlign darkerText heavyText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h1>
-          <Link to='/contact'>
-            <Button type='primary' block style={{ width: '150px' }}>
-              Get started
+      <Helmet title={`Home | ${siteConfig.siteTitle}`} />
+      <h1 className='visuallyHidden'>Home</h1>
+      <Hero overlay={false} hasScroll={false} isParallax={false}
+        imageWide={data.bannerTop} imageVertical={data.bannerTopMobile} mobileFullHeight={true} verticalAlign='bottom'>
+        <h2 className='uppercase centerAlign darkerText' style={{ marginBottom: '1em' }}>Ready for the bridal Revolution?</h2>
+        <Link to='/stylist-pick'>
+          <Button type='primary' block>
+            Get started
           </Button>
-          </Link>
-        </Hero>
-        <RevealAnimation opacity transform>
-          <ValueBlock />
-        </RevealAnimation>
-        <Hero overlay={true} overlayAlpha={0.2} hasScroll={false} isParallax={false} imageWide={data.bannerStory}
-          mobileFullHeight={true} verticalAlign='top'>
-          <h1 className='uppercase darkTone heavyText' style={{ marginBottom: '1em' }}>We are here for you</h1>
-          <Link to='/about'>
-            <Button type='primary' block style={{ width: '150px' }}>
-              Our story
+        </Link>
+      </Hero>
+      <RevealAnimation opacity transform>
+        <ValueBlock />
+      </RevealAnimation>
+      <Hero overlay={true} overlayAlpha={0.4} hasScroll={false} isParallax={false} imageWide={data.bannerStory}
+        mobileFullHeight={true} verticalAlign='top'>
+        <h2 className='uppercase darkTone centerAlign' style={{ marginBottom: '1em' }}>We are here for you</h2>
+        <Link to='/about'>
+          <Button type='primary' block>
+            Our story
           </Button>
-          </Link>
-        </Hero>
-        <RevealAnimation opacity transform>
-          <div className='gridWrapper'>
-            <div className='grid narrow'>
-              <HowItWork />
-            </div>
+        </Link>
+      </Hero>
+      <RevealAnimation opacity transform>
+        <div className='gridWrapper'>
+          <div className='grid narrow'>
+            <HowItWork />
           </div>
-        </RevealAnimation>
-        <TagsBlock />
-        <hr className='divider' />
-        <div className='sectionTitle centerAlign'>
-          <h4 className='uppercase'>Get inspired</h4>
-          <h2 className='heavyText'>@cheriebridal</h2>
         </div>
-        <InstaSlider />
-        <hr className='divider' />
-        <hr className='divider' />
-        <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.bannerBottom} mobileFullHeight={true}
-          verticalAlign='bottom'>
-          <h1 className='uppercase heavyText centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h1>
-          <Link to='/contact'>
-            <Button type='primary' block style={{ width: '150px' }}>
-              Get started
-          </Button>
-          </Link>
-        </Hero>
-        <hr className='divider' />
+      </RevealAnimation>
+      <TagsBlock />
+      <hr className='divider' />
+      <div className='sectionTitle centerAlign'>
+        <h4 className='uppercase'>Get inspired</h4>
+        <h2 className='heavyText'>@cheriebridal</h2>
       </div>
+      <InstaSlider />
+      <hr className='divider' />
+      <hr className='divider' />
+      <Hero overlay={true} overlayAlpha={0.4} hasScroll={false} isParallax={false} imageWide={data.bannerBottom} mobileFullHeight={true}
+        verticalAlign='bottom'>
+        <h2 className='uppercase darkTone centerAlign' style={{ marginBottom: '1em' }}>Finding 'the' dress shouldn't be hard</h2>
+        <Link to='/stylist-pick'>
+          <Button type='primary' block>
+            Get started
+          </Button>
+        </Link>
+      </Hero>
     </Layout>
   );
 };

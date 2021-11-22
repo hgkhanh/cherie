@@ -1,3 +1,4 @@
+
 .hero {
   align-items: center;
   background-size: cover;
@@ -8,8 +9,15 @@
   padding: 10px;
   position: relative;
 
-  &.mobileFullHeight {
-    min-height: calc(100vh - 80px);
+  @include phoneOnly {
+    &.mobileFullHeight {
+      min-height: calc(100vh - 160px);
+    }
+  }
+
+  @include tabletPotraitUp {
+    min-height: 500px;
+    height: 500px;
   }
 }
 
@@ -22,6 +30,7 @@
 
 .contentWrapper {
   position: relative;
+
   .content {
     flex: 1 0 100%;
     display: flex;
@@ -29,13 +38,27 @@
     align-items: center;
     justify-content: center;
     padding: 0 30px;
+
+    h1,
+    h2 {
+      font-size: 3em;
+
+      @include desktopUp {
+        font-size: 4em;
+      }
+    }
+
+
   }
-  &.top, &.bottom {
+
+  &.top,
+  &.bottom {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+
     .filler {
-      flex-grow: 6;
+      flex-grow: 4;
     }
   }
 
@@ -44,7 +67,7 @@
       flex-grow: 1;
     }
   }
-  
+
 }
 
 .scrollButton {
@@ -55,7 +78,7 @@
   height: 50px;
   border: none;
   border-radius: 50%;
-  background: #fff;
+  background: $color-white;
   color: #c1a081;
   cursor: pointer;
   text-align: center;

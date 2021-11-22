@@ -1,10 +1,10 @@
 import React from "react";
-import Helmet from "react-helmet";
+import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from "gatsby";
-import Layout from "../layout";
 import SEO from "../components/SEO";
 import Post from "../components/Post";
 import config from "../../data/SiteConfig";
+import Layout from "../components/Layout";
 
 const PostTemplate = (props: any) => {
   const { data, pageContext } = props;

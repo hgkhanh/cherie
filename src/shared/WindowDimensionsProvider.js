@@ -24,7 +24,7 @@ const WindowDimensionsProvider = ({ children }) => {
     }, []);
 
     return (
-        <WindowDimensionsContext.Provider value={ dimensions }>
+        <WindowDimensionsContext.Provider value={dimensions}>
             {children}
         </WindowDimensionsContext.Provider>
     );

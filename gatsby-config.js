@@ -38,6 +38,12 @@ module.exports = {
     }
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: '533705043932948',
+      },
+    },
     `gatsby-plugin-netlify-cms-paths`,
     {
       resolve: `gatsby-source-instagram`,

@@ -1,7 +1,7 @@
 .list {
   padding: 0 10px;
 
-  @include tablet-potrait-up {
+  @include tabletPotraitUp {
     padding: 0 40px;
   }
 
@@ -12,18 +12,14 @@
 .card {
   padding: 10px;
 
-  @include tablet-potrait-up {
+  @include tabletPotraitUp {
     padding: 20px 40px;
   }
 
-  flex: 1 1 100%;
+  flex: 0 0 50%;
 
-  @include tablet-potrait-up {
-    flex: 1 1 50%;
-  }
-
-  @include desktop-up {
-    flex: 1 1 33%;
+  @include desktopUp {
+    flex: 0 0 33%;
   }
 
   img {
@@ -37,16 +33,22 @@
     justify-content: space-between;
     align-items: baseline;
 
-    &.vertical {
-      flex-direction: column;
-      align-items: center;
+  }
 
-      h1,
-      h2,
-      h3 {
-        margin-bottom: 0;
-      }
+  .vertical {
+    flex-direction: column;
+    align-items: center;
+
+    h1,
+    h2,
+    h3 {
+      margin-bottom: 0;
     }
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
   }
 }
 

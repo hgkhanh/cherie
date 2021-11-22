@@ -12,7 +12,7 @@ galleryImages:
   - ../images/Sophia-03.jpg
   - ../images/Sophia-04.jpg
 price: '1199'
-salePrice: '590'
+salePrice: '1199'
 category: Ball-gown
 sizes:
   - "36"

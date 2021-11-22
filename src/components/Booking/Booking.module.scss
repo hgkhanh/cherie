@@ -1,38 +1,50 @@
 .container {
   margin: 0 10px;
-  @include phone-only {
+
+  @include phoneOnly {
     padding: 30px;
   }
 }
 
 .slot {
   padding-top: 20px;
+
   span {
     font-size: 12px;
   }
 }
+
 .bullet {
   text-align: justify;
-  @include phone-only {
+
+  @include phoneOnly {
     padding-left: 20px;
   }
+
   li {
     padding-bottom: 10px;
   }
 }
+
 .timeSelectContainer {
   display: flex;
   flex-wrap: wrap;
-  & > div {
+  max-width: 900px;
+  margin: 0 auto;
+
+  &>div {
     flex: 1 1 100%;
-    @include tablet-potrait-up {
+
+    @include tabletPotraitUp {
       flex: 1 1 50%;
     }
   }
+
   .calendar {
     :global(.ant-fullcalendar-value) {
       font-size: 12px;
     }
+
     :global(.ant-fullcalendar-disabled-cell .ant-fullcalendar-value) {
       width: 24px;
       height: 24px;

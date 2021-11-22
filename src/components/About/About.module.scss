@@ -1,16 +1,31 @@
-.smallBannerWrapper {
-  height: 50vh;
-}
-@include tablet-potrait-up {
-  flex-direction: row;
-  .smallBannerWrapper {
-      height: 400px;
-      flex: 1 0 33%;
-  }
-}
+.card {
+  margin: 0 auto;
 
-@include desktop-up {
-  .smallBannerWrapper {
-      height: 600px;
+  .image {
+    height: 260px;
+    top: 0;
+    left: 0;
   }
+
+  .text {
+    width: 100%;
+    align-items: flex-start;
+    left: 0;
+    top: -40px;
+    padding: 30px;
+    height: auto;
+    margin: 0 auto;
+
+  }
+
+  @include tabletPotraitUp {
+    .text {
+      width: 66%;
+    }
+  }
+
+  @include tabletLandscapeUp {
+    
+  }
+
 }

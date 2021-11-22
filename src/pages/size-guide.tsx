@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import Helmet from "react-helmet";
-import Layout from "../layout";
+import { Helmet } from 'react-helmet';
+import Layout from "../components/Layout";
 import config from "../../data/SiteConfig";
 import { Col, Row, Table } from 'antd';
 import WindowDimensionsProvider from '../shared/WindowDimensionsProvider';
@@ -8,7 +8,6 @@ import { WindowDimensionsContext } from "../shared/WindowDimensionsProvider";
 
 const SizeTable = () => {
   const { width } = useContext(WindowDimensionsContext);
-  console.log('width',width);
   const dataSource1 = [
     {
       key: '1',
@@ -327,7 +326,7 @@ const SizeTable = () => {
       { width <= 576 ?
         (
           <Col span={24} lg={12} md={16}>
-            <Table dataSource={dataMobile} columns={columnMobile} pagination={{pageSize: 8}}/>
+            <Table dataSource={dataMobile} columns={columnMobile} pagination={{ pageSize: 8 }} />
           </Col>
         ) : (
           <Col span={24} lg={12} md={16}>
@@ -344,12 +343,12 @@ const SizeGuide = ({ location }) => {
   return (
     <Layout location={location}>
       <WindowDimensionsProvider>
-        <Helmet title={`FAQ | ${config.siteTitle}`} />
+        <Helmet title={`Size Guide | ${config.siteTitle}`} />
         <hr className='divider' />
         <div className='grid'>
           <h1 className="centerAlign">
             Size Guide
-        </h1>
+          </h1>
           <SizeTable />
         </div>
         <hr className='divider' />

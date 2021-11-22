@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Helmet from "react-helmet";
-import Layout from "../layout";
+import { Helmet } from 'react-helmet';
+import Layout from "../components/Layout";
 import FAQ from "../components/FAQ";
 import config from "../../data/SiteConfig";
 

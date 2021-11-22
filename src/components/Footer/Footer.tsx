@@ -8,17 +8,17 @@ const Footer = () => {
     <footer className={`${styles.footer}`}>
       <hr className="divider" />
       <div className={styles.linkContainer}>
-        <a href="//goo.gl/maps/xDcRUSp836pwG9vdA" target="_blank" rel="noopener">
-          <h3>Location</h3>
-        </a>
+        {/*<a href="//goo.gl/maps/sGsqDJexpQtTDLQA8" target="_blank" rel="noopener">*/}
+        {/*  <h4>Location</h4>*/}
+        {/*</a>*/}
         <Link to="/about">
-          <h3>About</h3>
+          <h4>About</h4>
         </Link>
         {/* <Link to="/faq">
           <h3 className="">FAQ</h3>
         </Link> */}
         <a href="mailto:info@cheriebridal.fi" target="_blank" rel="noopener">
-          <h3 className="">Contact</h3>
+          <h4 className="">Contact</h4>
         </a>
       </div>
       <div>
@@ -26,17 +26,17 @@ const Footer = () => {
           <Icon type="instagram" />
         </a>
       </div>
-      <p style={{ color: "#9D9D9D" }}>
+      <p>
         Chérie bridal shop<br />
-        Sepänkatu 15, 00150, Helsinki<br />
+        {/*Sepänkatu 15, 00150, Helsinki<br />*/}
         p: 0505 116 776<br />
         e: info@cheriebridal.fi
       </p>
-      <p style={{ color: "#9D9D9D" }}>
+      <p>
         Opening hours<br />
-        Mon-Fri: 10 - 18 <br />
-        Sat: 10 - 15<br />
-        Sun: Closed
+        Tue-Fri: 12 - 19 <br />
+        Sat: 12 - 17<br />
+        Sun &amp; Mon: Closed
       </p>
     </footer >
   );

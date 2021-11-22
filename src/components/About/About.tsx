@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styles from "./About.module.scss";
 import { useStaticQuery, graphql } from 'gatsby';
+import Image from 'gatsby-image';
 import Hero from '../Hero';
 
 const About = () => {
@@ -59,7 +60,7 @@ const About = () => {
         <h1 className='uppercase darkTone' style={{ marginBottom: '1em' }}>Our Story</h1>
       </Hero >
       {/* Text Block */}
-      < hr className='divider' />
+      <hr className='divider' />
       <div className='gridWrapper'>
         <div className='grid narrow'>
           <div className='sectionTextBlock centerAlign'>
@@ -81,88 +82,80 @@ const About = () => {
         </div>
       </div>
       <hr className='divider' />
-      {/* Banner 2: text on hero */}
-      <Hero overlay={false} hasScroll={false} isParallax={false}
-        imageWide={data.banner2wide} mobileFullHeight={true}
-        verticalAlign='top'>
-        <div>
-          <h2 className='uppercase darkerText heavyText' style={{ marginBottom: '1em' }}>The dress made for you</h2>
-          <p className='darkerText' style={{ width: 300 }}>
-            Cherie stylist picks was designated to accompany each and every brides
-            to find the most beautiful bress with the least effort. They are customized
-            to your styles and measurements and created by tailors with years of experience
-            in the wedding industry using the same materials in same facilities as top-of-the-line brands.
-            </p>
-        </div>
-      </Hero>
-      {/* Banner 3: Pic then Text */}
-      <div className={styles.smallBannerWrapper}>
-        <Hero overlay={false} hasScroll={false} isParallax={false}
-          imageWide={data.banner3wide} mobileFullHeight={false}>
-        </Hero>
-      </div>
-      <hr className='divider' />
+
       <div className='gridWrapper'>
-        <div className='grid narrow'>
-          <div className='sectionTextBlock leftAlign'>
-            <h2 className='uppercase heavyText' style={{ marginBottom: '1em' }}>Cater to your need</h2>
-            <p className='grayText'>
-              We believe that everybody is anything but ordinary and what we wear represents
-              much of ourselves. That’s why Cherie says no to one-size-fit-all. We offer
-              consultation and alternation service. Anything you need, from simply
-              changing the dress top to a complicated sophisticated pearl beaded ball
-              gown with 3 meter lengths train. We do it for you.
+        <div className='grid'>
+          {/* Banner 2: text on hero */}
+          <div className={styles.card}>
+            <div className={styles.image}>
+              <Image fluid={data.banner2wide.childCloudinaryAsset.fluid} style={{ height: '100%' }} >
+              </Image>
+            </div>
+            <div className={styles.text}>
+              <h2>The dress made for you</h2>
+              <p className='grayText'>
+                Cherie stylist picks was designated to accompany each and every brides
+                to find the most beautiful bress with the least effort. They are customized
+                to your styles and measurements and created by tailors with years of experience
+                in the wedding industry using the same materials in same facilities as top-of-the-line brands.
             </p>
+            </div>
+          </div>
+          {/* Banner 3: Pic then Text */}
+          <div className={styles.card}>
+            <div className={styles.image}>
+              <Image fluid={data.banner3wide.childCloudinaryAsset.fluid} style={{ height: '100%' }} >
+              </Image>
+            </div>
+            <div className={styles.text}>
+              <h2>Cater to your need</h2>
+              <p className='grayText'>
+                We believe that everybody is anything but ordinary and what we wear represents
+                much of ourselves. That’s why Cherie says no to one-size-fit-all. We offer
+                consultation and alternation service. Anything you need, from simply
+                changing the dress top to a complicated sophisticated pearl beaded ball
+                gown with 3 meter lengths train. We do it for you.
+                </p>
+            </div>
+          </div>
+          {/* Banner 4: Pic then Text */}
+          <div className={styles.card}>
+            <div className={styles.image}>
+              <Image fluid={data.banner4wide.childCloudinaryAsset.fluid} style={{ height: '100%' }}>
+              </Image>
+            </div>
+            <div className={styles.text}>
+              <h2>Handcrafted with love</h2>
+              <p className='grayText'>
+                We say no to glue. Using glue may save time, but it will turn your dress yellowish after a while.
+                That’s why we sew the beading, ruffles and laces entirely by hand, whenever it needs.
+                So rest assured, that your dress will be long lasting to pass on to the next generation.
+              </p>
+            </div>
+          </div>
+          {/* Banner 5: Pic then Text */}
+          <div className={styles.card}>
+            <div className={styles.image}>
+              <Image fluid={data.banner5wide.childCloudinaryAsset.fluid} style={{ height: '100%' }}>
+              </Image>
+            </div>
+            <div className={styles.text}>
+              <h2>Comfort and stylish</h2>
+              <p className='grayText'>
+                Comfy bride is the best bride. But a stunning comfy bride is even better.
+                We’ve included some thoughtful touches to make the dress more comfortable.
+                A hidden pocket to carry your phone. A invisible zipper helps you get dress
+                in a second. Or a removable cap for your dance. Plus, the dresses are stylish,
+                catch up with the lastest trend. You’ll be the star on your day.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <hr className='divider' />
-      {/* Banner 4: Pic then Text */}
-      <div className={styles.smallBannerWrapper}>
-        <Hero overlay={false} hasScroll={false} isParallax={false}
-          imageWide={data.banner4wide} mobileFullHeight={false}>
-        </Hero>
-      </div>
-      <hr className='divider' />
-      <div className='gridWrapper'>
-        <div className='grid narrow'>
-          <div className='sectionTextBlock leftAlign'>
-            <h2 className='uppercase heavyText' style={{ marginBottom: '1em' }}>Handcrafted with love</h2>
-            <p className='grayText'>
-              We say no to glue. Using glue may save time, but it will turn your dress yellowish after a while. 
-              That’s why we sew the beading, ruffles and laces entirely by hand, whenever it needs. 
-              So rest assured, that your dress will be long lasting to pass on to the next generation.
-            </p>
-          </div>
-        </div>
-      </div>
-      <hr className='divider' />
-      {/* Banner 5: Pic then Text */}
-      <div className={styles.smallBannerWrapper}>
-        <Hero overlay={false} hasScroll={false} isParallax={false}
-          imageWide={data.banner5wide} mobileFullHeight={false}>
-        </Hero>
-      </div>
-      <hr className='divider' />
-      <div className='gridWrapper'>
-        <div className='grid narrow'>
-          <div className='sectionTextBlock leftAlign'>
-            <h2 className='uppercase heavyText' style={{ marginBottom: '1em' }}>Comfort and stylish</h2>
-            <p className='grayText'>
-            Comfy bride is the best bride. But a stunning comfy bride is even better. 
-            We’ve included some thoughtful touches to make the dress more comfortable. 
-            A hidden pocket to carry your phone. A invisible zipper helps you get dress 
-            in a second. Or a removable cap for your dance. Plus, the dresses are stylish, 
-            catch up with the lastest trend. You’ll be the star on your day.
-            </p>
-          </div>
-        </div>
-      </div>
-      <hr className='divider' />
       {/* Banner 6: Text on Hero */}
       <Hero overlay={false} hasScroll={false} isParallax={false}
         imageWide={data.banner6wide} mobileFullHeight={true} verticalAlign='top'>
-        <h1 className='uppercase darkTone heavyText' style={{ marginTop: '60px' }}>Feel special in your own way</h1>
+        <h1 className='uppercase darkTone centerAlign' style={{ marginTop: '60px' }}>Feel special in your own way</h1>
       </Hero>
     </React.Fragment>
   );

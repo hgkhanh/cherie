@@ -12,7 +12,7 @@ galleryImages:
   - ../images/Elliah-01.jpg
   - ../images/Elliah-03.jpg
 price: '1299'
-salePrice: '650'
+salePrice: '1299'
 category: A-line
 sizes:
   - "36"

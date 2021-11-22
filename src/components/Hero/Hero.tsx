@@ -12,7 +12,7 @@ const Hero = ({ overlay, overlayAlpha, hasScroll, isParallax, imageWide, imageVe
   const { width } = useContext(WindowDimensionsContext);
 
   let heroImage = imageWide;
-  if (imageVertical && width <= 992) {
+  if (imageVertical && width <= 900) {
     heroImage = imageVertical;
   }
 
@@ -45,8 +45,7 @@ const Hero = ({ overlay, overlayAlpha, hasScroll, isParallax, imageWide, imageVe
       <BackgroundImage
         className={mobileFullHeight ? `${styles.hero} ${styles.mobileFullHeight}` : styles.hero}
         fluid={heroImage.childCloudinaryAsset.fluid}
-        loading='eager'
-        backgroundColor={`#040e18`}>
+        loading='eager' backgroundColor={`#040e18`}>
         {overlay && (
           <div className={styles.overlay} style={{ backgroundColor: `rgba(0,0,0, ${overlayAlpha ? overlayAlpha : 0.3})` }} />
         )}

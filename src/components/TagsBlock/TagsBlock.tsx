@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import styles from './TagsBlock.module.scss';
-import Hero from '../Hero';
+import Image from "gatsby-image";
 
 const TagsBlock = () => {
   const data = useStaticQuery(graphql`
@@ -31,13 +31,13 @@ const TagsBlock = () => {
             }
         }
     `);
-  console.log(data);
 
   return (
     <div className={styles.container}>
       <div className={styles.item}>
         <Link to='/collection/minimal'>
-          <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.catImage1} />
+          <Image style={{ height: '100%' }} fluid={data.catImage1.childCloudinaryAsset.fluid}>
+          </Image>
           <div className={styles.title}>
             <h3 style={{ marginBottom: 0 }}>Minimal</h3>
           </div>
@@ -45,7 +45,8 @@ const TagsBlock = () => {
       </div>
       <div className={styles.item}>
         <Link to='/collection/romantic'>
-          <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.catImage2} />
+          <Image style={{ height: '100%' }} fluid={data.catImage2.childCloudinaryAsset.fluid}>
+          </Image>
           <div className={styles.title}>
             <h3 style={{ marginBottom: 0 }}>Romantic</h3>
           </div>
@@ -53,7 +54,8 @@ const TagsBlock = () => {
       </div>
       <div className={styles.item}>
         <Link to='/collection/elegant'>
-          <Hero overlay={false} hasScroll={false} isParallax={false} imageWide={data.catImage3} />
+          <Image style={{ height: '100%' }} fluid={data.catImage3.childCloudinaryAsset.fluid}>
+          </Image>
           <div className={styles.title}>
             <h3 style={{ marginBottom: 0 }}>Elegant</h3>
           </div>
