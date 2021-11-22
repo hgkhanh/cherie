@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-advanced",
-  "description": "GatsbyJS starter that includes examples for advanced use cases.",
-  "version": "1.1.0",
-  "author": "Ruben Harutyunyan <vagr9k@gmail.com>",
+  "name": "cherie-bridal-fi",
+  "description": "Website of Cheriebridal.fi",
+  "version": "0.0.1",
+  "author": "Khanh Nguyen <hkhanh.ng@gmail.com>",
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",

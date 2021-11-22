@@ -8,9 +8,9 @@ const Footer = () => {
     <footer className={`${styles.footer}`}>
       <hr className="divider" />
       <div className={styles.linkContainer}>
-        <a href="//goo.gl/maps/sGsqDJexpQtTDLQA8" target="_blank" rel="noopener">
-          <h4>Location</h4>
-        </a>
+        {/*<a href="//goo.gl/maps/sGsqDJexpQtTDLQA8" target="_blank" rel="noopener">*/}
+        {/*  <h4>Location</h4>*/}
+        {/*</a>*/}
         <Link to="/about">
           <h4>About</h4>
         </Link>
@@ -28,7 +28,7 @@ const Footer = () => {
       </div>
       <p>
         Chérie bridal shop<br />
-        Sepänkatu 15, 00150, Helsinki<br />
+        {/*Sepänkatu 15, 00150, Helsinki<br />*/}
         p: 0505 116 776<br />
         e: info@cheriebridal.fi
       </p>
