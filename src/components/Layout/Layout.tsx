@@ -17,17 +17,17 @@ const Layout = ({ children, location }) => {
       <WindowDimensionsProvider>
         <React.Fragment>
           <Helmet>
-            <meta name='viewport' content='height=device-height, 
-                        width=device-width, initial-scale=1.0, 
-                        minimum-scale=1.0, maximum-scale=1.0, 
+            <meta name='viewport' content='height=device-height,
+                        width=device-width, initial-scale=1.0,
+                        minimum-scale=1.0, maximum-scale=1.0,
                         user-scalable=no, target-densitydpi=device-dpi'/>
             <meta name='description' content={config.siteDescription} />
             <html lang='en' />
           </Helmet>
           <Header location={location} />
-          {location && location.pathname !== "/booking" && !isFooterVisible && (
-            <FloatButton to="/booking" />
-          )}
+          {/*{location && location.pathname !== "/booking" && !isFooterVisible && (*/}
+          {/*  <FloatButton to="/booking" />*/}
+          {/*)}*/}
           <main>{children}</main>
           <VisibilitySensor onChange={visiblity => {
             console.log('onChange:' + visiblity);
