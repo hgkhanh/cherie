@@ -25,9 +25,9 @@ const Layout = ({ children, location }) => {
             <html lang='en' />
           </Helmet>
           <Header location={location} />
-          {/*{location && location.pathname !== "/booking" && !isFooterVisible && (*/}
-          {/*  <FloatButton to="/booking" />*/}
-          {/*)}*/}
+          {location && location.pathname !== "/booking" && !isFooterVisible && (
+            <FloatButton to="/booking" />
+          )}
           <main>{children}</main>
           <VisibilitySensor onChange={visiblity => {
             console.log('onChange:' + visiblity);

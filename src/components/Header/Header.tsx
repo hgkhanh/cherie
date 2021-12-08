@@ -148,7 +148,9 @@ const Header = ({ location }) => {
               <Link to="/collection">
                 <h2>Collection</h2>
               </Link>
-              {/*<Link to="/booking"><h2>Booking</h2></Link>*/}
+              <Link to="/booking">
+                <h2>Booking</h2>
+              </Link>
               {/*<Link to="/special">*/}
               {/*  <h2>Special Offers</h2>*/}
               {/*</Link>*/}
@@ -217,9 +219,9 @@ const Header = ({ location }) => {
                   <li>
                     <a href="/stylist-pick">Stylist Pick</a>
                   </li>
-                  {/*<li>*/}
-                  {/*  <a href="/booking">Book an Appointment</a>*/}
-                  {/*</li>*/}
+                  <li>
+                    <a href="/booking">Book an Appointment</a>
+                  </li>
                 </ul>
               </nav>
             )}

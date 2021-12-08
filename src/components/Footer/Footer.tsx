@@ -8,16 +8,24 @@ const Footer = () => {
     <footer className={`${styles.footer}`}>
       <hr className="divider" />
       <div className={styles.linkContainer}>
-        {/*<a href="//goo.gl/maps/sGsqDJexpQtTDLQA8" target="_blank" rel="noopener">*/}
-        {/*  <h4>Location</h4>*/}
-        {/*</a>*/}
+        <a
+          href="//goo.gl/maps/sGsqDJexpQtTDLQA8"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h4>Location</h4>
+        </a>
         <Link to="/about">
           <h4>About</h4>
         </Link>
-        {/* <Link to="/faq">
-          <h3 className="">FAQ</h3>
-        </Link> */}
-        <a href="mailto:info@cheriebridal.fi" target="_blank" rel="noopener">
+        <Link to="/faq">
+          <h4>FAQ</h4>
+        </Link>
+        <a
+          href="mailto:info@cheriebridal.fi"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <h4 className="">Contact</h4>
         </a>
       </div>
@@ -25,7 +33,7 @@ const Footer = () => {
         <a
           href="//www.instagram.com/cheriebridal/"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           <Icon type="instagram" />
         </a>
@@ -33,7 +41,8 @@ const Footer = () => {
       <p>
         Chérie bridal shop
         <br />
-        {/*Sepänkatu 15, 00150, Helsinki<br />*/}
+        Sepänkatu 15, 00150, Helsinki
+        <br />
         p: 0505 116 776
         <br />
         e: info@cheriebridal.fi
