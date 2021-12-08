@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "yarn build"
   functions = "functions"
   publish = "public"
 [build.environment]
@@ -10,4 +10,4 @@
 # Deploys from this branch will take these settings
 # and override their current ones.
 [context.branch-deploy]
-  command = "GATSBY_ACTIVE_ENV=development npm run build"
+  command = "GATSBY_ACTIVE_ENV=development yarn build"
