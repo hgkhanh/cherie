@@ -22,6 +22,8 @@ const Layout = ({ children, location }) => {
                         minimum-scale=1.0, maximum-scale=1.0,
                         user-scalable=no, target-densitydpi=device-dpi'/>
             <meta name='description' content={config.siteDescription} />
+            <meta name='og:url' content="https://cheriebridal.fi/"/>
+            <meta name='og:image' content="https://cheriebridal.fi/static/b7d681fe21be2bbaa88f85dda97e64ed/a40ad/logo-dark.png"/>
             <html lang='en' />
           </Helmet>
           <Header location={location} />
