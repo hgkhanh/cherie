@@ -45,7 +45,7 @@
     "gatsby-remark-responsive-iframe": "^2.4.5",
     "gatsby-source-filesystem": "^2.3.11",
     "gatsby-transformer-cloudinary": "^0.3.5",
-    "gatsby-transformer-remark": "^2.8.15",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.5.5",
     "gray-percentage": "^2.0.0",
     "lazysizes": "^5.2.2",
